@@ -1,0 +1,229 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* --------------------CSS Document----------------------------- */
+
+.body {
+    margin-left: 15.625%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 102.5px;
+    padding-bottom: 150px;
+}
+
+.bodyEdit {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 102.5px;
+    padding-bottom: 150px;
+}
+
+/*----------------------------------------------------------------------*/
+
+.head {
+    background-color: #434343;
+    margin-left: 15.625%;
+    padding: 25px 30px;
+    color: white;
+    font-size: 25px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    position: fixed !important;
+    width: 100%;
+}
+
+.headLeft {
+    min-width: 40.625%;
+    float: left;
+    text-align: left;
+}
+
+.headRight {
+    min-width: 40.625%;
+    float: left;
+    text-align: right;
+}
+
+/*------------------------------------------------------------------------*/
+
+.editButton {
+    padding: 0 5px;
+}
+
+.headEdit {
+    background-color: #434343;
+    padding: 25px 30px;
+    color: white;
+    font-size: 25px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    position: fixed !important;
+    width: 100%;
+}
+
+.headEditLeft {
+    min-width: 48.437%;
+    float: left;
+    text-align: left;
+}
+
+.headEditRight {
+    min-width: 48.437%;
+    float: left;
+    text-align: right;
+}
+
+.material-icons:hover {
+    color: #EE6726;
+}
+/*--------------------------------------------------------------------*/
+.material-icons {
+    font-size: 25px !important;
+    color: white;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.uppercase:hover {
+    color: #EE6726;
+}
+
+/*---------------------------------------------------------------*/
+
+.middle-logo {
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    background-size: contain;
+}
+
+.sidebar {
+    height: 100%;
+    width: 15.625%;
+    background-color: #2F2F2F;
+    position: fixed !important;
+    overflow: auto;
+}
+
+.sidebar-list {
+    font-size: 18px;
+    padding-left: 35px;
+}
+
+.sidebar-item {
+    padding-left: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sidebar-item a {
+    color: white;
+    display: block;
+}
+
+.sidebar-item:hover {
+    background-color: #404040;
+}
+
+.sidebar-item:hover a {
+    color: #EE6726;
+    padding-left: 5px;
+}
+
+/*-----------------------------------------------------------------------*/
+
+table {
+    width: 100%;
+    color: #393939;
+    border: 1px solid #b4b4b4;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    border: 1px solid #b4b4b4;
+}
+
+td {
+    border-left: 1px solid #b4b4b4;
+    border-right: 1px solid #b4b4b4;
+}
+
+tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+/*-----------------------------------------------------------------------*/
+
+.tableEdit {
+    width: 100%;
+    color: #393939;
+    border: 1px solid #b4b4b4;
+    border-collapse: collapse;
+}
+
+.cellEdit {
+    padding: 0px;
+}
+
+.textboxEdit {
+    width: 90%;
+    padding: 5%;
+}
+
+/*-----------------------------------------------------------------------*/
+
+::selection {
+    background: rgba(238, 103, 38, 0.66);
+}
+
+::-moz-selection {
+    background: rgba(238, 103, 38, 0.66);
+}
+
+h3 {
+    padding: 25px 50px;
+}
+
+html {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    color: #797e83;
+    font-size: 16px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    width: auto;
+}
+
+
+a {
+    color: #656a6e;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

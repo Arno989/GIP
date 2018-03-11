@@ -1,0 +1,318 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49D0148F-B598-4083-8007-C20B229FAF54}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Presentation</RootNamespace>
+    <AssemblyName>Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CliniresearchSite.Master" />
+    <Content Include="CliniresearchSiteEdit.Master" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterStyleSheet.css" />
+    <Content Include="SiteEdit\ClientPageEdit.aspx" />
+    <Content Include="SiteEdit\ContractPageEdit.aspx" />
+    <Content Include="SiteEdit\CRAPageEdit.aspx" />
+    <Content Include="SiteEdit\DepartmentPageEdit.aspx" />
+    <Content Include="SiteEdit\DoctorPageEdit.aspx" />
+    <Content Include="SiteEdit\EvaluationPageEdit.aspx" />
+    <Content Include="SiteEdit\HospitalPageEdit.aspx" />
+    <Content Include="SiteEdit\ProjectManagerPageEdit.aspx" />
+    <Content Include="SiteEdit\ProjectPageEdit.aspx" />
+    <Content Include="SiteEdit\StudyCoördinatorPageEdit.aspx" />
+    <Content Include="Site\ClientPage.aspx" />
+    <Content Include="Site\ContractPage.aspx" />
+    <Content Include="Site\CRAPage.aspx" />
+    <Content Include="Site\DepartmentPage.aspx" />
+    <Content Include="Site\DoctorPage.aspx" />
+    <Content Include="Site\EvaluationPage.aspx" />
+    <Content Include="index.aspx" />
+    <Content Include="Site\HospitalPage.aspx" />
+    <Content Include="Site\ProjectManagerPage.aspx" />
+    <Content Include="Site\ProjectPage.aspx" />
+    <Content Include="Site\StudyCoördinatorPage.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CliniresearchSite.Master.cs">
+      <DependentUpon>CliniresearchSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CliniresearchSite.Master.designer.cs">
+      <DependentUpon>CliniresearchSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CliniresearchSiteEdit.Master.cs">
+      <DependentUpon>CliniresearchSiteEdit.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CliniresearchSiteEdit.Master.designer.cs">
+      <DependentUpon>CliniresearchSiteEdit.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteEdit\ClientPageEdit.aspx.cs">
+      <DependentUpon>ClientPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\ClientPageEdit.aspx.designer.cs">
+      <DependentUpon>ClientPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\ContractPageEdit.aspx.cs">
+      <DependentUpon>ContractPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\ContractPageEdit.aspx.designer.cs">
+      <DependentUpon>ContractPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\CRAPageEdit.aspx.cs">
+      <DependentUpon>CRAPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\CRAPageEdit.aspx.designer.cs">
+      <DependentUpon>CRAPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\DepartmentPageEdit.aspx.cs">
+      <DependentUpon>DepartmentPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\DepartmentPageEdit.aspx.designer.cs">
+      <DependentUpon>DepartmentPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\DoctorPageEdit.aspx.cs">
+      <DependentUpon>DoctorPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\DoctorPageEdit.aspx.designer.cs">
+      <DependentUpon>DoctorPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\EvaluationPageEdit.aspx.cs">
+      <DependentUpon>EvaluationPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\EvaluationPageEdit.aspx.designer.cs">
+      <DependentUpon>EvaluationPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\HospitalPageEdit.aspx.cs">
+      <DependentUpon>HospitalPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\HospitalPageEdit.aspx.designer.cs">
+      <DependentUpon>HospitalPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\ProjectManagerPageEdit.aspx.cs">
+      <DependentUpon>ProjectManagerPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\ProjectManagerPageEdit.aspx.designer.cs">
+      <DependentUpon>ProjectManagerPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\ProjectPageEdit.aspx.cs">
+      <DependentUpon>ProjectPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\ProjectPageEdit.aspx.designer.cs">
+      <DependentUpon>ProjectPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteEdit\StudyCoördinatorPageEdit.aspx.cs">
+      <DependentUpon>StudyCoördinatorPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteEdit\StudyCoördinatorPageEdit.aspx.designer.cs">
+      <DependentUpon>StudyCoördinatorPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ClientPage.aspx.cs">
+      <DependentUpon>ClientPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ClientPage.aspx.designer.cs">
+      <DependentUpon>ClientPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ContractPage.aspx.cs">
+      <DependentUpon>ContractPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ContractPage.aspx.designer.cs">
+      <DependentUpon>ContractPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\CRAPage.aspx.cs">
+      <DependentUpon>CRAPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\CRAPage.aspx.designer.cs">
+      <DependentUpon>CRAPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\DepartmentPage.aspx.cs">
+      <DependentUpon>DepartmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\DepartmentPage.aspx.designer.cs">
+      <DependentUpon>DepartmentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\DoctorPage.aspx.cs">
+      <DependentUpon>DoctorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\DoctorPage.aspx.designer.cs">
+      <DependentUpon>DoctorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\EvaluationPage.aspx.cs">
+      <DependentUpon>EvaluationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\EvaluationPage.aspx.designer.cs">
+      <DependentUpon>EvaluationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\HospitalPage.aspx.cs">
+      <DependentUpon>HospitalPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\HospitalPage.aspx.designer.cs">
+      <DependentUpon>HospitalPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ProjectManagerPage.aspx.cs">
+      <DependentUpon>ProjectManagerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ProjectManagerPage.aspx.designer.cs">
+      <DependentUpon>ProjectManagerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ProjectPage.aspx.cs">
+      <DependentUpon>ProjectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ProjectPage.aspx.designer.cs">
+      <DependentUpon>ProjectPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\StudyCoördinatorPage.aspx.cs">
+      <DependentUpon>StudyCoördinatorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\StudyCoördinatorPage.aspx.designer.cs">
+      <DependentUpon>StudyCoördinatorPage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{524aad2a-2f24-4dda-b550-efcfb6130e1e}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62239</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62239/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

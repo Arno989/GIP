@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CliniresearchSiteEdit.Master.cs" Inherits="Presentation.CliniresearchEdit" %>
+
+<!DOCTYPE html>
+
+<html>
+	<head runat="server">
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link rel="stylesheet" href="~/MasterStyleSheet.css" runat="server"/>
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
+
+			<asp:ContentPlaceHolder ID="Head" runat="server">
+
+			</asp:ContentPlaceHolder>
+
+	</head>
+	<body>
+			<form id="formEdit" runat="server">
+				<div>
+					<header class="headEdit">
+
+						<asp:ContentPlaceHolder ID="Header" runat="server">
+
+						</asp:ContentPlaceHolder>
+
+					</header>
+				</div>
+                <div class="bodyEdit">
+
+					<asp:ContentPlaceHolder ID="Body" runat="server">
+
+					</asp:ContentPlaceHolder>
+
+				</div>
+			</form>
+	</body>
+</html>
