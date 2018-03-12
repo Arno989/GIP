@@ -124,15 +124,6 @@ namespace Domain.Business
 		{
 			return Regex.Match(parNumber,@"^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$").Success;
 		}
-
-        public void test2()
-        {
-
-        }
-
-        public void test3()
-        {
-
-        }
+        
 	}
 }
