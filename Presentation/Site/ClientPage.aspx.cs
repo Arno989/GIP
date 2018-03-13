@@ -17,5 +17,10 @@ namespace Presentation.Site
 			GridView.DataSource = _businesscode.GetClients();
 			GridView.DataBind();
 		}
-	}
+
+        protected void GridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            Response.Redirect("../index.aspx");
+        }
+    }
 }
