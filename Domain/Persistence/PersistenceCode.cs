@@ -463,7 +463,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteContract(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -474,7 +473,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteCRA(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -485,7 +483,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteDepartment(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -495,7 +492,6 @@ namespace Domain.Persistence
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-
         public void deleteDoctor(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -506,7 +502,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteEvaluation(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -517,7 +512,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteHospital(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -528,7 +522,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteProject(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -539,7 +532,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteProjectManager(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -550,7 +542,6 @@ namespace Domain.Persistence
             conn.Close();
 
         }
-
         public void deleteStudyCoördinator(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
