@@ -21,6 +21,7 @@ namespace Presentation.Site
         protected void GridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             Response.Redirect("../index.aspx");
+            
         }
     }
 }

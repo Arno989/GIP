@@ -9,9 +9,17 @@ namespace Domain.Business
 	public class ClientCode
 	{
 
-		// Alle private en public properties van de class Clënt
+        // Alle private en public properties van de class Clënt
 
-		private string _name;
+        private int _client_id;
+
+        public int Client_id
+        {
+            get { return _client_id; }
+            set { _client_id = value; }
+        }
+
+        private string _name;
 
 		public string Name
 		{
@@ -82,8 +90,9 @@ namespace Domain.Business
 
 		}
 
-		public ClientCode(string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
+        public ClientCode(int ID_p, string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
 		{
+            Client_id
 			_name = Name_p;
 			_adress = Adress_p;
 			_postal_code = Postal_code_p;
