@@ -459,12 +459,108 @@ namespace Domain.Persistence
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("DELETE from tblclient where Client_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
-            //cmd.CommandType = System.Data.CommandType.Text;
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
 
+        public void deleteContract(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblcontract where Contract_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteCRA(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblcra where CRA_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteDepartment(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tbldepartment where Department_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void deleteDoctor(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tbldoctor where Doctor_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteEvaluation(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblevaluation where Evaluation_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteHospital(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblhospital where Hospital_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteProject(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblproject where Project_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteProjectManager(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblprojectmanager where PM_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void deleteStudyCoördinator(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblstudycoördinator where SC_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
         #endregion
     }
 }
