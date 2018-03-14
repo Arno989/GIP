@@ -20,8 +20,13 @@ namespace Presentation.Site
 
         protected void GridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            Response.Redirect("../index.aspx");
-            
+
+            TableCell cell = GridView.Rows[e.RowIndex].Cells[1];
+
+            _businesscode.DeleteClient(Convert.ToInt32(cell.Text));
+
+            Response.Redirect("../Site/ClientPage.aspx");
+
         }
     }
 }

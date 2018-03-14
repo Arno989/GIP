@@ -107,6 +107,11 @@ namespace Domain.Business
             return _persistence.getStudyCoördinator();
         }
 
+        public void DeleteClient(int id_p2)
+        {
+            _persistence.deleteClient(id_p2);
+        }
+
 		public bool IsValidEmail(string parEmail)
 		{
 			try

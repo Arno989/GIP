@@ -19,6 +19,7 @@ namespace Domain.Persistence
             _connectionString = "server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989";
         }
 
+        #region Select_query's
         //Getting the data from every table
         public List<ClientCode> getClients()
 		{
@@ -267,9 +268,11 @@ namespace Domain.Persistence
             conn.Close();
 			return ListStudyCoördinator;
 		}
+        #endregion
 
-		//Setting the data to every table
-		public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
+        #region Insert_query's
+        //Setting the data to every table
+        public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -446,6 +449,22 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
+        #endregion
 
-	}
+        #region Delete_query's
+        //Deleting the data from the a single row in every table
+        public void deleteClient(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from tblclient where Client_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            //cmd.CommandType = System.Data.CommandType.Text;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        #endregion
+    }
 }
