@@ -24,13 +24,13 @@ namespace Domain.Persistence
 		{
             List<ClientCode> ListClients = new List<ClientCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand("SELECT Name, Adress, Postal_code AS 'Postal Code', City, Country, Contact_person AS 'Contact Person', Invoice_info AS 'Invoice Info', Kind_of_Client AS 'Kind of Client' FROM cliniresearchdb.tblclient;", conn);
+			MySqlCommand cmd = new MySqlCommand("SELECT Client_ID, Name, Adress, Postal_code AS 'Postal Code', City, Country, Contact_person AS 'Contact Person', Invoice_info AS 'Invoice Info', Kind_of_Client AS 'Kind of Client' FROM cliniresearchdb.tblclient;", conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
 			while (dataReader.Read())
 			{
-				//int id = Convert.ToInt16(dataReader["Client_ID"]);
+				int id = Convert.ToInt16(dataReader["Client_ID"]);
 				string name = Convert.ToString(dataReader["Name"]);
 				string adress = Convert.ToString(dataReader["Adress"]);
 				string postal_code = Convert.ToString(dataReader["Postal Code"]);
@@ -40,7 +40,7 @@ namespace Domain.Persistence
 				string invoice_info = Convert.ToString(dataReader["Invoice Info"]);
 				string kind_of_client = Convert.ToString(dataReader["Kind of Client"]);
 
-				ClientCode c = new ClientCode(name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client);
+				ClientCode c = new ClientCode(id, name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client);
 
 				ListClients.Add(c);
 			}

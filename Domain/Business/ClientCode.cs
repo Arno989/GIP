@@ -92,7 +92,7 @@ namespace Domain.Business
 
         public ClientCode(int ID_p, string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
 		{
-            Client_id
+            _client_id = ID_p;
 			_name = Name_p;
 			_adress = Adress_p;
 			_postal_code = Postal_code_p;
