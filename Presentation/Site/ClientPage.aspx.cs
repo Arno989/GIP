@@ -21,9 +21,10 @@ namespace Presentation.Site
         protected void GridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            TableCell cell = GridView.Rows[e.RowIndex].Cells[1];
+            //TableCell cell = GridView.Rows[e.RowIndex].Cells[1];
+            int id = (int)GridView.DataKeys[e.RowIndex].Value;
 
-            _businesscode.DeleteClient(Convert.ToInt32(cell.Text));
+            _businesscode.DeleteClient(Convert.ToInt32(id));
 
             Response.Redirect("../Site/ClientPage.aspx");
 
