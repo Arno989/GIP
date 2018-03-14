@@ -166,6 +166,10 @@ tr:nth-child(even) {
     background-color: #eaeaea;
 }
 
+.hideGridColumn{
+    display:none !important;
+}
+
 /*-----------------------------------------------------------------------*/
 
 .tableEdit {
