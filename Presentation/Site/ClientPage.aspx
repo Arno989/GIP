@@ -15,15 +15,15 @@
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
     <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnRowDeleting="GridView_RowDeleting" AutoGenerateColumns="False" DataKeyNames="Client_ID">
         <Columns>
-            <asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
+            <%--<asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
                 <ItemTemplate>
                     <asp:CheckBox ID="cbEdit" runat="server" CssClass="checkbox" />
                 </ItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>--%>
             <asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
                 <ItemTemplate>
                     <label class="container">
-                      <input type="checkbox">
+                      <input type="checkbox" id="cbEdit">
                       <span class="checkmark"></span>
                     </label>
                 </ItemTemplate>
