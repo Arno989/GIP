@@ -29,33 +29,12 @@
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*.cbEdit{
-    display:none;
-}
-
-input[type=checkbox] {
-    display: none;
-}
-
-.checkbox label:before {
-    border-radius: 3px;
-}
-
-input[type=checkbox]:checked {
-    content: "\2713";
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-    font-size: 15px;
-    color: #f3f3f3;
-    text-align: center;
-    line-height: 15px;
-}*/
-
 /* Customize the label (the container) */
 .container {
     display: block;
     position: relative;
     padding-bottom: 50%;
-    padding-right: 85%;
+    padding-right: 80%;
     cursor: pointer;
     float: right;
 }
@@ -167,16 +146,16 @@ input[type=checkbox]:checked {
     text-align: right;
 }
 
-.material-icons:hover {
-    color: #EE6726;
-}
-
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .material-icons {
     font-size: 25px !important;
     color: white;
     padding-left: 25px;
+}
+
+.material-icons:hover {
+    color: #EE6726;
 }
 
 .uppercase {
@@ -288,13 +267,6 @@ h3 {
     padding: 25px 50px;
 }
 
-html {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-
 body {
     color: #797e83;
     font-size: 16px;
@@ -303,17 +275,10 @@ body {
     width: auto;
 }
 
-
 a {
-    color: #656a6e;
     text-decoration: none;
-    font-weight: 400;
 }
 
-
-ul,
-li {
-    margin: 0;
-    padding: 0;
+ul, li {
     list-style-type: none;
 }
