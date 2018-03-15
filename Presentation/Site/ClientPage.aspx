@@ -7,9 +7,7 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
     <div class="headLeft"><p class="uppercase">Clients</p></div>
 	<div class="headRight">
-        <asp:LinkButton id="btnDelete" runat="server" CssClass="material-icons" OnClick="btnDelete_Click">
-            <span aria-hidden="true" class="material-icons"></span>delete
-        </asp:LinkButton>
+        <asp:LinkButton id="btnDelete" runat="server" CssClass="material-icons" OnClick="btnDelete_Click"> <span aria-hidden="true" class="material-icons"></span>delete </asp:LinkButton>
         <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">create</i></a>
 	</div>
 </asp:Content>
@@ -19,7 +17,7 @@
         <Columns>
             <asp:TemplateField ShowHeader="false">
                 <ItemTemplate>
-                       <asp:CheckBox ID = "chkSelect" runat="server" />
+                    <asp:CheckBox ID="cbEdit" runat="server" CssClass="cbEdit" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Name" HeaderText="Name"/>
