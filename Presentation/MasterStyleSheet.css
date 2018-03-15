@@ -29,8 +29,33 @@
 
 /*----------------------------------------------------------------------*/
 
-.cbEdit{
+/*.cbEdit{
     display:none;
+}*/
+
+/*----------------------------------------------------------------------*/
+
+.head {
+    background-color: #434343;
+    margin-left: 15.625%;
+    padding: 25px 30px;
+    color: white;
+    font-size: 25px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    position: fixed !important;
+    width: 100%;
+}
+
+.headLeft {
+    min-width: 40.625%;
+    float: left;
+    text-align: left;
+}
+
+.headRight {
+    min-width: 40.625%;
+    float: left;
+    text-align: right;
 }
 
 /*------------------------------------------------------------------------*/
