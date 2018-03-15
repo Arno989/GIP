@@ -31,33 +31,74 @@ namespace Presentation.Site
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            //foreach (GridViewRow row in GridView.Rows)
-            //{
-            //    if (row.RowType == DataControlRowType.DataRow)
-            //    {
-            //        CheckBox chkRow = (row.Cells[0].FindControl("btnDelete") as CheckBox);
-            //        if (chkRow.Checked)
-            //        {
-            //            int id = Convert.ToInt16(row.Cells[2].Text);
-            //            _businesscode.DeleteClient(id);
-            //        }
-            //    }
-            //}
-
             foreach (GridViewRow row in GridView.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    int id;
-                    //CheckBox chkRow = ((int)GridView.DataKeys[1].Value);
-                    //CheckBox chkRow = (row.Cells[1].FindControl("chkSelect") as CheckBox);
-                    //if (chkRow.Checked)
-                    //{
-                    //    //string id = row.Cells[0].Text;
-                    //    //int id = (int)GridView.DataKeys[1].Value;
-                    //}
+                    CheckBox chkRow = row.Cells[0].FindControl("cbEdit") as CheckBox;
+                    if (chkRow.Checked)
+                    {
+                        //int id = Convert.ToInt16(row.Cells[1].Text);
+                        //_businesscode.DeleteClient(id);
+                    }
                 }
             }
+
+            //foreach (GridViewRow row in GridView.Rows)
+            //{
+            //    if (row.RowType == DataControlRowType.DataRow)
+            //    {
+            //        CheckBox CheckRow = (row.Cells[2].FindControl("cbEdit") as CheckBox);
+            //        if (CheckRow.Checked)
+            //        {
+                        
+            //        }
+            //    }
+            //}
+
+            //CheckBox checkBox = (CheckBox)GridView.Rows[my_Data_From_Grid].Cells[2].Controls[0];
+            //cbx_Test1_Active.Checked = checkBox.Checked;
+
+            //foreach (GridViewRow rw in GridView.Rows)
+            //{
+            //    CheckBox chkBx = (CheckBox)rw.FindControl("cbEdit");
+            //    if (chkBx != null && chkBx.Checked)
+            //    {
+
+            //        //int id = (int)GridView.DataKeys[0].Value;
+            //        //id = grid1.Rows[0].Cells[3].Text.ToString();
+
+
+            //    }
+            //}
+
+            //foreach (var gvItem in GridView)
+            //{
+            //    CheckBox chkItem = (CheckBox)gvItem.FindControl("cbEdit");
+            //    if (chkItem.Checked)
+            //    {
+            //        //Do stuff
+            //    }
+            //}
+
+            //foreach (GridViewRow row in GridView.Rows)
+            //{
+            //    if (row.RowType == DataControlRowType.DataRow)
+            //    {
+            //        int id = (int)GridView.DataKeys[0].Value;
+            //        CheckBox chkRow = (row.Cells[0].FindControl("cbEdit") as CheckBox);
+            //        if (chkRow.Checked)
+            //        {
+            //            //string id = row.Cells[0].Text;
+            //            //int id = (int)GridView.DataKeys[1].Value;
+            //        }
+            //    }
+            //}
+        }
+
+        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
