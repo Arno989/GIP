@@ -74,17 +74,18 @@ input[type=checkbox]:checked {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: #dbdbdb;
+    z-index:1;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: #b2b2b2;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #EE6726;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -123,6 +124,7 @@ input[type=checkbox]:checked {
     font-family: "Segoe UI",Arial,sans-serif;
     position: fixed !important;
     width: 100%;
+    z-index:5;
 }
 
 .headLeft {
