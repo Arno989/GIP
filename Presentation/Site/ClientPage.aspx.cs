@@ -31,20 +31,28 @@ namespace Presentation.Site
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            //foreach (GridViewRow row in GridView.Rows)
+            //{
+            //    if (row.RowType == DataControlRowType.DataRow)
+            //    {
+            //        CheckBox chkRow = (row.Cells[0].FindControl("btnDelete") as CheckBox);
+            //        if (chkRow.Checked)
+            //        {
+            //            int id = Convert.ToInt16(row.Cells[2].Text);
+            //            _businesscode.DeleteClient(id);
+            //        }
+            //    }
+            //}
+
             foreach (GridViewRow row in GridView.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    CheckBox chkRow = (row.Cells[0].FindControl("chkSelect") as CheckBox);
+                    CheckBox chkRow = (row.Cells[1].FindControl("chkSelect") as CheckBox);
                     if (chkRow.Checked)
                     {
-                        //int id = (int)GridView.DataKeys[e.RowIndex].Value;
-                        int id = Convert.ToInt16(row.Cells[1].Text);
-                        _businesscode.DeleteClient(id);
-                        //string name = row.Cells[1].Text;
-                        //string country = (row.Cells[2].FindControl("lblclient") as Label).Text;
-                        //dt.Rows.Add(name, country);
+                        //string id = row.Cells[0].Text;
+                        //int id = (int)GridView.DataKeys[b.RowIndex].Value;
                     }
                 }
             }

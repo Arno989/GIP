@@ -19,7 +19,7 @@
         <Columns>
             <asp:TemplateField ShowHeader="false">
                 <ItemTemplate>
-                       <asp:CheckBox ID = "chkSelect" runat="server" />
+                       <asp:CheckBox ID = "cbEdit" runat="server" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Name" HeaderText="Name"/>
