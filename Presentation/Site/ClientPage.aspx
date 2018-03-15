@@ -7,12 +7,9 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
     <div class="headLeft"><p class="uppercase">Clients</p></div>
 	<div class="headRight">
-        <asp:LinkButton id="btnDelete" runat="server"
-            CssClass="material-icons"    
-            OnClick="btnDelete_Click">
-    <span aria-hidden="true" class="material-icons"></span>Delete
-</asp:LinkButton>
-        <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">delete</i>
+        <asp:LinkButton id="btnDelete" runat="server" CssClass="material-icons" OnClick="btnDelete_Click">
+            <span aria-hidden="true" class="material-icons"></span>delete
+        </asp:LinkButton>
         <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">create</i></a>
 	</div>
 </asp:Content>

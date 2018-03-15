@@ -29,7 +29,7 @@ namespace Presentation.Site
         }
 
 
-        protected void deleteButton_Click(object sender, EventArgs e)
+        protected void btnDelete_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
             foreach (GridViewRow row in GridView.Rows)
