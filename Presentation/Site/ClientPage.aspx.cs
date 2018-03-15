@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data;
 using System.Web.UI.WebControls;
 using Domain.Business;
 
@@ -25,7 +26,29 @@ namespace Presentation.Site
             _businesscode.DeleteClient(Convert.ToInt32(id));
 
             Response.Redirect("../Site/ClientPage.aspx");
-
         }
+
+
+        protected void deleteButton_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            foreach (GridViewRow row in GridView.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("chkSelect") as CheckBox);
+                    if (chkRow.Checked)
+                    {
+                        //int id = (int)GridView.DataKeys[e.RowIndex].Value;
+                        int id = Convert.ToInt16(row.Cells[1].Text);
+                        _businesscode.DeleteClient(id);
+                        //string name = row.Cells[1].Text;
+                        //string country = (row.Cells[2].FindControl("lblclient") as Label).Text;
+                        //dt.Rows.Add(name, country);
+                    }
+                }
+            }
+        }
+
     }
 }
