@@ -35,7 +35,8 @@ namespace Presentation.Site
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    CheckBox chkRow = row.Cells[0].FindControl("cbEdit") as CheckBox;
+                    var container = Master.FindControl("Body");
+                    CheckBox chkRow = container.FindControl("cbEdit") as CheckBox;
                     if (chkRow.Checked)
                     {
                         //int id = Convert.ToInt16(row.Cells[1].Text);
