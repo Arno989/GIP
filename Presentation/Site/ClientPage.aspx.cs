@@ -37,8 +37,9 @@ namespace Presentation.Site
                 {
                     var container = Master.FindControl("Body");
                     CheckBox chkRow = container.FindControl("cbEdit") as CheckBox;
-                    if (chkRow.Checked)
+                    if (chkRow.Checked == true)
                     {
+                        Response.Redirect("../index.aspx");
                         //int id = Convert.ToInt16(row.Cells[1].Text);
                         //_businesscode.DeleteClient(id);
                     }
