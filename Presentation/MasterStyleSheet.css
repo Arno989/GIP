@@ -92,6 +92,7 @@
 .material-icons {
     font-size: 25px !important;
     color: white;
+    padding-left: 25px;
 }
 
 .uppercase {
