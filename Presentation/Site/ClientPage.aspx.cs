@@ -48,12 +48,14 @@ namespace Presentation.Site
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    CheckBox chkRow = (row.Cells[1].FindControl("chkSelect") as CheckBox);
-                    if (chkRow.Checked)
-                    {
-                        //string id = row.Cells[0].Text;
-                        //int id = (int)GridView.DataKeys[b.RowIndex].Value;
-                    }
+                    int id;
+                    //CheckBox chkRow = ((int)GridView.DataKeys[1].Value);
+                    //CheckBox chkRow = (row.Cells[1].FindControl("chkSelect") as CheckBox);
+                    //if (chkRow.Checked)
+                    //{
+                    //    //string id = row.Cells[0].Text;
+                    //    //int id = (int)GridView.DataKeys[1].Value;
+                    //}
                 }
             }
         }
