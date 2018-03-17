@@ -18,28 +18,28 @@ namespace Domain.Business
 			set { _legal_country = value; }
 		}
 
-		private double _fee;
+		private string _fee;
 
-		public double Fee
+		public string Fee
 		{
 			get { return _fee; }
 			set { _fee = value; }
 		}
 
-		private string _duration;
+		private string _start_date;
 
-		public string Duration
+		public string Start_Date
 		{
-			get { return _duration; }
-			set { _duration = value; }
+			get { return _start_date; }
+			set { _start_date = value; }
 		}
 
-		private string _date;
+		private string _end_date;
 
-		public string Date
+		public string End_Date
 		{
-			get { return _date; }
-			set { _date = value; }
+			get { return _end_date; }
+			set { _end_date = value; }
 		}
 
 		// All constructors
@@ -49,12 +49,12 @@ namespace Domain.Business
 
 		}
 
-		public ContractCode(string legal_country_p,double fee_p,string duration_p,string date_p)
+		public ContractCode(string legal_country_p,string fee_p,string startdate_p,string enddate_p)
 		{
 			_legal_country = legal_country_p;
 			_fee = fee_p;
-			_duration = duration_p;
-			_date = date_p;
+            _start_date = startdate_p;
+            _end_date = enddate_p;
 		}
 	}
 }

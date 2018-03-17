@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Domain.Business;
+using System.Globalization;
 
 namespace Domain.Persistence
 {
@@ -19,6 +20,7 @@ namespace Domain.Persistence
             _connectionString = "server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989";
         }
 
+        
         #region Select queries
         //Getting the data from every table
         public List<ClientCode> getClients(/*string sortingPar*/)
@@ -42,7 +44,8 @@ namespace Domain.Persistence
 				string invoice_info = Convert.ToString(dataReader["Invoice_Info"]);
 				string kind_of_client = Convert.ToString(dataReader["Kind_of_Client"]);
 
-				ClientCode c = new ClientCode(id, name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client);
+
+                ClientCode c = new ClientCode(id, name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client);
 
 				ListClients.Add(c);
 			}
@@ -64,8 +67,8 @@ namespace Domain.Persistence
 				double fee = Convert.ToDouble(dataReader["Fee"]);
 				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
 				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
-
-				ContractCode c = new ContractCode(legal_country,fee,Start_date.ToShortDateString(),End_date.ToShortDateString());
+                
+                ContractCode c = new ContractCode(legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
 
 				ListContract.Add(c);
 			}
@@ -165,7 +168,7 @@ namespace Domain.Persistence
 				string evalauation_txt = Convert.ToString(dataReader["Evaluation_txt"]);
 				string label = Convert.ToString(dataReader["Label"]);
 
-				EvaluationCode c = new EvaluationCode(date.ToShortDateString(),feedback,accuracy,quality,evalauation_txt,label);
+				EvaluationCode c = new EvaluationCode(date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label);
 
 				ListEvaluation.Add(c);
 			}
@@ -212,7 +215,7 @@ namespace Domain.Persistence
 				DateTime start_date = Convert.ToDateTime(dataReader["Start_date"]).Date;
 				DateTime end_date = Convert.ToDateTime(dataReader["End_date"]).Date;
 
-				ProjectCode c = new ProjectCode(title,start_date.ToShortDateString(),end_date.ToShortDateString());
+				ProjectCode c = new ProjectCode(title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"));
 
 				ListProject.Add(c);
 			}
