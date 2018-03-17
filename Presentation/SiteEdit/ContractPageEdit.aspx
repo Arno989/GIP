@@ -22,7 +22,7 @@
                 <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit00"></asp:TextBox>
                 </asp:TableCell>
@@ -33,7 +33,11 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit02"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03"></asp:TextBox>
+                    <!--<asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03"></asp:TextBox>-->
+                        <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                               <input class="span2" size="16" type="text" value="12-02-2012">
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -162,6 +166,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit93"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-				</asp:Table>
+		</asp:Table>
+        <script>
+            $('.datepicker').datepicker()
+        </script>
     </div>
 </asp:Content>
+

@@ -72,6 +72,8 @@
   <ItemGroup>
     <Content Include="CliniresearchSite.Master" />
     <Content Include="CliniresearchSiteEdit.Master" />
+    <Content Include="DatePicker.js" />
+    <Content Include="MasterLess.less" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
