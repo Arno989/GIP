@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain.Persistence;
+using PhoneNumbers;
 
 namespace Domain.Business
 {
@@ -17,7 +19,8 @@ namespace Domain.Business
 			_persistence = new PersistenceCode();
 		}
 
-		public void SetClient(string name_p2,string adress_p2,string postalcode_p2,string city_p2,string country_p2,string contactperson_p2,string invoiceinfo_p2,string kindofclinet_p2)
+        #region Set
+        public void SetClient(string name_p2,string adress_p2,string postalcode_p2,string city_p2,string country_p2,string contactperson_p2,string invoiceinfo_p2,string kindofclinet_p2)
 		{
 			_persistence.addClient(name_p2,adress_p2,postalcode_p2,city_p2,country_p2,contactperson_p2,invoiceinfo_p2,kindofclinet_p2);
 		}
@@ -106,28 +109,71 @@ namespace Domain.Business
         {
             return _persistence.getStudyCoördinator();
         }
+#endregion
 
         public void DeleteClient(int id_p2)
         {
             _persistence.deleteClient(id_p2);
         }
 
-		public bool IsValidEmail(string parEmail)
-		{
-			try
-			{
-				var addr = new System.Net.Mail.MailAddress(parEmail);
-				return addr.Address == parEmail;
-			}
-			catch
-			{
-				return false;
-			}
-		}
+        #region Email check
+        private string DomainMapper(Match match)
+        {
+            // IdnMapping class with default property values.
+            IdnMapping idn = new IdnMapping();
 
-		public bool IsValidPhone(string parNumber)
+            string domainName = match.Groups[2].Value;
+            try
+            {
+                domainName = idn.GetAscii(domainName);
+            }
+            catch (ArgumentException)
+            {
+                invalid = true;
+            }
+            return match.Groups[1].Value + domainName;
+        }
+
+        bool invalid = false;
+        public bool IsValidEmail(string parEmail)
 		{
-			return Regex.Match(parNumber,@"^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$").Success;
-		}
+            invalid = false;
+            if (String.IsNullOrEmpty(parEmail))
+                return false;
+
+            // Use IdnMapping class to convert Unicode domain names.
+            try
+            {
+                parEmail = Regex.Replace(parEmail, @"(@)(.+)$", this.DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+
+            if (invalid)
+                return false;
+
+            // Return true if strIn is in valid email format.
+            try
+            {
+                return Regex.IsMatch(parEmail,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        public bool IsValidPhone(string parNumber)
+        {
+            string number = PhoneNumberUtil.NormalizeDigitsOnly(parNumber);
+            return PhoneNumberUtil.IsViablePhoneNumber(number);
+        }
 	}
 }

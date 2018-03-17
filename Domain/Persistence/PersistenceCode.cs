@@ -67,7 +67,8 @@ namespace Domain.Persistence
 				double fee = Convert.ToDouble(dataReader["Fee"]);
 				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
 				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
-                
+
+                CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
                 ContractCode c = new ContractCode(legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
 
 				ListContract.Add(c);
