@@ -19,7 +19,7 @@ namespace Domain.Persistence
             _connectionString = "server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989";
         }
 
-        #region Select_query's
+        #region Select queries
         //Getting the data from every table
         public List<ClientCode> getClients(/*string sortingPar*/)
 		{
@@ -62,10 +62,10 @@ namespace Domain.Persistence
 			{
 				string legal_country = Convert.ToString(dataReader["Legal_country"]);
 				double fee = Convert.ToDouble(dataReader["Fee"]);
-				DateTime duration = Convert.ToDateTime(dataReader["Duration"]);
-				DateTime date = Convert.ToDateTime(dataReader["Date"]);
+				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
+				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
 
-				ContractCode c = new ContractCode(legal_country,fee,duration.ToShortDateString(),date.ToShortDateString());
+				ContractCode c = new ContractCode(legal_country,fee,Start_date.ToShortDateString(),End_date.ToShortDateString());
 
 				ListContract.Add(c);
 			}
@@ -271,7 +271,7 @@ namespace Domain.Persistence
 		}
         #endregion
 
-        #region Insert_query's
+        #region Insert queryies
         //Setting the data to every table
         public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
 		{
@@ -293,18 +293,18 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addContract(string legalcountry_p,double fee_p,DateTime duration_p,DateTime date_p)
+		public void addContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblContract (Legal_country, Fee, Duration, Date) VALUES (@legal_country, @fee, @duration, @date);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblContract (Legal_country, Fee, Duration, Date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
 
 			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
 			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
-			cmd.Parameters.Add("@duration",MySqlDbType.DateTime).Value = duration_p;
-			cmd.Parameters.Add("@date",MySqlDbType.DateTime).Value = date_p;
+			cmd.Parameters.Add("@start_date",MySqlDbType.DateTime).Value = startdate_p.Date;
+			cmd.Parameters.Add("@end_date",MySqlDbType.DateTime).Value = enddate_p.Date;
 			cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -452,7 +452,7 @@ namespace Domain.Persistence
 		}
         #endregion
 
-        #region Delete_query's
+        #region Delete queryies
         //Deleting the data from the a single row in every table
         public void deleteClient(int id_p)
         {

@@ -19,8 +19,8 @@
             <asp:TableRow runat="server" ID="row0">
                 <asp:TableHeaderCell>Legal Country</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Fee</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Duration</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">

@@ -26,9 +26,9 @@ namespace Domain.Business
             return _persistence.getClients();
         }
 
-        public void SetContract(string legalcountry_p2, double fee_p2, DateTime duration_p2, DateTime date_p2)
+        public void SetContract(string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2)
         {
-            _persistence.addContract(legalcountry_p2, fee_p2, duration_p2, date_p2);
+            _persistence.addContract(legalcountry_p2, fee_p2, startdate_p2, enddate_p2);
         }
         public List<ContractCode> GetContracts()
         {
