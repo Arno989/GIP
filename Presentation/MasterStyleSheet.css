@@ -29,14 +29,20 @@
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+.templateItem{
+    margin: 0;
+    padding: 0;
+}
+
 /* Customize the label (the container) */
 .container {
     display: block;
-    position: relative;
-    padding-bottom: 50%;
-    padding-right: 80%;
+    position:relative;
+    vertical-align:central;
     cursor: pointer;
     float: right;
+    padding-left:75%;
+    padding-bottom:35%;
 }
 
     /* Hide the browser's default checkbox */
@@ -294,9 +300,6 @@ ul, li {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    /*.dow {
-    border-top: 1px solid #ddd !important;
-  }*/
 }
 
     .datepicker:before {
