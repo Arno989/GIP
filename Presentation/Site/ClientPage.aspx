@@ -23,7 +23,7 @@
             <asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
                 <ItemTemplate>
                     <label class="container">
-                      <input type="checkbox" id="cbEdit" checked="checked">
+                      <input type="checkbox" id="cbEdit">
                       <span class="checkmark"></span>
                     </label>
                 </ItemTemplate>
