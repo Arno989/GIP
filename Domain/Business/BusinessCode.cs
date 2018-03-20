@@ -19,14 +19,14 @@ namespace Domain.Business
 			_persistence = new PersistenceCode();
 		}
 
-        #region Set
+        #region Set and Get
         public void SetClient(string name_p2,string adress_p2,string postalcode_p2,string city_p2,string country_p2,string contactperson_p2,string invoiceinfo_p2,string kindofclinet_p2)
 		{
 			_persistence.addClient(name_p2,adress_p2,postalcode_p2,city_p2,country_p2,contactperson_p2,invoiceinfo_p2,kindofclinet_p2);
 		}
-        public List<ClientCode> GetClients()
+        public List<ClientCode> GetClients(string sortingPar)
 		{
-            return _persistence.getClients();
+            return _persistence.getClients(sortingPar);
         }
 
         public void SetContract(string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2)
