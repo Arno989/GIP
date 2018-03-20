@@ -332,24 +332,24 @@
         }
     };
 
-    $.fn.datepicker = function (option, val) {
-        return this.each(function () {
-            var $this = $(this),
-                data = $this.data('datepicker'),
-                options = typeof option === 'object' && option;
-            if (!data) {
-                $this.data('datepicker', (data = new Datepicker(this, $.extend({}, $.fn.datepicker.defaults, options))));
-            }
-            if (typeof option === 'string') data[option](val);
-        });
-    };
+    //$.fn.datepicker = function (option, val) {
+    //    return this.each(function () {
+    //        var $this = $(this),
+    //            data = $this.data('datepicker'),
+    //            options = typeof option === 'object' && option;
+    //        if (!data) {
+    //            $this.data('datepicker', (data = new Datepicker(this, $.extend({}, $.fn.datepicker.defaults, options))));
+    //        }
+    //        if (typeof option === 'string') data[option](val);
+    //    });
+    //};
 
-    $.fn.datepicker.defaults = {
-        onRender: function (date) {
-            return '';
-        }
-    };
-    $.fn.datepicker.Constructor = Datepicker;
+    //$.fn.datepicker.defaults = {
+    //    onRender: function (date) {
+    //        return '';
+    //    }
+    //};
+    //$.fn.datepicker.Constructor = Datepicker;
 
     var DPGlobal = {
         modes: [
