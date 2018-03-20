@@ -13,7 +13,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnRowDeleting="GridView_RowDeleting" AutoGenerateColumns="False" DataKeyNames="Client_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="GridView_Sorting" OnRowDeleting="GridView_RowDeleting" AutoGenerateColumns="False" DataKeyNames="Client_ID">
         <Columns>
             <%--<asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
                 <ItemTemplate>

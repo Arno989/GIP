@@ -23,12 +23,11 @@ namespace Domain.Persistence
         
         #region Select queries
         //Getting the data from every table
-        public List<ClientCode> getClients(/*string sortingPar*/)
+        public List<ClientCode> getClients(string sortingPar)
 		{
             List<ClientCode> ListClients = new List<ClientCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-            //string query = "SELECT * FROM cliniresearchdb.tblclient {0};", sortingPar;
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM cliniresearchdb.tblclient;", conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblclient{0};", sortingPar) , conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
