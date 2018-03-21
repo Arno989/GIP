@@ -1,0 +1,9 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "bower": "*",
+    "install": "~1.0.4",
+    "moment": "~2.21.0",
+    "jquery-ui-multidatespicker": "~1.6.6"
+  }
+}

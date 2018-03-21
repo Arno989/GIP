@@ -1,0 +1,8 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "bower": "*",
+    "install": "~1.0.4",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.47"
+  }
+}
