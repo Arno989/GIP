@@ -4,6 +4,10 @@
 
 <html>
 	<head runat="server">
+
+        <script src="jquery-3.3.1.min.js"></script>
+
+
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 			<link rel="stylesheet" href="~/MasterStyleSheet.css" runat="server"/>
