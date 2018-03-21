@@ -28,13 +28,31 @@ namespace Presentation.Site
             GridView.DataBind();
         }
 
-        protected void GridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void Edit(object sender, EventArgs e)
         {
-            int id = (int)GridView.DataKeys[e.RowIndex].Value;
+            List<string> List1 = new List<string>();
+            List<List<string>> ListData = new List<List<string>>();
+            for (int i = 0; i < GridView.Rows.Count; i++)
+                {
+                    if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                    {
+                        CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+                        if (chk.Checked)
+                        {
+                            int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteClient(Convert.ToInt32(id));
+                            
+                            for(int i2 = 1; i2 < GridView.Columns.Count; i2++)
+                            {
+                                List1.Add(GridView.Rows[i].Cells[i2].Text);
+                            }
 
-            _businesscode.DeleteClient(Convert.ToInt32(id));
-
-            Response.Redirect("../Site/ClientPage.aspx");
+                            ListData.Add(List1);
+                        }
+                    }
+                }
+            Session["ListDataSession"] = ListData;
+            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
         
         /*

@@ -11,12 +11,13 @@
 	<div class="headRight">
         <asp:LinkButton id="btnLoadGridView" runat="server" OnClick="Load_Gridview" > <i class="material-icons">pageview</i> </asp:LinkButton>
         <asp:LinkButton id="btnDelete" runat="server" CssClass="material-icons" OnClick="btnDelete_Click"> <span aria-hidden="true" class="material-icons"></span>delete </asp:LinkButton>
-        <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">create</i></a>
+        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" ><i class="material-icons">edit</i></asp:LinkButton>
+        <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">add</i></a>
 	</div>
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnRowDeleting="GridView_RowDeleting" AutoGenerateColumns="False" DataKeyNames="Client_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Client_ID">
         <Columns>
             <%--<asp:TemplateField ShowHeader="false" ItemStyle-CssClass="templateItem" HeaderStyle-CssClass="templateHead">
                 <ItemTemplate>
