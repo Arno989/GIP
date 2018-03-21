@@ -92,16 +92,15 @@ namespace Presentation.Site
                         CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
                         if (chk.Checked)
                         {
-                            int a = 5;
-                        //delete functie
+                            int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteClient(Convert.ToInt32(id));
                         }
                         else
                         {
-                            int a = 0;
-                        //niets
                         }
                     }
                 }
+            Load_Gridview(sender, e);
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
