@@ -13,15 +13,6 @@ namespace Presentation.Site {
     public partial class ClientSite {
         
         /// <summary>
-        /// btnLoadGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLoadGridView;
-        
-        /// <summary>
         /// btnDelete control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace Presentation.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnDelete;
+        
+        /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnEdit;
         
         /// <summary>
         /// UpdatePanel1 control.

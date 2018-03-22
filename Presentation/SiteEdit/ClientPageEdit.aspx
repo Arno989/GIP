@@ -7,15 +7,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Header" runat="server">
 		<div class="headEditLeft"><a class="uppercase" href="../Site/ClientPage.aspx">Edit Clients</a></div>
 		<div class="headEditRight">
-			<asp:Button ID="btnSave" runat="server" Text="Save" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="81px" OnClick="btnSave_Click" />
-			<asp:Button ID="btnSaveAndExit" runat="server" Text="Save & Exit" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="156px" OnClick="btnSaveAndExit_Click" />
+			<asp:Button ID="btnSave" runat="server" autopostback="true" Text="Save" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="81px" OnClick="btnSave_Click" />
+			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="156px" OnClick="btnSaveAndExit_Click" />
 			<asp:Button ID="btnExit" runat="server" Text="Exit" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="81px" OnClick="btnExit_Click" />
 		</div>
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
     <div>
-        <asp:Table ID="Table" runat="server" CssClass="tableEdit">
+        <asp:Table ID="Table" runat="server" CssClass="tableEdit" autopostback="true">
             <asp:TableRow runat="server" ID="row0">
                 <asp:TableHeaderCell>Name</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Adress</asp:TableHeaderCell>
