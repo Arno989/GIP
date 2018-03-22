@@ -17,15 +17,12 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //GridView.DataSource = _businesscode.GetClients(sortingPar);
-            //GridView.DataBind();
-        }
 
-
-        protected void Load_Gridview(object sender, EventArgs e)
-        {
-            GridView.DataSource = _businesscode.GetClients(sortingPar);
-            GridView.DataBind();
+            if (!IsPostBack)
+            {
+                GridView.DataSource = _businesscode.GetClients(sortingPar);
+                GridView.DataBind();
+            }
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -118,7 +115,7 @@ namespace Presentation.Site
                         }
                     }
                 }
-            Load_Gridview(sender, e);
+            Response.Redirect("../Site/ClientPage.aspx");
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
