@@ -17,8 +17,7 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //GridView.DataSource = _businesscode.GetClients(sortingPar);
-            //GridView.DataBind();
+            Load_Gridview(sender, e);
         }
 
 

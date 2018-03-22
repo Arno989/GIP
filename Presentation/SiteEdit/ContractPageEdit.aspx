@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="ContractPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.ContractPageEdit" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Edit Contracts</title>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="Header" runat="server">
+<asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headEditLeft"><p class="uppercase">Edit Contracts</p></div>
 	<div class="headEditRight">
 			<asp:Button ID="btnSave" runat="server" Text="Save" BackColor="White" CssClass="editButton" BorderColor="Black" BorderStyle="Solid" BorderWidth="0.1px" ForeColor="Black" Width="81px" OnClick="btnSave_Click" />
@@ -34,6 +34,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03"></asp:TextBox>
+                    <!--<input id="test" />-->
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -164,5 +165,13 @@
             </asp:TableRow>
 		</asp:Table>
     </div>
+    
+</asp:Content>
+
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script>
+        $('#tbEdit02').multiDatesPicker();
+        $('#test').multiDatesPicker();
+    </script>
 </asp:Content>
 
