@@ -12,10 +12,14 @@ namespace Presentation.SiteEdit
 	{
 		private BusinessCode _business = new BusinessCode();
 
+        private List<List<string>> GetData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
+
         private void InsertData()
         {
-            List<List<string>> ListData = (List<List<string>>)Session["ListDataSession"];
-
+            List < List<string> > ListData = GetData();
             for (int i = 0; i < ListData.Count; i++)
             {
                 
@@ -126,7 +130,11 @@ namespace Presentation.SiteEdit
 
 		protected void Page_Load(object sender,EventArgs e)
 		{
-            InsertData();
+            List<List<string>> ListData = GetData();
+            if (ListData != null)
+            {
+                InsertData();
+            }
 		}
 
 		protected void btnExit_Click(object sender,EventArgs e)

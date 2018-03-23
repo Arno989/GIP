@@ -19,7 +19,7 @@ namespace Presentation.Site
         {
 
             if (!IsPostBack)
-            {
+            {  
                 GridView.DataSource = _businesscode.GetClients(sortingPar);
                 GridView.DataBind();
             }
