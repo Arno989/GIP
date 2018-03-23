@@ -130,10 +130,15 @@ namespace Presentation.SiteEdit
 
 		protected void Page_Load(object sender,EventArgs e)
 		{
-            List<List<string>> ListData = GetData();
-            if (ListData != null)
+            if(!IsPostBack)
             {
-                InsertData();
+                List<List<string>> ListData = GetData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
+
+                Session["ListDataSession"] = null;
             }
 		}
 
@@ -150,8 +155,8 @@ namespace Presentation.SiteEdit
 
 		protected void btnSave_Click(object sender,EventArgs e)
 		{
-			sendData();
-			Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
+            sendData();
+            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
 		}
 	}
 }
