@@ -2,6 +2,9 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
     <title>Clients</title>
+    <script type="text/javascript">
+        //tis ier te doen als ge scriptjes wil zetten
+    </script>
 </asp:Content>
 
 
@@ -9,8 +12,8 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
     <div class="headLeft"><p class="uppercase">Clients</p></div>
 	<div class="headRight">
-        <asp:LinkButton id="btnDelete" runat="server" CssClass="material-icons" OnClick="btnDelete_Click"> <span aria-hidden="true" class="material-icons"></span>delete </asp:LinkButton>
-        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" ><i class="material-icons">edit</i></asp:LinkButton>
+        <asp:LinkButton id="btnDelete" ToolTip="Delete selected rows" runat="server" CssClass="material-icons" OnClick="btnDelete_Click"> <span aria-hidden="true" class="material-icons"></span>delete </asp:LinkButton>
+        <asp:LinkButton id="btnEdit" ToolTip="Edit selected rows" runat="server" OnClick="Edit" ><i class="material-icons">edit</i></asp:LinkButton>
         <a href="../SiteEdit/ClientPageEdit.aspx"><i class="material-icons">add</i></a>
 	</div>
 </asp:Content>
