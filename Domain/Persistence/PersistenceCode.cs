@@ -286,7 +286,7 @@ namespace Domain.Persistence
         {
             List<string> ListHospital = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblHospital", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from tblHospital ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
