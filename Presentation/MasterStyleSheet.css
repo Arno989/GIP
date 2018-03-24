@@ -267,10 +267,20 @@ tr:nth-child(even) {
 }
 
 .cellEdit {
-    padding: 0px;
+    padding: 0;
+    margin:0;
 }
 
 .textboxEdit {
+    width: 90%;
+    padding: 5%;
+    align-items:flex-end;
+}
+
+.dropdownEdit {
+    border-collapse: collapse;
+    /*border: 1px solid #b4b4b4;*/
+    padding: 3px;
     width: 90%;
     padding: 5%;
 }
