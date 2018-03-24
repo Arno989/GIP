@@ -29,6 +29,7 @@ namespace Presentation.Site
         {
             List<string> List1 = new List<string>();
             List<List<string>> ListData = new List<List<string>>();
+            List<int> DataIDs = new List<int>();
             for (int i = 0; i < GridView.Rows.Count; i++)
                 {
                     if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
@@ -36,8 +37,8 @@ namespace Presentation.Site
                         CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
                         if (chk.Checked)
                         {
-                            int id = (int)GridView.DataKeys[i].Value;
-                            _businesscode.DeleteClient(Convert.ToInt32(id));
+                            DataIDs.Add((int)GridView.DataKeys[i].Value);
+                            //_businesscode.DeleteClient(Convert.ToInt32(id));
                             
                             for(int i2 = 1; i2 < GridView.Columns.Count; i2++)
                             {
@@ -47,6 +48,8 @@ namespace Presentation.Site
                         }
                     }
                 }
+
+            Session["DataID"] = DataIDs;
             Session["ListDataSession"] = ListData;
             Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
