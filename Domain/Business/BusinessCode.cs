@@ -72,6 +72,13 @@ namespace Domain.Business
         }
         #endregion
 
+        #region GetDropDownContent
+        public List<string> GetHospitalDropDownContent()
+        {
+            return _persistence.getHospitalDropDown();
+        }
+        #endregion
+
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {

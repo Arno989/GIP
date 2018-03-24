@@ -281,6 +281,29 @@ namespace Domain.Persistence
 		}
         #endregion
 
+        #region GetDropDownContent
+        public List<string> getHospitalDropDown()
+        {
+            List<string> ListHospital = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblHospital", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListHospital.Add(Convert.ToString(id));
+                ListHospital.Add(name);
+            }
+
+            conn.Close();
+            return ListHospital;
+        }
+        #endregion
+
         #region Set
         public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
 		{

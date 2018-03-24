@@ -34,7 +34,7 @@ namespace Presentation.SiteEdit
         private void InsertData()
         {
             List < List<string> > ListData = GetData();
-            int Teller = -1;
+            int Count = -1;
             for (int i = 0; i < ListData.Count; i++)
             {
                 
@@ -44,40 +44,40 @@ namespace Presentation.SiteEdit
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
-                    Teller++;
+                    Count++;
 
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 5:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 6:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
 
                         case 7:
-                            ((TextBox)txtBox).Text = ListData[i][Teller];
+                            ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
                     }
                 }
