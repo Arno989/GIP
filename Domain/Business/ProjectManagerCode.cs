@@ -9,8 +9,16 @@ namespace Domain.Business
 	public class ProjectManagerCode
 	{
 
-		// All private and public properties of class Project Manager
-		private string _name;
+        // All private and public properties of class Project Manager
+        private int _pm_id;
+
+        public int PM_ID
+        {
+            get { return _pm_id; }
+            set { _pm_id = value; }
+        }
+
+        private string _name;
 
 		public string Name
 		{
@@ -57,8 +65,9 @@ namespace Domain.Business
 
 		}
 
-		public ProjectManagerCode(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+		public ProjectManagerCode(int pm_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
+            _pm_id = pm_id_p;
 			_name = name_p;
 			_cv = cv_p;
 			_email = email_p;

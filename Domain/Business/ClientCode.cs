@@ -13,7 +13,7 @@ namespace Domain.Business
 
         private int _client_id;
 
-        public int Client_id
+        public int Client_ID
         {
             get { return _client_id; }
             set { _client_id = value; }

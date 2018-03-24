@@ -27,6 +27,7 @@
                 <asp:TableHeaderCell>Country</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Specialisation</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CV</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Hospital</asp:TableHeaderCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
@@ -59,6 +60,9 @@
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit09"></asp:TextBox>
                 </asp:TableCell>
+                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="textboxEdit" ID="ddEdit00"></asp:DropDownList>
+                </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
@@ -90,6 +94,9 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit19"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="textboxEdit" ID="ddEdit10"></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">

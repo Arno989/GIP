@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
+using MySql.Data.MySqlClient;
 
 namespace Presentation.SiteEdit
 {
@@ -125,8 +127,19 @@ track1:
 
 		protected void Page_Load(object sender,EventArgs e)
 		{
+            MySqlConnection conn = new MySqlConnection("server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989");
+            MySqlCommand cmd = new MySqlCommand("select * from tblHospital", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
 
-		}
+            while (dataReader.Read())
+            {
+                ddEdit00.DataTextField = dataReader["Name"].ToString(); // text field name of table dispalyed in dropdown
+                ddEdit00.DataValueField = dataReader["Hospital_ID"].ToString();             // to retrive specific  textfield name 
+                ddEdit00.DataSource = dataReader;      //assigning datasource to the dropdownlist
+            }
+            
+        }
 
 		protected void btnExit_Click(object sender,EventArgs e)
 		{

@@ -9,8 +9,16 @@ namespace Domain.Business
 	public class StudyCoördinatorCode
 	{
 
-		// All private and public properties of class StudyCoördinator
-		private string _name;
+        // All private and public properties of class StudyCoördinator
+        private int _sc_id;
+
+        public int SC_ID
+        {
+            get { return _sc_id; }
+            set { _sc_id = value; }
+        }
+
+        private string _name;
 
 		public string Name
 		{
@@ -65,8 +73,9 @@ namespace Domain.Business
 
 		}
 
-		public StudyCoördinatorCode(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
+		public StudyCoördinatorCode(int sc_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
 		{
+            _sc_id = sc_id_p;
 			_name = name_p;
 			_cv = cv_p;
 			_email = email_p;

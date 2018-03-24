@@ -9,8 +9,16 @@ namespace Domain.Business
 	public class DepartmentCode
 	{
 
-		// All private and public properties of class Department
-		private string _name;
+        // All private and public properties of class Department
+        private int _department_id;
+
+        public int Department_ID
+        {
+            get { return _department_id; }
+            set { _department_id = value; }
+        }
+
+        private string _name;
 
 		public string Name
 		{
@@ -41,8 +49,9 @@ namespace Domain.Business
 
 		}
 
-		public DepartmentCode(string name_p,string email_p,string phone1_p)
+		public DepartmentCode(int department_id_p, string name_p,string email_p,string phone1_p)
 		{
+            _department_id = department_id_p;
 			_name = name_p;
 			_email = email_p;
 			_phone1 = phone1_p;

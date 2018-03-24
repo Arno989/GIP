@@ -9,9 +9,17 @@ namespace Domain.Business
 	public class EvaluationCode
 	{
 
-		// All private and public properties of class Evaluation
+        // All private and public properties of class Evaluation
+        private int _evaluation_id;
 
-		private string _date;
+        public int Ecaluation_ID
+        {
+            get { return _evaluation_id; }
+            set { _evaluation_id = value; }
+        }
+
+
+        private string _date;
 
 		public string Date
 		{
@@ -67,9 +75,10 @@ namespace Domain.Business
 
 		}
 
-		public EvaluationCode(string date_p,string feedback_p,string accuracy_p,
+		public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
 			 string quality_p,string evaluation_txt_p,string label_p)
 		{
+            _evaluation_id = evaluation_id_p;
 			_date = date_p;
 			_feedback = feedback_p;
 			_accuracy = accuracy_p;

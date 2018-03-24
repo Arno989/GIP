@@ -52,6 +52,32 @@ namespace Presentation.Site
             Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
         
+        protected void Delete(object sender, EventArgs e)
+        {
+                for (int i = 0; i < GridView.Rows.Count; i++)
+                {
+                    if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                    {
+                        CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+                        if (chk.Checked)
+                        {
+                            int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteClient(Convert.ToInt32(id));
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+            Response.Redirect("../Site/ClientPage.aspx");
+        }
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
+        }
+
+
         /*
         #region Sort
         private const string ASCENDING = " ASC";
@@ -98,29 +124,5 @@ namespace Presentation.Site
         #endregion
         */
 
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-                for (int i = 0; i < GridView.Rows.Count; i++)
-                {
-                    if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
-                    {
-                        CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                        if (chk.Checked)
-                        {
-                            int id = (int)GridView.DataKeys[i].Value;
-                            _businesscode.DeleteClient(Convert.ToInt32(id));
-                        }
-                        else
-                        {
-                        }
-                    }
-                }
-            Response.Redirect("../Site/ClientPage.aspx");
-        }
-
-        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

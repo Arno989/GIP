@@ -9,8 +9,16 @@ namespace Domain.Business
 	public class HospitalCode
 	{
 
-		// All private and public properties of class Hospital
-		private string _name;
+        // All private and public properties of class Hospital
+        private int _hospital_id;
+
+        public int Hospital_ID
+        {
+            get { return _hospital_id; }
+            set { _hospital_id = value; }
+        }
+
+        private string _name;
 
 		public string Name
 		{
@@ -65,9 +73,10 @@ namespace Domain.Business
 
 		}
 
-		public HospitalCode(string name_p,string adress_p,string postal_code_p,string city_p,
+		public HospitalCode(int hospital_id_p,string name_p,string adress_p,string postal_code_p,string city_p,
 			 string country_p,string central_number_p)
 		{
+            _hospital_id = hospital_id_p;
 			_name = name_p;
 			_adress = adress_p;
 			_postal_code = postal_code_p;

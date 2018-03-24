@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Domain.Business;
 using System.Globalization;
+using System.Data;
 
 namespace Domain.Persistence
 {
 	public class PersistenceCode
 	{
-		//Private properties
 		string _connectionString;
 
         public PersistenceCode()
         {
-            //Maak een connectionString die de programmacode verbind met de databank
             _connectionString = "server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989";
         }
-
         
-        #region Select queries
+        #region Get
         //Getting the data from every table
         public List<ClientCode> getClients(string sortingPar)
 		{
@@ -62,13 +60,14 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string legal_country = Convert.ToString(dataReader["Legal_country"]);
+                int id = Convert.ToInt16(dataReader["Contract_ID"]);
+                string legal_country = Convert.ToString(dataReader["Legal_country"]);
 				double fee = Convert.ToDouble(dataReader["Fee"]);
 				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
 				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
+                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
 
 				ListContract.Add(c);
 			}
@@ -86,13 +85,14 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["CRA_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
-				CRACode c = new CRACode(name,cv,email,phone1,phone2);
+				CRACode c = new CRACode(id,name,cv,email,phone1,phone2);
 
 				ListCRA.Add(c);
 			}
@@ -110,11 +110,12 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["Department_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 
-				DepartmentCode c = new DepartmentCode(name,email,phone1);
+				DepartmentCode c = new DepartmentCode(id,name,email,phone1);
 
 				ListDepartment.Add(c);
 			}
@@ -132,7 +133,8 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["Doctor_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
@@ -143,7 +145,7 @@ namespace Domain.Persistence
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 
-				DoctorCode c = new DoctorCode(name,email,phone1,phone2,adress,postal_code,city,country,specialisation,cv);
+				DoctorCode c = new DoctorCode(id,name,email,phone1,phone2,adress,postal_code,city,country,specialisation,cv);
 
 				ListDoctor.Add(c);
 			}
@@ -161,14 +163,15 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				DateTime date = Convert.ToDateTime(dataReader["Date"]);
+                int id = Convert.ToInt16(dataReader["Evaluation_ID"]);
+                DateTime date = Convert.ToDateTime(dataReader["Date"]);
 				string feedback = Convert.ToString(dataReader["Feedback"]);
 				string accuracy = Convert.ToString(dataReader["Accuracy"]);
 				string quality = Convert.ToString(dataReader["Quality"]);
 				string evalauation_txt = Convert.ToString(dataReader["Evaluation_txt"]);
 				string label = Convert.ToString(dataReader["Label"]);
 
-				EvaluationCode c = new EvaluationCode(date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label);
+				EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label);
 
 				ListEvaluation.Add(c);
 			}
@@ -186,18 +189,19 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string adress = Convert.ToString(dataReader["Adress"]);
 				string postal_code = Convert.ToString(dataReader["Postal_code"]);
 				string city = Convert.ToString(dataReader["City"]);
 				string country = Convert.ToString(dataReader["Country"]);
 				string central_number = Convert.ToString(dataReader["Central_number"]);
 
-				HospitalCode c = new HospitalCode(name,adress,postal_code,city,country,central_number);
+				HospitalCode c = new HospitalCode(id,name,adress,postal_code,city,country,central_number);
 
 				ListHospital.Add(c);
 			}
-
+            
             conn.Close();
             return ListHospital;
 		}
@@ -211,11 +215,12 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string title = Convert.ToString(dataReader["Title"]);
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
+                string title = Convert.ToString(dataReader["Title"]);
 				DateTime start_date = Convert.ToDateTime(dataReader["Start_date"]).Date;
 				DateTime end_date = Convert.ToDateTime(dataReader["End_date"]).Date;
 
-				ProjectCode c = new ProjectCode(title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"));
+				ProjectCode c = new ProjectCode(id,title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"));
 
 				ListProject.Add(c);
 			}
@@ -233,13 +238,14 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["PM_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
-				ProjectManagerCode c = new ProjectManagerCode(name,cv,email,phone1,phone2);
+				ProjectManagerCode c = new ProjectManagerCode(id,name,cv,email,phone1,phone2);
 
 				ListProjectManager.Add(c);
 			}
@@ -257,14 +263,15 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-				string name = Convert.ToString(dataReader["Name"]);
+                int id = Convert.ToInt16(dataReader["SC_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
 
-				StudyCoördinatorCode c = new StudyCoördinatorCode(name,cv,email,phone1,phone2,specialisation);
+				StudyCoördinatorCode c = new StudyCoördinatorCode(id,name,cv,email,phone1,phone2,specialisation);
 
 				ListStudyCoördinator.Add(c);
 			}
@@ -274,8 +281,7 @@ namespace Domain.Persistence
 		}
         #endregion
 
-        #region Insert queryies
-        //Setting the data to every table
+        #region Set
         public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -455,8 +461,7 @@ namespace Domain.Persistence
 		}
         #endregion
 
-        #region Delete queryies
-        //Deleting the data from the a single row in every table
+        #region Delete
         public void deleteClient(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
