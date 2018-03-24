@@ -286,7 +286,7 @@ namespace Domain.Persistence
         {
             List<string> ListHospital = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblHospital", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from tblHospital ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -482,6 +482,30 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
+        #endregion
+
+        #region Update
+        public void updateClients(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblClient SET Name = @name, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Contact_person = @contact_person, Invoice_info = @invoice_info, Kind_of_Client = @kind_of_client WHERE Client_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
+            cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = contactperson_p;
+            cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = invoiceinfo_p;
+            cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = kindofclinet_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
 
         #region Delete
