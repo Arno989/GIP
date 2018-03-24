@@ -127,19 +127,24 @@ track1:
 
         public void SetDropdownContent()
         {
-            for (int i2 = 0; i2 <= 7; i2++)
+            for (int i = 0; i <= 9; i++)
             {
-                //string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                var container = Master.FindControl("Body");
-                //var txtBox = container.FindControl(tbName);
-            }
 
+                for (int i2 = 0; i2 <= 7; i2++)
+                {
+                    string ddEdit = "ddEdit" + i.ToString() + "0";
+                    var container = Master.FindControl("Body");
+                    var container2 = container.FindControl("Table");
+                    var DropDown = container2.FindControl(ddEdit) as DropDownList;
+                    DropDown.DataSource = _business.GetHospitalDropDownContent();
+                    DropDown.DataBind();
+                }
+            }
         }
 
 		protected void Page_Load(object sender,EventArgs e)
 		{
-                ddEdit00.DataSource = _business.GetHospitalDropDownContent();
-                ddEdit00.DataBind();
+            SetDropdownContent();
         }
 
 		protected void btnExit_Click(object sender,EventArgs e)
