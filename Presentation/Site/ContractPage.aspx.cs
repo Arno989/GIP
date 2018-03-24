@@ -18,7 +18,7 @@ namespace Presentation.Site
 
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetClients(sortingPar);
+                GridView.DataSource = _businesscode.GetContracts(sortingPar);
                 GridView.DataBind();
             }
         }

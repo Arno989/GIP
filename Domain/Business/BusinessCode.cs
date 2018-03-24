@@ -25,9 +25,9 @@ namespace Domain.Business
             return _persistence.getClients(sortingPar);
         }
         
-        public List<ContractCode> GetContracts()
+        public List<ContractCode> GetContracts(string sortingPar)
         {
-            return _persistence.getContract();
+            return _persistence.getContract(sortingPar);
         }
 
         public List<CRACode> GetCRAs()

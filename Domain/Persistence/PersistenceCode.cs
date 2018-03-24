@@ -50,11 +50,11 @@ namespace Domain.Persistence
             conn.Close();
             return ListClients;
 		}
-		public List<ContractCode> getContract()
+		public List<ContractCode> getContract(string sortingPar)
 		{
             List<ContractCode> ListContract = new List<ContractCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand("select * from tblContract",conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcontract{0};", sortingPar), conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 

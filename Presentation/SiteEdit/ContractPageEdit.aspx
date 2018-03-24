@@ -2,6 +2,10 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Edit Contracts</title>
+    <script>
+        $('#tbEdit02').multiDatesPicker();
+        $('#test').multiDatesPicker();
+    </script>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
@@ -169,9 +173,6 @@
 </asp:Content>
 
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
-    <script>
-        $('#tbEdit02').multiDatesPicker();
-        $('#test').multiDatesPicker();
-    </script>
+    
 </asp:Content>
 
