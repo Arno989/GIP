@@ -11,6 +11,20 @@ namespace Presentation.SiteEdit
 	public partial class ClientSiteEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
+        
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListData = GetData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
+
+                Session["ListDataSession"] = null;
+            }
+        }
 
         private List<List<string>> GetData()
         {
@@ -127,21 +141,7 @@ namespace Presentation.SiteEdit
                 continue;
 			}
 		}
-
-		protected void Page_Load(object sender,EventArgs e)
-		{
-            if(!IsPostBack)
-            {
-                List<List<string>> ListData = GetData();
-                if (ListData != null)
-                {
-                    InsertData();
-                }
-
-                Session["ListDataSession"] = null;
-            }
-		}
-
+        
 		protected void btnExit_Click(object sender,EventArgs e)
 		{
 			Response.Redirect("../Site/ClientPage.aspx");

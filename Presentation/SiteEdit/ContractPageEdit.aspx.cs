@@ -10,9 +10,63 @@ namespace Presentation.SiteEdit
 {
 	public partial class ContractPageEdit: System.Web.UI.Page
 	{
-		private BusinessCode _business = new BusinessCode();
+        private BusinessCode _business = new BusinessCode();
 
-		private void sendData()
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListData = GetData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
+
+                Session["ListDataSession"] = null;
+            }
+        }
+
+        private List<List<string>> GetData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
+
+        private void InsertData()
+        {
+            List<List<string>> ListData = GetData();
+            for (int i = 0; i < ListData.Count; i++)
+            {
+
+
+                for (int i2 = 0; i2 <= 3; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var container = Master.FindControl("Body");
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
+
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
+
+                        case 2:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
+
+                        case 3:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
+                    }
+                }
+            }
+        }
+        
+        private void sendData()
 		{
 			for (int i = 0; i <= 9; i++)
 			{
@@ -56,11 +110,6 @@ track1:
 			}
 		}
 		
-		protected void Page_Load(object sender,EventArgs e)
-		{
-
-		}
-
 		protected void btnExit_Click(object sender,EventArgs e)
 		{
 			Response.Redirect("../Site/ContractPage.aspx");
