@@ -43,7 +43,6 @@ namespace Presentation.Site
                             {
                                 List1.Add(GridView.Rows[i].Cells[i2].Text);
                             }
-
                             ListData.Add(List1);
                         }
                     }
