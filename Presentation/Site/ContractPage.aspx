@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Client_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Contract_ID">
         <Columns>
             <asp:TemplateField HeaderStyle-CssClass="templateHead" ItemStyle-CssClass="templateItem" ShowHeader="false">
                 <ItemTemplate>
@@ -24,14 +24,10 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Adress" HeaderText="Adress" />
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
-            <asp:BoundField DataField="City" HeaderText="City" />
-            <asp:BoundField DataField="Country" HeaderText="Country" />
-            <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" />
-            <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" />
-            <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" />
+            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" />
+            <asp:BoundField DataField="Fee" HeaderText="Fee" />
+            <asp:BoundField DataField="Start_date" HeaderText="Start Date" />
+            <asp:BoundField DataField="End_date" HeaderText="End Date" />
         </Columns>
     </asp:GridView>
 </asp:Content>
