@@ -282,11 +282,132 @@ namespace Domain.Persistence
         #endregion
 
         #region GetDropDownContent
+        public List<string> getClientDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblclient ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Client_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getContractDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY Legal_country ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            //Legal country is niet de beste column om op te halen als referentie naar een contract. Aangezien tblContract geen Name als column heeft laat ik het voorlopig zo.
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Contract_ID"]);
+                string name_not_really = Convert.ToString(dataReader["Legal_country"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name_not_really);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getCRADropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblcra ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["CRA_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getDepartmentDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tbldepartment ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Department_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getDoctorDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tbldoctor ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Doctor_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getEvaluationDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblevaluation ORDER BY Date ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            //Date is niet de beste column om als referentie op te halen naar Evalaution. Aangezien tblEvaluation voorlopig nog geen column Name heeft laat ik het zo.
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Evaluation_ID"]);
+                DateTime date = Convert.ToDateTime(dataReader["Date"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(Convert.ToString(date));
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
         public List<string> getHospitalDropDown()
         {
-            List<string> ListHospital = new List<string>();
+            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblHospital ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from tblhospital ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -295,12 +416,72 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["Hospital_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListHospital.Add(Convert.ToString(id));
-                ListHospital.Add(name);
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
             }
 
             conn.Close();
-            return ListHospital;
+            return ListDropdown;
+        }
+        public List<string> getProjectDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblProject ORDER BY Title ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                string title = Convert.ToString(dataReader["Title"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(title);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getProjectManagerDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblprojectmanager ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["PM_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
+        }
+        public List<string> getStudyCoordinatorDropDown()
+        {
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tblstudycoördinator ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["SC_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+            }
+
+            conn.Close();
+            return ListDropdown;
         }
         #endregion
 
@@ -502,6 +683,172 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = contactperson_p;
             cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = invoiceinfo_p;
             cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = kindofclinet_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblContract SET Legal_country = @legal_country, Fee = @fee, Duration = @duration, Date = @date WHERE Contract_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = legalcountry_p;
+            cmd.Parameters.Add("@fee", MySqlDbType.Double).Value = fee_p;
+            cmd.Parameters.Add("@start_date", MySqlDbType.DateTime).Value = startdate_p.Date;
+            cmd.Parameters.Add("@end_date", MySqlDbType.DateTime).Value = enddate_p.Date;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateCRA(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblCRA SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblDepartment SET Name = @name, E_mail = @email, Phone1 = @phone1 WHERE Department_ID = @id;", conn);
+
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateDoctor(int id_p, string name_p, string email_p, string phone1_p, string phone2_p, string adress_p, string postalcode_p, string city_p, string country_p, string specialisation_p, string cv_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblDoctor SET Name = @name, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
+            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = specialisation_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblEvaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_txt = @ evaluation_txt, Label = @label WHERE Evaluation_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+            cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+            cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+            cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+            cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+            cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateHospital(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string centralnumber_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblHospital SET Name = @name, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Central_number = @central_number WHERE Hospital_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
+            cmd.Parameters.Add("@central_number", MySqlDbType.VarChar).Value = centralnumber_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateProject(int id_p, string title_p, DateTime startdate_p, DateTime enddate_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblProject SET Title = @title, Start_date = @start_date, End_date = @end_date WHERE Project_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title_p;
+            cmd.Parameters.Add("@start_date", MySqlDbType.Date).Value = startdate_p.Date;
+            cmd.Parameters.Add("@end_date", MySqlDbType.Date).Value = enddate_p.Date;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateProjectManager(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblProjectManager SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void UpdateStudyCoördinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblStudyCoördinator SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
+            
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
