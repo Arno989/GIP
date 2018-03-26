@@ -64,9 +64,69 @@ track1:
 			}
 		}
 
-		protected void Page_Load(object sender,EventArgs e)
-		{
+        public void SetDropdownContent()
+        {
+            List<List<string>> ListContentCRA = _business.GetCRADropDownContent();
+            List<List<string>> ListContentDoctor = _business.GetDoctorDropDownContent();
+            List<List<string>> ListContentStudyCoordinator = _business.GetStudyCoordinatorDropDownContent();
+            List<string> names = new List<string>();
+            int count = 1;
 
+            if (ListContentCRA.Count > 0)
+            {
+                names.Add("----CRA's");
+                for (int i2 = 0; i2 < ListContentCRA.Count; i2++)
+                {
+                    if (count % 2 != 0)
+                    {
+                        names.Add(ListContentCRA[i2][count]);
+                    }
+                    count = count + 2;
+                }
+                count = 1;
+            }
+
+            if (ListContentDoctor.Count > 0)
+            {
+                names.Add("----Doctors");
+                for (int i2 = 0; i2 < ListContentDoctor.Count; i2++)
+                {
+                    if (count % 2 != 0)
+                    {
+                        names.Add(ListContentDoctor[i2][count]);
+                    }
+                    count = count + 2;
+                }
+                count = 1;
+            }
+
+            if (ListContentStudyCoordinator.Count > 0)
+            {
+                names.Add("----Study Coördinators");
+                for (int i2 = 0; i2 < ListContentStudyCoordinator.Count; i2++)
+                {
+                    if (count % 2 != 0)
+                    {
+                        names.Add(ListContentStudyCoordinator[i2][count]);
+                    }
+                    count = count + 2;
+                }
+                count = 1;
+            }
+
+            for (int i = 0; i <= 9; i++)
+            {
+                string ddEdit = "ddEdit" + i.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDown = container.FindControl(ddEdit) as DropDownList;
+                DropDown.DataSource = names;
+                DropDown.DataBind();
+            }
+        }
+
+        protected void Page_Load(object sender,EventArgs e)
+		{
+            SetDropdownContent();
 		}
 
 		protected void btnExit_Click(object sender,EventArgs e)
