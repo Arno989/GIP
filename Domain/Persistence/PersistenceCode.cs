@@ -685,6 +685,23 @@ namespace Domain.Persistence
 		}
         #endregion
 
+        #region SetRelation
+        public void addHospitalToDoctor(int hospital_id_p, int doctor_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO tblhospital_has_tbldoctor (tblHospital_Hospital_ID, tblDoctor_Doctor_ID) VALUES (@hospital_id, @doctor_id);", conn);
+
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
         #region Update
         public void updateClients(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {
