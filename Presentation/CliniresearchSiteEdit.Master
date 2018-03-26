@@ -4,20 +4,24 @@
 
 <html>
 	<head runat="server">
-        
-        <script src="jqueryUI/external/jquery/jquery.js"></script>
-        
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.css" runat="server">
-        <script src="jqueryUI/jquery-ui.js"></script>
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.min.css" runat="server">
-        <script src="jqueryUI/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.structure.css" runat="server">
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.structure.min.css" runat="server">
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.theme.css" runat="server">
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.theme.min.css" runat="server">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
-        <link rel="stylesheet" href="~/jqueryUI/jquery-ui.multidatespicker.css" runat="server">
-        <script src="jqueryUI/jquery-ui.multidatespicker.js"></script>
+        <script src="jquery/external/jquery/jquery.js"></script>
+        
+        <link rel="stylesheet" href="~/jquery/jquery-ui.css" runat="server">
+        <script src="jquery/jquery-ui.js"></script>
+        <link rel="stylesheet" href="~/jquery/jquery-ui.min.css" runat="server">
+        <script src="jquery/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="~/jquery/jquery-ui.structure.css" runat="server">
+        <link rel="stylesheet" href="~/jquery/jquery-ui.structure.min.css" runat="server">
+        <link rel="stylesheet" href="~/jquery/jquery-ui.theme.css" runat="server">
+        <link rel="stylesheet" href="~/jquery/jquery-ui.theme.min.css" runat="server">
+
+        <link rel="stylesheet" href="~/jquery/jquery-ui.multidatespicker.css" runat="server">
+        <script src="jquery/jquery-ui.multidatespicker.js"></script>
+
+        <link rel="stylesheet" href="~/jquery/sumoselect.css" runat="server">
+        <script src="jquery/jquery.sumoselect.min.js"></script>
 
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>

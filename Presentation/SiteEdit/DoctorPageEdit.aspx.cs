@@ -135,20 +135,17 @@ track1:
 
         public void SetDropdownContent()
         {
-            List<List<string>> ListContent = _business.GetHospitalDropDownContent();
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
             List<string> names = new List<string>();
             int count = 1;
 
-            for (int i2 = 0; i2 < ListContent.Count; i2++)
+            for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
             {
                 if (count % 2 != 0)
                 {
-                    names.Add(ListContent[i2][count]);
+                    names.Add(ListContentHospital[i2][count]);
                 }
-                //if (count < ListContent.Count)
-                //{
-                    count = count + 2;
-                //}
+                count = count + 2;
             }
             count = 1;
 

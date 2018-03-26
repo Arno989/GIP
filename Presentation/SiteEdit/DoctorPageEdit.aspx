@@ -60,7 +60,7 @@
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit09"></asp:TextBox>
                 </asp:TableCell>
-                 <asp:TableCell CssClass="cellEdit">
+                <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit00" AppendDataBoundItems = "true">
                         <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
                     </asp:DropDownList>

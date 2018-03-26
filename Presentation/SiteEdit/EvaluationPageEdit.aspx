@@ -17,6 +17,7 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit">
             <asp:TableRow runat="server" ID="row0">
+                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Feedback</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Accuracy</asp:TableHeaderCell>
@@ -24,7 +25,12 @@
                 <asp:TableHeaderCell>Evaluation Text</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Label</asp:TableHeaderCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit00" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit00"></asp:TextBox>
                 </asp:TableCell>
@@ -46,6 +52,11 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit10" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit10"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
@@ -65,6 +76,11 @@
                 </asp:TableCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit20" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit20"></asp:TextBox>
                 </asp:TableCell>
@@ -86,6 +102,11 @@
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit30" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit30"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
@@ -105,6 +126,11 @@
                 </asp:TableCell>
 						</asp:TableRow>
 						<asp:TableRow runat="server">
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit40" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit40"></asp:TextBox>
                 </asp:TableCell>
@@ -126,6 +152,11 @@
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit50" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit50"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
@@ -145,6 +176,11 @@
                 </asp:TableCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit60" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit60"></asp:TextBox>
                 </asp:TableCell>
@@ -166,6 +202,11 @@
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit70" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit70"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
@@ -186,6 +227,11 @@
             </asp:TableRow>
 						<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit80" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit80"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
@@ -205,6 +251,11 @@
                 </asp:TableCell>
             </asp:TableRow>
 						<asp:TableRow runat="server">
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit90" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit90"></asp:TextBox>
                 </asp:TableCell>

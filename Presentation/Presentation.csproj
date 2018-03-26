@@ -73,15 +73,15 @@
   <ItemGroup>
     <Content Include="CliniresearchSite.Master" />
     <Content Include="CliniresearchSiteEdit.Master" />
-    <Content Include="jqueryUI\external\jquery\jquery.js" />
-    <Content Include="jqueryUI\images\ui-icons_444444_256x240.png" />
-    <Content Include="jqueryUI\images\ui-icons_555555_256x240.png" />
-    <Content Include="jqueryUI\images\ui-icons_777620_256x240.png" />
-    <Content Include="jqueryUI\images\ui-icons_777777_256x240.png" />
-    <Content Include="jqueryUI\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="jqueryUI\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="jqueryUI\jquery-ui.multidatespicker.css" />
-    <Content Include="jqueryUI\jquery-ui.multidatespicker.js" />
+    <Content Include="jquery\external\jquery\jquery.js" />
+    <Content Include="jquery\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery\jquery-ui.multidatespicker.css" />
+    <Content Include="jquery\jquery-ui.multidatespicker.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -91,14 +91,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="jqueryUI\jquery-ui.css" />
-    <Content Include="jqueryUI\jquery-ui.js" />
-    <Content Include="jqueryUI\jquery-ui.min.css" />
-    <Content Include="jqueryUI\jquery-ui.min.js" />
-    <Content Include="jqueryUI\jquery-ui.structure.css" />
-    <Content Include="jqueryUI\jquery-ui.structure.min.css" />
-    <Content Include="jqueryUI\jquery-ui.theme.css" />
-    <Content Include="jqueryUI\jquery-ui.theme.min.css" />
+    <Content Include="jquery\jquery-ui.css" />
+    <Content Include="jquery\jquery-ui.js" />
+    <Content Include="jquery\jquery-ui.min.css" />
+    <Content Include="jquery\jquery-ui.min.js" />
+    <Content Include="jquery\jquery-ui.structure.css" />
+    <Content Include="jquery\jquery-ui.structure.min.css" />
+    <Content Include="jquery\jquery-ui.theme.css" />
+    <Content Include="jquery\jquery-ui.theme.min.css" />
+    <Content Include="jquery\jquery.sumoselect.min.js" />
+    <Content Include="jquery\sumoselect.css" />
     <Content Include="MasterStyleSheet.css" />
     <Content Include="SiteEdit\ClientPageEdit.aspx" />
     <Content Include="SiteEdit\ContractPageEdit.aspx" />
@@ -312,7 +314,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62239</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62238/</IISUrl>
+          <IISUrl>http://localhost:62239/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
