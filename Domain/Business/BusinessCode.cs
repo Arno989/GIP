@@ -63,27 +63,27 @@ namespace Domain.Business
         #endregion
 
         #region GetDropDownContent
-        public List<string> GetClientDropDownContent()
+        public List<List<string>> GetClientDropDownContent()
         {
             return _persistence.getClientDropDown();
         }
-        public List<string> GetContractDropDownContent()
+        public List<List<string>> GetContractDropDownContent()
         {
             return _persistence.getContractDropDown();
         }
-        public List<string> GetCRADropDownContent()
+        public List<List<string>> GetCRADropDownContent()
         {
             return _persistence.getCRADropDown();
         }
-        public List<string> GetDepartmentDropDownContent()
+        public List<List<string>> GetDepartmentDropDownContent()
         {
             return _persistence.getDepartmentDropDown();
         }
-        public List<string> GetDoctorDropDownContent()
+        public List<List<string>> GetDoctorDropDownContent()
         {
             return _persistence.getDoctorDropDown();
         }
-        public List<string> GetEvaluationDropDownContent()
+        public List<List<string>> GetEvaluationDropDownContent()
         {
             return _persistence.getEvaluationDropDown();
         }
@@ -91,15 +91,15 @@ namespace Domain.Business
         {
             return _persistence.getHospitalDropDown();
         }
-        public List<string> GetProjectDropDownContent()
+        public List<List<string>> GetProjectDropDownContent()
         {
             return _persistence.getProjectDropDown();
         }
-        public List<string> GetProjectManagerDropDownContent()
+        public List<List<string>> GetProjectManagerDropDownContent()
         {
             return _persistence.getProjectManagerDropDown();
         }
-        public List<string> GetStudyCoordinatorDropDownContent()
+        public List<List<string>> GetStudyCoordinatorDropDownContent()
         {
             return _persistence.getStudyCoordinatorDropDown();
         }

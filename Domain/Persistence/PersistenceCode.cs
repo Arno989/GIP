@@ -282,8 +282,9 @@ namespace Domain.Persistence
         #endregion
 
         #region GetDropDownContent
-        public List<string> getClientDropDown()
+        public List<List<string>> getClientDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblclient ORDER BY Name ASC", conn);
@@ -297,13 +298,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getContractDropDown()
+        public List<List<string>> getContractDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY Legal_country ASC", conn);
@@ -318,13 +321,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name_not_really);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getCRADropDown()
+        public List<List<string>> getCRADropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblcra ORDER BY Name ASC", conn);
@@ -338,13 +343,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getDepartmentDropDown()
+        public List<List<string>> getDepartmentDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tbldepartment ORDER BY Name ASC", conn);
@@ -358,13 +365,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getDoctorDropDown()
+        public List<List<string>> getDoctorDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tbldoctor ORDER BY Name ASC", conn);
@@ -378,13 +387,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getEvaluationDropDown()
+        public List<List<string>> getEvaluationDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblevaluation ORDER BY Date ASC", conn);
@@ -398,10 +409,11 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(Convert.ToString(date));
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
         public List<List<string>> getHospitalDropDown()
         {
@@ -425,8 +437,9 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<string> getProjectDropDown()
+        public List<List<string>> getProjectDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblProject ORDER BY Title ASC", conn);
@@ -440,13 +453,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(title);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getProjectManagerDropDown()
+        public List<List<string>> getProjectManagerDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblprojectmanager ORDER BY Name ASC", conn);
@@ -460,13 +475,15 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
-        public List<string> getStudyCoordinatorDropDown()
+        public List<List<string>> getStudyCoordinatorDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblstudycoördinator ORDER BY Name ASC", conn);
@@ -480,10 +497,11 @@ namespace Domain.Persistence
 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
         #endregion
 
