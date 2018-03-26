@@ -403,8 +403,9 @@ namespace Domain.Persistence
             conn.Close();
             return ListDropdown;
         }
-        public List<string> getHospitalDropDown()
+        public List<List<string>> getHospitalDropDown()
         {
+            List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblhospital ORDER BY Name ASC", conn);
@@ -415,13 +416,14 @@ namespace Domain.Persistence
             {
                 int id = Convert.ToInt16(dataReader["Hospital_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
-
+                
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
             }
 
             conn.Close();
-            return ListDropdown;
+            return ListCount;
         }
         public List<string> getProjectDropDown()
         {

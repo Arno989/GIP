@@ -127,19 +127,30 @@ track1:
 
         public void SetDropdownContent()
         {
+            List<List<string>> ListContent = _business.GetHospitalDropDownContent();
+            List<string> names = new List<string>();
+            int count = 1;
+
+            for (int i2 = 0; i2 < ListContent.Count; i2++)
+            {
+                if (count % 2 != 0)
+                {
+                    names.Add(ListContent[i2][count]);
+                }
+                //if (count < ListContent.Count)
+                //{
+                    count = count + 2;
+                //}
+            }
+            count = 1;
+
             for (int i = 0; i <= 9; i++)
             {
-
-                for (int i2 = 0; i2 <= 7; i2++)
-                {
-                    string ddEdit = "ddEdit" + i.ToString() + "0";
-                    var container = Master.FindControl("Body");
-                    var container2 = container.FindControl("Table");
-                    var DropDown = container2.FindControl(ddEdit) as DropDownList;
-                    DropDown.DataSource = _business.GetHospitalDropDownContent();
-                    //DropDown.
-                    DropDown.DataBind();
-                }
+                string ddEdit = "ddEdit" + i.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDown = container.FindControl(ddEdit) as DropDownList;
+                DropDown.DataSource = names;
+                DropDown.DataBind();
             }
         }
 

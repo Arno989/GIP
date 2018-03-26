@@ -39,17 +39,14 @@ namespace Presentation.SiteEdit
         private void InsertData()
         {
             List < List<string> > ListData = GetData();
-            int Count = -1;
+            int Count = 0;
             for (int i = 0; i < ListData.Count; i++)
             {
-                
-
                 for (int i2 = 0; i2 <= 7; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
-                    Count++;
 
                     switch (i2)
                     {
@@ -85,6 +82,7 @@ namespace Presentation.SiteEdit
                             ((TextBox)txtBox).Text = ListData[i][Count];
                             break;
                     }
+                    Count++;
                 }
             }
         }
@@ -144,7 +142,6 @@ namespace Presentation.SiteEdit
 					}
 				}
 				_business.SetClient(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7]);
-                //_business.UpdateClient(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7]);
                 track1:
                 continue;
 			}

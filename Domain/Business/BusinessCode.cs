@@ -87,7 +87,7 @@ namespace Domain.Business
         {
             return _persistence.getEvaluationDropDown();
         }
-        public List<string> GetHospitalDropDownContent()
+        public List<List<string>> GetHospitalDropDownContent()
         {
             return _persistence.getHospitalDropDown();
         }
