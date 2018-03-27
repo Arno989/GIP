@@ -16,11 +16,12 @@ namespace Presentation.SiteEdit
 		
 		private void sendData()
 		{
-			for (int i = 0; i <= 9; i++)
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
+            for (int i = 0; i <= 9; i++)
 			{
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
-                int Hospital_ID;
+                //int Hospital_ID;
 
 				for (int i2 = 0; i2 <= 9; i2++)
 				{
@@ -123,13 +124,11 @@ namespace Presentation.SiteEdit
                 string ddName = "ddEdit" + i.ToString() + "0";
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 int index = dropdownData.SelectedIndex;
-                //dropdownContent.
-                //Hospital_ID = Convert.ToInt16(((DropDownList)dropdownContent).Text);
-                //dropdownContent
 
                 _business.SetDoctor(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7],input[8],input[9]);
-                //_business.addHospitalToDoctor()
-track1:
+                DoctorCode LastItem = _business.GetDoctors().Last();
+                _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index -1][0]), LastItem.Doctor_ID);
+                track1:
 				continue;
 			}
 		}
@@ -138,36 +137,35 @@ track1:
         {
             List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
             List<string> names = new List<string>();
-            int count = 1;
 
-            for (int i = 0; i < ListContentHospital.Count && i <= 9; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 string ddEdit = "ddEdit" + i.ToString() + "0";
                 var container = Master.FindControl("Body");
                 var DropDownData = container.FindControl(ddEdit) as DropDownList;
-                if (count % 2 != 0 && i < ListContentHospital.Count)
+                for(int i2 = 0; i2 < ListContentHospital.Count; i2++)
                 {
-                    DropDownData.Items[i].Value = ListContentHospital[i][count - 1];
-                    DropDownData.Items[i].Text = ListContentHospital[i][count].ToString();
+                    if (i == 0)
+                    {
+                        names.Add(ListContentHospital[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
                 }
-                count = count + 2;
+                track1:
+                DropDownData.DataSource = names;
                 DropDownData.DataBind();
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if(i2 < 9)
+                    {
+                       DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
+                    }
+                }
             }
         }
-            
-        //    count = 1;
-
-        //    for (int i = 0; i <= 9; i++)
-        //    {
-        //        string ddEdit = "ddEdit" + i.ToString() + "0";
-        //        var container = Master.FindControl("Body");
-        //        var DropDownData = container.FindControl(ddEdit) as DropDownList;
-        //        DropDownData.DataSource = names;
-        //        if(DropDownData.Items[i].Value.)
-        //        DropDownData.Items[i]. = ; 
-        //        DropDownData.DataBind();
-        //    }
-        //}
 
 		protected void Page_Load(object sender,EventArgs e)
 		{
