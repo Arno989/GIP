@@ -419,6 +419,7 @@ namespace Domain.Persistence
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
+            int count = 0;
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblhospital ORDER BY Name ASC", conn);
             conn.Open();
@@ -431,6 +432,7 @@ namespace Domain.Persistence
                 
                 ListDropdown.Add(Convert.ToString(id));
                 ListDropdown.Add(name);
+                ListCount.Add(new List<String>());
                 ListCount.Add(ListDropdown);
             }
 
