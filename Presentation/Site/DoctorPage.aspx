@@ -2,9 +2,6 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Doctors</title>
-    <script type="text/javascript">
-        //tis ier te doen als ge scriptjes wil zetten
-    </script>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
@@ -17,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-	<asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Doctor_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Doctor_ID">
         <Columns>
             <asp:TemplateField HeaderStyle-CssClass="templateHead" ItemStyle-CssClass="templateItem" ShowHeader="false">
                 <ItemTemplate>
@@ -28,14 +25,14 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="email" HeaderText="E mail" />
+            <asp:BoundField DataField="E_mail" HeaderText="E-mail" />
             <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-            <asp:BoundField DataField="phone2" HeaderText="Phone 2" />
+            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
             <asp:BoundField DataField="Adress" HeaderText="Adress" />
-            <asp:BoundField DataField="Postal_code" HeaderText="Postal code" />
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
             <asp:BoundField DataField="City" HeaderText="City" />
             <asp:BoundField DataField="Country" HeaderText="Country" />
-            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" />
+            <asp:BoundField DataField="Specialisation" HeaderText="Spaecialisation" />
             <asp:BoundField DataField="CV" HeaderText="CV" />
         </Columns>
     </asp:GridView>
