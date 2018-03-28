@@ -87,7 +87,7 @@ namespace Presentation.SiteEdit
             }
         }
 
-		private void sendData()
+		private void SendData()
 		{
             for (int i = 0; i <= 9; i++)
 			{
@@ -221,7 +221,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
 			Response.Redirect("../Site/ClientPage.aspx");
 		}
@@ -234,7 +234,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
             Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
 		}

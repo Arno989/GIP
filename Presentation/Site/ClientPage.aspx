@@ -2,9 +2,6 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
     <title>Clients</title>
-    <script type="text/javascript">
-        //tis ier te doen als ge scriptjes wil zetten
-    </script>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">

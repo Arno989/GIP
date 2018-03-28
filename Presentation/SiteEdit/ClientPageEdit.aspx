@@ -26,7 +26,7 @@
                 <asp:TableHeaderCell>Invoice Info</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Kind of Client</asp:TableHeaderCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit00"></asp:TextBox>
                 </asp:TableCell>
@@ -78,7 +78,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit17"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit20"></asp:TextBox>
                 </asp:TableCell>
@@ -104,7 +104,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit27"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit30"></asp:TextBox>
                 </asp:TableCell>
@@ -129,8 +129,8 @@
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit37"></asp:TextBox>
                 </asp:TableCell>
-						</asp:TableRow>
-						<asp:TableRow runat="server">
+			</asp:TableRow>
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit40"></asp:TextBox>
                 </asp:TableCell>
@@ -156,7 +156,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit47"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit50"></asp:TextBox>
                 </asp:TableCell>
@@ -182,7 +182,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit57"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit60"></asp:TextBox>
                 </asp:TableCell>
@@ -208,7 +208,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit67"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit70"></asp:TextBox>
                 </asp:TableCell>
@@ -234,7 +234,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit77"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit80"></asp:TextBox>
                 </asp:TableCell>
@@ -260,7 +260,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit87"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit90"></asp:TextBox>
                 </asp:TableCell>

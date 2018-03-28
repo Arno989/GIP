@@ -2,10 +2,6 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Edit Contracts</title>
-    <script>
-        $('#tbEdit02').multiDatesPicker();
-        $('#test').multiDatesPicker();
-    </script>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
@@ -38,7 +34,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03"></asp:TextBox>
-                    <!--<input id="test" />-->
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -55,7 +50,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit13"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit20"></asp:TextBox>
                 </asp:TableCell>
@@ -69,7 +64,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit23"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit30"></asp:TextBox>
                 </asp:TableCell>
@@ -82,8 +77,8 @@
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit33"></asp:TextBox>
                 </asp:TableCell>
-						</asp:TableRow>
-						<asp:TableRow runat="server">
+			</asp:TableRow>
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit40"></asp:TextBox>
                 </asp:TableCell>
@@ -97,7 +92,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit43"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit50"></asp:TextBox>
                 </asp:TableCell>
@@ -111,7 +106,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit53"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit60"></asp:TextBox>
                 </asp:TableCell>
@@ -125,7 +120,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit63"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit70"></asp:TextBox>
                 </asp:TableCell>
@@ -139,7 +134,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit73"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit80"></asp:TextBox>
                 </asp:TableCell>
@@ -153,7 +148,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit83"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
-						<asp:TableRow runat="server">
+			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit90"></asp:TextBox>
                 </asp:TableCell>
@@ -169,10 +164,4 @@
             </asp:TableRow>
 		</asp:Table>
     </div>
-    
 </asp:Content>
-
-<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
-    
-</asp:Content>
-

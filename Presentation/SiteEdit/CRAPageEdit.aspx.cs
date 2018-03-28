@@ -10,119 +10,242 @@ namespace Presentation.SiteEdit
 {
 	public partial class CRAPageEdit: System.Web.UI.Page
 	{
-		private BusinessCode _business = new BusinessCode();
+        private BusinessCode _business = new BusinessCode();
 
-		private void sendData()
-		{
-			for (int i = 0; i <= 9; i++)
-			{
-				string[] input = new string[5];
+        private List<List<string>> GetData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
 
-				for (int i2 = 0; i2 <= 4; i2++)
-				{
-					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var container = Master.FindControl("Body");
-					var txtBox = container.FindControl(tbName);
+        private List<int> GetDataIDs()
+        {
+            return (List<int>)Session["DataID"];
+        }
 
-					switch (i2)
-					{
-						case 0:
-							if (((TextBox) txtBox).Text != "")
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							else
-							{
-								goto track1;
-							}
-							break;
 
-						case 1:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListData = GetData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
 
-						case 2:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidEmail(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
+                Session["ListDataSession"] = null;
+            }
+        }
 
-							break;
+        private void InsertData()
+        {
+            List<List<string>> ListData = GetData();
+            for (int i = 0; i < ListData.Count; i++)
+            {
 
-						case 3:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidPhone(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							break;
 
-						case 4:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidPhone(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							break;
-					}
-				}
-				_business.SetCRA(input[0],input[1],input[2],input[3],input[4]);
-track1:
-				continue;
-			}
-		}
+                for (int i2 = 0; i2 <= 4; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var container = Master.FindControl("Body");
+                    var txtBox = container.FindControl(tbName);
 
-		protected void Page_Load(object sender,EventArgs e)
-		{
+                    switch (i2)
+                    {
+                        case 0:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
 
-		}
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
 
-		protected void btnExit_Click(object sender,EventArgs e)
-		{
-			Response.Redirect("../Site/CRAPage.aspx");
-		}
+                        case 2:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
 
-		protected void btnSaveAndExit_Click(object sender,EventArgs e)
-		{
-			sendData();
-			Response.Redirect("../Site/CRAPage.aspx");
-		}
+                        case 3:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
 
-		protected void btnSave_Click(object sender,EventArgs e)
-		{
-			sendData();
-			Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
-		}
+                        case 4:
+                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void SendData()
+        {
+            for (int i = 0; i <= 9; i++)
+            {
+                string[] input = new string[5];
+
+                for (int i2 = 0; i2 <= 4; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var container = Master.FindControl("Body");
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+
+                        case 1:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+
+                        case 2:
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+
+                            break;
+
+                        case 3:
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 4:
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+                    }
+                }
+                _business.SetCRA(input[0], input[1], input[2], input[3], input[4]);
+                track1:
+                continue;
+            }
+        }
+
+        private void UpdateData()
+        {
+            List<int> ListDataIDs = GetDataIDs();
+            for (int i = 0; i <= 9; i++)
+            {
+                string[] input = new string[5];
+
+                for (int i2 = 0; i2 <= 4; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var container = Master.FindControl("Body");
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+
+                        case 1:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+
+                        case 2:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+
+                        case 3:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+
+                        case 4:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+                    }
+                }
+                _business.UpdateCRA(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4]);
+                track1:
+                continue;
+            }
+        }
+
+
+        protected void btnExit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Site/CRAPage.aspx");
+        }
+
+        protected void btnSaveAndExit_Click(object sender, EventArgs e)
+        {
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../Site/CRAtPage.aspx");
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
+        }
 	}
 }
