@@ -106,9 +106,9 @@ namespace Domain.Business
         #endregion
 
         #region GetRelation
-        public List<List<int>> GetRelationHospitalHasDoctor()
+        public List<int> GetRelationHospitalHasDoctor(int Doctor_ID_p2)
         {
-            return _persistence.getRelationHospitalHasDoctor();
+            return _persistence.getRelationHospitalHasDoctor(Doctor_ID_p2);
         }
         #endregion
 

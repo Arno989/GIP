@@ -508,24 +508,20 @@ namespace Domain.Persistence
         // Dropdowns nog niet volledig af (bijna wel)
 
         #region GetRelation
-        public List<List<int>> getRelationHospitalHasDoctor()
+        public List<int> getRelationHospitalHasDoctor(int Doctor_ID_p)
         {
-            List<List<int>> ListAllRelations = new List<List<int>>();
-            int count = 0;
+            List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tbldoctor_has_tblproject", conn);
+            MySqlCommand cmd = new MySqlCommand("select tblHospital_Hospital_ID from tblhospital_has_tbldoctor WHERE tblDoctor_Doctor_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Doctor_ID_p;
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             while (dataReader.Read())
             {
                 int idHospital = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
-                int idDoctor = Convert.ToInt16(dataReader["tblDoctor_Doctor_ID"]);
-
-                ListAllRelations.Add(new List<int>());
-                ListAllRelations[count].Add(idHospital);
-                ListAllRelations[count].Add(idDoctor);
-                count++;
+                
+                ListAllRelations.Add(idHospital);
             }
 
             conn.Close();
