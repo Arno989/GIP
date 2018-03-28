@@ -7,9 +7,9 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headLeft"><p class="uppercase">Contracts</p></div>
 	<div class="headRight">
-        <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ><i class="material-icons">add</i></asp:LinkButton>
-        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" ><i class="material-icons">edit</i></asp:LinkButton>
-        <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete"><i class="material-icons">delete</i></asp:LinkButton>
+        <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" ><i class="material-icons">add</i></asp:LinkButton>
+        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>
+        <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete" ToolTip="Delete selected row(s)"><i class="material-icons">delete</i></asp:LinkButton>
 	</div>
 </asp:Content>
 

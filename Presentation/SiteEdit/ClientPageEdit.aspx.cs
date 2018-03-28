@@ -12,6 +12,17 @@ namespace Presentation.SiteEdit
 	{
 		private BusinessCode _business = new BusinessCode();
         
+        private List<List<string>> GetData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
+
+        private List<int> GetDataIDs()
+        {
+            return (List<int>)Session["DataID"];
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,16 +35,6 @@ namespace Presentation.SiteEdit
 
                 Session["ListDataSession"] = null;
             }
-        }
-
-        private List<List<string>> GetData()
-        {
-            return (List<List<string>>)Session["ListDataSession"];
-        }
-
-        private List<int> GetDataIDs()
-        {
-            return (List<int>)Session["DataID"];
         }
 
         private void InsertData()
@@ -87,7 +88,7 @@ namespace Presentation.SiteEdit
             }
         }
 
-		private void sendData()
+		private void SendData()
 		{
             for (int i = 0; i <= 9; i++)
 			{
@@ -208,6 +209,7 @@ namespace Presentation.SiteEdit
             }
         }
 
+
         protected void btnExit_Click(object sender,EventArgs e)
 		{
 			Response.Redirect("../Site/ClientPage.aspx");
@@ -221,7 +223,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
 			Response.Redirect("../Site/ClientPage.aspx");
 		}
@@ -234,7 +236,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
             Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
 		}
