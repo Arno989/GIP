@@ -27,7 +27,7 @@
             <asp:BoundField DataField="Name" HeaderText="Name" />
             <asp:BoundField DataField="CV" HeaderText="CV" />
             <asp:BoundField DataField="E_mail" HeaderText="Email" />
-            <asp:BoundField DataField="Phone2" HeaderText="Phone 1" />
+            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
             <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
         </Columns>
     </asp:GridView>

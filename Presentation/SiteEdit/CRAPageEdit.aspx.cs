@@ -198,15 +198,58 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 2:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
                     }
                 }
