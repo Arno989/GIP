@@ -206,6 +206,14 @@ namespace Domain.Business
         }
         #endregion
 
+        #region UpdateRelation
+        public void UpdateRelationHospitalHasDoctor(int hospital_id_p2, int doctor_id_p2, int oldHospital_id_p2)
+        {
+            _persistence.UpdateRelationHospitalHasDoctor(hospital_id_p2, doctor_id_p2, oldHospital_id_p2);
+        }
+        #endregion
+        // update relations nog niet af
+
         #region Delete
         public void DeleteClient(int id_p2)
         {

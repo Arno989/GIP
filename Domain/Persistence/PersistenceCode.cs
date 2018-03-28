@@ -918,6 +918,24 @@ namespace Domain.Persistence
         }
         #endregion
 
+        #region UpdateRelation
+        public void UpdateRelationHospitalHasDoctor(int hospital_id_p, int doctor_id_p, int oldHospital_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblhospital_has_tbldoctor SET tblHospital_Hospital_ID = @hospital_id, tblDoctor_Doctor_ID = @doctor_id WHERE tblHospital_Hospital_ID = @oldHospitalID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
+
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.Parameters.Add("@oldHospitalID", MySqlDbType.VarChar).Value = oldHospital_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
         #region Delete
         public void deleteClient(int id_p)
         {

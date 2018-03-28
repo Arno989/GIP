@@ -435,8 +435,16 @@ namespace Presentation.SiteEdit
 
                 string ddName = "ddEdit" + i.ToString() + "0";
                 var dropdownData = container.FindControl(ddName) as DropDownList;
+                List<int> OldHospitalID = _business.GetRelationHospitalHasDoctor(ListDataIDs[i]);
                 int index = dropdownData.SelectedIndex;
-                _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
+                if (OldHospitalID.Count == 0)
+                {
+                    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
+                }
+                else if (dropdownData != null)
+                {
+                    _business.UpdateRelationHospitalHasDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i], OldHospitalID[i]);
+                }
                 track1:
                 continue;
             }
