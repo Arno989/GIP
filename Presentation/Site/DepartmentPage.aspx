@@ -25,7 +25,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="E_mail" HeaderText="E_mail" />
+            <asp:BoundField DataField="Email" HeaderText="E_mail" />
             <asp:BoundField DataField="Phone1" HeaderText="Phone" />
         </Columns>
     </asp:GridView>

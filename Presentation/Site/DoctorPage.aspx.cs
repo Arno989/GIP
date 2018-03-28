@@ -15,10 +15,8 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                //sorting par wordt nog niet meegegeven!!!!!!
                 GridView.DataSource = _businesscode.GetDoctors();
                 GridView.DataBind();
             }

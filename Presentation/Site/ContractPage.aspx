@@ -26,8 +26,8 @@
             </asp:TemplateField>
             <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" />
             <asp:BoundField DataField="Fee" HeaderText="Fee" />
-            <asp:BoundField DataField="Start_date" HeaderText="Start Date" />
-            <asp:BoundField DataField="End_date" HeaderText="End Date" />
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
+            <asp:BoundField DataField="End_Date" HeaderText="End Date" />
         </Columns>
     </asp:GridView>
 </asp:Content>

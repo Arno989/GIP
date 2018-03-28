@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Data;
 using System.Web.UI.WebControls;
 using Domain.Business;
 
@@ -17,7 +15,6 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {  
                 GridView.DataSource = _businesscode.GetClients(sortingPar);
@@ -38,7 +35,6 @@ namespace Presentation.Site
                         if (chk.Checked)
                         {
                             DataIDs.Add((int)GridView.DataKeys[i].Value);
-                            //_businesscode.DeleteClient(Convert.ToInt32(id));
                             
                             for(int i2 = 1; i2 < GridView.Columns.Count; i2++)
                             {

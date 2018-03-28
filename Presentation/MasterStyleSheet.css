@@ -10,6 +10,10 @@
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+:root{
+
+}
+
 /* --------------------CSS Document----------------------------- */
 
 .body {
@@ -32,6 +36,7 @@
 .templateItem{
     margin: 0;
     padding: 0;
+    max-width:50px;
 }
 
 /* Customize the label (the container) */
@@ -40,11 +45,11 @@
     position: relative;
     cursor: pointer;
     float: left;
-    margin-left: 30%;
-    margin-top: 30%;
-    width: 40%;
+    margin-left: 17.5px;
+    margin-top: 17.5px;
+    width: 25px;
     height: 0;
-    padding-bottom: 40%;
+    padding-bottom: 25px;
 }
 
 /* Hide the browser's default checkbox */
