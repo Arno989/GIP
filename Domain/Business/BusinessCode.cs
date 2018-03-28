@@ -227,7 +227,7 @@ namespace Domain.Business
         {
             _persistence.deleteDoctor(id_p2);
         }
-        public void DeleteEcaluation(int id_p2)
+        public void DeleteEvaluation(int id_p2)
         {
             _persistence.deleteEvaluation(id_p2);
         }

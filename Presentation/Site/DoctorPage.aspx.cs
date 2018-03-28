@@ -74,6 +74,5 @@ namespace Presentation.Site
         {
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
         }
-
     }
 }
