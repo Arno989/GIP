@@ -418,7 +418,6 @@ namespace Domain.Persistence
         public List<List<string>> getHospitalDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            //List<string> ListDropdown = new List<string>();
             int count = 0;
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("select * from tblhospital ORDER BY Name ASC", conn);
@@ -506,6 +505,34 @@ namespace Domain.Persistence
             return ListCount;
         }
         #endregion
+        // Dropdowns nog niet volledig af (bijna wel)
+
+        #region GetRelation
+        public List<List<int>> getRelationHospitalHasDoctor()
+        {
+            List<List<int>> ListAllRelations = new List<List<int>>();
+            int count = 0;
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select * from tbldoctor_has_tblproject", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int idHospital = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
+                int idDoctor = Convert.ToInt16(dataReader["tblDoctor_Doctor_ID"]);
+
+                ListAllRelations.Add(new List<int>());
+                ListAllRelations[count].Add(idHospital);
+                ListAllRelations[count].Add(idDoctor);
+                count++;
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+        #endregion 
+        // relations nog niet af
 
         #region Set
         public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
@@ -703,6 +730,7 @@ namespace Domain.Persistence
             conn.Close();
         }
         #endregion
+        // relations nog niet af
 
         #region Update
         public void updateClients(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)

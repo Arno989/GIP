@@ -105,6 +105,13 @@ namespace Domain.Business
         }
         #endregion
 
+        #region GetRelation
+        public List<List<int>> GetRelationHospitalHasDoctor()
+        {
+            return _persistence.getRelationHospitalHasDoctor();
+        }
+        #endregion
+
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {
@@ -154,6 +161,7 @@ namespace Domain.Business
             _persistence.addHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
         #endregion
+        // relations nog niet af
 
         #region Update
         public void UpdateClient(int id_p2, string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)

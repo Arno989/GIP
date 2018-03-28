@@ -126,7 +126,7 @@ namespace Presentation.SiteEdit
                 int index = dropdownData.SelectedIndex;
 
                 _business.SetDoctor(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7],input[8],input[9]);
-                if(ListContentHospital[index-1][0] != null)
+                if(dropdownData.SelectedIndex != 0)
                 {
                     DoctorCode LastItem = _business.GetDoctors().Last();
                     _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
