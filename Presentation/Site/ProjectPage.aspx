@@ -6,10 +6,27 @@
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headLeft"><p class="uppercase">Projects</p></div>
-	<div class="headRight"><a href="../SiteEdit/ProjectPageEdit.aspx"><i class="material-icons">create</i></a></div>
+	<div class="headRight">
+        <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" ><i class="material-icons">add</i></asp:LinkButton>
+        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>
+        <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete" ToolTip="Delete selected row(s)"><i class="material-icons">delete</i></asp:LinkButton>
+	</div>
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-	<asp:GridView ID="GridView" runat="server">
-	</asp:GridView>
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Project_ID">
+        <Columns>
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <label class="container">
+                        <asp:CheckBox ID="CheckBox" runat="server" />
+                        <span class="checkmark"></span>
+                    </label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="Title" HeaderText="Title" />
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
+            <asp:BoundField DataField="End_Date" HeaderText="End Date" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>
