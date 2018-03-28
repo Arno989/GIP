@@ -6,10 +6,30 @@
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headLeft"><p class="uppercase">Evaluations</p></div>
-	<div class="headRight"><a href="../SiteEdit/EvaluationPageEdit.aspx"><i class="material-icons">create</i></a></div>
+	<div class="headRight">
+        <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" ><i class="material-icons">add</i></asp:LinkButton>
+        <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>
+        <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete" ToolTip="Delete selected row(s)"><i class="material-icons">delete</i></asp:LinkButton>
+	</div>
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-	<asp:GridView ID="GridView" runat="server">
-	</asp:GridView>
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Evaluation_ID">
+        <Columns>
+            <asp:TemplateField HeaderStyle-CssClass="templateHead" ItemStyle-CssClass="templateItem" ShowHeader="false">
+                <ItemTemplate>
+                    <label class="container">
+                        <asp:CheckBox ID="CheckBox" runat="server" />
+                        <span class="checkmark"></span>
+                    </label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="Date" HeaderText="Date" />
+            <asp:BoundField DataField="Feedback" HeaderText="Feedback" />
+            <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" />
+            <asp:BoundField DataField="Quality" HeaderText="Quality" />
+            <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" />
+            <asp:BoundField DataField="Label" HeaderText="Label" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>
