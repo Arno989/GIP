@@ -163,10 +163,7 @@ namespace Presentation.SiteEdit
                 DropDownData.DataBind();
                 for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
                 {
-                    if(i2 <= 9)
-                    {
-                       DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
-                    }
+                    DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
                 }
             }
         }
