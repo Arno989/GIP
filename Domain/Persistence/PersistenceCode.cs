@@ -557,7 +557,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblContract (Legal_country, Fee, Duration, Date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblContract (Legal_country, Fee, Start_date, End_date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
 
 			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
 			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
@@ -935,6 +935,7 @@ namespace Domain.Persistence
             conn.Close();
         }
         #endregion
+        // nog niet volledig af
 
         #region Delete
         public void deleteClient(int id_p)
