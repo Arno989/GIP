@@ -171,9 +171,44 @@ namespace Presentation.SiteEdit
             }
         }
 
+        public void SetListBoxContent()
+        {
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
+            List<string> names = new List<string>();
+
+            /*
+                string ddEdit = "lbEdit" + 0.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as ListBox;
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if (0 == 0)
+                    {
+                        names.Add(ListContentHospital[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
+                }
+                track1:
+                DropDownData.DataSource = names;
+                DropDownData.DataBind();
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if (i2 <= 9)
+                    {
+                        DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
+                    }
+                }
+                */
+            
+        }
+
 		protected void Page_Load(object sender,EventArgs e)
 		{
             SetDropdownContent();
+            SetListBoxContent();
             if (!IsPostBack)
             {
                 List<List<string>> ListData = GetData();

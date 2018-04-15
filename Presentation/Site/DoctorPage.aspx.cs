@@ -19,8 +19,14 @@ namespace Presentation.Site
             {
                 GridView.DataSource = _businesscode.GetDoctors();
                 GridView.DataBind();
+                //lbHospitals();
             }
         }
+
+        //protected void lbHospitals(object sender, EventArgs e)
+        //{
+
+        //}
 
         protected void Edit(object sender, EventArgs e)
         {

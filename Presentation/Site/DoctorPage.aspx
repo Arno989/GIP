@@ -32,8 +32,13 @@
             <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
             <asp:BoundField DataField="City" HeaderText="City" />
             <asp:BoundField DataField="Country" HeaderText="Country" />
-            <asp:BoundField DataField="Specialisation" HeaderText="Spaecialisation" />
+            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" />
             <asp:BoundField DataField="CV" HeaderText="CV" />
+            <asp:TemplateField HeaderText="Hospitals">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbHospitals"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>
