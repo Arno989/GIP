@@ -163,10 +163,7 @@ namespace Presentation.SiteEdit
                 DropDownData.DataBind();
                 for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
                 {
-                    if(i2 <= 9)
-                    {
-                       DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
-                    }
+                    DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
                 }
             }
         }
@@ -290,74 +287,15 @@ namespace Presentation.SiteEdit
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 List<int> IDDoctor = GetDataIDs();
                 List<int> HospitalID = _business.GetRelationHospitalHasDoctor(IDDoctor[i]);
-                if (HospitalID.Count != 0)
+                if (HospitalID.Count > 0)
                 {
-                    ListItem li = dropdownData.Items.FindByValue(HospitalID[i].ToString());
+                    ListItem li = dropdownData.Items.FindByValue(HospitalID[0].ToString());
                     dropdownData.ClearSelection();
                     li.Selected = true;
+                    HospitalID.Clear();
                 }
             }
         }
-
-        //private void sendData()
-        //{
-        //    for (int i = 0; i <= 9; i++)
-        //    {
-        //        string[] input = new string[8];
-
-        //        for (int i2 = 0; i2 <= 7; i2++)
-        //        {
-        //            string tbName = "tbEdit" + i.ToString() + i2.ToString();
-        //            var container = Master.FindControl("Body");
-        //            var txtBox = container.FindControl(tbName);
-
-        //            switch (i2)
-        //            {
-        //                case 0:
-        //                    if (((TextBox)txtBox).Text != "")
-        //                    {
-        //                        input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    }
-        //                    else
-        //                    {
-        //                        goto track1;
-        //                    }
-        //                    break;
-
-        //                case 1:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 2:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 3:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 4:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 5:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 6:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-
-        //                case 7:
-        //                    input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    break;
-        //            }
-        //        }
-        //        _business.SetClient(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7]);
-        //        track1:
-        //        continue;
-        //    }
-        //}
 
         private void UpdateData()
         {
@@ -470,8 +408,17 @@ namespace Presentation.SiteEdit
 
                 string ddName = "ddEdit" + i.ToString() + "0";
                 var dropdownData = container.FindControl(ddName) as DropDownList;
+                List<int> OldHospitalID = _business.GetRelationHospitalHasDoctor(ListDataIDs[i]);
                 int index = dropdownData.SelectedIndex;
-                _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
+                if (OldHospitalID.Count == 0 && index != 0)
+                {
+                    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
+                }
+                else if (dropdownData != null && OldHospitalID.Count != 0)
+                {
+                    _business.UpdateRelationHospitalHasDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i], OldHospitalID[0]);
+                    OldHospitalID.Clear();
+                }
                 track1:
                 continue;
             }
