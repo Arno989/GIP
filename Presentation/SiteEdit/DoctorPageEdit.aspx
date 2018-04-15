@@ -28,7 +28,6 @@
                 <asp:TableHeaderCell>Specialisation</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CV</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Hospital</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Test</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
@@ -65,15 +64,6 @@
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit00" AppendDataBoundItems = "true">
                         <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" ID="lbEdit00" SelectionMode="Multiple">
-                        <asp:listitem text="Red" value="0"></asp:listitem>
-      <asp:listitem text="Green" value="1"></asp:listitem>
-      <asp:listitem text="Yellow" value="2"></asp:listitem>
-      <asp:listitem text="Blue" value="3"></asp:listitem>
-      <asp:listitem text="Black" value="4"></asp:listitem>
-                    </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">

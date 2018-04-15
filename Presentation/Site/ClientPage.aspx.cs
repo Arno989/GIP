@@ -72,6 +72,7 @@ namespace Presentation.Site
 
         protected void Add(object sender, EventArgs e)
         {
+            Session["DataID"] = null;
             Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
 

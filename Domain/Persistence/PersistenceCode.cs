@@ -183,7 +183,7 @@ namespace Domain.Persistence
 		{
             List<HospitalCode> ListHospital = new List<HospitalCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblhospital{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblhospital {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -309,18 +309,18 @@ namespace Domain.Persistence
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY Legal_country ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY >Start_Date ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
-            //Legal country is niet de beste column om op te halen als referentie naar een contract. Aangezien tblContract geen Name als column heeft laat ik het voorlopig zo.
+            //start date is niet de beste column om op te halen als referentie naar een contract. Aangezien tblContract geen Name als column heeft laat ik het voorlopig zo.
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["Contract_ID"]);
-                string name_not_really = Convert.ToString(dataReader["Legal_country"]);
+                DateTime start_date = Convert.ToDateTime(dataReader["Start_Date"]);
 
                 ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name_not_really);
+                ListDropdown.Add(start_date.ToString("dd-MMM-yyyy"));
                 ListCount.Add(ListDropdown);
             }
 
@@ -405,10 +405,10 @@ namespace Domain.Persistence
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["Evaluation_ID"]);
-                DateTime date = Convert.ToDateTime(dataReader["Date"]);
+                string label = Convert.ToString(dataReader["Label"]);
 
                 ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(Convert.ToString(date));
+                ListDropdown.Add(Convert.ToString(label));
                 ListCount.Add(ListDropdown);
             }
 
@@ -505,7 +505,7 @@ namespace Domain.Persistence
             return ListCount;
         }
         #endregion
-        // Dropdowns nog niet volledig af (bijna wel)
+        // Zo goed als af
 
         #region GetRelation
         public List<int> getRelationHospitalHasDoctor(int Doctor_ID_p)

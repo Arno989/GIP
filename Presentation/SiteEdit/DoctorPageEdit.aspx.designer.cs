@@ -157,15 +157,6 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.DropDownList ddEdit00;
         
         /// <summary>
-        /// lbEdit00 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbEdit00;
-        
-        /// <summary>
         /// tbEdit10 control.
         /// </summary>
         /// <remarks>

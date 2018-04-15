@@ -13,8 +13,9 @@ namespace Presentation.SiteEdit
 	public partial class DoctorPageEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
-		
-		private void sendData()
+        string sortingPar = "";
+
+        private void sendData()
 		{
 
             var container = Master.FindControl("Body");
@@ -129,7 +130,7 @@ namespace Presentation.SiteEdit
                 _business.SetDoctor(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7],input[8],input[9]);
                 if(dropdownData.SelectedIndex != 0)
                 {
-                    DoctorCode LastItem = _business.GetDoctors().Last();
+                    DoctorCode LastItem = _business.GetDoctors(sortingPar).Last();
                     _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
                 }
                 track1:
@@ -172,8 +173,8 @@ namespace Presentation.SiteEdit
         {
             List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
             List<string> names = new List<string>();
-
             /*
+            
                 string ddEdit = "lbEdit" + 0.ToString() + "0";
                 var container = Master.FindControl("Body");
                 var DropDownData = container.FindControl(ddEdit) as ListBox;
@@ -191,6 +192,7 @@ namespace Presentation.SiteEdit
                 track1:
                 DropDownData.DataSource = names;
                 DropDownData.DataBind();
+            
                 for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
                 {
                     if (i2 <= 9)
@@ -198,7 +200,7 @@ namespace Presentation.SiteEdit
                         DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
                     }
                 }
-                */
+            */
             
         }
 
@@ -426,8 +428,8 @@ namespace Presentation.SiteEdit
 
         protected void btnExit_Click(object sender,EventArgs e)
 		{
-			Response.Redirect("../Site/DoctorPage.aspx");
-		}
+            Response.Redirect("../Site/DoctorPage.aspx");
+        }
 
 		protected void btnSaveAndExit_Click(object sender,EventArgs e)
 		{
@@ -439,8 +441,9 @@ namespace Presentation.SiteEdit
             {
                 sendData();
             }
+            
             Response.Redirect("../Site/DoctorPage.aspx");
-		}
+        }
 
 		protected void btnSave_Click(object sender,EventArgs e)
 		{
@@ -452,7 +455,8 @@ namespace Presentation.SiteEdit
             {
                 sendData();
             }
+            
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
-		}
+        }
 	}
 }

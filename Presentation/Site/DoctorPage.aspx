@@ -36,7 +36,7 @@
             <asp:BoundField DataField="CV" HeaderText="CV" />
             <asp:TemplateField HeaderText="Hospitals">
                 <ItemTemplate>
-                    <asp:ListBox runat="server" ID="lbHospitals"></asp:ListBox>
+                    <asp:ListBox runat="server" ID="lbHospitals" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
