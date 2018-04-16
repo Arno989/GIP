@@ -99,7 +99,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit10" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -136,7 +136,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit20" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -173,7 +173,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit30" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
 			</asp:TableRow>
@@ -210,7 +210,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit40" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -247,7 +247,7 @@
                 </asp:TableCell>
                  <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit50" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -284,7 +284,7 @@
                 </asp:TableCell>
                  <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit60" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -321,7 +321,7 @@
                 </asp:TableCell>
                  <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit70" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -358,7 +358,7 @@
                 </asp:TableCell>
                  <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit80" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -395,7 +395,7 @@
                 </asp:TableCell>
                  <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit90" AppendDataBoundItems = "true">
-                        <asp:ListItem Selected="True" Text="" Value="0"></asp:ListItem>
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
