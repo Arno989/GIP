@@ -818,7 +818,7 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
             cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
             cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
-            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = specialisation_p;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
