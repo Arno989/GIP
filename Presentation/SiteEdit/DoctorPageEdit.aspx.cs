@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
-using MySql.Data.MySqlClient;
 
 namespace Presentation.SiteEdit
 {
@@ -14,198 +12,20 @@ namespace Presentation.SiteEdit
 	{
 		private BusinessCode _business = new BusinessCode();
         string sortingPar = "";
-
-        private void sendData()
-		{
-
-            var container = Master.FindControl("Body");
-            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
-            for (int i = 0; i <= 9; i++)
-			{
-                string[] input = new string[10];
-                //int Hospital_ID;
-
-				for (int i2 = 0; i2 <= 9; i2++)
-				{
-					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var txtBox = container.FindControl(tbName);
-
-					switch (i2)
-					{
-						case 0:
-							if (((TextBox) txtBox).Text != "")
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							else
-							{
-								goto track1;
-							}
-							break;
-
-						case 1:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidEmail(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-
-							break;
-
-						case 2:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidPhone(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							break;
-
-						case 3:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidPhone(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							break;
-
-						case 4:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-
-						case 5:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-
-						case 6:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-
-						case 7:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-
-						case 8:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-
-						case 9:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-					}
-                }
-                string ddName = "ddEdit" + i.ToString() + "0";
-                var dropdownData = container.FindControl(ddName) as DropDownList;
-                int index = dropdownData.SelectedIndex;
-
-                _business.SetDoctor(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7],input[8],input[9]);
-                if(dropdownData.SelectedIndex != 0)
-                {
-                    DoctorCode LastItem = _business.GetDoctors(sortingPar).Last();
-                    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
-                }
-                track1:
-				continue;
-			}
-		}
-
-        public void SetDropdownContent()
+        
+        private List<List<string>> GetData()
         {
-            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
-            List<string> names = new List<string>();
-
-            for (int i = 0; i <= 9; i++)
-            {
-                string ddEdit = "ddEdit" + i.ToString() + "0";
-                var container = Master.FindControl("Body");
-                var DropDownData = container.FindControl(ddEdit) as DropDownList;
-                for(int i2 = 0; i2 < ListContentHospital.Count; i2++)
-                {
-                    if (i == 0)
-                    {
-                        names.Add(ListContentHospital[i2][1]);
-                    }
-                    else
-                    {
-                        goto track1;
-                    }
-                }
-                track1:
-                DropDownData.DataSource = names;
-                DropDownData.DataBind();
-                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
-                {
-                    DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
-                }
-            }
+            return (List<List<string>>)Session["ListDataSession"];
         }
 
-        public void SetListBoxContent()
+        private List<int> GetDataIDs()
         {
-            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
-            List<string> names = new List<string>();
-            /*
-            
-                string ddEdit = "lbEdit" + 0.ToString() + "0";
-                var container = Master.FindControl("Body");
-                var DropDownData = container.FindControl(ddEdit) as ListBox;
-                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
-                {
-                    if (0 == 0)
-                    {
-                        names.Add(ListContentHospital[i2][1]);
-                    }
-                    else
-                    {
-                        goto track1;
-                    }
-                }
-                track1:
-                DropDownData.DataSource = names;
-                DropDownData.DataBind();
-            
-                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
-                {
-                    if (i2 <= 9)
-                    {
-                        DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
-                    }
-                }
-            */
-            
+            return (List<int>)Session["DataID"];
         }
 
-		protected void Page_Load(object sender,EventArgs e)
-		{
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
             SetDropdownContent();
             SetListBoxContent();
             if (!IsPostBack)
@@ -218,16 +38,6 @@ namespace Presentation.SiteEdit
 
                 Session["ListDataSession"] = null;
             }
-        }
-
-        private List<List<string>> GetData()
-        {
-            return (List<List<string>>)Session["ListDataSession"];
-        }
-
-        private List<int> GetDataIDs()
-        {
-            return (List<int>)Session["DataID"];
         }
 
         private void InsertData()
@@ -245,43 +55,44 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 5:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 6:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 7:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
-                            break;
-                        case 8:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
-                            break;
-                        case 9:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
+                        case 8:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 9:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
                     }
                     Count++;
                 }
@@ -296,6 +107,175 @@ namespace Presentation.SiteEdit
                     li.Selected = true;
                     HospitalID.Clear();
                 }
+            }
+        }
+
+        private void SendData()
+        {
+
+            var container = Master.FindControl("Body");
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
+            for (int i = 0; i <= 9; i++)
+            {
+                string[] input = new string[10];
+                //int Hospital_ID;
+
+                for (int i2 = 0; i2 <= 9; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                goto track1;
+                            }
+                            else
+                            {
+
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 1:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid email";
+                                }
+                            }
+
+                            break;
+
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
+                            }
+                            break;
+
+                        case 3:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
+                            }
+                            break;
+
+                        case 4:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 5:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 6:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 7:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 8:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 9:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+                    }
+                }
+                string ddName = "ddEdit" + i.ToString() + "0";
+                var dropdownData = container.FindControl(ddName) as DropDownList;
+                int index = dropdownData.SelectedIndex;
+
+                _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]);
+                if (dropdownData.SelectedIndex != 0)
+                {
+                    DoctorCode LastItem = _business.GetDoctors(sortingPar).Last();
+                    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
+                }
+                track1:
+                continue;
             }
         }
 
@@ -426,6 +406,74 @@ namespace Presentation.SiteEdit
             }
         }
 
+
+        public void SetDropdownContent()
+        {
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
+            List<string> names = new List<string>();
+
+            for (int i = 0; i <= 9; i++)
+            {
+                string ddEdit = "ddEdit" + i.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as DropDownList;
+                for(int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if (i == 0)
+                    {
+                        names.Add(ListContentHospital[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
+                }
+                track1:
+                DropDownData.DataSource = names;
+                DropDownData.DataBind();
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
+                }
+            }
+        }
+
+        public void SetListBoxContent()
+        {
+            List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
+            List<string> names = new List<string>();
+            /*
+            
+                string ddEdit = "lbEdit" + 0.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as ListBox;
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if (0 == 0)
+                    {
+                        names.Add(ListContentHospital[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
+                }
+                track1:
+                DropDownData.DataSource = names;
+                DropDownData.DataBind();
+            
+                for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
+                {
+                    if (i2 <= 9)
+                    {
+                        DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
+                    }
+                }
+            */
+            
+        }
+        
+
         protected void btnExit_Click(object sender,EventArgs e)
 		{
             Response.Redirect("../Site/DoctorPage.aspx");
@@ -439,7 +487,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
             
             Response.Redirect("../Site/DoctorPage.aspx");
@@ -453,7 +501,7 @@ namespace Presentation.SiteEdit
             }
             else
             {
-                sendData();
+                SendData();
             }
             
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");

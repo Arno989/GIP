@@ -24,16 +24,16 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Email" HeaderText="E-mail" />
-            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
-            <asp:BoundField DataField="Adress" HeaderText="Adress" />
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
-            <asp:BoundField DataField="City" HeaderText="City" />
-            <asp:BoundField DataField="Country" HeaderText="Country" />
-            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" />
-            <asp:BoundField DataField="CV" HeaderText="CV" />
+            <asp:BoundField DataField="Name" HeaderText="Name"/>
+            <asp:BoundField DataField="Email" HeaderText="E-mail"/>
+            <asp:BoundField DataField="Phone1" HeaderText="Phone 1"/>
+            <asp:BoundField DataField="Phone2" HeaderText="Phone 2"/>
+            <asp:BoundField DataField="Adress" HeaderText="Adress"/>
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code"/>
+            <asp:BoundField DataField="City" HeaderText="City"/>
+            <asp:BoundField DataField="Country" HeaderText="Country"/>
+            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation"/>
+            <asp:BoundField DataField="CV" HeaderText="CV"/>
             <asp:TemplateField HeaderText="Hospitals">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbHospitals" CssClass="listbox"></asp:ListBox>

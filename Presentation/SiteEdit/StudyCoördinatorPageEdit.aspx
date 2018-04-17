@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="StudyCoördinatorPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.StudyCoördinatorPageEdit" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
-	<title>Edit Study Coördinators</title>
+	<title>Edit Study Coordinators</title>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
-	<div class="headEditLeft"><p class="uppercase">Edit Study Coördinators</p></div>
+	<div class="headEditLeft"><p class="uppercase">Edit Study Coordinators</p></div>
 	<div class="headEditRight">
 			<asp:Button ID="btnSave" runat="server" autopostback="true" Text="Save" CssClass="editButton" OnClick="btnSave_Click" />
 			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" CssClass="editButton" OnClick="btnSaveAndExit_Click" />

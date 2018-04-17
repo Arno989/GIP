@@ -605,7 +605,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDoctor (Name, E_mail, Phone1, Phone2, Adress, Postal_code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDoctor (Name, E_mail, Phone1, Phone2, Adress, Postal_code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -616,7 +616,7 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = city_p;
 			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
 			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = specialisation_p;
-			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = specialisation_p;
+			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
 			cmd.ExecuteNonQuery();
 
 			conn.Close();
