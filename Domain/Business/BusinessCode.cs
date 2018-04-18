@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.UI;
 using Domain.Persistence;
 using PhoneNumbers;
 
@@ -104,6 +105,7 @@ namespace Domain.Business
             return _persistence.getStudyCoordinatorDropDown();
         }
         #endregion
+        //nog niet helemaal af
 
         #region GetRelation
         public List<int> GetRelationHospitalHasDoctor(int Doctor_ID_p2)
@@ -111,6 +113,7 @@ namespace Domain.Business
             return _persistence.getRelationHospitalHasDoctor(Doctor_ID_p2);
         }
         #endregion
+        // nog niet af
 
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
@@ -313,6 +316,17 @@ namespace Domain.Business
             string number = PhoneNumberUtil.NormalizeDigitsOnly(parNumber);
             return PhoneNumberUtil.IsViablePhoneNumber(number);
         }
+        #endregion
+
+        #region UserWarning
+        //public static void MessageBoxShow(this Page Page, String Message)
+        //{
+        //    Page.ClientScript.RegisterStartupScript(
+        //       Page.GetType(),
+        //       "MessageBox",
+        //       "<script language='javascript'>alert('" + Message + "');</script>"
+        //    );
+        //}
         #endregion
     }
 }

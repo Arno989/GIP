@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
+using CSASPNETMessageBox;
 
 namespace Presentation.Site
 {
@@ -59,8 +60,20 @@ namespace Presentation.Site
                     CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
                     if (chk.Checked)
                     {
-                        int id = (int)GridView.DataKeys[i].Value;
-                        _businesscode.DeleteDoctor(Convert.ToInt32(id));
+                        List<int> Relations = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value));
+                        if(_businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value)) != null )
+                        {
+                            //string title = "Delete warning";
+                            //string text = "One or more selected item(s) contain a relation, do you want to delete the relation(s) and the object(s)?";
+                            //MessageBox messageBox = new MessageBox(text, title, MessageBox.MessageBoxIcons.Question, MessageBox.MessageBoxButtons.YesOrNo, MessageBox.MessageBoxStyle.StyleA);
+                            //messageBox.SuccessEvent.Add("YesModClick");
+                            //PopupBox.Text = messageBox.Show(this);
+                        }
+                        else
+                        {
+                            int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteDoctor(Convert.ToInt32(id));
+                        }
                     }
                     else
                     {
@@ -68,6 +81,13 @@ namespace Presentation.Site
                 }
             }
             Response.Redirect("../Site/DoctorPage.aspx");
+        }
+
+        public static string YesModClick(object sender, EventArgs e)
+        {
+            string strToRtn = "";
+            // The code that you want to execute when the user clicked yes goes here
+            return strToRtn;
         }
 
         protected void Add(object sender, EventArgs e)
