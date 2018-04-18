@@ -74,12 +74,16 @@ namespace Presentation.Site
                         goto track1;
                     }
                 }
+                track1:
+                continue;
             }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
-            track1:
+            if(DataIDs.Count != 0)
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
+            }
         }
 
         protected void Delete(object sender, EventArgs e)
