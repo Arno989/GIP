@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSite.Master" AutoEventWireup="true" CodeBehind="DoctorPage.aspx.cs" Inherits="Presentation.Site.DoctorPage" %>
-<%@ Register src="~/MessageBoxWebControl.ascx" tagname="MessageBoxUserControl" tagprefix="uc1" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Doctors</title>
@@ -11,7 +10,6 @@
         <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" ><i class="material-icons">add</i></asp:LinkButton>
         <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>
         <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete" ToolTip="Delete selected row(s)"><i class="material-icons">delete</i></asp:LinkButton>
-        <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
 	</div>
 </asp:Content>
 

@@ -68,12 +68,18 @@ namespace Presentation.Site
                         }
                         ListData.Add(List1);
                     }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select one or more row(s) to edit')", true);
+                        goto track1;
+                    }
                 }
             }
 
             Session["DataID"] = DataIDs;
             Session["ListDataSession"] = ListData;
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
+            track1:
         }
 
         protected void Delete(object sender, EventArgs e)
