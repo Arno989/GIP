@@ -30,14 +30,14 @@
 						<ul class="sidebar-list">
 							<li class="sidebar-item"><a href="../Site/CraPage.aspx">CRA's</a></li>
 							<li class="sidebar-item"><a href="../Site/ClientPage.aspx">Clients</a></li>
-							<li class="sidebar-item"><a href="../Site/ContractPage.aspx">Contracts</a></li>
+							<li class="sidebar-item"><a href="../Site/ContractPage.aspx">Client Contracts</a></li>
 							<li class="sidebar-item"><a href="../Site/DepartmentPage.aspx">Departments</a></li>
 							<li class="sidebar-item"><a href="../Site/DoctorPage.aspx">Doctors</a></li>
 							<li class="sidebar-item"><a href="../Site/EvaluationPage.aspx">Evaluations</a></li>
 							<li class="sidebar-item"><a href="../Site/HospitalPage.aspx">Hospitals</a></li>
 							<li class="sidebar-item"><a href="../Site/ProjectManagerPage.aspx">Project Managers</a></li>
 							<li class="sidebar-item"><a href="../Site/ProjectPage.aspx">Projects</a></li>
-							<li class="sidebar-item"><a href="../Site/StudyCoördinatorPage.aspx">Study Coördinators</a></li>
+							<li class="sidebar-item"><a href="../Site/StudyCoördinatorPage.aspx">Study Coordinators</a></li>
 						</ul>
 					</div>
 				</nav>

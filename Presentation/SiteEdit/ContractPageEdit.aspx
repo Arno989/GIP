@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="ContractPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.ContractPageEdit" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
-	<title>Edit Contracts</title>
+	<title>Edit Client Contracts</title>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
-	<div class="headEditLeft"><p class="uppercase">Edit Contracts</p></div>
+	<div class="headEditLeft"><p class="uppercase">Edit Client Contracts</p></div>
 	<div class="headEditRight">
 			<asp:Button ID="btnSave" runat="server" autopostback="true" Text="Save" CssClass="editButton" OnClick="btnSave_Click" />
 			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" CssClass="editButton" OnClick="btnSaveAndExit_Click" />

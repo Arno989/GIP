@@ -11,7 +11,7 @@ namespace Presentation.SiteEdit
 	public partial class ClientSiteEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
-        
+
         private List<List<string>> GetData()
         {
             return (List<List<string>>)Session["ListDataSession"];
@@ -52,35 +52,35 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 5:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 6:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 7:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
                     }
                     Count++;

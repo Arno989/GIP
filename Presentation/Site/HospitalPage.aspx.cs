@@ -17,7 +17,7 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetHospitals();
+                GridView.DataSource = _businesscode.GetHospitals(sortingPar);
                 GridView.DataBind();
             }
         }
@@ -72,6 +72,7 @@ namespace Presentation.Site
 
         protected void Add(object sender, EventArgs e)
         {
+            Session["DataID"] = null;
             Response.Redirect("../SiteEdit/HospitalPageEdit.aspx");
         }
     }

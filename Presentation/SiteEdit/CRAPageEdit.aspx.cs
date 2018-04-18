@@ -53,23 +53,23 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][i2];
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
                     }
                 }

@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSite.Master" AutoEventWireup="true" CodeBehind="ContractPage.aspx.cs" Inherits="Presentation.Site.ContractPage" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
-	<title>Contracts</title>
+	<title>Client Contracts</title>
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
-	<div class="headLeft"><p class="uppercase">Contracts</p></div>
+	<div class="headLeft"><p class="uppercase">Client Contracts</p></div>
 	<div class="headRight">
         <asp:LinkButton id="btnAdd" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" ><i class="material-icons">add</i></asp:LinkButton>
         <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>

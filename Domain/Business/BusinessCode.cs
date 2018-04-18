@@ -29,37 +29,37 @@ namespace Domain.Business
         {
             return _persistence.getContract(sortingPar);
         }
-        public List<CRACode> GetCRAs()
+        public List<CRACode> GetCRAs(string sortingPar)
         {
-            return _persistence.getCRA();
+            return _persistence.getCRA(sortingPar);
         }
-        public List<DepartmentCode> GetDepartments()
+        public List<DepartmentCode> GetDepartments(string sortingPar)
         {
-            return _persistence.getDepartment();
+            return _persistence.getDepartment(sortingPar);
         }
-        public List<DoctorCode> GetDoctors()
+        public List<DoctorCode> GetDoctors(string sortingPar)
         {
-            return _persistence.getDoctor();
+            return _persistence.getDoctor(sortingPar);
         }
-        public List<EvaluationCode> GetEvaluations()
+        public List<EvaluationCode> GetEvaluations(string sortingPar)
         {
-            return _persistence.getEvaluation();
+            return _persistence.getEvaluation(sortingPar);
         }
-        public List<HospitalCode> GetHospitals()
+        public List<HospitalCode> GetHospitals(string sortingPar)
         {
-            return _persistence.getHospital();
+            return _persistence.getHospital(sortingPar);
         }
-        public List<ProjectCode> GetProjects()
+        public List<ProjectCode> GetProjects(string sortingPar)
         {
-            return _persistence.getProject();
+            return _persistence.getProject(sortingPar);
         }
-        public List<ProjectManagerCode> GetProjectManagers()
+        public List<ProjectManagerCode> GetProjectManagers(string sortingPar)
         {
-            return _persistence.getProjectManager();
+            return _persistence.getProjectManager(sortingPar);
         }
-        public List<StudyCoördinatorCode> GetStudyCoördinators()
+        public List<StudyCoördinatorCode> GetStudyCoördinators(string sortingPar)
         {
-            return _persistence.getStudyCoördinator();
+            return _persistence.getStudyCoördinator(sortingPar);
         }
         #endregion
 

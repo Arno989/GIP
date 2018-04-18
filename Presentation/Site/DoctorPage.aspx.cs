@@ -18,10 +18,36 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetDoctors();
+                GridView.DataSource = _businesscode.GetDoctors(sortingPar);
                 GridView.DataBind();
+                lbHospitals();
             }
         }
+
+        protected void lbHospitals()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+
+                var container = Master.FindControl("Body");
+                string lbName = "lbHospitals";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+
+                List<int> id = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value));
+                if (id.Count != 0)
+                {
+                    string sortingPar = string.Format(" WHERE Hospital_ID = {0}", id[0]);
+                    List<HospitalCode> test = new List<HospitalCode>();
+                    test = _businesscode.GetHospitals(sortingPar);
+                    string test2 = test[0].Name;
+
+                    listbox.Items.Add(test2);
+                }
+                listbox.DataBind();
+            }
+        }
+
+
 
         protected void Edit(object sender, EventArgs e)
         {
@@ -92,6 +118,7 @@ namespace Presentation.Site
 
         protected void Add(object sender, EventArgs e)
         {
+            Session["DataID"] = null;
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
         }
     }

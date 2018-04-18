@@ -52,15 +52,15 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][Count];
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
                     }
                     Count++;

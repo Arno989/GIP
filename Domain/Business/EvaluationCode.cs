@@ -12,7 +12,7 @@ namespace Domain.Business
         // All private and public properties of class Evaluation
         private int _evaluation_id;
 
-        public int Ecaluation_ID
+        public int Evaluation_ID
         {
             get { return _evaluation_id; }
             set { _evaluation_id = value; }
