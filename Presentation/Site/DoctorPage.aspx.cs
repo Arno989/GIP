@@ -93,7 +93,7 @@ namespace Presentation.Site
                     if (chk.Checked)
                     {
                         List<int> Relations = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value));
-                        if(_businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value)) != null )
+                        if(_businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value)).Count != 0 )
                         {
                             int DoctorID = (int)GridView.DataKeys[i].Value;
                             List<int> HospitalID = _businesscode.GetRelationHospitalHasDoctor(DoctorID);
@@ -102,6 +102,8 @@ namespace Presentation.Site
                         }
                         else
                         {
+                            int DoctorID = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteDoctor(Convert.ToInt32(DoctorID));
                         }
                     }
                     else
