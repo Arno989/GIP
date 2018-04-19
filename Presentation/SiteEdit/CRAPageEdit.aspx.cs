@@ -275,7 +275,7 @@ namespace Presentation.SiteEdit
             {
                 SendData();
             }
-            Response.Redirect("../Site/CRAtPage.aspx");
+            Response.Redirect("../Site/CRAPage.aspx");
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
