@@ -204,6 +204,7 @@
     background-color: #2F2F2F;
     position: fixed !important;
     overflow: auto;
+    z-index: 3;
 }
 
 .sidebar-list {
