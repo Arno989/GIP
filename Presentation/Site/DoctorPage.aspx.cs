@@ -62,20 +62,13 @@ namespace Presentation.Site
                     {
                         DataIDs.Add((int)GridView.DataKeys[i].Value);
 
-                        for (int i2 = 1; i2 < GridView.Columns.Count; i2++)
+                        for (int i2 = 1; i2 < GridView.Columns.Count -1; i2++)
                         {
                             List1.Add(GridView.Rows[i].Cells[i2].Text);
                         }
                         ListData.Add(List1);
                     }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select one or more row(s) to edit')", true);
-                        goto track1;
-                    }
                 }
-                track1:
-                continue;
             }
 
             if(DataIDs.Count != 0)
@@ -83,6 +76,10 @@ namespace Presentation.Site
                 Session["DataID"] = DataIDs;
                 Session["ListDataSession"] = ListData;
                 Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select one or more row(s) to edit')", true);
             }
         }
 
