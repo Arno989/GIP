@@ -1046,7 +1046,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("DELETE FROM tblhospital_has_tbldoctor WHERE tblHospital_Hospital_ID = @oldHospitalID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM tblhospital_has_tbldoctor WHERE tblHospital_Hospital_ID = @hospital_ID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
 
             cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;

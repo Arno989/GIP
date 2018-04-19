@@ -95,17 +95,13 @@ namespace Presentation.Site
                         List<int> Relations = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value));
                         if(_businesscode.GetRelationHospitalHasDoctor(Convert.ToInt16(GridView.DataKeys[i].Value)) != null )
                         {
-                            //string title = "Delete warning";
-                            //string text = "One or more selected item(s) contain a relation, do you want to delete the relation(s) and the object(s)?";
-                            //MessageBox messageBox = new MessageBox(text, title, MessageBox.MessageBoxIcons.Question, MessageBox.MessageBoxButtons.YesOrNo, MessageBox.MessageBoxStyle.StyleA);
-                            //messageBox.SuccessEvent.Add("YesModClick");
-                            //PopupBox.Text = messageBox.Show(this);
+                            int DoctorID = (int)GridView.DataKeys[i].Value;
+                            List<int> HospitalID = _businesscode.GetRelationHospitalHasDoctor(DoctorID);
+                            _businesscode.DeleteRelationHospitalHasDoctor(HospitalID[0], Convert.ToInt32(DoctorID));
+                            _businesscode.DeleteDoctor(Convert.ToInt32(DoctorID));
                         }
                         else
                         {
-                            int id = (int)GridView.DataKeys[i].Value;
-                            _businesscode.DeleteRelationHospitalHasDoctor(, Convert.ToInt32(id));
-                            _businesscode.DeleteDoctor(Convert.ToInt32(id));
                         }
                     }
                     else
