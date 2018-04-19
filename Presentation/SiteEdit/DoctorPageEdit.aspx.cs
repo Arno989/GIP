@@ -396,10 +396,14 @@ namespace Presentation.SiteEdit
                 {
                     _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
                 }
-                else if (dropdownData != null && OldHospitalID.Count != 0)
+                else if (dropdownData != null && OldHospitalID.Count != 0 && index != 0)
                 {
                     _business.UpdateRelationHospitalHasDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i], OldHospitalID[0]);
                     OldHospitalID.Clear();
+                }
+                else 
+                {
+                    _business.DeleteRelationHospitalHasDoctor(OldHospitalID[0], ListDataIDs[i]);
                 }
                 track1:
                 continue;
