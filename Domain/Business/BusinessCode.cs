@@ -259,8 +259,18 @@ namespace Domain.Business
             _persistence.deleteStudyCoördinator(id_p2);
         }
         #endregion
-        
+
+        #region DeleteRelation
+        public void DeleteRelationHospitalHasDoctor(int hospital_id_p2, int doctor_id_p2)
+        {
+            _persistence.DeleteRelationHospitalHasDoctor(hospital_id_p2, doctor_id_p2);
+        }
+        #endregion
+
         #region Control
+
+        bool invalid = false;
+
         private string DomainMapper(Match match)
         {
             // IdnMapping class with default property values.
@@ -277,10 +287,10 @@ namespace Domain.Business
             }
             return match.Groups[1].Value + domainName;
         }
-        bool invalid = false;
+
         public bool IsValidEmail(string parEmail)
 		{
-            invalid = false;
+            bool invalid = false;
             if (String.IsNullOrEmpty(parEmail))
                 return false;
 
@@ -311,6 +321,7 @@ namespace Domain.Business
                 return false;
             }
         }
+
         public bool IsValidPhone(string parNumber)
         {
             string number = PhoneNumberUtil.NormalizeDigitsOnly(parNumber);

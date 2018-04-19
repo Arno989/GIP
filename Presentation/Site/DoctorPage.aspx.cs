@@ -104,6 +104,7 @@ namespace Presentation.Site
                         else
                         {
                             int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteRelationHospitalHasDoctor(, Convert.ToInt32(id));
                             _businesscode.DeleteDoctor(Convert.ToInt32(id));
                         }
                     }

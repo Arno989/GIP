@@ -1038,5 +1038,22 @@ namespace Domain.Persistence
 
         }
         #endregion
+
+        #region DeleteRelation
+        public void DeleteRelationHospitalHasDoctor(int hospital_id_p, int doctor_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM tblhospital_has_tbldoctor WHERE tblHospital_Hospital_ID = @oldHospitalID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
+
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
     }
 }
