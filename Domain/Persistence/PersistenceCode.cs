@@ -309,7 +309,7 @@ namespace Domain.Persistence
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY >Start_Date ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY Start_Date ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -401,6 +401,7 @@ namespace Domain.Persistence
             MySqlCommand cmd = new MySqlCommand("select * from tblevaluation ORDER BY Date ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+
             //Date is niet de beste column om als referentie op te halen naar Evalaution. Aangezien tblEvaluation voorlopig nog geen column Name heeft laat ik het zo.
             while (dataReader.Read())
             {
@@ -505,7 +506,6 @@ namespace Domain.Persistence
             return ListCount;
         }
         #endregion
-        // Zo goed als af
 
         #region GetRelation
         public List<int> getRelationHospitalHasDoctor(int Doctor_ID_p)
