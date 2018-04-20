@@ -438,6 +438,7 @@ namespace Presentation.SiteEdit
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 List<int> OldHospitalID = _business.GetRelationHospitalHasDoctor(ListDataIDs[i]);
                 int index = dropdownData.SelectedIndex;
+
                 if (OldHospitalID.Count == 0 && index != 0)
                 {
                     _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i]);
@@ -447,7 +448,7 @@ namespace Presentation.SiteEdit
                     _business.UpdateRelationHospitalHasDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), ListDataIDs[i], OldHospitalID[0]);
                     OldHospitalID.Clear();
                 }
-                else 
+                else if (OldHospitalID.Count != 0)
                 {
                     _business.DeleteRelationHospitalHasDoctor(OldHospitalID[0], ListDataIDs[i]);
                 }
