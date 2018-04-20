@@ -296,18 +296,23 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             else
                             {
-                                goto track1;
+
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 1:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -316,17 +321,18 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid email";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
 
                             break;
 
                         case 2:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -335,16 +341,17 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 3:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -353,7 +360,15 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
+                            }
+                            break;
+
+                        case 4:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
                             }
                             else
                             {
@@ -361,28 +376,59 @@ namespace Presentation.SiteEdit
                             }
                             break;
 
-                        case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
-                            break;
-
                         case 5:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 6:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 7:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 8:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 9:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
                     }
                 }

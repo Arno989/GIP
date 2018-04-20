@@ -22,37 +22,13 @@ namespace Presentation.Site
                 lbHospitals();
             }
         }
-
-        protected void lbHospitals()
-        {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-
-                var container = Master.FindControl("Body");
-                string lbName = "lbHospitals";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
-
-                List<int> id = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value));
-                if (id.Count != 0)
-                {
-                    string sortingPar = string.Format(" WHERE Hospital_ID = {0}", id[0]);
-                    List<HospitalCode> test = new List<HospitalCode>();
-                    test = _businesscode.GetHospitals(sortingPar);
-                    string test2 = test[0].Name;
-
-                    listbox.Items.Add(test2);
-                }
-                listbox.DataBind();
-            }
-        }
-
-
-
+        
         protected void Edit(object sender, EventArgs e)
         {
             List<string> List1 = new List<string>();
             List<List<string>> ListData = new List<List<string>>();
             List<int> DataIDs = new List<int>();
+
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
                 if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
@@ -79,7 +55,7 @@ namespace Presentation.Site
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select one or more row(s) to edit')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
             }
         }
 
@@ -106,9 +82,6 @@ namespace Presentation.Site
                             _businesscode.DeleteDoctor(Convert.ToInt32(DoctorID));
                         }
                     }
-                    else
-                    {
-                    }
                 }
             }
             Response.Redirect("../Site/DoctorPage.aspx");
@@ -118,6 +91,28 @@ namespace Presentation.Site
         {
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
+        }
+        
+        protected void lbHospitals()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbHospitals";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                List<int> id = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value));
+
+                if (id.Count != 0)
+                {
+                    string sortingPar = string.Format(" WHERE Hospital_ID = {0}", id[0]);
+                    List<HospitalCode> test = new List<HospitalCode>();
+                    test = _businesscode.GetHospitals(sortingPar);
+                    string test2 = test[0].Name;
+
+                    listbox.Items.Add(test2);
+                }
+                listbox.DataBind();
+            }
         }
     }
 }

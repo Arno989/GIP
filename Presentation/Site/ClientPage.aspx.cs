@@ -27,6 +27,7 @@ namespace Presentation.Site
             List<string> List1 = new List<string>();
             List<List<string>> ListData = new List<List<string>>();
             List<int> DataIDs = new List<int>();
+
             for (int i = 0; i < GridView.Rows.Count; i++)
                 {
                     if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
@@ -61,9 +62,6 @@ namespace Presentation.Site
                         {
                             int id = (int)GridView.DataKeys[i].Value;
                             _businesscode.DeleteClient(Convert.ToInt32(id));
-                        }
-                        else
-                        {
                         }
                     }
                 }
