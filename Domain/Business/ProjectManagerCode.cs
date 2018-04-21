@@ -52,7 +52,7 @@ namespace Domain.Business
 
 		private string _phone2;
 
-		public string Phone
+		public string Phone2
 		{
 			get { return _phone2; }
 			set { _phone2 = value; }
