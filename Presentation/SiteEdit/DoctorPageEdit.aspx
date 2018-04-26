@@ -65,6 +65,11 @@
                         <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:DropDownList>
                 </asp:TableCell>
+                <asp:TableCell CssClass="cellEdit">
+                    <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit00" AppendDataBoundItems="true">
+                        <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
+                    </asp:ListBox>
+                </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">

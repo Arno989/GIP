@@ -19,7 +19,7 @@ namespace Presentation.Site
             {
                 GridView.DataSource = _businesscode.GetDoctors(sortingPar);
                 GridView.DataBind();
-                //lbHospitals();
+                ListBoxRel1();
             }
         }
         
@@ -92,24 +92,26 @@ namespace Presentation.Site
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
         }
-
-        protected void lbHospitals()
+        
+        protected void ListBoxRel1()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbHospitals";
                 ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
-                List<int> id = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value));
+                List<int> relation = _businesscode.GetRelationHospitalHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value));
 
-                if (id.Count != 0)
+                if (relation.Count != 0)
                 {
-                    string sortingPar = string.Format(" WHERE Hospital_ID = {0}", id[0]);
-                    List<HospitalCode> test = new List<HospitalCode>();
-                    test = _businesscode.GetHospitals(sortingPar);
-                    string test2 = test[0].Name;
+                    List<HospitalCode> relHospitalRaw = new List<HospitalCode>();
 
-                    listbox.Items.Add(test2);
+                    for (int i2 = 0; i2 < relation.Count; i2++)
+                    {
+                        string sortingPar = string.Format("WHERE Hospital_ID = {0}", relation[i2]);
+                        relHospitalRaw = _businesscode.GetHospitals(sortingPar);
+                        listbox.Items.Add(relHospitalRaw[0].Name);
+                    }
                 }
                 listbox.DataBind();
             }

@@ -22,7 +22,9 @@
 					<div class="">
 						<h3>
 							<a href="../index.aspx">
-								<img class="middle-logo" src="../Images/Logo100dpi.png"alt="logo" />
+								<img class="middle-logo" src="../Images/LogoWhite100dpi.png"alt="logo" 
+                                    onmouseover="this.src='../Images/Logo100dpi.png'"
+                                    onmouseout="this.src='../Images/LogoWhite100dpi.png'"/>
 							</a>
 						</h3>
 					</div>

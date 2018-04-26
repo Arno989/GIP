@@ -25,7 +25,7 @@ namespace Domain.Persistence
 		{
             List<ClientCode> ListClients = new List<ClientCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblclient{0};", sortingPar) , conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblclient {0};", sortingPar) , conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -54,7 +54,7 @@ namespace Domain.Persistence
 		{
             List<ContractCode> ListContract = new List<ContractCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcontract{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcontract {0};", sortingPar), conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -79,7 +79,7 @@ namespace Domain.Persistence
 		{
             List<CRACode> ListCRA = new List<CRACode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcra{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcra {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -104,7 +104,7 @@ namespace Domain.Persistence
 		{
             List<DepartmentCode> ListDepartment = new List<DepartmentCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldepartment{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldepartment {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -128,7 +128,7 @@ namespace Domain.Persistence
 		{
             List<DoctorCode> ListDoctor = new List<DoctorCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldoctor{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldoctor {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -158,7 +158,7 @@ namespace Domain.Persistence
 		{
             List<EvaluationCode> ListEvaluation = new List<EvaluationCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblevaluation{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblevaluation {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -210,7 +210,7 @@ namespace Domain.Persistence
 		{
             List<ProjectCode> ListProject = new List<ProjectCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblproject{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblproject {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -233,7 +233,7 @@ namespace Domain.Persistence
 		{
             List<ProjectManagerCode> ListProjectManager = new List<ProjectManagerCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblprojectmanager{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblprojectmanager {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -258,7 +258,7 @@ namespace Domain.Persistence
 		{
             List<StudyCoördinatorCode> ListStudyCoördinator = new List<StudyCoördinatorCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblstudycoördinator{0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblstudycoördinator {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
