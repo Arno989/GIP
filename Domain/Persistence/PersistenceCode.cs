@@ -114,8 +114,9 @@ namespace Domain.Persistence
                 string name = Convert.ToString(dataReader["Name"]);
 				string email = Convert.ToString(dataReader["E_mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
+                int hospitalID = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
 
-				DepartmentCode c = new DepartmentCode(id,name,email,phone1);
+                DepartmentCode c = new DepartmentCode(id,name,email,phone1, hospitalID);
 
 				ListDepartment.Add(c);
 			}
@@ -527,6 +528,26 @@ namespace Domain.Persistence
             conn.Close();
             return ListAllRelations;
         }
+        public List<int> getRelationHospitalHasDepartment(int Department_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("select tblHospital_Hospital_ID from tbldepartment WHERE Department_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Department_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int idHospital = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
+
+                ListAllRelations.Add(idHospital);
+                //dit is een list, terwijl er maar 1 value in zal kunnen. Dit doe ik omdat het gemakkelijker is.
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
         #endregion 
         // relations nog niet af
 
@@ -584,18 +605,19 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addDepartment(string name_p,string email_p,string phone1_p)
+		public void addDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDepartment (Name, E_mail, Phone1) VALUES (@name, @email, @phone1);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDepartment (Name, E_mail, Phone1, tblHospital_Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}

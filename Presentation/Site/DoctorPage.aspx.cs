@@ -19,7 +19,7 @@ namespace Presentation.Site
             {
                 GridView.DataSource = _businesscode.GetDoctors(sortingPar);
                 GridView.DataBind();
-                lbHospitals();
+                //lbHospitals();
             }
         }
         
@@ -92,7 +92,7 @@ namespace Presentation.Site
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
         }
-        
+
         protected void lbHospitals()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)

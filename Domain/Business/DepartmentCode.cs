@@ -42,19 +42,29 @@ namespace Domain.Business
 			set { _phone1 = value; }
 		}
 
-		// All constructors
+        private int _hospitalID;
 
-		public DepartmentCode()
+        public int HospitalID
+        {
+            get { return _hospitalID; }
+            set { _hospitalID = value; }
+        }
+
+
+        // All constructors
+
+        public DepartmentCode()
 		{
 
 		}
 
-		public DepartmentCode(int department_id_p, string name_p,string email_p,string phone1_p)
+		public DepartmentCode(int department_id_p, string name_p,string email_p,string phone1_p, int hospitalID_p)
 		{
             _department_id = department_id_p;
 			_name = name_p;
 			_email = email_p;
 			_phone1 = phone1_p;
+            _hospitalID = hospitalID_p;
 		}
 	}
 }

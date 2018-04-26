@@ -112,6 +112,10 @@ namespace Domain.Business
         {
             return _persistence.getRelationHospitalHasDoctor(Doctor_ID_p2);
         }
+        public List<int> getRelationHospitalHasDepartment(int Department_ID_p2)
+        {
+            return _persistence.getRelationHospitalHasDepartment(Department_ID_p2);
+        }
         #endregion
         // nog niet af
 
@@ -128,9 +132,9 @@ namespace Domain.Business
         {
             _persistence.addCRA(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
-        public void SetDepartment(string name_p2, string email_p2, string phone1_p2)
+        public void SetDepartment(string name_p2, string email_p2, string phone1_p2, int hospital_id_p2)
         {
-            _persistence.addDepartment(name_p2, email_p2, phone1_p2);
+            _persistence.addDepartment(name_p2, email_p2, phone1_p2, hospital_id_p2);
         }
         public void SetDoctor(string name_p2, string email_p2, string phone1_p2, string phone2_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string specialisation_p2, string cv_p2)
         {

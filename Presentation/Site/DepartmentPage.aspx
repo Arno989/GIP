@@ -27,6 +27,11 @@
             <asp:BoundField DataField="Name" HeaderText="Name" />
             <asp:BoundField DataField="Email" HeaderText="E_mail" />
             <asp:BoundField DataField="Phone1" HeaderText="Phone" />
+            <asp:TemplateField HeaderText="Hospital" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <asp:Label ID="lbHospital" runat="server"></asp:Label>
+                </ItemTemplate>
+             </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

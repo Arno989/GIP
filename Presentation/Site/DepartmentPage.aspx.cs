@@ -20,7 +20,8 @@ namespace Presentation.Site
                 GridView.DataSource = _businesscode.GetDepartments(sortingPar);
                 GridView.DataBind();
             }
-		}
+            FillHospital();
+        }
 
         protected void Edit(object sender, EventArgs e)
         {
@@ -75,6 +76,26 @@ namespace Presentation.Site
         {
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
+        }
+
+        public void FillHospital()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //hospitalID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GridView.DataKeys[i].Value);
+                List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
+                CurrentDepartment =  _businesscode.GetDepartments(sortingPar1);
+                int hospitalID = CurrentDepartment[0].HospitalID;
+
+                // hospitalID omzetten naar hospital name
+                string sortingPar2 = string.Format(" WHERE Hospital_ID = {0}", hospitalID);
+                List<HospitalCode> HospitalRelation = new List<HospitalCode>();
+                HospitalRelation = _businesscode.GetHospitals(sortingPar2);
+                string hospitalName = HospitalRelation[0].Name;
+
+                GridView.Rows[i].Cells[4].Text = hospitalName;
+            }
         }
     }
 }
