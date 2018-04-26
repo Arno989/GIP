@@ -102,10 +102,13 @@ namespace Presentation.SiteEdit
                 List<int> HospitalID = _business.GetRelationHospitalHasDoctor(IDDoctor[i]);
                 if (HospitalID.Count > 0)
                 {
-                    ListItem li = dropdownData.Items.FindByValue(HospitalID[0].ToString());
-                    dropdownData.ClearSelection();
-                    li.Selected = true;
-                    HospitalID.Clear();
+                    foreach (var item in HospitalID)//---------------------------------------------WIP--------------------
+                    {
+                        ListItem li = dropdownData.Items.FindByValue(HospitalID[0].ToString());
+                        dropdownData.ClearSelection();
+                        li.Selected = true;
+                        HospitalID.Clear();
+                    }
                 }
             }
         }
@@ -264,15 +267,21 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                string ddName = "ddEdit" + i.ToString() + "0";
-                var dropdownData = container.FindControl(ddName) as DropDownList;
-                int index = dropdownData.SelectedIndex;
+                string lbName = "lbEdit" + i.ToString() + "0";
+                var listboxData = container.FindControl(lbName) as ListBox;
+                int index = listboxData.SelectedIndex;
 
                 _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]);
-                if (dropdownData.SelectedIndex != 0)
+                if (listboxData.SelectedIndex != 0)
                 {
-                    DoctorCode LastItem = _business.GetDoctors(sortingPar).Last();
-                    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
+                    foreach (ListItem listItem in listboxData.Items)//-----------------------------------------WIP---------------------
+                    {
+                        if (listItem.Selected == true)
+                        {
+                            DoctorCode LastItem = _business.GetDoctors(sortingPar).Last();
+                            _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
+                        }
+                    }
                 }
                 track1:
                 continue;
@@ -493,7 +502,7 @@ namespace Presentation.SiteEdit
         {
             List<List<string>> ListContentHospital = _business.GetHospitalDropDownContent();
             List<string> names = new List<string>();
-            /*
+            
             
                 string ddEdit = "lbEdit" + 0.ToString() + "0";
                 var container = Master.FindControl("Body");
@@ -513,6 +522,7 @@ namespace Presentation.SiteEdit
                 DropDownData.DataSource = names;
                 DropDownData.DataBind();
             
+
                 for (int i2 = 0; i2 < ListContentHospital.Count; i2++)
                 {
                     if (i2 <= 9)
@@ -520,7 +530,7 @@ namespace Presentation.SiteEdit
                         DropDownData.Items[i2 + 1].Value = ListContentHospital[i2][0];
                     }
                 }
-            */
+            
             
         }
         

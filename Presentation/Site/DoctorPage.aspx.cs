@@ -93,7 +93,7 @@ namespace Presentation.Site
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx");
         }
         
-        protected void ListBoxRel1()
+        protected void ListBoxRel1()//-------------------------------------WIP-------------------------------
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
@@ -108,8 +108,10 @@ namespace Presentation.Site
                     List<HospitalCode> test = new List<HospitalCode>();
                     test = _businesscode.GetHospitals(sortingPar);
                     string test2 = test[0].Name;
-
-                    listbox.Items.Add(test2);
+                    foreach (var item in test)
+                    {
+                        listbox.Items.Add(test2);
+                    }
                 }
                 listbox.DataBind();
             }
