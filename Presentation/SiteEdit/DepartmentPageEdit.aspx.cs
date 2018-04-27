@@ -46,7 +46,7 @@ namespace Presentation.SiteEdit
             int Count = 0;
             for (int i = 0; i < ListData.Count; i++)
             {
-                for (int i2 = 0; i2 <= 2; i2++)
+                for (int i2 = 0; i2 <= 3; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var container = Master.FindControl("Body");
@@ -66,6 +66,20 @@ namespace Presentation.SiteEdit
                             ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
                             break;
                     }
+
+                    string ddName = "ddEdit" + i.ToString() + 0.ToString();
+                    var dd = container.FindControl(ddName) as DropDownList;
+
+                    //hospitalID krijgen van de current row in de gridvieuw
+                    string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
+                    List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
+                    CurrentDepartment = _business.GetDepartments(sortingPar1);
+                    int hospitalID = CurrentDepartment[0].HospitalID;
+
+                    //de hospital selecteren in de dropdown
+                    ListItem li = dd.Items.FindByValue(hospitalID.ToString());
+                    dd.ClearSelection();
+                    li.Selected = true;
                     Count++;
                 }
             }
@@ -154,85 +168,17 @@ namespace Presentation.SiteEdit
             }
         }
 
-        //private void SendData()
-        //{
-        //    for (int i = 0; i <= 9; i++)
-        //    {
-        //        string[] input = new string[3];
-
-        //        for (int i2 = 0; i2 <= 2; i2++)
-        //        {
-        //            string tbName = "tbEdit" + i.ToString() + i2.ToString();
-        //            var container = Master.FindControl("Body");
-        //            var txtBox = container.FindControl(tbName);
-
-        //            switch (i2)
-        //            {
-        //                case 0:
-        //                    if (((TextBox)txtBox).Text != "")
-        //                    {
-        //                        input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    }
-        //                    else
-        //                    {
-        //                        goto track1;
-        //                    }
-        //                    break;
-
-        //                case 1:
-        //                    if (((TextBox)txtBox).Text == "")
-        //                    {
-        //                        if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
-        //                        {
-        //                            input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                        }
-        //                        else
-        //                        {
-        //                            //error---------------------------------------
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    }
-        //                    break;
-
-        //                case 2:
-        //                    if (((TextBox)txtBox).Text == "")
-        //                    {
-        //                        if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
-        //                        {
-        //                            input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                        }
-        //                        else
-        //                        {
-        //                            //error---------------------------------------
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        input[i2] = (((TextBox)txtBox).Text.ToString());
-        //                    }
-        //                    break;
-        //            }
-        //        }
-        //        _business.SetDepartment(input[0], input[1], input[2]);
-        //        track1:
-        //        continue;
-        //    }
-        //}
-
         private void UpdateData()
         {
             List<int> ListDataIDs = GetDataIDs();
             for (int i = 0; i <= 9; i++)
             {
                 string[] input = new string[3];
+                var container = Master.FindControl("Body");
 
                 for (int i2 = 0; i2 <= 2; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
@@ -285,7 +231,17 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2]);
+                
+                //hospitalID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
+                List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
+                CurrentDepartment = _business.GetDepartments(sortingPar1);
+                int hospitalID = CurrentDepartment[0].HospitalID;
+
+                string ddName = "ddEdit" + i.ToString() + 0.ToString();
+                var dd = container.FindControl(ddName) as DropDownList;
+
+                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
                 track1:
                 continue;
             }

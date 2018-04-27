@@ -183,9 +183,9 @@ namespace Domain.Business
         {
             _persistence.UpdateCRA(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
-        public void UpdateDepartment(int id_p2, string name_p2, string email_p2, string phone1_p2)
+        public void UpdateDepartment(int id_p2, string name_p2, string email_p2, string phone1_p2, int hospitalID_p2)
         {
-            _persistence.UpdateDepartment(id_p2, name_p2, email_p2, phone1_p2);
+            _persistence.UpdateDepartment(id_p2, name_p2, email_p2, phone1_p2, hospitalID_p2);
         }
         public void UpdateDoctor(int id_p2, string name_p2, string email_p2, string phone1_p2, string phone2_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string specialisation_p2, string cv_p2)
         {

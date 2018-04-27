@@ -807,17 +807,19 @@ namespace Domain.Persistence
 
             conn.Close();
         }
-        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p)
+        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p, int hospitalID_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblDepartment SET Name = @name, E_mail = @email, Phone1 = @phone1 WHERE Department_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE tblDepartment SET Name = @name, E_mail = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
 
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
             cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@Hospital_id", MySqlDbType.VarChar).Value = hospitalID_p;
+            cmd.Parameters.Add("@department_id", MySqlDbType.VarChar).Value = id_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
