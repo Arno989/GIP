@@ -123,7 +123,6 @@ namespace Presentation.SiteEdit
             for (int i = 0; i <= 9; i++)
             {
                 string[] input = new string[10];
-                //int Hospital_ID;
 
                 for (int i2 = 0; i2 <= 9; i2++)
                 {
@@ -270,20 +269,18 @@ namespace Presentation.SiteEdit
                     }
                 }
                 _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]);
-
-
-                //-----------------------------------------WIP---------------------
+                
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
                 
                 if (listboxData.SelectedIndex != 0)
                 {
-                    foreach (ListItem listItem in listboxData.Items)
+                    foreach (ListItem l in listboxData.Items)
                     {
-                        if (listItem.Selected == true)
+                        if (l.Selected == true)
                         {
                             DoctorCode doctor = _business.GetDoctors(sortingPar).Last();
-                            _business.addHospitalToDoctor(Convert.ToInt16(listboxData.SelectedValue), doctor.Doctor_ID);
+                            _business.addHospitalToDoctor(Convert.ToInt16(l.Value.ToString()), doctor.Doctor_ID);
                         }
                     }
                 }
