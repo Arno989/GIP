@@ -73,7 +73,7 @@ namespace Presentation.Site
                         {
                             int DoctorID = (int)GridView.DataKeys[i].Value;
                             List<int> HospitalID = _businesscode.GetRelationHospitalHasDoctor(DoctorID);
-                            _businesscode.DeleteRelationHospitalHasDoctor(HospitalID[0], Convert.ToInt32(DoctorID));
+                            _businesscode.DeleteRelationDoctorHasHospitals(Convert.ToInt32(DoctorID));
                             _businesscode.DeleteDoctor(Convert.ToInt32(DoctorID));
                         }
                         else

@@ -66,7 +66,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit00" AppendDataBoundItems="true">
+                    <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit00" AppendDataBoundItems="true">
                         <asp:ListItem Selected="True" Text="Select a hospital" Value=""></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>

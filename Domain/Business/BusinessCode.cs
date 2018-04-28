@@ -265,9 +265,9 @@ namespace Domain.Business
         #endregion
 
         #region DeleteRelation
-        public void DeleteRelationHospitalHasDoctor(int hospital_id_p2, int doctor_id_p2)
+        public void DeleteRelationDoctorHasHospitals(int doctor_id_p2)
         {
-            _persistence.DeleteRelationHospitalHasDoctor(hospital_id_p2, doctor_id_p2);
+            _persistence.DeleteRelationDoctorHasHospitals(doctor_id_p2);
         }
         #endregion
 
