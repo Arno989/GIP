@@ -50,21 +50,38 @@ namespace Domain.Business
 			set { _end_date = value; }
 		}
 
-		// All constructors
+        private int _projectID;
 
-		public ContractCode()
+        public int ProjectID
+        {
+            get { return _projectID; }
+            set { _projectID = value; }
+        }
+
+        private int _clienID;
+
+        public int ClientID
+        {
+            get { return _clienID; }
+            set { _clienID = value; }
+        }
+
+        // All constructors
+
+        public ContractCode()
 		{
 
 		}
 
-		public ContractCode(int _contract_id_p, string legal_country_p,string fee_p,string startdate_p,string enddate_p)
+		public ContractCode(int _contract_id_p, string legal_country_p,string fee_p,string startdate_p,string enddate_p, int projectID_p, int clientID_p)
 		{
             _contract_id = _contract_id_p;
-
             _legal_country = legal_country_p;
 			_fee = fee_p;
             _start_date = startdate_p;
             _end_date = enddate_p;
-		}
+            _projectID = projectID_p;
+            _clienID = clientID_p;
+        }
 	}
 }

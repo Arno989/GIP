@@ -21,6 +21,8 @@ namespace Presentation.Site
                 GridView.DataSource = _businesscode.GetContracts(sortingPar);
                 GridView.DataBind();
             }
+            FillProject();
+            FillClient();
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -73,6 +75,46 @@ namespace Presentation.Site
         {
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/ContractPageEdit.aspx");
+        }
+
+        public void FillProject()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //projectID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", GridView.DataKeys[i].Value);
+                List<ContractCode> CurrentContract = new List<ContractCode>();
+                CurrentContract = _businesscode.GetContracts(sortingPar1);
+                int projectID = CurrentContract[0].ProjectID;
+
+                //projectID omzetten naar project title
+                string sortingPar2 = string.Format(" WHERE Project_ID = {0}", projectID);
+                List<ProjectCode> ProjectRelation = new List<ProjectCode>();
+                ProjectRelation = _businesscode.GetProjects(sortingPar2);
+                string ProjectTitle = ProjectRelation[0].Title;
+
+                GridView.Rows[i].Cells[5].Text = ProjectTitle;
+            }
+        }
+
+        public void FillClient()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //projectID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", GridView.DataKeys[i].Value);
+                List<ContractCode> CurrentContract = new List<ContractCode>();
+                CurrentContract = _businesscode.GetContracts(sortingPar1);
+                int clientID = CurrentContract[0].ClientID;
+
+                //projectID omzetten naar project title
+                string sortingPar2 = string.Format(" WHERE Client_ID = {0}", clientID);
+                List<ClientCode> ClientRelation = new List<ClientCode>();
+                ClientRelation = _businesscode.GetClients(sortingPar2);
+                string ClientName = ClientRelation[0].Name;
+
+                GridView.Rows[i].Cells[6].Text = ClientName;
+            }
         }
     }
 }

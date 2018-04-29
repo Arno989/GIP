@@ -65,9 +65,11 @@ namespace Domain.Persistence
 				double fee = Convert.ToDouble(dataReader["Fee"]);
 				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
 				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
+                int projectID = Convert.ToInt16(dataReader["tblProject_Project_ID"]);
+                int clientID = Convert.ToInt16(dataReader["tblClient_Client_ID"]);
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
+                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), projectID, clientID);
 
 				ListContract.Add(c);
 			}

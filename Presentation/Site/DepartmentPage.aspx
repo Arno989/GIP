@@ -31,7 +31,7 @@
                 <ItemTemplate>
                     <asp:Label ID="lbHospital" runat="server"></asp:Label>
                 </ItemTemplate>
-             </asp:TemplateField>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

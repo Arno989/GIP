@@ -28,6 +28,16 @@
             <asp:BoundField DataField="Fee" HeaderText="Fee" />
             <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" />
+            <asp:TemplateField HeaderText="Project" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <asp:Label ID="lbProject" runat="server"></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Client" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <asp:Label ID="lbClient" runat="server"></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

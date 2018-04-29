@@ -25,6 +25,8 @@ namespace Presentation.SiteEdit
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetDropdownContentProject();
+            SetDropdownContentClient();
             if (!IsPostBack)
             {
                 List<List<string>> ListData = GetData();
@@ -111,7 +113,7 @@ namespace Presentation.SiteEdit
 					}
 				}
 				_business.SetContract(input[0],Convert.ToDouble(input[1]),Convert.ToDateTime(input[2]),Convert.ToDateTime(input[3]));
-track1:
+                track1:
 				continue;
 			}
 		}
@@ -161,6 +163,67 @@ track1:
             }
         }
 
+        public void SetDropdownContentProject()
+        {
+            List<List<string>> ListContentProject = _business.GetProjectDropDownContent();
+            List<string> names = new List<string>();
+
+            for (int i = 0; i <= 9; i++)
+            {
+                string ddEdit = "ddEdit" + i.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as DropDownList;
+                for (int i2 = 0; i2 < ListContentProject.Count; i2++)
+                {
+                    if (i == 0)
+                    {
+                        names.Add(ListContentProject[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
+                }
+                track1:
+                DropDownData.DataSource = names;
+                DropDownData.DataBind();
+                for (int i2 = 0; i2 < ListContentProject.Count; i2++)
+                {
+                    DropDownData.Items[i2 + 1].Value = ListContentProject[i2][0];
+                }
+            }
+        }
+
+        public void SetDropdownContentClient()
+        {
+            List<List<string>> ListContentclient = _business.GetClientDropDownContent();
+            List<string> names = new List<string>();
+
+            for (int i = 0; i <= 9; i++)
+            {
+                string ddEdit = "ddEdit" + i.ToString() + "1";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as DropDownList;
+                for (int i2 = 0; i2 < ListContentclient.Count; i2++)
+                {
+                    if (i == 0)
+                    {
+                        names.Add(ListContentclient[i2][1]);
+                    }
+                    else
+                    {
+                        goto track1;
+                    }
+                }
+                track1:
+                DropDownData.DataSource = names;
+                DropDownData.DataBind();
+                for (int i2 = 0; i2 < ListContentclient.Count; i2++)
+                {
+                    DropDownData.Items[i2 + 1].Value = ListContentclient[i2][0];
+                }
+            }
+        }
 
         protected void btnExit_Click(object sender,EventArgs e)
 		{

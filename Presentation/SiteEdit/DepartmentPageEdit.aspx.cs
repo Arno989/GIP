@@ -158,11 +158,6 @@ namespace Presentation.SiteEdit
                 int index = dropdownData.SelectedIndex;
 
                 _business.SetDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]));
-                //if (dropdownData.SelectedIndex != 0)
-                //{
-                //    DepartmentCode LastItem = _business.GetDepartments(sortingPar).Last();
-                //    _business.addHospitalToDoctor(Convert.ToInt16(ListContentHospital[index - 1][0]), LastItem.Doctor_ID);
-                //}
                 track1:
                 continue;
             }
