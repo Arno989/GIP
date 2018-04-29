@@ -74,6 +74,11 @@ namespace Domain.Business
             return _persistence.GetRelationStudyCoordinatorHasDoctor(StudyCoordinator_ID_p2);
         }
 
+        public List<int> GetRelationDoctorHasStudyCoordinator(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationDoctorHasStudyCoordinator(Doctor_ID_p2);
+        }
+
         //------------------------------------------------------------------------------ 1 op 1
 
         public int GetRelationHospitalHasDepartment(int Department_ID_p2)
@@ -163,7 +168,7 @@ namespace Domain.Business
             _persistence.AddHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
         
-            public void AddDoctorToStudyCoordinator(int doctor_id_p2, int studycoordinator_id_p2)
+        public void AddDoctorToStudyCoordinator(int doctor_id_p2, int studycoordinator_id_p2)
         {
             _persistence.AddDoctorToStudyCoordinator(doctor_id_p2, studycoordinator_id_p2);
         }
@@ -270,6 +275,11 @@ namespace Domain.Business
         public void DeleteRelationStudyCoordinatorHasDoctor(int studycoordinator_id_p2)
         {
             _persistence.DeleteRelationStudyCoordinatorHasDoctor(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationDoctorHasStudyCoordinator(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationDoctorHasStudyCoordinator(studycoordinator_id_p2);
         }
         #endregion
 

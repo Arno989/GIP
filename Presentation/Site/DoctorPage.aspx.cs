@@ -101,6 +101,10 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationDoctorHasHospitals(RecordID); //--Var
                         }
+                        if (_businesscode.GetRelationDoctorHasStudyCoordinator(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationDoctorHasStudyCoordinator(RecordID); //--Var
+                        }
                         _businesscode.DeleteDoctor(RecordID); //--Var
                     }
                 }

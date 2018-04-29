@@ -329,6 +329,25 @@ namespace Domain.Persistence
             return ListAllRelations;
         }
 
+        public List<int> GetRelationDoctorHasStudyCoordinator(int doctor_id_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = doctor_id_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
         //--------------------------------------------------------------------------------------------------------1 op 1
 
         public int GetRelationHospitalHasDepartment(int Department_ID_p)
@@ -355,20 +374,21 @@ namespace Domain.Persistence
         public List<List<string>> GetClientDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM Client ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["Client_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
             }
 
             conn.Close();
@@ -378,20 +398,21 @@ namespace Domain.Persistence
         public List<List<string>> GetCRADropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM CRA ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["CRA_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
             }
 
             conn.Close();
@@ -401,20 +422,21 @@ namespace Domain.Persistence
         public List<List<string>> GetDoctorDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM Doctor ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["Doctor_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
             }
 
             conn.Close();
@@ -424,11 +446,11 @@ namespace Domain.Persistence
         public List<List<string>> GetHospitalDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            int count = 0;
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM Hospital ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
@@ -448,20 +470,21 @@ namespace Domain.Persistence
         public List<List<string>> GetProjectDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM Project ORDER BY Title ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["Hospital_ID"]);
                 string title = Convert.ToString(dataReader["Title"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(title);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(title);
+                count++;
             }
 
             conn.Close();
@@ -471,20 +494,21 @@ namespace Domain.Persistence
         public List<List<string>> GetProjectManagerDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM ProjectManager ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["PM_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
             }
 
             conn.Close();
@@ -494,20 +518,21 @@ namespace Domain.Persistence
         public List<List<string>> GetStudyCoordinatorDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM StudyCoordiantor ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
 
             while (dataReader.Read())
             {
                 int id = Convert.ToInt16(dataReader["SC_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
             }
 
             conn.Close();
@@ -728,7 +753,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator_has_Doctor (Doctor_ID, SC_ID) VALUES (@doctor_id, @studycoordinator_id_p);", conn);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator_has_Doctor (Doctor_ID, StudyCoordinator_ID) VALUES (@doctor_id, @studycoordinator_id);", conn);
 
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
             cmd.Parameters.Add("@studycoordinator_id", MySqlDbType.VarChar).Value = studycoordinator_id_p;
@@ -925,7 +950,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoördinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
             
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1078,9 +1103,23 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("DELETE FROM StudyCoordinator_has_Doctor WHERE SC_ID = @studycoordinator_id ;", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM StudyCoordinator_has_Doctor WHERE StudyCoordinator_ID = @studycoordinator_id ;", conn);
 
             cmd.Parameters.Add("@studycoordinator_id", MySqlDbType.VarChar).Value = studycoordinator_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationDoctorHasStudyCoordinator(int doctor_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @doctor_id ;", conn);
+
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
