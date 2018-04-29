@@ -99,7 +99,7 @@ namespace Presentation.Site
 
                         if (_businesscode.GetRelationStudyCoordinatorHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
                         {
-                            _businesscode.DeleteRelationStudyCoordinatorHasDoctor(RecordID); //--Var
+                            _businesscode.DeleteRelationStudyCoordinatorHasDoctors(RecordID); //--Var
                         }
                         _businesscode.DeleteStudyCoördinator(RecordID); //--Var
                     }

@@ -126,7 +126,7 @@ namespace Presentation.SiteEdit
                 var listboxData = container.FindControl(lbName) as ListBox;
 
                 List<int> IdSubject = GetSessionDataIDs();
-                List<int> IdRel = _business.GetRelationDoctorHasHospital(IdSubject[i]); //--Var
+                List<int> IdRel = _business.GetRelationDoctorHasHospitals(IdSubject[i]); //--Var
 
                 if (IdRel.Count > 0)
                 {
@@ -479,8 +479,7 @@ namespace Presentation.SiteEdit
                     {
                         if (l.Selected == true)
                         {
-                            DoctorCode Doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), Doctor.Doctor_ID); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), ListDataIDs[i]); //--Var
                         }
                     }
                 }

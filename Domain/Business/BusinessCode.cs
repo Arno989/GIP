@@ -64,19 +64,24 @@ namespace Domain.Business
         #endregion
         
         #region GetRelation
-        public List<int> GetRelationDoctorHasHospital(int Doctor_ID_p2)
+        public List<int> GetRelationDoctorHasHospitals(int Doctor_ID_p2)
         {
-            return _persistence.GetRelationDoctorHasHospital(Doctor_ID_p2);
+            return _persistence.GetRelationDoctorHasHospitals(Doctor_ID_p2);
         }
 
-        public List<int> GetRelationStudyCoordinatorHasDoctor(int StudyCoordinator_ID_p2)
+        public List<int> GetRelationHospitalHasDoctors(int Hospital_ID_p2)
         {
-            return _persistence.GetRelationStudyCoordinatorHasDoctor(StudyCoordinator_ID_p2);
+            return _persistence.GetRelationDoctorHasHospitals(Hospital_ID_p2);
         }
 
-        public List<int> GetRelationDoctorHasStudyCoordinator(int Doctor_ID_p2)
+        public List<int> GetRelationStudyCoordinatorHasDoctors(int StudyCoordinator_ID_p2)
         {
-            return _persistence.GetRelationDoctorHasStudyCoordinator(Doctor_ID_p2);
+            return _persistence.GetRelationStudyCoordinatorHasDoctors(StudyCoordinator_ID_p2);
+        }
+
+        public List<int> GetRelationDoctorHasStudyCoordinators(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationDoctorHasStudyCoordinators(Doctor_ID_p2);
         }
 
         //------------------------------------------------------------------------------ 1 op 1
@@ -272,14 +277,19 @@ namespace Domain.Business
             _persistence.DeleteRelationDoctorHasHospitals(doctor_id_p2);
         }
 
-        public void DeleteRelationStudyCoordinatorHasDoctor(int studycoordinator_id_p2)
+        public void DeleteRelationHospitalHasDoctors(int doctor_id_p2)
         {
-            _persistence.DeleteRelationStudyCoordinatorHasDoctor(studycoordinator_id_p2);
+            _persistence.DeleteRelationHospitalHasDoctors(doctor_id_p2);
         }
 
-        public void DeleteRelationDoctorHasStudyCoordinator(int studycoordinator_id_p2)
+        public void DeleteRelationStudyCoordinatorHasDoctors(int studycoordinator_id_p2)
         {
-            _persistence.DeleteRelationDoctorHasStudyCoordinator(studycoordinator_id_p2);
+            _persistence.DeleteRelationStudyCoordinatorHasDoctors(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationDoctorHasStudyCoordinators(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationDoctorHasStudyCoordinators(studycoordinator_id_p2);
         }
         #endregion
 

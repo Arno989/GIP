@@ -60,8 +60,13 @@ namespace Presentation.Site
                     CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
                     if (chk.Checked)
                     {
-                        int id = (int)GridView.DataKeys[i].Value;
-                        _businesscode.DeleteHospital(Convert.ToInt32(id));
+                        int RecordID = (int)GridView.DataKeys[i].Value;
+
+                        if (_businesscode.GetRelationHospitalHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationHospitalHasDoctors(RecordID); //--Var
+                        }
+                        _businesscode.DeleteHospital(Convert.ToInt32(RecordID));
                     }
                 }
             }

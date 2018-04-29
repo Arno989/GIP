@@ -97,13 +97,13 @@ namespace Presentation.Site
                     {
                         int RecordID = (int)GridView.DataKeys[i].Value;
 
-                        if (_businesscode.GetRelationDoctorHasHospital(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        if (_businesscode.GetRelationDoctorHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
                         {
                             _businesscode.DeleteRelationDoctorHasHospitals(RecordID); //--Var
                         }
-                        if (_businesscode.GetRelationDoctorHasStudyCoordinator(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        if (_businesscode.GetRelationDoctorHasStudyCoordinators(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
                         {
-                            _businesscode.DeleteRelationDoctorHasStudyCoordinator(RecordID); //--Var
+                            _businesscode.DeleteRelationDoctorHasStudyCoordinators(RecordID); //--Var
                         }
                         _businesscode.DeleteDoctor(RecordID); //--Var
                     }

@@ -291,7 +291,7 @@ namespace Domain.Persistence
         #endregion
         
         #region GetRelation
-        public List<int> GetRelationDoctorHasHospital(int Doctor_ID_p)
+        public List<int> GetRelationDoctorHasHospitals(int Doctor_ID_p)
         {
             List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -310,7 +310,26 @@ namespace Domain.Persistence
             return ListAllRelations;
         }
 
-        public List<int> GetRelationStudyCoordinatorHasDoctor(int StudyCoordinator_ID_p)
+        public List<int> GetRelationHospitalHasDoctors(int Hospital_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM Doctor_has_Hospital WHERE Hospital_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Hospital_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Doctor_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationStudyCoordinatorHasDoctors(int StudyCoordinator_ID_p)
         {
             List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -329,7 +348,7 @@ namespace Domain.Persistence
             return ListAllRelations;
         }
 
-        public List<int> GetRelationDoctorHasStudyCoordinator(int doctor_id_ID_p)
+        public List<int> GetRelationDoctorHasStudyCoordinators(int doctor_id_ID_p)
         {
             List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -1097,7 +1116,21 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationStudyCoordinatorHasDoctor(int studycoordinator_id_p)
+        public void DeleteRelationHospitalHasDoctors(int hospital_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Doctor_has_Hospital WHERE Hospital_ID = @hospital_id ;", conn);
+
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationStudyCoordinatorHasDoctors(int studycoordinator_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1111,7 +1144,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationDoctorHasStudyCoordinator(int doctor_id_p)
+        public void DeleteRelationDoctorHasStudyCoordinators(int doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
