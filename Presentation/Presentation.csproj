@@ -112,7 +112,7 @@
     <Content Include="SiteEdit\HospitalPageEdit.aspx" />
     <Content Include="SiteEdit\ProjectManagerPageEdit.aspx" />
     <Content Include="SiteEdit\ProjectPageEdit.aspx" />
-    <Content Include="SiteEdit\StudyCoördinatorPageEdit.aspx" />
+    <Content Include="SiteEdit\StudyCoordinatorPageEdit.aspx" />
     <Content Include="Site\ClientPage.aspx" />
     <Content Include="Site\ContractPage.aspx" />
     <Content Include="Site\CRAPage.aspx" />
@@ -123,7 +123,7 @@
     <Content Include="Site\HospitalPage.aspx" />
     <Content Include="Site\ProjectManagerPage.aspx" />
     <Content Include="Site\ProjectPage.aspx" />
-    <Content Include="Site\StudyCoördinatorPage.aspx" />
+    <Content Include="Site\StudyCoordinatorPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -205,12 +205,12 @@
     <Compile Include="SiteEdit\ProjectPageEdit.aspx.designer.cs">
       <DependentUpon>ProjectPageEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SiteEdit\StudyCoördinatorPageEdit.aspx.cs">
-      <DependentUpon>StudyCoördinatorPageEdit.aspx</DependentUpon>
+    <Compile Include="SiteEdit\StudyCoordinatorPageEdit.aspx.cs">
+      <DependentUpon>StudyCoordinatorPageEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SiteEdit\StudyCoördinatorPageEdit.aspx.designer.cs">
-      <DependentUpon>StudyCoördinatorPageEdit.aspx</DependentUpon>
+    <Compile Include="SiteEdit\StudyCoordinatorPageEdit.aspx.designer.cs">
+      <DependentUpon>StudyCoordinatorPageEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site\ClientPage.aspx.cs">
       <DependentUpon>ClientPage.aspx</DependentUpon>
@@ -282,12 +282,12 @@
     <Compile Include="Site\ProjectPage.aspx.designer.cs">
       <DependentUpon>ProjectPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\StudyCoördinatorPage.aspx.cs">
-      <DependentUpon>StudyCoördinatorPage.aspx</DependentUpon>
+    <Compile Include="Site\StudyCoordinatorPage.aspx.cs">
+      <DependentUpon>StudyCoordinatorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\StudyCoördinatorPage.aspx.designer.cs">
-      <DependentUpon>StudyCoördinatorPage.aspx</DependentUpon>
+    <Compile Include="Site\StudyCoordinatorPage.aspx.designer.cs">
+      <DependentUpon>StudyCoordinatorPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Business
 {
-	public class StudyCoördinatorCode
+	public class StudyCoordinatorCode
 	{
 
         // All private and public properties of class StudyCoördinator
@@ -68,12 +68,12 @@ namespace Domain.Business
 
 		// All constructors
 
-		public StudyCoördinatorCode()
+		public StudyCoordinatorCode()
 		{
 
 		}
 
-		public StudyCoördinatorCode(int sc_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
+		public StudyCoordinatorCode(int sc_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
 		{
             _sc_id = sc_id_p;
 			_name = name_p;
