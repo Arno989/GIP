@@ -27,7 +27,7 @@
                 <asp:TableHeaderCell>Country</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Specialisation</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CV</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Hospital</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Hospitals</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
@@ -62,7 +62,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit00" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -99,7 +99,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit10" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -136,7 +136,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit20" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -173,7 +173,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit30" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
 			</asp:TableRow>
@@ -210,7 +210,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit40" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -247,7 +247,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit50" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -284,7 +284,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit60" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -321,7 +321,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit70" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -358,7 +358,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit80" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>
@@ -395,7 +395,7 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" CssClass="listboxEdit" SelectionMode="Multiple" ID="lbEdit90" AppendDataBoundItems="true" AutoPostBack="true">
-                        <asp:ListItem Selected="false" Text="Select a hospital" Value="-1"></asp:ListItem>
+                        <asp:ListItem Selected="false" Text="Select hospitals" Value="-1"></asp:ListItem>
                     </asp:ListBox>
                 </asp:TableCell>
             </asp:TableRow>

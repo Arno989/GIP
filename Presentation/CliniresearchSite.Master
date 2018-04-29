@@ -39,7 +39,7 @@
 							<li class="sidebar-item"><a href="../Site/HospitalPage.aspx">Hospitals</a></li>
 							<li class="sidebar-item"><a href="../Site/ProjectManagerPage.aspx">Project Managers</a></li>
 							<li class="sidebar-item"><a href="../Site/ProjectPage.aspx">Projects</a></li>
-							<li class="sidebar-item"><a href="../Site/StudyCoördinatorPage.aspx">Study Coordinators</a></li>
+							<li class="sidebar-item"><a href="../Site/StudyCoordinatorPage.aspx">Study Coordinators</a></li>
 						</ul>
 					</div>
 				</nav>

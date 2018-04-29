@@ -57,9 +57,20 @@ namespace Domain.Business
         {
             return _persistence.getProjectManager(sortingPar);
         }
-        public List<StudyCoördinatorCode> GetStudyCoördinators(string sortingPar)
+        public List<StudyCoordinatorCode> GetStudyCoördinators(string sortingPar)
         {
-            return _persistence.getStudyCoördinator(sortingPar);
+            return _persistence.getStudyCoordinator(sortingPar);
+        }
+        #endregion
+        
+        #region GetRelation
+        public List<int> GetRelationDoctorHasHospital(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationDoctorHasHospital(Doctor_ID_p2);
+        }
+        public List<int> getRelationHospitalHasDepartment(int Department_ID_p2)
+        {
+            return _persistence.getRelationHospitalHasDepartment(Department_ID_p2);
         }
         #endregion
 
@@ -105,19 +116,6 @@ namespace Domain.Business
             return _persistence.getStudyCoordinatorDropDown();
         }
         #endregion
-        //nog niet helemaal af
-
-        #region GetRelation
-        public List<int> GetRelationHospitalHasDoctor(int Doctor_ID_p2)
-        {
-            return _persistence.getRelationHospitalHasDoctor(Doctor_ID_p2);
-        }
-        public List<int> getRelationHospitalHasDepartment(int Department_ID_p2)
-        {
-            return _persistence.getRelationHospitalHasDepartment(Department_ID_p2);
-        }
-        #endregion
-        // nog niet af
 
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
@@ -158,7 +156,7 @@ namespace Domain.Business
         }
         public void SetStudyCoördinator(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
         {
-            _persistence.addStudyCoördinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
+            _persistence.addStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
         #endregion
 
@@ -209,7 +207,7 @@ namespace Domain.Business
         }
         public void UpdateStudyCoördinator(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
         {
-            _persistence.UpdateStudyCoördinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
+            _persistence.UpdateStudyCoordinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
         #endregion
 
@@ -260,7 +258,7 @@ namespace Domain.Business
         }
         public void DeleteStudyCoördinator(int id_p2)
         {
-            _persistence.deleteStudyCoördinator(id_p2);
+            _persistence.deleteStudyCoordinator(id_p2);
         }
         #endregion
 
@@ -272,9 +270,7 @@ namespace Domain.Business
         #endregion
 
         #region Control
-
-        bool invalid = false;
-
+        
         private string DomainMapper(Match match)
         {
             // IdnMapping class with default property values.
@@ -287,7 +283,7 @@ namespace Domain.Business
             }
             catch (ArgumentException)
             {
-                invalid = true;
+
             }
             return match.Groups[1].Value + domainName;
         }
