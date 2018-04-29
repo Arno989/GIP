@@ -23,43 +23,43 @@ namespace Domain.Business
         #region Get
         public List<ClientCode> GetClients(string sortingPar)
 		{
-            return _persistence.getClients(sortingPar);
+            return _persistence.GetClients(sortingPar);
         }
         public List<ContractCode> GetContracts(string sortingPar)
         {
-            return _persistence.getContract(sortingPar);
+            return _persistence.GetContracts(sortingPar);
         }
         public List<CRACode> GetCRAs(string sortingPar)
         {
-            return _persistence.getCRA(sortingPar);
+            return _persistence.GetCRAs(sortingPar);
         }
         public List<DepartmentCode> GetDepartments(string sortingPar)
         {
-            return _persistence.getDepartment(sortingPar);
+            return _persistence.GetDepartments(sortingPar);
         }
         public List<DoctorCode> GetDoctors(string sortingPar)
         {
-            return _persistence.getDoctor(sortingPar);
+            return _persistence.GetDoctors(sortingPar);
         }
         public List<EvaluationCode> GetEvaluations(string sortingPar)
         {
-            return _persistence.getEvaluation(sortingPar);
+            return _persistence.GetEvaluations(sortingPar);
         }
         public List<HospitalCode> GetHospitals(string sortingPar)
         {
-            return _persistence.getHospital(sortingPar);
+            return _persistence.GetHospitals(sortingPar);
         }
         public List<ProjectCode> GetProjects(string sortingPar)
         {
-            return _persistence.getProject(sortingPar);
+            return _persistence.GetProjects(sortingPar);
         }
         public List<ProjectManagerCode> GetProjectManagers(string sortingPar)
         {
-            return _persistence.getProjectManager(sortingPar);
+            return _persistence.GetProjectManagers(sortingPar);
         }
-        public List<StudyCoordinatorCode> GetStudyCoördinators(string sortingPar)
+        public List<StudyCoordinatorCode> GetStudyCoordinators(string sortingPar)
         {
-            return _persistence.getStudyCoordinator(sortingPar);
+            return _persistence.GetStudyCoordinators(sortingPar);
         }
         #endregion
         
@@ -68,95 +68,80 @@ namespace Domain.Business
         {
             return _persistence.GetRelationDoctorHasHospital(Doctor_ID_p2);
         }
-        public List<int> getRelationHospitalHasDepartment(int Department_ID_p2)
+        public int GetRelationHospitalHasDepartment(int Department_ID_p2)
         {
-            return _persistence.getRelationHospitalHasDepartment(Department_ID_p2);
+            return _persistence.GetRelationHospitalHasDepartment(Department_ID_p2);
         }
         #endregion
 
         #region GetDropDownContent
         public List<List<string>> GetClientDropDownContent()
         {
-            return _persistence.getClientDropDown();
-        }
-        public List<List<string>> GetContractDropDownContent()
-        {
-            return _persistence.getContractDropDown();
+            return _persistence.GetClientDropDown();
         }
         public List<List<string>> GetCRADropDownContent()
         {
-            return _persistence.getCRADropDown();
-        }
-        public List<List<string>> GetDepartmentDropDownContent()
-        {
-            return _persistence.getDepartmentDropDown();
+            return _persistence.GetCRADropDown();
         }
         public List<List<string>> GetDoctorDropDownContent()
         {
-            return _persistence.getDoctorDropDown();
-        }
-        public List<List<string>> GetEvaluationDropDownContent()
-        {
-            return _persistence.getEvaluationDropDown();
+            return _persistence.GetDoctorDropDown();
         }
         public List<List<string>> GetHospitalDropDownContent()
         {
-            return _persistence.getHospitalDropDown();
+            return _persistence.GetHospitalDropDown();
         }
         public List<List<string>> GetProjectDropDownContent()
         {
-            return _persistence.getProjectDropDown();
+            return _persistence.GetProjectDropDown();
         }
         public List<List<string>> GetProjectManagerDropDownContent()
         {
-            return _persistence.getProjectManagerDropDown();
-        }
-        public List<List<string>> GetStudyCoordinatorDropDownContent()
-        {
-            return _persistence.getStudyCoordinatorDropDown();
+            return _persistence.GetProjectManagerDropDown();
         }
         #endregion
+        
 
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {
-            _persistence.addClient(name_p2, adress_p2, postalcode_p2, city_p2, country_p2, contactperson_p2, invoiceinfo_p2, kindofclinet_p2);
+            _persistence.AddClient(name_p2, adress_p2, postalcode_p2, city_p2, country_p2, contactperson_p2, invoiceinfo_p2, kindofclinet_p2);
         }
         public void SetContract(string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2)
         {
-            _persistence.addContract(legalcountry_p2, fee_p2, startdate_p2, enddate_p2);
+            _persistence.AddContract(legalcountry_p2, fee_p2, startdate_p2, enddate_p2);
         }
         public void SetCRA(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2)
         {
-            _persistence.addCRA(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
+            _persistence.AddCRA(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
         public void SetDepartment(string name_p2, string email_p2, string phone1_p2, int hospital_id_p2)
         {
-            _persistence.addDepartment(name_p2, email_p2, phone1_p2, hospital_id_p2);
+            _persistence.AddDepartment(name_p2, email_p2, phone1_p2, hospital_id_p2);
         }
         public void SetDoctor(string name_p2, string email_p2, string phone1_p2, string phone2_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string specialisation_p2, string cv_p2)
         {
-            _persistence.addDoctor(name_p2, email_p2, phone1_p2, phone2_p2, adress_p2, postalcode_p2, city_p2, country_p2, specialisation_p2, cv_p2);
+            _persistence.AddDoctor(name_p2, email_p2, phone1_p2, phone2_p2, adress_p2, postalcode_p2, city_p2, country_p2, specialisation_p2, cv_p2);
         }
         public void SetEvaluation(DateTime date_p2, string feedback_p2, string accuracy_p2, string quality_p2, string evaluationtxt_p2, string label_p2)
         {
-            _persistence.addEvaluation(date_p2, feedback_p2, accuracy_p2, quality_p2, evaluationtxt_p2, label_p2);
+            _persistence.AddEvaluation(date_p2, feedback_p2, accuracy_p2, quality_p2, evaluationtxt_p2, label_p2);
         }
         public void SetHospital(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string centralnumber_p2)
         {
-            _persistence.addHospital(name_p2, adress_p2, postalcode_p2, city_p2, country_p2, centralnumber_p2);
+            _persistence.AddHospital(name_p2, adress_p2, postalcode_p2, city_p2, country_p2, centralnumber_p2);
         }
         public void SetProject(string title_p2, DateTime startdate_p2, DateTime enddate_p2)
         {
-            _persistence.addProject(title_p2, startdate_p2, enddate_p2);
+            _persistence.AddProject(title_p2, startdate_p2, enddate_p2);
         }
         public void SetProjectManager(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2)
         {
-            _persistence.addProjectManager(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
+            _persistence.AddProjectManager(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
         public void SetStudyCoördinator(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
         {
-            _persistence.addStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
+            _persistence.AddStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
         #endregion
 
@@ -166,12 +151,12 @@ namespace Domain.Business
             _persistence.AddHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
         #endregion
-        // relations nog niet af
+        
 
         #region Update
         public void UpdateClient(int id_p2, string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {
-            _persistence.updateClients(id_p2, name_p2, adress_p2, postalcode_p2, city_p2, country_p2, contactperson_p2, invoiceinfo_p2, kindofclinet_p2);
+            _persistence.UpdateClient(id_p2, name_p2, adress_p2, postalcode_p2, city_p2, country_p2, contactperson_p2, invoiceinfo_p2, kindofclinet_p2);
         }
         public void UpdateContract(int id_p2, string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2)
         {
@@ -212,53 +197,50 @@ namespace Domain.Business
         #endregion
 
         #region UpdateRelation
-        public void UpdateRelationHospitalHasDoctor(int hospital_id_p2, int doctor_id_p2, int oldHospital_id_p2)
-        {
-            _persistence.UpdateRelationHospitalHasDoctor(hospital_id_p2, doctor_id_p2, oldHospital_id_p2);
-        }
+        //-------------------------------------------------------------------------
         #endregion
-        // update relations nog niet af
+        
 
         #region Delete
         public void DeleteClient(int id_p2)
         {
-            _persistence.deleteClient(id_p2);
+            _persistence.DeleteClient(id_p2);
         }
         public void DeleteContract(int id_p2)
         {
-            _persistence.deleteContract(id_p2);
+            _persistence.DeleteContract(id_p2);
         }
         public void DeleteCRA(int id_p2)
         {
-            _persistence.deleteCRA(id_p2);
+            _persistence.DeleteCRA(id_p2);
         }
         public void DeleteDepartment(int id_p2)
         {
-            _persistence.deleteDepartment(id_p2);
+            _persistence.DeleteDepartment(id_p2);
         }
         public void DeleteDoctor(int id_p2)
         {
-            _persistence.deleteDoctor(id_p2);
+            _persistence.DeleteDoctor(id_p2);
         }
         public void DeleteEvaluation(int id_p2)
         {
-            _persistence.deleteEvaluation(id_p2);
+            _persistence.DeleteEvaluation(id_p2);
         }
         public void DeleteHospital(int id_p2)
         {
-            _persistence.deleteHospital(id_p2);
+            _persistence.DeleteHospital(id_p2);
         }
         public void DeleteProject(int id_p2)
         {
-            _persistence.deleteProject(id_p2);
+            _persistence.DeleteProject(id_p2);
         }
         public void DeleteProjectManager(int id_p2)
         {
-            _persistence.deleteProjectManager(id_p2);
+            _persistence.DeleteProjectManager(id_p2);
         }
         public void DeleteStudyCoördinator(int id_p2)
         {
-            _persistence.deleteStudyCoordinator(id_p2);
+            _persistence.DeleteStudyCoordinator(id_p2);
         }
         #endregion
 
@@ -268,6 +250,7 @@ namespace Domain.Business
             _persistence.DeleteRelationDoctorHasHospitals(doctor_id_p2);
         }
         #endregion
+        
 
         #region Control
         

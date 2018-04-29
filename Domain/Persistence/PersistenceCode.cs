@@ -703,7 +703,7 @@ namespace Domain.Persistence
 
 
         #region Update
-        public void UpdateClients(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
+        public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
