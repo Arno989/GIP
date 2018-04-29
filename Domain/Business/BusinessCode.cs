@@ -107,8 +107,12 @@ namespace Domain.Business
         {
             return _persistence.GetProjectManagerDropDown();
         }
+        public List<List<string>> GetStudyCoordinatorDropDownContent()
+        {
+            return _persistence.GetStudyCoordinatorDropDown();
+        }
         #endregion
-        
+
 
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
