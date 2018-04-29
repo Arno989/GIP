@@ -40,6 +40,32 @@ namespace Presentation.SiteEdit
             }
         }
 
+        public void SetListBoxContent()
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
+                List<string> Names = new List<string>();
+
+                string ddEdit = "lbEdit" + 0.ToString() + "0";
+                var container = Master.FindControl("Body");
+                var DropDownData = container.FindControl(ddEdit) as ListBox;
+
+                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                {
+                    Names.Add(ListDropdownContent[i2][1]);
+                }
+                DropDownData.DataSource = Names;
+                DropDownData.DataBind();
+
+                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                {
+                    DropDownData.Items[i2 + 1].Value = ListDropdownContent[i2][0];
+                }
+            }
+        }
+
+
         private void InsertData()
         {
             List<List<string>> ListData = GetSessionData();
@@ -291,7 +317,7 @@ namespace Presentation.SiteEdit
         {
             List<int> ListDataIDs = GetSessionDataIDs();
 
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i < ListDataIDs.Count; i++)
             {
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
@@ -460,31 +486,6 @@ namespace Presentation.SiteEdit
                 }
                 track1:
                 continue;
-            }
-        }
-
-        public void SetListBoxContent()
-        {
-            if (!IsPostBack)
-            {
-                List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
-                List<string> Names = new List<string>();
-                
-                string ddEdit = "lbEdit" + 0.ToString() + "0";
-                var container = Master.FindControl("Body");
-                var DropDownData = container.FindControl(ddEdit) as ListBox;
-
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
-                {
-                    Names.Add(ListDropdownContent[i2][1]);
-                }
-                DropDownData.DataSource = Names;
-                DropDownData.DataBind();
-                
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
-                {
-                    DropDownData.Items[i2+1].Value = ListDropdownContent[i2][0];
-                }
             }
         }
         
