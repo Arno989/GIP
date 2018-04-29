@@ -260,7 +260,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
+                            _business.Add(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
                         }
                     }
                 }

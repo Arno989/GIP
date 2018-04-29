@@ -162,8 +162,13 @@ namespace Domain.Business
         {
             _persistence.AddHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
-        #endregion
         
+            public void AddDoctorToStudyCoordinator(int doctor_id_p2, int studycoordinator_id_p2)
+        {
+            _persistence.AddDoctorToStudyCoordinator(doctor_id_p2, studycoordinator_id_p2);
+        }
+        #endregion
+
 
         #region Update
         public void UpdateClient(int id_p2, string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
@@ -261,11 +266,16 @@ namespace Domain.Business
         {
             _persistence.DeleteRelationDoctorHasHospitals(doctor_id_p2);
         }
+
+        public void DeleteRelationStudyCoordinatorHasDoctor(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationStudyCoordinatorHasDoctor(studycoordinator_id_p2);
+        }
         #endregion
-        
+
 
         #region Control
-        
+
         private string DomainMapper(Match match)
         {
             // IdnMapping class with default property values.
