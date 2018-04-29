@@ -68,6 +68,14 @@ namespace Domain.Business
         {
             return _persistence.GetRelationDoctorHasHospital(Doctor_ID_p2);
         }
+
+        public List<int> GetRelationStudyCoordinatorHasDoctor(int StudyCoordinator_ID_p2)
+        {
+            return _persistence.GetRelationStudyCoordinatorHasDoctor(StudyCoordinator_ID_p2);
+        }
+
+        //------------------------------------------------------------------------------ 1 op 1
+
         public int GetRelationHospitalHasDepartment(int Department_ID_p2)
         {
             return _persistence.GetRelationHospitalHasDepartment(Department_ID_p2);
@@ -139,7 +147,7 @@ namespace Domain.Business
         {
             _persistence.AddProjectManager(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
-        public void SetStudyCoördinator(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
+        public void SetStudyCoordinator(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
         {
             _persistence.AddStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
@@ -190,7 +198,7 @@ namespace Domain.Business
         {
             _persistence.UpdateProjectManager(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2);
         }
-        public void UpdateStudyCoördinator(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
+        public void UpdateStudyCoordinator(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2)
         {
             _persistence.UpdateStudyCoordinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }

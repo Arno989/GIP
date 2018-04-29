@@ -30,6 +30,11 @@
             <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
             <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
             <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" />
+            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbDoctors" CssClass="listbox"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

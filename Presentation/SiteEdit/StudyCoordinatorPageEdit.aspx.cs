@@ -44,7 +44,7 @@ namespace Presentation.SiteEdit
         {
             if (!IsPostBack)
             {
-                List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
+                List<List<string>> ListDropdownContent = _business.GetDoctorDropDownContent(); //--Var
                 List<string> Names = new List<string>();
 
                 string ddEdit = "lbEdit" + 0.ToString() + "0";
@@ -126,7 +126,7 @@ namespace Presentation.SiteEdit
                 var listboxData = container.FindControl(lbName) as ListBox;
 
                 List<int> IdSubject = GetSessionDataIDs();
-                List<int> IdRel = _business.GetRelationHospitalHasDoctor(IdSubject[i]); //--Var
+                List<int> IdRel = _business.GetRelationStudyCoordinatorHasDoctor(IdSubject[i]); //--Var
 
                 if (IdRel.Count > 0)
                 {
@@ -174,6 +174,17 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
                                 if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
                                 {
                                     input[i2] = (((TextBox)txtBox).Text.ToString());
@@ -185,25 +196,6 @@ namespace Presentation.SiteEdit
                                 }
                             }
 
-                            break;
-
-                        case 2:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
-                                {
-                                    input[i2] = (((TextBox)txtBox).Text.ToString());
-                                }
-                                else
-                                {
-                                    //error---------------------------------------
-                                    input[i2] = "error invalid phone";
-                                }
-                            }
                             break;
 
                         case 3:
@@ -232,7 +224,15 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
                             }
                             break;
 
@@ -246,53 +246,9 @@ namespace Presentation.SiteEdit
                                 input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
-
-                        case 6:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 7:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 8:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 9:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
                     }
                 }
-                _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]); //--Var
+                _business.SetStudyCoordinator(input[0], input[1], input[2], input[3], input[4], input[5]); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
@@ -303,8 +259,8 @@ namespace Presentation.SiteEdit
                     {
                         if (l.Selected == true)
                         {
-                            DoctorCode doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value.ToString()), doctor.Doctor_ID); //--Var
+                            StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
                         }
                     }
                 }
@@ -348,6 +304,17 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
                                 if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
                                 {
                                     input[i2] = (((TextBox)txtBox).Text.ToString());
@@ -359,25 +326,6 @@ namespace Presentation.SiteEdit
                                 }
                             }
 
-                            break;
-
-                        case 2:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
-                                {
-                                    input[i2] = (((TextBox)txtBox).Text.ToString());
-                                }
-                                else
-                                {
-                                    //error---------------------------------------
-                                    input[i2] = "error invalid phone";
-                                }
-                            }
                             break;
 
                         case 3:
@@ -406,7 +354,15 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
                             }
                             break;
 
@@ -420,53 +376,9 @@ namespace Presentation.SiteEdit
                                 input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
-
-                        case 6:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 7:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 8:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
-
-                        case 9:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = "";
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            break;
                     }
                 }
-                _business.UpdateDoctor(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]); //--Var
+                _business.UpdateStudyCoordinator(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5]); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
@@ -479,8 +391,8 @@ namespace Presentation.SiteEdit
                     {
                         if (l.Selected == true)
                         {
-                            DoctorCode Doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), Doctor.Doctor_ID); //--Var
+                            StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
                         }
                     }
                 }
