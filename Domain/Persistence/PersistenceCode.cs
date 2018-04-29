@@ -490,6 +490,29 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
+
+        public List<List<string>> GetStudyCoordinatorDropDown()
+        {
+            List<List<string>> ListCount = new List<List<string>>();
+            List<string> ListDropdown = new List<string>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM StudyCoordiantor ORDER BY Name ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["SC_ID"]);
+                string name = Convert.ToString(dataReader["Name"]);
+
+                ListDropdown.Add(Convert.ToString(id));
+                ListDropdown.Add(name);
+                ListCount.Add(ListDropdown);
+            }
+
+            conn.Close();
+            return ListCount;
+        }
         #endregion
 
 
