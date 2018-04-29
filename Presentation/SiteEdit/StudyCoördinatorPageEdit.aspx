@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="StudyCoordinatorPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.StudyCoördinatorPageEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="StudyCoördinatorPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.StudyCoördinatorPageEdit" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Edit Study Coordinators</title>

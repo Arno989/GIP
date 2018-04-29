@@ -17,7 +17,7 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetStudyCoördinators(sortingPar);
+                GridView.DataSource = _businesscode.GetStudyCoordinators(sortingPar);
                 GridView.DataBind();
             }
         }

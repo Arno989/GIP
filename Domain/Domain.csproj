@@ -70,7 +70,7 @@
     <Compile Include="Business\HospitalCode.cs" />
     <Compile Include="Business\ProjectCode.cs" />
     <Compile Include="Business\ProjectManagerCode.cs" />
-    <Compile Include="Business\StudyCoordinatorCode.cs" />
+    <Compile Include="Business\StudyCoördinatorCode.cs" />
     <Compile Include="Persistence\PersistenceCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
