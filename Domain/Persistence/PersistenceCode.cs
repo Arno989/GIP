@@ -89,7 +89,7 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["CRA_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E-mail"]);
+				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
@@ -114,7 +114,7 @@ namespace Domain.Persistence
 			{
                 int id = Convert.ToInt16(dataReader["Department_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
-				string email = Convert.ToString(dataReader["E-mail"]);
+				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
                 int hospitalID = Convert.ToInt16(dataReader["Hospital_ID"]);
 
@@ -139,7 +139,7 @@ namespace Domain.Persistence
 			{
                 int id = Convert.ToInt16(dataReader["Doctor_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
-				string email = Convert.ToString(dataReader["E-mail"]);
+				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string adress = Convert.ToString(dataReader["Adress"]);
@@ -249,7 +249,7 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["PM_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E-mail"]);
+				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
@@ -275,7 +275,7 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["SC_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E-mail"]);
+				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
@@ -561,7 +561,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, E-mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, Email, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -579,7 +579,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, E-mail, Phone1, Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, Email, Phone1, Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -596,7 +596,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, E-mail, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, Email, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -674,7 +674,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, E-mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, Email, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -692,7 +692,7 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, E-mail, Phone1, Phone2, Specialisation) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, Email, Phone1, Phone2, Specialisation) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -717,6 +717,21 @@ namespace Domain.Persistence
 
             cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddDoctorToStudyCoordinator(int doctor_id_p, int studycoordinator_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator_has_Doctor (Doctor_ID, SC_ID) VALUES (@doctor_id, @studycoordinator_id_p);", conn);
+
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.Parameters.Add("@studycoordinator_id", MySqlDbType.VarChar).Value = studycoordinator_id_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
@@ -772,7 +787,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -791,7 +806,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, E-mail = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
 
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
@@ -809,7 +824,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -891,7 +906,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -910,7 +925,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoördinator SET Name = @name, CV = @cv, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoördinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
             
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1052,6 +1067,20 @@ namespace Domain.Persistence
             MySqlCommand cmd = new MySqlCommand("DELETE FROM Doctor_has_Hospital WHERE Doctor_ID = @doctor_id ;", conn);
 
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationStudyCoordinatorHasDoctor(int studycoordinator_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM StudyCoordinator_has_Doctor WHERE SC_ID = @studycoordinator_id ;", conn);
+
+            cmd.Parameters.Add("@studycoordinator_id", MySqlDbType.VarChar).Value = studycoordinator_id_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();

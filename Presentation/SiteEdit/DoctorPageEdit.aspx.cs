@@ -68,10 +68,10 @@ namespace Presentation.SiteEdit
 
         private void InsertData()
         {
-            List<List<string>> ListData = GetSessionData();
+            List<List<string>> ListDataSession = GetSessionData();
             var container = Master.FindControl("Body");
 
-            for (int i = 0; i < ListData.Count; i++)
+            for (int i = 0; i < ListDataSession.Count; i++)
             {
                 for (int i2 = 0; i2 <= 9; i2++)
                 {
@@ -81,43 +81,43 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 5:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 6:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 7:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 8:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 9:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                             break;
                     }
                 }
