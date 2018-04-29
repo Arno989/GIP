@@ -733,7 +733,7 @@ namespace Domain.Persistence
         #endregion
 
         #region SetRelation
-        public void addHospitalToDoctor(int hospital_id_p, int doctor_id_p)
+        public void AddHospitalToDoctor(int hospital_id_p, int doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 

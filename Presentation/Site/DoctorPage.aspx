@@ -16,7 +16,7 @@
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
     <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Doctor_ID">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -34,7 +34,7 @@
             <asp:BoundField DataField="Country" HeaderText="Country"/>
             <asp:BoundField DataField="Specialisation" HeaderText="Specialisation"/>
             <asp:BoundField DataField="CV" HeaderText="CV"/>
-            <asp:TemplateField HeaderText="Hospitals">
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbHospitals" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>

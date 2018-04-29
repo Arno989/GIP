@@ -163,9 +163,9 @@ namespace Domain.Business
         #endregion
 
         #region SetRelation
-        public void addHospitalToDoctor(int hospital_id_p2, int doctor_id_p2)
+        public void AddHospitalToDoctor(int hospital_id_p2, int doctor_id_p2)
         {
-            _persistence.addHospitalToDoctor(hospital_id_p2, doctor_id_p2);
+            _persistence.AddHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
         #endregion
         // relations nog niet af
