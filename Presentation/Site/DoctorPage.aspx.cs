@@ -17,7 +17,7 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetDoctors(sortingPar);
+                GridView.DataSource = _businesscode.GetDoctors(sortingPar); //--Var
                 GridView.DataBind();
                 ListBoxRel1();
             }

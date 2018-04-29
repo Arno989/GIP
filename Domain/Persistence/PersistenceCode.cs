@@ -20,12 +20,11 @@ namespace Domain.Persistence
         }
         
         #region Get
-        //Getting the data from every table
-        public List<ClientCode> getClients(string sortingPar)
+        public List<ClientCode> GetClients(string sortingPar)
 		{
             List<ClientCode> ListClients = new List<ClientCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblclient {0};", sortingPar) , conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Client {0};", sortingPar) , conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -50,38 +49,38 @@ namespace Domain.Persistence
             conn.Close();
             return ListClients;
 		}
-		public List<ContractCode> getContract(string sortingPar)
+
+		public List<ContractCode> GetContracts(string sortingPar)
 		{
-            List<ContractCode> ListContract = new List<ContractCode>();
+            List<ContractCode> ListContracts = new List<ContractCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcontract {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Contract {0};", sortingPar), conn);
 			conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
 			while (dataReader.Read())
 			{
                 int id = Convert.ToInt16(dataReader["Contract_ID"]);
-                string legal_country = Convert.ToString(dataReader["Legal_country"]);
+                string legal_country = Convert.ToString(dataReader["Legal_Country"]);
 				double fee = Convert.ToDouble(dataReader["Fee"]);
-				DateTime Start_date = Convert.ToDateTime(dataReader["Start_date"]);
-				DateTime End_date = Convert.ToDateTime(dataReader["End_date"]);
-                int projectID = Convert.ToInt16(dataReader["tblProject_Project_ID"]);
-                int clientID = Convert.ToInt16(dataReader["tblClient_Client_ID"]);
+				DateTime Start_date = Convert.ToDateTime(dataReader["Start_Date"]);
+				DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), projectID, clientID);
+                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
 
-				ListContract.Add(c);
+				ListContracts.Add(c);
 			}
 
             conn.Close();
-            return ListContract;
+            return ListContracts;
 		}
-		public List<CRACode> getCRA(string sortingPar)
+
+		public List<CRACode> GetCRAs(string sortingPar)
 		{
-            List<CRACode> ListCRA = new List<CRACode>();
+            List<CRACode> ListCRAs = new List<CRACode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblcra {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -90,23 +89,24 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["CRA_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E_mail"]);
+				string email = Convert.ToString(dataReader["E-mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
 				CRACode c = new CRACode(id,name,cv,email,phone1,phone2);
 
-				ListCRA.Add(c);
+				ListCRAs.Add(c);
 			}
 
             conn.Close();
-            return ListCRA;
+            return ListCRAs;
 		}
-		public List<DepartmentCode> getDepartment(string sortingPar)
+
+		public List<DepartmentCode> GetDepartments(string sortingPar)
 		{
-            List<DepartmentCode> ListDepartment = new List<DepartmentCode>();
+            List<DepartmentCode> ListDepartments = new List<DepartmentCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldepartment {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Department {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -114,23 +114,24 @@ namespace Domain.Persistence
 			{
                 int id = Convert.ToInt16(dataReader["Department_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
-				string email = Convert.ToString(dataReader["E_mail"]);
+				string email = Convert.ToString(dataReader["E-mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
-                int hospitalID = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
+                int hospitalID = Convert.ToInt16(dataReader["Hospital_ID"]);
 
                 DepartmentCode c = new DepartmentCode(id,name,email,phone1, hospitalID);
 
-				ListDepartment.Add(c);
+				ListDepartments.Add(c);
 			}
 
             conn.Close();
-            return ListDepartment;
+            return ListDepartments;
 		}
-		public List<DoctorCode> getDoctor(string sortingPar)
+
+		public List<DoctorCode> GetDoctors(string sortingPar)
 		{
-            List<DoctorCode> ListDoctor = new List<DoctorCode>();
+            List<DoctorCode> ListDoctors = new List<DoctorCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tbldoctor {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Doctor {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -138,11 +139,11 @@ namespace Domain.Persistence
 			{
                 int id = Convert.ToInt16(dataReader["Doctor_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
-				string email = Convert.ToString(dataReader["E_mail"]);
+				string email = Convert.ToString(dataReader["E-mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string adress = Convert.ToString(dataReader["Adress"]);
-				string postal_code = Convert.ToString(dataReader["Postal_code"]);
+				string postal_code = Convert.ToString(dataReader["Postal_Code"]);
 				string city = Convert.ToString(dataReader["City"]);
 				string country = Convert.ToString(dataReader["Country"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
@@ -150,17 +151,18 @@ namespace Domain.Persistence
 
 				DoctorCode c = new DoctorCode(id,name,email,phone1,phone2,adress,postal_code,city,country,specialisation,cv);
 
-				ListDoctor.Add(c);
+				ListDoctors.Add(c);
 			}
 
             conn.Close();
-            return ListDoctor;
+            return ListDoctors;
 		}
-		public List<EvaluationCode> getEvaluation(string sortingPar)
+
+		public List<EvaluationCode> GetEvaluations(string sortingPar)
 		{
-            List<EvaluationCode> ListEvaluation = new List<EvaluationCode>();
+            List<EvaluationCode> ListEvaluations = new List<EvaluationCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblevaluation {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Evaluation {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -171,22 +173,23 @@ namespace Domain.Persistence
 				string feedback = Convert.ToString(dataReader["Feedback"]);
 				string accuracy = Convert.ToString(dataReader["Accuracy"]);
 				string quality = Convert.ToString(dataReader["Quality"]);
-				string evalauation_txt = Convert.ToString(dataReader["Evaluation_txt"]);
+				string evalauation_txt = Convert.ToString(dataReader["Evaluation_Text"]);
 				string label = Convert.ToString(dataReader["Label"]);
 
 				EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label);
 
-				ListEvaluation.Add(c);
+				ListEvaluations.Add(c);
 			}
 
             conn.Close();
-            return ListEvaluation;
+            return ListEvaluations;
 		}
-		public List<HospitalCode> getHospital(string sortingPar)
+
+		public List<HospitalCode> GetHospitals(string sortingPar)
 		{
-            List<HospitalCode> ListHospital = new List<HospitalCode>();
+            List<HospitalCode> ListHospitals = new List<HospitalCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblhospital {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Hospital {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -195,24 +198,25 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["Hospital_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string adress = Convert.ToString(dataReader["Adress"]);
-				string postal_code = Convert.ToString(dataReader["Postal_code"]);
+				string postal_code = Convert.ToString(dataReader["Postal_Code"]);
 				string city = Convert.ToString(dataReader["City"]);
 				string country = Convert.ToString(dataReader["Country"]);
-				string central_number = Convert.ToString(dataReader["Central_number"]);
+				string central_number = Convert.ToString(dataReader["Central_Number"]);
 
 				HospitalCode c = new HospitalCode(id,name,adress,postal_code,city,country,central_number);
 
-				ListHospital.Add(c);
+				ListHospitals.Add(c);
 			}
             
             conn.Close();
-            return ListHospital;
+            return ListHospitals;
 		}
-		public List<ProjectCode> getProject(string sortingPar)
+
+		public List<ProjectCode> GetProjects(string sortingPar)
 		{
-            List<ProjectCode> ListProject = new List<ProjectCode>();
+            List<ProjectCode> ListProjects = new List<ProjectCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblproject {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Project {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -220,22 +224,23 @@ namespace Domain.Persistence
 			{
                 int id = Convert.ToInt16(dataReader["Project_ID"]);
                 string title = Convert.ToString(dataReader["Title"]);
-				DateTime start_date = Convert.ToDateTime(dataReader["Start_date"]).Date;
-				DateTime end_date = Convert.ToDateTime(dataReader["End_date"]).Date;
+				DateTime start_date = Convert.ToDateTime(dataReader["Start_Date"]).Date;
+				DateTime end_date = Convert.ToDateTime(dataReader["End_Date"]).Date;
 
 				ProjectCode c = new ProjectCode(id,title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"));
 
-				ListProject.Add(c);
+				ListProjects.Add(c);
 			}
 
             conn.Close();
-            return ListProject;
+            return ListProjects;
 		}
-		public List<ProjectManagerCode> getProjectManager(string sortingPar)
+
+		public List<ProjectManagerCode> GetProjectManagers(string sortingPar)
 		{
-            List<ProjectManagerCode> ListProjectManager = new List<ProjectManagerCode>();
+            List<ProjectManagerCode> ListProjectManagers = new List<ProjectManagerCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblprojectmanager {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.ProjectManager {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -244,23 +249,24 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["PM_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E_mail"]);
+				string email = Convert.ToString(dataReader["E-mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 
 				ProjectManagerCode c = new ProjectManagerCode(id,name,cv,email,phone1,phone2);
 
-				ListProjectManager.Add(c);
+				ListProjectManagers.Add(c);
 			}
 
             conn.Close();
-            return ListProjectManager;
+            return ListProjectManagers;
 		}
-		public List<StudyCoördinatorCode> getStudyCoördinator(string sortingPar)
+
+		public List<StudyCoordinatorCode> GetStudyCoordinators(string sortingPar)
 		{
-            List<StudyCoördinatorCode> ListStudyCoördinator = new List<StudyCoördinatorCode>();
+            List<StudyCoordinatorCode> ListStudyCoordinators = new List<StudyCoordinatorCode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.tblstudycoördinator {0};", sortingPar), conn);
+			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.StudyCoordinator {0};", sortingPar), conn);
             conn.Open();
 			MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -269,28 +275,89 @@ namespace Domain.Persistence
                 int id = Convert.ToInt16(dataReader["SC_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
-				string email = Convert.ToString(dataReader["E_mail"]);
+				string email = Convert.ToString(dataReader["E-mail"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
 
-				StudyCoördinatorCode c = new StudyCoördinatorCode(id,name,cv,email,phone1,phone2,specialisation);
+				StudyCoordinatorCode c = new StudyCoordinatorCode(id,name,cv,email,phone1,phone2,specialisation);
 
-				ListStudyCoördinator.Add(c);
+				ListStudyCoordinators.Add(c);
 			}
 
             conn.Close();
-			return ListStudyCoördinator;
+			return ListStudyCoordinators;
 		}
+        #endregion
+        
+        #region GetRelation
+        public List<int> GetRelationDoctorHasHospital(int Doctor_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Hospital_ID FROM Doctor_has_Hospital WHERE Doctor_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Doctor_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationStudyCoordinatorHasDoctor(int StudyCoordinator_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM StudyCoordinator_has_Doctor WHERE StudyCoordinator_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = StudyCoordinator_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Doctor_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        //--------------------------------------------------------------------------------------------------------1 op 1
+
+        public int GetRelationHospitalHasDepartment(int Department_ID_p)
+        {
+            int Relation = 0;
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Hospital_ID FROM Department WHERE Department_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Department_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                Relation = id;
+            }
+
+            conn.Close();
+            return Relation;
+        }
         #endregion
 
         #region GetDropDownContent
-        public List<List<string>> getClientDropDown()
+        public List<List<string>> GetClientDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblclient ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Client ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -307,35 +374,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getContractDropDown()
+
+        public List<List<string>> GetCRADropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblcontract ORDER BY Start_Date ASC", conn);
-            conn.Open();
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            //start date is niet de beste column om op te halen als referentie naar een contract. Aangezien tblContract geen Name als column heeft laat ik het voorlopig zo.
-            while (dataReader.Read())
-            {
-                int id = Convert.ToInt16(dataReader["Contract_ID"]);
-                DateTime start_date = Convert.ToDateTime(dataReader["Start_Date"]);
-
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(start_date.ToString("dd-MMM-yyyy"));
-                ListCount.Add(ListDropdown);
-            }
-
-            conn.Close();
-            return ListCount;
-        }
-        public List<List<string>> getCRADropDown()
-        {
-            List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblcra ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM CRA ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -352,34 +397,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getDepartmentDropDown()
+
+        public List<List<string>> GetDoctorDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tbldepartment ORDER BY Name ASC", conn);
-            conn.Open();
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                int id = Convert.ToInt16(dataReader["Department_ID"]);
-                string name = Convert.ToString(dataReader["Name"]);
-
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(name);
-                ListCount.Add(ListDropdown);
-            }
-
-            conn.Close();
-            return ListCount;
-        }
-        public List<List<string>> getDoctorDropDown()
-        {
-            List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tbldoctor ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Doctor ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -396,35 +420,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getEvaluationDropDown()
-        {
-            List<List<string>> ListCount = new List<List<string>>();
-            List<string> ListDropdown = new List<string>();
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblevaluation ORDER BY Date ASC", conn);
-            conn.Open();
-            MySqlDataReader dataReader = cmd.ExecuteReader();
 
-            //Date is niet de beste column om als referentie op te halen naar Evalaution. Aangezien tblEvaluation voorlopig nog geen column Name heeft laat ik het zo.
-            while (dataReader.Read())
-            {
-                int id = Convert.ToInt16(dataReader["Evaluation_ID"]);
-                string label = Convert.ToString(dataReader["Label"]);
-
-                ListDropdown.Add(Convert.ToString(id));
-                ListDropdown.Add(Convert.ToString(label));
-                ListCount.Add(ListDropdown);
-            }
-
-            conn.Close();
-            return ListCount;
-        }
-        public List<List<string>> getHospitalDropDown()
+        public List<List<string>> GetHospitalDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             int count = 0;
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblhospital ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Hospital ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -442,12 +444,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getProjectDropDown()
+
+        public List<List<string>> GetProjectDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblProject ORDER BY Title ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Project ORDER BY Title ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -464,12 +467,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getProjectManagerDropDown()
+
+        public List<List<string>> GetProjectManagerDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblprojectmanager ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM ProjectManager ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -486,12 +490,13 @@ namespace Domain.Persistence
             conn.Close();
             return ListCount;
         }
-        public List<List<string>> getStudyCoordinatorDropDown()
+
+        public List<List<string>> GetStudyCoordinatorDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();
             List<string> ListDropdown = new List<string>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select * from tblstudycoördinator ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM StudyCoordiantor ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -510,57 +515,15 @@ namespace Domain.Persistence
         }
         #endregion
 
-        #region GetRelation
-        public List<int> getRelationHospitalHasDoctor(int Doctor_ID_p)
-        {
-            List<int> ListAllRelations = new List<int>();
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select tblHospital_Hospital_ID from tblhospital_has_tbldoctor WHERE tblDoctor_Doctor_ID = @id", conn);
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Doctor_ID_p;
-            conn.Open();
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                int idHospital = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
-                
-                ListAllRelations.Add(idHospital);
-            }
-
-            conn.Close();
-            return ListAllRelations;
-        }
-        public List<int> getRelationHospitalHasDepartment(int Department_ID_p)
-        {
-            List<int> ListAllRelations = new List<int>();
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("select tblHospital_Hospital_ID from tbldepartment WHERE Department_ID = @id", conn);
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Department_ID_p;
-            conn.Open();
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                int idHospital = Convert.ToInt16(dataReader["tblHospital_Hospital_ID"]);
-
-                ListAllRelations.Add(idHospital);
-                //dit is een list, terwijl er maar 1 value in zal kunnen. Dit doe ik omdat het gemakkelijker is.
-            }
-
-            conn.Close();
-            return ListAllRelations;
-        }
-        #endregion 
-        // relations nog niet af
 
         #region Set
-        public void addClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
+        public void AddClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblClient (Name, Adress, Postal_code, City, Country, Contact_person, Invoice_info, Kind_of_Client) VALUES (@name, @adress, @postal_code, @city, @country, @contact_person, @invoice_info, @kind_of_client);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Client (Name, Adress, Postal_Code, City, Country, Contact_Person, Invoice_Info, Kind_of_Client) VALUES (@name, @adress, @postal_code, @city, @country, @contact_person, @invoice_info, @kind_of_client);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
@@ -574,13 +537,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p)
+
+		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblContract (Legal_country, Fee, Start_date, End_date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
 
 			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
 			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
@@ -590,13 +554,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addCRA(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+
+		public void AddCRA(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblCRA (Name, CV, E_mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, E-mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -607,13 +572,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p)
+
+		public void AddDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDepartment (Name, E_mail, Phone1, tblHospital_Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, E-mail, Phone1, Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -623,13 +589,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addDoctor(string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,string postalcode_p,string city_p,string country_p,string specialisation_p,string cv_p)
+
+		public void AddDoctor(string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,string postalcode_p,string city_p,string country_p,string specialisation_p,string cv_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblDoctor (Name, E_mail, Phone1, Phone2, Adress, Postal_code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, E-mail, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -645,13 +612,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p)
+
+		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblEvaluation (Date, Feedback, Accuracy, Quality, Evaluation_txt, Label) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label);",conn);
 
 			cmd.Parameters.Add("@date",MySqlDbType.Date).Value = date_p;
 			cmd.Parameters.Add("@feedback",MySqlDbType.VarChar).Value = feedback_p;
@@ -664,13 +632,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addHospital(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string centralnumber_p)
+
+		public void AddHospital(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string centralnumber_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblHospital (Name, Adress, Postal_code, City, Country, Central_number) VALUES (@name, @adress, @postal_code, @city, @country, @central_number);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Hospital (Name, Adress, Postal_Code, City, Country, Central_Number) VALUES (@name, @adress, @postal_code, @city, @country, @central_number);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
@@ -682,13 +651,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addProject(string title_p,DateTime startdate_p, DateTime enddate_p)
+
+		public void AddProject(string title_p,DateTime startdate_p, DateTime enddate_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblProject (Title, Start_date, End_date) VALUES (@title, @start_date, @end_date);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Project (Title, Start_Date, End_Date) VALUES (@title, @start_date, @end_date);",conn);
 
 			cmd.Parameters.Add("@title",MySqlDbType.VarChar).Value = title_p;
 			cmd.Parameters.Add("@start_date",MySqlDbType.Date).Value = startdate_p.Date;
@@ -697,13 +667,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addProjectManager(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+
+		public void AddProjectManager(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblProjectManager (Name, CV, E_mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, E-mail, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -714,13 +685,14 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
-		public void addStudyCoördinator(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
+
+		public void AddStudyCoordinator(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO tblStudyCoördinator(Name, CV, E_mail, Phone1, Phone2, Specialisation) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, E-mail, Phone1, Phone2, Specialisation) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -735,13 +707,13 @@ namespace Domain.Persistence
         #endregion
 
         #region SetRelation
-        public void addHospitalToDoctor(int hospital_id_p, int doctor_id_p)
+        public void AddHospitalToDoctor(int hospital_id_p, int doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO tblhospital_has_tbldoctor (tblHospital_Hospital_ID, tblDoctor_Doctor_ID) VALUES (@hospital_id, @doctor_id);", conn);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor_has_Hospital (Hospital_ID, Doctor_ID) VALUES (@hospital_id, @doctor_id);", conn);
 
             cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
@@ -750,16 +722,17 @@ namespace Domain.Persistence
             conn.Close();
         }
         #endregion
-        // relations nog niet af
+
+
 
         #region Update
-        public void updateClients(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
+        public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblClient SET Name = @name, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Contact_person = @contact_person, Invoice_info = @invoice_info, Kind_of_Client = @kind_of_client WHERE Client_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Client SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Contact_Person = @contact_person, Invoice_Info = @invoice_info, Kind_of_Client = @kind_of_client WHERE Client_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -774,13 +747,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblContract SET Legal_country = @legal_country, Fee = @fee, Duration = @duration, Date = @date WHERE Contract_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Duration = @duration, Date = @date WHERE Contract_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = legalcountry_p;
@@ -791,13 +765,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateCRA(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblCRA SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -809,13 +784,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p, int hospitalID_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblDepartment SET Name = @name, E_mail = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, E-mail = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
 
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
@@ -826,13 +802,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateDoctor(int id_p, string name_p, string email_p, string phone1_p, string phone2_p, string adress_p, string postalcode_p, string city_p, string country_p, string specialisation_p, string cv_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblDoctor SET Name = @name, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -849,13 +826,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblEvaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_txt = @ evaluation_txt, Label = @label WHERE Evaluation_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @ evaluation_txt, Label = @label WHERE Evaluation_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
@@ -869,13 +847,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateHospital(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string centralnumber_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblHospital SET Name = @name, Adress = @adress, Postal_code = @postal_code, City = @city, Country = @country, Central_number = @central_number WHERE Hospital_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Hospital SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Central_Number = @central_number WHERE Hospital_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -888,13 +867,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateProject(int id_p, string title_p, DateTime startdate_p, DateTime enddate_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblProject SET Title = @title, Start_date = @start_date, End_date = @end_date WHERE Project_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Project SET Title = @title, Start_Date = @start_date, End_Date = @end_date WHERE Project_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title_p;
@@ -904,16 +884,16 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
         public void UpdateProjectManager(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblProjectManager SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
@@ -923,13 +903,14 @@ namespace Domain.Persistence
 
             conn.Close();
         }
-        public void UpdateStudyCoördinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p)
+
+        public void UpdateStudyCoordinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblStudyCoördinator SET Name = @name, CV = @cv, E_mail = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoördinator SET Name = @name, CV = @cv, E-mail = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
             
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -945,119 +926,115 @@ namespace Domain.Persistence
         #endregion
 
         #region UpdateRelation
-        public void UpdateRelationHospitalHasDoctor(int hospital_id_p, int doctor_id_p, int oldHospital_id_p)
-        {
-            MySqlConnection conn = new MySqlConnection(_connectionString);
-
-            conn.Open();
-
-            MySqlCommand cmd = new MySqlCommand("UPDATE tblhospital_has_tbldoctor SET tblHospital_Hospital_ID = @hospital_id, tblDoctor_Doctor_ID = @doctor_id WHERE tblHospital_Hospital_ID = @oldHospitalID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
-
-            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
-            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
-            cmd.Parameters.Add("@oldHospitalID", MySqlDbType.VarChar).Value = oldHospital_id_p;
-            cmd.ExecuteNonQuery();
-
-            conn.Close();
-        }
+        //--------------------------------------------------
         #endregion
-        // nog niet volledig af
+        
+
 
         #region Delete
-        public void deleteClient(int id_p)
+        public void DeleteClient(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblclient where Client_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Client where Client_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteContract(int id_p)
+
+        public void DeleteContract(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblcontract where Contract_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Contract where Contract_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteCRA(int id_p)
+
+        public void DeleteCRA(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblcra where CRA_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from CRA where CRA_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteDepartment(int id_p)
+
+        public void DeleteDepartment(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tbldepartment where Department_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Department where Department_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void deleteDoctor(int id_p)
+
+        public void DeleteDoctor(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tbldoctor where Doctor_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Doctor where Doctor_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteEvaluation(int id_p)
+
+        public void DeleteEvaluation(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblevaluation where Evaluation_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Evaluation where Evaluation_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteHospital(int id_p)
+
+        public void DeleteHospital(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblhospital where Hospital_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Hospital where Hospital_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteProject(int id_p)
+
+        public void DeleteProject(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblproject where Project_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from Project where Project_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteProjectManager(int id_p)
+
+        public void DeleteProjectManager(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblprojectmanager where PM_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from ProjectManager where PM_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
 
         }
-        public void deleteStudyCoördinator(int id_p)
+
+        public void DeleteStudyCoordinator(int id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from tblstudycoördinator where SC_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from StudyCoordinator where SC_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -1066,15 +1043,14 @@ namespace Domain.Persistence
         #endregion
 
         #region DeleteRelation
-        public void DeleteRelationHospitalHasDoctor(int hospital_id_p, int doctor_id_p)
+        public void DeleteRelationDoctorHasHospitals(int doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("DELETE FROM tblhospital_has_tbldoctor WHERE tblHospital_Hospital_ID = @hospital_ID AND tblDoctor_Doctor_ID = @doctor_id ;", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Doctor_has_Hospital WHERE Doctor_ID = @doctor_id ;", conn);
 
-            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
             cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
             cmd.ExecuteNonQuery();
 
