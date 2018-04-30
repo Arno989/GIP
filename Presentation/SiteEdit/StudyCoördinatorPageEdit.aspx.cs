@@ -101,7 +101,7 @@ namespace Presentation.SiteEdit
 							break;
 					}
 				}
-				_business.SetStudyCoördinator(input[0],input[1],input[2],input[3],input[4],input[5]);
+				_business.SetStudyCoordinator(input[0],input[1],input[2],input[3],input[4],input[5]);
 track1:
 				continue;
 			}

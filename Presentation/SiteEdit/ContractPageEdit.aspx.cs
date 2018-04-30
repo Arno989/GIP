@@ -173,18 +173,15 @@ namespace Presentation.SiteEdit
                 string ddEdit = "ddEdit" + i.ToString() + "0";
                 var container = Master.FindControl("Body");
                 var DropDownData = container.FindControl(ddEdit) as DropDownList;
-                for (int i2 = 0; i2 < ListContentProject.Count; i2++)
+
+                if (i == 0)
                 {
-                    if (i == 0)
+                    for (int i2 = 0; i2 < ListContentProject.Count; i2++)
                     {
                         names.Add(ListContentProject[i2][1]);
                     }
-                    else
-                    {
-                        goto track1;
-                    }
                 }
-                track1:
+
                 DropDownData.DataSource = names;
                 DropDownData.DataBind();
                 for (int i2 = 0; i2 < ListContentProject.Count; i2++)
@@ -204,18 +201,15 @@ namespace Presentation.SiteEdit
                 string ddEdit = "ddEdit" + i.ToString() + "1";
                 var container = Master.FindControl("Body");
                 var DropDownData = container.FindControl(ddEdit) as DropDownList;
-                for (int i2 = 0; i2 < ListContentclient.Count; i2++)
+
+                if (i == 0)
                 {
-                    if (i == 0)
+                    for (int i2 = 0; i2 < ListContentclient.Count; i2++)
                     {
                         names.Add(ListContentclient[i2][1]);
                     }
-                    else
-                    {
-                        goto track1;
-                    }
                 }
-                track1:
+
                 DropDownData.DataSource = names;
                 DropDownData.DataBind();
                 for (int i2 = 0; i2 < ListContentclient.Count; i2++)
