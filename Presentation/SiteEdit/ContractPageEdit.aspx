@@ -21,6 +21,8 @@
                 <asp:TableHeaderCell>Fee</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Project</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Client</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">

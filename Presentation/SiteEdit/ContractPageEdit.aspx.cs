@@ -11,7 +11,8 @@ namespace Presentation.SiteEdit
 	public partial class ContractPageEdit: System.Web.UI.Page
 	{
         private BusinessCode _business = new BusinessCode();
-        
+        string sortingPar = "";
+
         private List<List<string>> GetData()
         {
             return (List<List<string>>)Session["ListDataSession"];
@@ -42,11 +43,10 @@ namespace Presentation.SiteEdit
         private void InsertData()
         {
             List<List<string>> ListData = GetData();
+            int count = 0;
             for (int i = 0; i < ListData.Count; i++)
             {
-
-
-                for (int i2 = 0; i2 <= 3; i2++)
+                for (int i2 = 0; i2 <= 5; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var container = Master.FindControl("Body");
@@ -55,21 +55,49 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
                             break;
                     }
+
+                    string ddNameProject = "ddEdit" + i.ToString() + 0.ToString();
+                    var ddProject = container.FindControl(ddNameProject) as DropDownList;
+
+                    string ddNameClient = "ddEdit" + i.ToString() + 1.ToString();
+                    var ddClient = container.FindControl(ddNameClient) as DropDownList;
+
+                    //ProjectID krijgen van de current row in de gridvieuw
+                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
+                    List<ContractCode> CurrentContract = new List<ContractCode>();
+                    CurrentContract = _business.GetContracts(sortingPar);
+                    int ProjectID = CurrentContract[0].ProjectID;
+
+                    //ClientID krijgen van de current row in de gridvieuw
+                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
+                    int ClientID = CurrentContract[0].ClientID;
+
+                    //de Project selecteren in de dropdown
+                    ListItem liProject = ddProject.Items.FindByValue(ProjectID.ToString());
+                    ddProject.ClearSelection();
+                    liProject.Selected = true;
+
+                    //de Client selecteren in de dropdown
+                    ListItem liClient = ddClient.Items.FindByValue(ClientID.ToString());
+                    ddClient.ClearSelection();
+                    liClient.Selected = true;
+
+                    count++;
                 }
             }
         }
@@ -124,7 +152,14 @@ namespace Presentation.SiteEdit
                 var dropdownDataClient = container.FindControl(ddNameClient) as DropDownList;
                 int indexClient = dropdownDataClient.SelectedIndex;
 
-                _business.SetContract(input[0],Convert.ToDouble(input[1]),Convert.ToDateTime(input[2]),Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]));
+                if(indexClient < 1 || indexProject < 1)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a relation.')", true);
+                }
+                else
+                {
+                    _business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]));
+                }
                 track1:
 				continue;
 			}
@@ -136,11 +171,11 @@ namespace Presentation.SiteEdit
             for (int i = 0; i <= 9; i++)
             {
                 string[] input = new string[5];
+                var container = Master.FindControl("Body");
 
                 for (int i2 = 0; i2 <= 4; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
@@ -169,7 +204,23 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                //_business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]));
+
+
+                string sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
+                List<ContractCode> CurrentContract = new List<ContractCode>();
+                CurrentContract = _business.GetContracts(sortingPar);
+
+                //projectID krijgen van de current row in de gridvieuw
+                int ProjectID = CurrentContract[0].ProjectID;
+                string ddNameProject = "ddEdit" + i.ToString() + 0.ToString();
+                var ddProject = container.FindControl(ddNameProject) as DropDownList;
+
+                //clientID krijgen van de current row in de gridvieuw
+                int ClientID = CurrentContract[0].ClientID;
+                string ddNameClient = "ddEdit" + i.ToString() + 1.ToString();
+                var ddClient = container.FindControl(ddNameClient) as DropDownList;
+
+                _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue));
                 track1:
                 continue;
             }
@@ -238,14 +289,28 @@ namespace Presentation.SiteEdit
 
 		protected void btnSaveAndExit_Click(object sender,EventArgs e)
 		{
-			SendData();
-			Response.Redirect("../Site/ContractPage.aspx");
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../Site/ContractPage.aspx");
 		}
 
 		protected void btnSave_Click(object sender,EventArgs e)
 		{
-			SendData();
-			Response.Redirect("../SiteEdit/ContractPageEdit.aspx");
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../SiteEdit/ContractPageEdit.aspx");
 		}
 	}
 }

@@ -46,14 +46,22 @@ namespace Presentation.Site
                     }
                 }
             }
-
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
+            
+            if (DataIDs.Count != 0)
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+            }
         }
 
         protected void Delete(object sender, EventArgs e)
         {
+            bool CheckedOrNot = false;
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
                 if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
@@ -69,7 +77,14 @@ namespace Presentation.Site
                     }
                 }
             }
-            Response.Redirect("../Site/DepartmentPage.aspx");
+            if (CheckedOrNot == false)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to delete.')", true);
+            }
+            else
+            {
+                Response.Redirect("../Site/DepartmentPage.aspx");
+            }
         }
 
         protected void Add(object sender, EventArgs e)
