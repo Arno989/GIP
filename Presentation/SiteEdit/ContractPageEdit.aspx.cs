@@ -76,14 +76,17 @@ namespace Presentation.SiteEdit
         
         private void SendData()
 		{
-			for (int i = 0; i <= 9; i++)
+            List<List<string>> ListContentProject = _business.GetProjectDropDownContent();
+            List<List<string>> ListContentClient = _business.GetClientDropDownContent();
+            var container = Master.FindControl("Body");
+
+            for (int i = 0; i <= 9; i++)
 			{
 				string[] input = new string[4];
 
-				for (int i2 = 0; i2 <= 3; i2++)
+                for (int i2 = 0; i2 <= 3; i2++)
 				{
 					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var container = Master.FindControl("Body");
 					var txtBox = container.FindControl(tbName);
 
 					switch (i2)
@@ -112,7 +115,16 @@ namespace Presentation.SiteEdit
 							break;
 					}
 				}
-				_business.SetContract(input[0],Convert.ToDouble(input[1]),Convert.ToDateTime(input[2]),Convert.ToDateTime(input[3]));
+
+                string ddNameProject = "ddEdit" + i.ToString() + "0";
+                var dropdownDataProject = container.FindControl(ddNameProject) as DropDownList;
+                int indexProject = dropdownDataProject.SelectedIndex;
+
+                string ddNameClient = "ddEdit" + i.ToString() + "1";
+                var dropdownDataClient = container.FindControl(ddNameClient) as DropDownList;
+                int indexClient = dropdownDataClient.SelectedIndex;
+
+                _business.SetContract(input[0],Convert.ToDouble(input[1]),Convert.ToDateTime(input[2]),Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]));
                 track1:
 				continue;
 			}
@@ -157,7 +169,7 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]));
+                //_business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]));
                 track1:
                 continue;
             }

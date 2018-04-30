@@ -65,8 +65,8 @@ namespace Domain.Persistence
                 double fee = Convert.ToDouble(dataReader["Fee"]);
                 DateTime Start_date = Convert.ToDateTime(dataReader["Start_Date"]);
                 DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
-                int Project_ID = Convert.ToInt16(dataReader["tblproject_Project_ID"]);
-                int Client_ID = Convert.ToInt16(dataReader["tblClient_Client_ID"]);
+                int Project_ID = Convert.ToInt16(dataReader["Project_ID"]);
+                int Client_ID = Convert.ToInt16(dataReader["Client_ID"]);
 
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
@@ -585,19 +585,21 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p)
+		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p, int client_id_p, int project_id_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date) VALUES (@legal_country, @fee, @start_date, @end_date);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date, Client_ID, Project_ID) VALUES (@legal_country, @fee, @start_date, @end_date, @client_id, @project_id);", conn);
 
 			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
 			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
 			cmd.Parameters.Add("@start_date",MySqlDbType.DateTime).Value = startdate_p.Date;
 			cmd.Parameters.Add("@end_date",MySqlDbType.DateTime).Value = enddate_p.Date;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
@@ -784,9 +786,7 @@ namespace Domain.Persistence
             conn.Close();
         }
         #endregion
-
-
-
+        
         #region Update
         public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {
@@ -990,8 +990,6 @@ namespace Domain.Persistence
         #region UpdateRelation
         //--------------------------------------------------
         #endregion
-        
-
 
         #region Delete
         public void DeleteClient(int id_p)
