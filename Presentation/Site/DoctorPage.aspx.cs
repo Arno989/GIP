@@ -31,7 +31,7 @@ namespace Presentation.Site
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel1";
                 ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
-                List<int> Relations = _businesscode.GetRelationDoctorHasHospital(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+                List<int> Relations = _businesscode.GetRelationDoctorHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
                 {

@@ -71,9 +71,9 @@ namespace Presentation.SiteEdit
                     var dd = container.FindControl(ddName) as DropDownList;
 
                     //hospitalID krijgen van de current row in de gridvieuw
-                    string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
+                    sortingPar = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
                     List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
-                    CurrentDepartment = _business.GetDepartments(sortingPar1);
+                    CurrentDepartment = _business.GetDepartments(sortingPar);
                     int hospitalID = CurrentDepartment[0].HospitalID;
 
                     //de hospital selecteren in de dropdown

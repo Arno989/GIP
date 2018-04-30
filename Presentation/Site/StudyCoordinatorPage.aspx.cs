@@ -31,7 +31,7 @@ namespace Presentation.Site
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel1";
                 ListBox listbox = GridView.Rows[i].Cells[6].FindControl(lbName) as ListBox;
-                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
                 {
@@ -97,7 +97,7 @@ namespace Presentation.Site
                     {
                         int RecordID = (int)GridView.DataKeys[i].Value;
 
-                        if (_businesscode.GetRelationStudyCoordinatorHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        if (_businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
                         {
                             _businesscode.DeleteRelationStudyCoordinatorHasDoctors(RecordID); //--Var
                         }
