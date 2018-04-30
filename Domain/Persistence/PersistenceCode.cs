@@ -500,7 +500,7 @@ namespace Domain.Persistence
 
             while (dataReader.Read())
             {
-                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
                 string title = Convert.ToString(dataReader["Title"]);
 
                 ListCount.Add(new List<String>());
