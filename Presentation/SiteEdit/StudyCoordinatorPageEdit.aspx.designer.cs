@@ -10,7 +10,7 @@
 namespace Presentation.SiteEdit {
     
     
-    public partial class StudyCoördinatorPageEdit {
+    public partial class StudyCoordinatorPageEdit {
         
         /// <summary>
         /// btnSave control.

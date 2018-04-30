@@ -265,7 +265,7 @@ namespace Domain.Business
         {
             _persistence.DeleteProjectManager(id_p2);
         }
-        public void DeleteStudyCoördinator(int id_p2)
+        public void DeleteStudyCoordinator(int id_p2)
         {
             _persistence.DeleteStudyCoordinator(id_p2);
         }

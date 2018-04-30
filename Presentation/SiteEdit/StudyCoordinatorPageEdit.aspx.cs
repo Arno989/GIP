@@ -8,7 +8,7 @@ using Domain.Business;
 
 namespace Presentation.SiteEdit
 {
-    public partial class StudyCoördinatorPageEdit : System.Web.UI.Page
+    public partial class StudyCoordinatorPageEdit : System.Web.UI.Page
     {
         private BusinessCode _business = new BusinessCode();
         string sortingPar = "";

@@ -10,7 +10,7 @@
 namespace Presentation.Site {
     
     
-    public partial class StudyCoördinatorPage {
+    public partial class StudyCoordinatorPage {
         
         /// <summary>
         /// btnAdd control.
