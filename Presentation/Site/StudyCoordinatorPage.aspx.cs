@@ -8,7 +8,7 @@ using Domain.Business;
 
 namespace Presentation.Site
 {
-	public partial class StudyCoördinatorPage: System.Web.UI.Page
+	public partial class StudyCoordinatorPage: System.Web.UI.Page
 	{
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
@@ -101,7 +101,7 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationStudyCoordinatorHasDoctors(RecordID); //--Var
                         }
-                        _businesscode.DeleteStudyCoördinator(RecordID); //--Var
+                        _businesscode.DeleteStudyCoordinator(RecordID); //--Var
                     }
                 }
             }
