@@ -50,33 +50,36 @@ namespace Domain.Persistence
             return ListClients;
 		}
 
-		public List<ContractCode> GetContracts(string sortingPar)
-		{
+        public List<ContractCode> GetContracts(string sortingPar)
+        {
             List<ContractCode> ListContracts = new List<ContractCode>();
-			MySqlConnection conn = new MySqlConnection(_connectionString);
-			MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Contract {0};", sortingPar), conn);
-			conn.Open();
-			MySqlDataReader dataReader = cmd.ExecuteReader();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Contract {0};", sortingPar), conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
 
-			while (dataReader.Read())
-			{
+            while (dataReader.Read())
+            {
                 int id = Convert.ToInt16(dataReader["Contract_ID"]);
                 string legal_country = Convert.ToString(dataReader["Legal_Country"]);
-				double fee = Convert.ToDouble(dataReader["Fee"]);
-				DateTime Start_date = Convert.ToDateTime(dataReader["Start_Date"]);
-				DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
+                double fee = Convert.ToDouble(dataReader["Fee"]);
+                DateTime Start_date = Convert.ToDateTime(dataReader["Start_Date"]);
+                DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
+                int Project_ID = Convert.ToInt16(dataReader["tblproject_Project_ID"]);
+                int Client_ID = Convert.ToInt16(dataReader["tblClient_Client_ID"]);
+
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
+                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID);
 
-				ListContracts.Add(c);
-			}
+                ListContracts.Add(c);
+            }
 
             conn.Close();
             return ListContracts;
-		}
+        }
 
-		public List<CRACode> GetCRAs(string sortingPar)
+        public List<CRACode> GetCRAs(string sortingPar)
 		{
             List<CRACode> ListCRAs = new List<CRACode>();
 			MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -850,7 +853,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, tblHospital_Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
 
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
