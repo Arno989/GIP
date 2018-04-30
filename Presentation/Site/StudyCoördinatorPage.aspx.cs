@@ -30,17 +30,17 @@ namespace Presentation.Site
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel1";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
-                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+                ListBox listbox = GridView.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
                 {
-                    List<StudyCoordinatorCode> Rel1Raw = new List<StudyCoordinatorCode>(); //--Var
+                    List<DoctorCode> Rel1Raw = new List<DoctorCode>(); //--Var
 
                     for (int i2 = 0; i2 < Relations.Count; i2++)
                     {
-                        string sortingPar = string.Format("WHERE Hospital_ID = {0}", Relations[i2]); //--Var
-                        Rel1Raw = _businesscode.GetStudyCoordinators(sortingPar); //--Var
+                        string sortingPar = string.Format("WHERE Doctor_ID = {0}", Relations[i2]); //--Var
+                        Rel1Raw = _businesscode.GetDoctors(sortingPar); //--Var
                         listbox.Items.Add(Rel1Raw[0].Name);
                     }
                 }
@@ -97,9 +97,9 @@ namespace Presentation.Site
                     {
                         int RecordID = (int)GridView.DataKeys[i].Value;
 
-                        if (_businesscode.GetRelationStudyCoordinatorHasDoctor(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        if (_businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
                         {
-                            _businesscode.DeleteRelationStudyCoordinatorHasDoctor(RecordID); //--Var
+                            _businesscode.DeleteRelationStudyCoordinatorHasDoctors(RecordID); //--Var
                         }
                         _businesscode.DeleteStudyCoördinator(RecordID); //--Var
                     }

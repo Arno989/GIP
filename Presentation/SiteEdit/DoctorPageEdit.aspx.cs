@@ -8,11 +8,11 @@ using Domain.Business;
 
 namespace Presentation.SiteEdit
 {
-	public partial class DoctorPageEdit: System.Web.UI.Page
-	{
-		private BusinessCode _business = new BusinessCode();
+    public partial class DoctorPageEdit : System.Web.UI.Page
+    {
+        private BusinessCode _business = new BusinessCode();
         string sortingPar = "";
-        
+
         private List<List<string>> GetSessionData()
         {
             return (List<List<string>>)Session["ListDataSession"];
@@ -121,12 +121,12 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                
+
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
                 List<int> IdSubject = GetSessionDataIDs();
-                List<int> IdRel = _business.GetRelationDoctorHasHospital(IdSubject[i]); //--Var
+                List<int> IdRel = _business.GetRelationDoctorHasHospitals(IdSubject[i]); //--Var
 
                 if (IdRel.Count > 0)
                 {
@@ -296,7 +296,7 @@ namespace Presentation.SiteEdit
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
-                
+
                 if (listboxData.SelectedIndex != 0)
                 {
                     foreach (ListItem l in listboxData.Items)
@@ -479,8 +479,7 @@ namespace Presentation.SiteEdit
                     {
                         if (l.Selected == true)
                         {
-                            DoctorCode Doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), Doctor.Doctor_ID); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), ListDataIDs[i]); //--Var
                         }
                     }
                 }
@@ -488,15 +487,15 @@ namespace Presentation.SiteEdit
                 continue;
             }
         }
-        
 
-        protected void BtnExit_Click(object sender,EventArgs e)
-		{
+
+        protected void BtnExit_Click(object sender, EventArgs e)
+        {
             Response.Redirect("../Site/DoctorPage.aspx"); //--Var
         }
 
-		protected void BtnSaveAndExit_Click(object sender,EventArgs e)
-		{
+        protected void BtnSaveAndExit_Click(object sender, EventArgs e)
+        {
             if (GetSessionDataIDs() != null)
             {
                 UpdateData();
@@ -505,12 +504,12 @@ namespace Presentation.SiteEdit
             {
                 SendData();
             }
-            
+
             Response.Redirect("../Site/DoctorPage.aspx"); //--Var
         }
 
-		protected void BtnSave_Click(object sender,EventArgs e)
-		{
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
             if (GetSessionDataIDs() != null)
             {
                 UpdateData();
@@ -519,8 +518,8 @@ namespace Presentation.SiteEdit
             {
                 SendData();
             }
-            
+
             Response.Redirect("../SiteEdit/DoctorPageEdit.aspx"); //--Var
         }
-	}
+    }
 }

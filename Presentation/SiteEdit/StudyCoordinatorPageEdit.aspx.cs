@@ -8,8 +8,8 @@ using Domain.Business;
 
 namespace Presentation.SiteEdit
 {
-	public partial class StudyCoördinatorPageEdit: System.Web.UI.Page
-	{
+    public partial class StudyCoördinatorPageEdit : System.Web.UI.Page
+    {
         private BusinessCode _business = new BusinessCode();
         string sortingPar = "";
 
@@ -103,22 +103,6 @@ namespace Presentation.SiteEdit
                         case 5:
                             ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
-
-                        case 6:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 7:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 8:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 9:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
                     }
                 }
 
@@ -126,7 +110,7 @@ namespace Presentation.SiteEdit
                 var listboxData = container.FindControl(lbName) as ListBox;
 
                 List<int> IdSubject = GetSessionDataIDs();
-                List<int> IdRel = _business.GetRelationStudyCoordinatorHasDoctor(IdSubject[i]); //--Var
+                List<int> IdRel = _business.GetRelationStudyCoordinatorHasDoctors(IdSubject[i]); //--Var
 
                 if (IdRel.Count > 0)
                 {
@@ -260,7 +244,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
-                            _business.Add(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
+                            _business.AddDoctorToStudyCoordinator(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
                         }
                     }
                 }
@@ -383,7 +367,7 @@ namespace Presentation.SiteEdit
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
-                _business.DeleteRelationDoctorHasHospitals(ListDataIDs[i]); //--Var
+                _business.DeleteRelationStudyCoordinatorHasDoctors(ListDataIDs[i]); //--Var
 
                 if (listboxData.SelectedIndex != 0)
                 {
@@ -391,8 +375,7 @@ namespace Presentation.SiteEdit
                     {
                         if (l.Selected == true)
                         {
-                            StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
+                            _business.AddDoctorToStudyCoordinator(Convert.ToInt16(l.Value), ListDataIDs[i]); //--Var
                         }
                     }
                 }
@@ -404,7 +387,7 @@ namespace Presentation.SiteEdit
 
         protected void BtnExit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Site/StudyCoördinatorPage.aspx"); //--Var
+            Response.Redirect("../Site/StudyCoordinatorPage.aspx"); //--Var
         }
 
         protected void BtnSaveAndExit_Click(object sender, EventArgs e)
@@ -418,7 +401,7 @@ namespace Presentation.SiteEdit
                 SendData();
             }
 
-            Response.Redirect("../Site/StudyCoördinatorPage.aspx"); //--Var
+            Response.Redirect("../Site/StudyCoordinatorPage.aspx"); //--Var
         }
 
         protected void BtnSave_Click(object sender, EventArgs e)
@@ -432,7 +415,7 @@ namespace Presentation.SiteEdit
                 SendData();
             }
 
-            Response.Redirect("../SiteEdit/StudyCoördinatorPageEdit.aspx"); //--Var
+            Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
         }
-	}
+    }
 }
