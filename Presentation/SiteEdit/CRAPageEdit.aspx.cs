@@ -11,13 +11,14 @@ namespace Presentation.SiteEdit
 	public partial class CRAPageEdit: System.Web.UI.Page
 	{
         private BusinessCode _business = new BusinessCode();
+        string sortingPar = "";
 
-        private List<List<string>> GetData()
+        private List<List<string>> GetSessionData()
         {
             return (List<List<string>>)Session["ListDataSession"];
         }
 
-        private List<int> GetDataIDs()
+        private List<int> GetSessionDataIDs()
         {
             return (List<int>)Session["DataID"];
         }
@@ -27,7 +28,7 @@ namespace Presentation.SiteEdit
         {
             if (!IsPostBack)
             {
-                List<List<string>> ListData = GetData();
+                List<List<string>> ListData = GetSessionData();
                 if (ListData != null)
                 {
                     InsertData();
@@ -39,74 +40,64 @@ namespace Presentation.SiteEdit
 
         private void InsertData()
         {
-            List<List<string>> ListData = GetData();
-            for (int i = 0; i < ListData.Count; i++)
+            List<List<string>> ListDataSession = GetSessionData();
+            var container = Master.FindControl("Body");
+
+            for (int i = 0; i < ListDataSession.Count; i++)
             {
-
-
-                for (int i2 = 0; i2 <= 4; i2++)
+                for (int i2 = 0; i2 <= 4; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
-                    switch (i2)
-                    {
-                        case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 4:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                    }
+                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
                 }
             }
         }
 
         private void SendData()
         {
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i < 10; i++)
             {
-                string[] input = new string[5];
+                var container = Master.FindControl("Body");
+                string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 4; i2++)
+                for (int i2 = 0; i2 <= 4; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
                     {
                         case 0:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             else
                             {
-                                goto track1;
+
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 2:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -115,17 +106,18 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid email";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
 
                             break;
 
                         case 3:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -134,16 +126,17 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 4:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -152,16 +145,14 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
                     }
                 }
-                _business.SetCRA(input[0], input[1], input[2], input[3], input[4]);
+                _business.SetCRA(input[0], input[1], input[2], input[3], input[4]); //--Var
+
                 track1:
                 continue;
             }
@@ -169,36 +160,49 @@ namespace Presentation.SiteEdit
 
         private void UpdateData()
         {
-            List<int> ListDataIDs = GetDataIDs();
-            for (int i = 0; i <= 9; i++)
-            {
-                string[] input = new string[5];
+            List<int> ListDataIDs = GetSessionDataIDs();
 
-                for (int i2 = 0; i2 <= 4; i2++)
+            for (int i = 0; i < ListDataIDs.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string[] input = new string[10];
+
+                for (int i2 = 0; i2 <= 4; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
                     {
                         case 0:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             else
                             {
-                                goto track1;
+
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 2:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -207,17 +211,18 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid email";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
 
                             break;
 
                         case 3:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -226,16 +231,17 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 4:
-                            if (((TextBox)txtBox).Text == "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
                             {
                                 if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
                                 {
@@ -244,30 +250,28 @@ namespace Presentation.SiteEdit
                                 else
                                 {
                                     //error---------------------------------------
+                                    input[i2] = "error invalid phone";
                                 }
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
                     }
                 }
-                _business.UpdateCRA(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4]);
+                _business.UpdateCRA(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4]); //--Var
+
                 track1:
                 continue;
             }
         }
 
 
-        protected void btnExit_Click(object sender, EventArgs e)
+        protected void BtnExit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Site/CRAPage.aspx");
+            Response.Redirect("../Site/CRAPage.aspx"); //--Var
         }
 
-        protected void btnSaveAndExit_Click(object sender, EventArgs e)
+        protected void BtnSaveAndExit_Click(object sender, EventArgs e)
         {
-            if (GetDataIDs() != null)
+            if (GetSessionDataIDs() != null)
             {
                 UpdateData();
             }
@@ -275,12 +279,12 @@ namespace Presentation.SiteEdit
             {
                 SendData();
             }
-            Response.Redirect("../Site/CRAPage.aspx");
+            Response.Redirect("../Site/CRAPage.aspx");  //--Var
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        protected void BtnSave_Click(object sender, EventArgs e)
         {
-            if (GetDataIDs() != null)
+            if (GetSessionDataIDs() != null)
             {
                 UpdateData();
             }
@@ -288,7 +292,7 @@ namespace Presentation.SiteEdit
             {
                 SendData();
             }
-            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
+            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");  //--Var
         }
 	}
 }
