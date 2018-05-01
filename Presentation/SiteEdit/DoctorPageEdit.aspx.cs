@@ -76,7 +76,7 @@ namespace Presentation.SiteEdit
 
             for (int i = 0; i < ListDataSession.Count; i++)
             {
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 9; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -112,7 +112,7 @@ namespace Presentation.SiteEdit
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 9; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -286,7 +286,7 @@ namespace Presentation.SiteEdit
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 9; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);

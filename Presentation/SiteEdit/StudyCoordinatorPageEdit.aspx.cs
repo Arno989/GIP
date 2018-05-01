@@ -112,7 +112,7 @@ namespace Presentation.SiteEdit
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 5; i2++)
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -242,7 +242,7 @@ namespace Presentation.SiteEdit
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 5; i2++)
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
