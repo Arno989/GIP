@@ -44,23 +44,26 @@ namespace Presentation.SiteEdit
         {
             if (!IsPostBack)
             {
-                List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
-                List<string> Names = new List<string>();
-
-                string ddEdit = "lbEdit" + 0.ToString() + "0";
-                var container = Master.FindControl("Body");
-                var DropDownData = container.FindControl(ddEdit) as ListBox;
-
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                for (int i = 0; i <= 9; i++)
                 {
-                    Names.Add(ListDropdownContent[i2][1]);
-                }
-                DropDownData.DataSource = Names;
-                DropDownData.DataBind();
+                    List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
+                    List<string> Names = new List<string>();
 
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
-                {
-                    DropDownData.Items[i2 + 1].Value = ListDropdownContent[i2][0];
+                    string lbEdit = "lbEdit" + i.ToString() + "0";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
                 }
             }
         }
@@ -78,48 +81,8 @@ namespace Presentation.SiteEdit
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
 
-                    switch (i2)
-                    {
-                        case 0:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
+                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
 
-                        case 1:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 2:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 3:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 4:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 5:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 6:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 7:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 8:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 9:
-                            ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
-                            break;
-                    }
                 }
 
                 string lbName = "lbEdit" + i.ToString() + "0";
@@ -132,7 +95,9 @@ namespace Presentation.SiteEdit
                 {
                     foreach (int IdRel1 in IdRel)
                     {
-                        ListItem li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
                         li.Selected = true;
                     }
                     IdRel.Clear();

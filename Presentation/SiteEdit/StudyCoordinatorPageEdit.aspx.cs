@@ -60,7 +60,7 @@ namespace Presentation.SiteEdit
 
                 for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
                 {
-                    DropDownData.Items[i2 + 1].Value = ListDropdownContent[i2][0];
+                    DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace Presentation.SiteEdit
 
             for (int i = 0; i < ListData.Count; i++)
             {
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -105,7 +105,6 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
@@ -121,6 +120,7 @@ namespace Presentation.SiteEdit
                     }
                     IdRel.Clear();
                 }
+
             }
         }
 

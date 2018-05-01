@@ -786,6 +786,7 @@ namespace Domain.Persistence
             conn.Close();
         }
         #endregion
+
         
         #region Update
         public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
@@ -990,6 +991,7 @@ namespace Domain.Persistence
         #region UpdateRelation
         //--------------------------------------------------
         #endregion
+
 
         #region Delete
         public void DeleteClient(int id_p)
