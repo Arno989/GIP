@@ -226,13 +226,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                
-                //hospitalID krijgen van de current row in de gridvieuw
+
+
                 string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
                 List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
                 CurrentDepartment = _business.GetDepartments(sortingPar1);
-                int hospitalID = CurrentDepartment[0].HospitalID;
 
+                //hospitalID krijgen van de current row in de gridvieuw
+                int hospitalID = CurrentDepartment[0].HospitalID;
                 string ddName = "ddEdit" + i.ToString() + 0.ToString();
                 var dd = container.FindControl(ddName) as DropDownList;
 

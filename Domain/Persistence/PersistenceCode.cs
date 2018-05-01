@@ -811,19 +811,21 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p)
+        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p, int project_id_p, int client_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Duration = @duration, Date = @date WHERE Contract_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Start_Date = @start_date, End_Date = @end_date, Client_ID = @client_id, Project_ID = @project_id WHERE Contract_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = legalcountry_p;
             cmd.Parameters.Add("@fee", MySqlDbType.Double).Value = fee_p;
             cmd.Parameters.Add("@start_date", MySqlDbType.DateTime).Value = startdate_p.Date;
             cmd.Parameters.Add("@end_date", MySqlDbType.DateTime).Value = enddate_p.Date;
+            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
