@@ -16,6 +16,11 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ListBoxRel1();
+            ListBoxRel2();
+            ListBoxRel3();
+            ListBoxRel4();
+
             if (!IsPostBack)
             {
                 GridView.DataSource = _businesscode.GetProjects(sortingPar);

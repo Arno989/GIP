@@ -28,6 +28,11 @@ namespace Presentation.SiteEdit
         {
             if (!IsPostBack)
             {
+                SetListBox1Content();
+                SetListBox2Content();
+                SetListBox3Content();
+                SetListBox4Content();
+
                 List<List<string>> ListData = GetSessionData();
                 if (ListData != null)
                 {
@@ -38,6 +43,119 @@ namespace Presentation.SiteEdit
             }
         }
 
+        public void SetListBox1Content()
+        {
+            if (!IsPostBack)
+            {
+                for (int i = 0; i <= 9; i++)
+                {
+                    List<List<string>> ListDropdownContent = _business.GetCRADropDownContent(); //--Var
+                    List<string> Names = new List<string>();
+
+                    string lbEdit = "lbEdit" + i.ToString() + "0";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
+                }
+            }
+        }
+
+        public void SetListBox2Content()
+        {
+            if (!IsPostBack)
+            {
+                for (int i = 0; i <= 9; i++)
+                {
+                    List<List<string>> ListDropdownContent = _business.GetDoctorDropDownContent(); //--Var
+                    List<string> Names = new List<string>();
+
+                    string lbEdit = "lbEdit" + i.ToString() + "1";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
+                }
+            }
+        }
+
+        public void SetListBox3Content()
+        {
+            if (!IsPostBack)
+            {
+                for (int i = 0; i <= 9; i++)
+                {
+                    List<List<string>> ListDropdownContent = _business.GetHospitalDropDownContent(); //--Var
+                    List<string> Names = new List<string>();
+
+                    string lbEdit = "lbEdit" + i.ToString() + "2";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
+                }
+            }
+        }
+
+        public void SetListBox4Content()
+        {
+            if (!IsPostBack)
+            {
+                for (int i = 0; i <= 9; i++)
+                {
+                    List<List<string>> ListDropdownContent = _business.GetProjectManagerDropDownContent(); //--Var
+                    List<string> Names = new List<string>();
+
+                    string lbEdit = "lbEdit" + i.ToString() + "3";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
+                }
+            }
+        }
+
+
         private void InsertData()
         {
             List<List<string>> ListDataSession = GetSessionData();
@@ -45,12 +163,81 @@ namespace Presentation.SiteEdit
 
             for (int i = 0; i < ListDataSession.Count; i++)
             {
+                List<int> IdSubject = GetSessionDataIDs();
+                string lbName;
+                var listboxData = new ListBox();                ;
+                List<int> IdRel = new List<int>();
+
                 for (int i2 = 0; i2 <= 2; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
 
                     ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
+                }
+                
+                lbName = "lbEdit" + i.ToString() + "0";
+                listboxData = container.FindControl(lbName) as ListBox;
+                IdRel = _business.GetRelationProjectHasCRAs(IdSubject[i]); //--Var
+
+                if (IdRel.Count > 0)
+                {
+                    foreach (int IdRel1 in IdRel)
+                    {
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        li.Selected = true;
+                    }
+                    IdRel.Clear();
+                }
+
+                lbName = "lbEdit" + i.ToString() + "1";
+                listboxData = container.FindControl(lbName) as ListBox;
+                IdRel = _business.GetRelationProjectHasDoctors(IdSubject[i]); //--Var
+
+                if (IdRel.Count > 0)
+                {
+                    foreach (int IdRel1 in IdRel)
+                    {
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        li.Selected = true;
+                    }
+                    IdRel.Clear();
+                }
+
+                lbName = "lbEdit" + i.ToString() + "2";
+                listboxData = container.FindControl(lbName) as ListBox;
+                IdRel = _business.GetRelationProjectHasHospitals(IdSubject[i]); //--Var
+
+                if (IdRel.Count > 0)
+                {
+                    foreach (int IdRel1 in IdRel)
+                    {
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        li.Selected = true;
+                    }
+                    IdRel.Clear();
+                }
+
+                lbName = "lbEdit" + i.ToString() + "3";
+                listboxData = container.FindControl(lbName) as ListBox;
+                IdRel = _business.GetRelationProjectHasProjectManagers(IdSubject[i]); //--Var
+
+                if (IdRel.Count > 0)
+                {
+                    foreach (int IdRel1 in IdRel)
+                    {
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        li.Selected = true;
+                    }
+                    IdRel.Clear();
                 }
             }
         }
@@ -59,6 +246,9 @@ namespace Presentation.SiteEdit
         {
             for (int i = 0; i < 10; i++)
             {
+                string lbName;
+                var listboxData = new ListBox();
+
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
@@ -105,6 +295,66 @@ namespace Presentation.SiteEdit
                 }
                 _business.SetProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2])); //--Var
 
+                lbName = "lbEdit" + i.ToString() + "0";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
+                            _business.AddCRAToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "1";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
+                            _business.AddDoctorToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "2";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
+                            _business.AddHospitalToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "3";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
+                            _business.AddProjectManagerToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                        }
+                    }
+                }
+
                 track1:
                 continue;
             }
@@ -112,6 +362,9 @@ namespace Presentation.SiteEdit
 
         private void UpdateData()
         {
+            string lbName;
+            var listboxData = new ListBox();
+
             List<int> ListDataIDs = GetSessionDataIDs();
 
             for (int i = 0; i < ListDataIDs.Count; i++)
@@ -162,6 +415,69 @@ namespace Presentation.SiteEdit
                 }
                 _business.UpdateProject(ListDataIDs[i], input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2])); //--Var
 
+                lbName = "lbEdit" + i.ToString() + "0";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                _business.DeleteRelationProjectHasCRAs(ListDataIDs[i]); //--Var
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            _business.AddCRAToProject(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "1";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                _business.DeleteRelationProjectHasDoctors(ListDataIDs[i]); //--Var
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            _business.AddDoctorToProject(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "2";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                _business.DeleteRelationProjectHasHospitals(ListDataIDs[i]); //--Var
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            _business.AddHospitalToProject(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
+                        }
+                    }
+                }
+
+                lbName = "lbEdit" + i.ToString() + "3";
+                listboxData = container.FindControl(lbName) as ListBox;
+
+                _business.DeleteRelationProjectHasProjectManagers(ListDataIDs[i]); //--Var
+
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
+                {
+                    foreach (ListItem l in listboxData.Items)
+                    {
+                        if (l.Selected == true)
+                        {
+                            _business.AddProjectManagerToProject(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
+                        }
+                    }
+                }
                 track1:
                 continue;
             }

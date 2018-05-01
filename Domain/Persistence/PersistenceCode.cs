@@ -950,9 +950,69 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
+        public void AddCRAToProject(int cra_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_CRA (Project_ID, CRA_ID) VALUES (@project_id, @cra_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@cra_id", MySqlDbType.VarChar).Value = cra_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddDoctorToProject(int doctor_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_Doctor (Project_ID, Doctor_ID) VALUES (@project_id, @doctor_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddHospitalToProject(int hospital_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_Hospital (Project_ID, Hospital_ID) VALUES (@project_id, @hospital_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddProjectManagerToProject(int projectmanager_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_ProjectManager (ProjectManager_ID, Project_ID) VALUES (@projectmanager_id, @project_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@projectmanager_id", MySqlDbType.VarChar).Value = projectmanager_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
 
-        
+
         #region Update
         public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {

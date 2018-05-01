@@ -230,6 +230,26 @@ namespace Domain.Business
             _persistence.AddDoctorToStudyCoordinator(doctor_id_p2, studycoordinator_id_p2);
         }
 
+        public void AddCRAToProject(int cra_id_p, int project_id_p)
+        {
+            _persistence.AddCRAToProject(cra_id_p, project_id_p);
+        }
+
+        public void AddDoctorToProject(int doctor_id_p, int project_id_p)
+        {
+            _persistence.AddDoctorToProject(doctor_id_p, project_id_p);
+        }
+
+        public void AddHospitalToProject(int hospital_id_p, int project_id_p)
+        {
+            _persistence.AddHospitalToProject(hospital_id_p, project_id_p);
+        }
+
+        public void AddProjectManagerToProject(int projectmanager_id_p, int project_id_p)
+        {
+            _persistence.AddProjectManagerToProject(projectmanager_id_p, project_id_p);
+        }
+
 
         #endregion
 
