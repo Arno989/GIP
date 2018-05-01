@@ -11,7 +11,7 @@ namespace Presentation.Site
 	public partial class StudyCoordinatorPage: System.Web.UI.Page
 	{
         BusinessCode _businesscode = new BusinessCode();
-        string sortingPar = " ORDER BY Name ASC";
+        string sortingPar = "ORDER BY Name ASC";
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,13 +35,13 @@ namespace Presentation.Site
 
                 if (Relations.Count != 0)
                 {
-                    List<DoctorCode> Rel1Raw = new List<DoctorCode>(); //--Var
+                    List<DoctorCode> RelRaw = new List<DoctorCode>(); //--Var
 
                     for (int i2 = 0; i2 < Relations.Count; i2++)
                     {
-                        string sortingPar = string.Format("WHERE Doctor_ID = {0}", Relations[i2]); //--Var
-                        Rel1Raw = _businesscode.GetDoctors(sortingPar); //--Var
-                        listbox.Items.Add(Rel1Raw[0].Name);
+                        sortingPar = string.Format("WHERE Doctor_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetDoctors(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
                     }
                 }
                 listbox.DataBind();

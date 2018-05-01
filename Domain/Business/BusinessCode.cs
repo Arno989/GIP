@@ -62,8 +62,10 @@ namespace Domain.Business
             return _persistence.GetStudyCoordinators(sortingPar);
         }
         #endregion
-        
+
         #region GetRelation
+
+        #region Doctor + Hospital
         public List<int> GetRelationDoctorHasHospitals(int Doctor_ID_p2)
         {
             return _persistence.GetRelationDoctorHasHospitals(Doctor_ID_p2);
@@ -73,7 +75,9 @@ namespace Domain.Business
         {
             return _persistence.GetRelationDoctorHasHospitals(Hospital_ID_p2);
         }
+        #endregion
 
+        #region StudyCoordinator + Doctor
         public List<int> GetRelationStudyCoordinatorHasDoctors(int StudyCoordinator_ID_p2)
         {
             return _persistence.GetRelationStudyCoordinatorHasDoctors(StudyCoordinator_ID_p2);
@@ -83,7 +87,55 @@ namespace Domain.Business
         {
             return _persistence.GetRelationDoctorHasStudyCoordinators(Doctor_ID_p2);
         }
+        #endregion
 
+        #region Project + CRA
+        public List<int> GetRelationProjectHasCRAs(int StudyCoordinator_ID_p2)
+        {
+            return _persistence.GetRelationProjectHasCRAs(StudyCoordinator_ID_p2);
+        }
+
+        public List<int> GetRelationCRAHasProjects(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationCRAHasProjects(Doctor_ID_p2);
+        }
+        #endregion
+
+        #region Project + Doctor
+        public List<int> GetRelationProjectHasDoctors(int StudyCoordinator_ID_p2)
+        {
+            return _persistence.GetRelationProjectHasDoctors(StudyCoordinator_ID_p2);
+        }
+
+        public List<int> GetRelationDoctorHasProjects(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationDoctorHasProjects(Doctor_ID_p2);
+        }
+        #endregion
+
+        #region Project + Hospital
+        public List<int> GetRelationProjectHasHospitals(int StudyCoordinator_ID_p2)
+        {
+            return _persistence.GetRelationProjectHasHospitals(StudyCoordinator_ID_p2);
+        }
+
+        public List<int> GetRelationHospitalHasProjects(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationHospitalHasProjects(Doctor_ID_p2);
+        }
+        #endregion
+
+        #region Project + Project Manager
+        public List<int> GetRelationProjectHasProjectManagers(int StudyCoordinator_ID_p2)
+        {
+            return _persistence.GetRelationProjectHasProjectManagers(StudyCoordinator_ID_p2);
+        }
+
+        public List<int> GetRelationProjectManagerHasProjects(int Doctor_ID_p2)
+        {
+            return _persistence.GetRelationProjectManagerHasProjects(Doctor_ID_p2);
+        }
+        #endregion
         //------------------------------------------------------------------------------ 1 op 1
 
         public int GetRelationHospitalHasDepartment(int Department_ID_p2)
@@ -177,6 +229,8 @@ namespace Domain.Business
         {
             _persistence.AddDoctorToStudyCoordinator(doctor_id_p2, studycoordinator_id_p2);
         }
+
+
         #endregion
 
 
@@ -272,6 +326,8 @@ namespace Domain.Business
         #endregion
 
         #region DeleteRelation
+
+        #region Doctor + Hospital
         public void DeleteRelationDoctorHasHospitals(int doctor_id_p2)
         {
             _persistence.DeleteRelationDoctorHasHospitals(doctor_id_p2);
@@ -281,7 +337,9 @@ namespace Domain.Business
         {
             _persistence.DeleteRelationHospitalHasDoctors(doctor_id_p2);
         }
+        #endregion
 
+        #region Study Coordinator + Doctor
         public void DeleteRelationStudyCoordinatorHasDoctors(int studycoordinator_id_p2)
         {
             _persistence.DeleteRelationStudyCoordinatorHasDoctors(studycoordinator_id_p2);
@@ -291,6 +349,56 @@ namespace Domain.Business
         {
             _persistence.DeleteRelationDoctorHasStudyCoordinators(studycoordinator_id_p2);
         }
+        #endregion
+
+        #region Project + CRA
+        public void DeleteRelationProjectHasCRAs(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationProjectHasCRAs(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationCRAHasProjectss(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationCRAHasProjectss(studycoordinator_id_p2);
+        }
+        #endregion
+
+        #region Project + CRA
+        public void DeleteRelationProjectHasDoctors(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationProjectHasDoctors(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationDoctorHasProjectss(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationDoctorHasProjectss(studycoordinator_id_p2);
+        }
+        #endregion
+
+        #region Project + CRA
+        public void DeleteRelationProjectHasHospitals(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationProjectHasHospitals(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationHospitalHasProjectss(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationHospitalHasProjectss(studycoordinator_id_p2);
+        }
+        #endregion
+
+        #region Project + CRA
+        public void DeleteRelationProjectHasProjectManagers(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationProjectHasProjectManagers(studycoordinator_id_p2);
+        }
+
+        public void DeleteRelationProjectManagerHasProjectss(int studycoordinator_id_p2)
+        {
+            _persistence.DeleteRelationProjectManagerHasProjectss(studycoordinator_id_p2);
+        }
+        #endregion
+
         #endregion
 
 

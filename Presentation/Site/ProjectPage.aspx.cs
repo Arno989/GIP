@@ -11,7 +11,8 @@ namespace Presentation.Site
 	public partial class ProjectPage: System.Web.UI.Page
 	{
         BusinessCode _businesscode = new BusinessCode();
-        string sortingPar = " ORDER BY Title ASC";
+        string sortingPar = "ORDER BY Title ASC";
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,33 +23,138 @@ namespace Presentation.Site
             }
         }
 
+        protected void ListBoxRel1()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbRel1";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+
+                if (Relations.Count != 0)
+                {
+                    List<CRACode> RelRaw = new List<CRACode>(); //--Var
+
+                    for (int i2 = 0; i2 < Relations.Count; i2++)
+                    {
+                        sortingPar = string.Format("WHERE CRA_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetCRAs(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
+                    }
+                }
+                listbox.DataBind();
+            }
+        }
+
+        protected void ListBoxRel2()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbRel2";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+
+                if (Relations.Count != 0)
+                {
+                    List<DoctorCode> RelRaw = new List<DoctorCode>(); //--Var
+
+                    for (int i2 = 0; i2 < Relations.Count; i2++)
+                    {
+                        sortingPar = string.Format("WHERE Doctor_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetDoctors(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
+                    }
+                }
+                listbox.DataBind();
+            }
+        }
+
+        protected void ListBoxRel3()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbRel3";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+
+                if (Relations.Count != 0)
+                {
+                    List<HospitalCode> RelRaw = new List<HospitalCode>(); //--Var
+
+                    for (int i2 = 0; i2 < Relations.Count; i2++)
+                    {
+                        sortingPar = string.Format("WHERE Hospital_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetHospitals(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
+                    }
+                }
+                listbox.DataBind();
+            }
+        }
+
+        protected void ListBoxRel4()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbRel4";
+                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+
+                if (Relations.Count != 0)
+                {
+                    List<ProjectManagerCode> RelRaw = new List<ProjectManagerCode>(); //--Var
+
+                    for (int i2 = 0; i2 < Relations.Count; i2++)
+                    {
+                        sortingPar = string.Format("WHERE ProjectManager_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetProjectManagers(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
+                    }
+                }
+                listbox.DataBind();
+            }
+        }
+
+
         protected void Edit(object sender, EventArgs e)
         {
-            List<string> List1 = new List<string>();
-            List<List<string>> ListData = new List<List<string>>();
-            List<int> DataIDs = new List<int>();
+            List<int> DataSessionIDs = new List<int>();
+            List<List<string>> ListDataSession = new List<List<string>>();
 
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
                 if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
                 {
                     CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+
                     if (chk.Checked)
                     {
-                        DataIDs.Add((int)GridView.DataKeys[i].Value);
+                        List<string> Record = new List<string>();
+                        DataSessionIDs.Add((int)GridView.DataKeys[i].Value);
 
-                        for (int i2 = 1; i2 < GridView.Columns.Count; i2++)
+                        for (int i2 = 1; i2 < GridView.Columns.Count - 1; i2++)
                         {
-                            List1.Add(GridView.Rows[i].Cells[i2].Text);
+                            Record.Add(GridView.Rows[i].Cells[i2].Text);
                         }
-                        ListData.Add(List1);
+                        ListDataSession.Add(Record);
                     }
                 }
             }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");
+            if (DataSessionIDs.Count != 0)
+            {
+                Session["DataID"] = DataSessionIDs;
+                Session["ListDataSession"] = ListDataSession;
+                Response.Redirect("../SiteEdit/ProjectPageEdit.aspx"); //--Var
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+            }
         }
 
         protected void Delete(object sender, EventArgs e)
@@ -60,8 +166,25 @@ namespace Presentation.Site
                     CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
                     if (chk.Checked)
                     {
-                        int id = (int)GridView.DataKeys[i].Value;
-                        _businesscode.DeleteProject(Convert.ToInt32(id));
+                        int RecordID = (int)GridView.DataKeys[i].Value;
+
+                        if (_businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasCRAs(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasDoctors(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasHospitals(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasProjectManagers(RecordID); //--Var
+                        }
+                        _businesscode.DeleteProject(RecordID); //--Var
                     }
                 }
             }

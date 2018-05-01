@@ -20,6 +20,10 @@
                 <asp:TableHeaderCell>Title</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>CRA's</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Doctors</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Hospitals</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Project Managers</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow runat="server">
                 <asp:TableCell CssClass="cellEdit">
