@@ -76,7 +76,7 @@ namespace Presentation.SiteEdit
 
             for (int i = 0; i < ListDataSession.Count; i++)
             {
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -107,13 +107,12 @@ namespace Presentation.SiteEdit
 
         private void SendData()
         {
-            var container = Master.FindControl("Body");
-
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i < 10; i++)
             {
+                var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 5; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -218,14 +217,14 @@ namespace Presentation.SiteEdit
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
-                if (listboxData.SelectedIndex != 0)
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
                 {
                     foreach (ListItem l in listboxData.Items)
                     {
                         if (l.Selected == true)
                         {
                             StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
-                            _business.AddDoctorToStudyCoordinator(Convert.ToInt16(l.Value), StudyCoordinator.SC_ID); //--Var
+                            _business.AddDoctorToStudyCoordinator(Convert.ToInt32(l.Value.ToString()), StudyCoordinator.SC_ID); //--Var
                         }
                     }
                 }
@@ -243,7 +242,7 @@ namespace Presentation.SiteEdit
                 var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
-                for (int i2 = 0; i2 <= 9; i2++)
+                for (int i2 = 0; i2 <= 5; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -350,13 +349,13 @@ namespace Presentation.SiteEdit
 
                 _business.DeleteRelationStudyCoordinatorHasDoctors(ListDataIDs[i]); //--Var
 
-                if (listboxData.SelectedIndex != 0)
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
                 {
                     foreach (ListItem l in listboxData.Items)
                     {
                         if (l.Selected == true)
                         {
-                            _business.AddDoctorToStudyCoordinator(Convert.ToInt16(l.Value), ListDataIDs[i]); //--Var
+                            _business.AddDoctorToStudyCoordinator(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
                         }
                     }
                 }

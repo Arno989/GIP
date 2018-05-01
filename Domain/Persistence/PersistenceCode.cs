@@ -355,7 +355,7 @@ namespace Domain.Persistence
         {
             List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT StudyCoordinator_ID FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @id", conn);
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = doctor_id_ID_p;
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();

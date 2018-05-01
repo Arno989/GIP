@@ -107,10 +107,9 @@ namespace Presentation.SiteEdit
 
         private void SendData()
         {
-            var container = Master.FindControl("Body");
-
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i < 10; i++)
             {
+                var container = Master.FindControl("Body");
                 string[] input = new string[10];
 
                 for (int i2 = 0; i2 <= 9; i2++)
@@ -262,14 +261,14 @@ namespace Presentation.SiteEdit
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
-                if (listboxData.SelectedIndex != 0)
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
                 {
                     foreach (ListItem l in listboxData.Items)
                     {
                         if (l.Selected == true)
                         {
                             DoctorCode doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value.ToString()), doctor.Doctor_ID); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt32(l.Value.ToString()), doctor.Doctor_ID); //--Var
                         }
                     }
                 }
@@ -438,13 +437,13 @@ namespace Presentation.SiteEdit
 
                 _business.DeleteRelationDoctorHasHospitals(ListDataIDs[i]); //--Var
 
-                if (listboxData.SelectedIndex != 0)
+                if (listboxData.SelectedIndex.ToString().Count() != 0)
                 {
                     foreach (ListItem l in listboxData.Items)
                     {
                         if (l.Selected == true)
                         {
-                            _business.AddHospitalToDoctor(Convert.ToInt16(l.Value), ListDataIDs[i]); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt32(l.Value), ListDataIDs[i]); //--Var
                         }
                     }
                 }
