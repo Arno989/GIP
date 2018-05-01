@@ -16,15 +16,15 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListBoxRel1();
-            ListBoxRel2();
-            ListBoxRel3();
-            ListBoxRel4();
-
             if (!IsPostBack)
             {
                 GridView.DataSource = _businesscode.GetProjects(sortingPar);
                 GridView.DataBind();
+
+                ListBoxRel1();
+                ListBoxRel2();
+                ListBoxRel3();
+                ListBoxRel4();
             }
         }
 
@@ -34,7 +34,7 @@ namespace Presentation.Site
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel1";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                ListBox listbox = GridView.Rows[i].Cells[4].FindControl(lbName) as ListBox;
                 List<int> Relations = _businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
@@ -58,7 +58,7 @@ namespace Presentation.Site
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel2";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                ListBox listbox = GridView.Rows[i].Cells[5].FindControl(lbName) as ListBox;
                 List<int> Relations = _businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
@@ -82,7 +82,7 @@ namespace Presentation.Site
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel3";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                ListBox listbox = GridView.Rows[i].Cells[6].FindControl(lbName) as ListBox;
                 List<int> Relations = _businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
@@ -106,7 +106,7 @@ namespace Presentation.Site
             {
                 var container = Master.FindControl("Body");
                 string lbName = "lbRel4";
-                ListBox listbox = GridView.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                ListBox listbox = GridView.Rows[i].Cells[7].FindControl(lbName) as ListBox;
                 List<int> Relations = _businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
 
                 if (Relations.Count != 0)
@@ -115,7 +115,7 @@ namespace Presentation.Site
 
                     for (int i2 = 0; i2 < Relations.Count; i2++)
                     {
-                        sortingPar = string.Format("WHERE ProjectManager_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        sortingPar = string.Format("WHERE PM_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
                         RelRaw = _businesscode.GetProjectManagers(sortingPar); //--Var
                         listbox.Items.Add(RelRaw[0].Name);
                     }
