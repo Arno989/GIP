@@ -51,7 +51,6 @@ namespace Presentation.Site
 
         protected void Edit(object sender, EventArgs e)
         {
-            List<string> Record = new List<string>();
             List<int> DataSessionIDs = new List<int>();
             List<List<string>> ListDataSession = new List<List<string>>();
 
@@ -63,6 +62,7 @@ namespace Presentation.Site
 
                     if (chk.Checked)
                     {
+                        List<string> Record = new List<string>();
                         DataSessionIDs.Add((int)GridView.DataKeys[i].Value);
 
                         for (int i2 = 1; i2 < GridView.Columns.Count -1; i2++)

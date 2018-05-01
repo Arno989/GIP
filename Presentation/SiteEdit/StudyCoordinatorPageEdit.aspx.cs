@@ -44,23 +44,26 @@ namespace Presentation.SiteEdit
         {
             if (!IsPostBack)
             {
-                List<List<string>> ListDropdownContent = _business.GetDoctorDropDownContent(); //--Var
-                List<string> Names = new List<string>();
-
-                string ddEdit = "lbEdit" + 0.ToString() + "0";
-                var container = Master.FindControl("Body");
-                var DropDownData = container.FindControl(ddEdit) as ListBox;
-
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                for (int i = 0; i <= 9; i++)
                 {
-                    Names.Add(ListDropdownContent[i2][1]);
-                }
-                DropDownData.DataSource = Names;
-                DropDownData.DataBind();
+                    List<List<string>> ListDropdownContent = _business.GetDoctorDropDownContent(); //--Var
+                    List<string> Names = new List<string>();
 
-                for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
-                {
-                    DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    string lbEdit = "lbEdit" + i.ToString() + "0";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        Names.Add(ListDropdownContent[i2][1]);
+                    }
+                    DropDownData.DataSource = Names;
+                    DropDownData.DataBind();
+
+                    for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
                 }
             }
         }
@@ -68,43 +71,20 @@ namespace Presentation.SiteEdit
 
         private void InsertData()
         {
-            List<List<string>> ListData = GetSessionData();
+            List<List<string>> ListDataSession = GetSessionData();
             var container = Master.FindControl("Body");
 
-            for (int i = 0; i < ListData.Count; i++)
+            for (int i = 0; i < ListDataSession.Count; i++)
             {
-                for (int i2 = 0; i2 <= 5; i2++) //--Var
+                for (int i2 = 0; i2 <= 9; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
 
-                    switch (i2)
-                    {
-                        case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
+                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
 
-                        case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 4:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 5:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                    }
                 }
+
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
 
@@ -115,12 +95,13 @@ namespace Presentation.SiteEdit
                 {
                     foreach (int IdRel1 in IdRel)
                     {
-                        ListItem li = listboxData.Items.FindByValue(IdRel1.ToString());
+                        ListItem li = new ListItem();
+
+                        li = listboxData.Items.FindByValue(IdRel1.ToString());
                         li.Selected = true;
                     }
                     IdRel.Clear();
                 }
-
             }
         }
 
