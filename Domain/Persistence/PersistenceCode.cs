@@ -295,8 +295,10 @@ namespace Domain.Persistence
 			return ListStudyCoordinators;
 		}
         #endregion
-        
+
         #region GetRelation
+
+        #region Doctor + Hospital
         public List<int> GetRelationDoctorHasHospitals(int Doctor_ID_p)
         {
             List<int> ListAllRelations = new List<int>();
@@ -334,7 +336,9 @@ namespace Domain.Persistence
             conn.Close();
             return ListAllRelations;
         }
+        #endregion
 
+        #region StudyCoordinator + Doctor
         public List<int> GetRelationStudyCoordinatorHasDoctors(int StudyCoordinator_ID_p)
         {
             List<int> ListAllRelations = new List<int>();
@@ -358,7 +362,7 @@ namespace Domain.Persistence
         {
             List<int> ListAllRelations = new List<int>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT StudyCoordinator_ID FROM StudyCoordinator_has_Doctor WHERE Doctor_ID = @id", conn);
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = doctor_id_ID_p;
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -372,6 +376,167 @@ namespace Domain.Persistence
             conn.Close();
             return ListAllRelations;
         }
+        #endregion
+
+        #region Project + CRA
+        public List<int> GetRelationProjectHasCRAs(int Project_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT CRA_ID FROM Project_has_CRA WHERE Project_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Project_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["CRA_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationCRAHasProjects(int CRA_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Project_ID FROM Project_has_CRA WHERE CRA_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = CRA_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+        #endregion
+
+        #region Project + Doctor
+        public List<int> GetRelationProjectHasDoctors(int Project_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Doctor_ID FROM Project_has_Doctor WHERE Project_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Project_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Doctor_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationDoctorHasProjects(int Doctor_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Project_ID FROM Project_has_Doctor WHERE Doctor_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Doctor_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+        #endregion
+
+        #region Project + Hospital
+        public List<int> GetRelationProjectHasHospitals(int Project_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Hospital_ID FROM Project_has_Hospital WHERE Project_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Project_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Hospital_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationHospitalHasProjects(int Hospital_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Project_ID FROM Project_has_Hospital WHERE Hospital_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Hospital_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+        #endregion
+
+        #region Project + Project Manager
+        public List<int> GetRelationProjectHasProjectManagers(int Project_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT ProjectManager_ID FROM Project_has_ProjectManager WHERE Project_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = Project_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["ProjectManager_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+
+        public List<int> GetRelationProjectManagerHasProjects(int ProjectManager_ID_p)
+        {
+            List<int> ListAllRelations = new List<int>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT Project_ID FROM Project_has_ProjectManager WHERE ProjectManager_ID = @id", conn);
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = ProjectManager_ID_p;
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Project_ID"]);
+                ListAllRelations.Add(id);
+            }
+
+            conn.Close();
+            return ListAllRelations;
+        }
+        #endregion
 
         //--------------------------------------------------------------------------------------------------------1 op 1
 
@@ -791,8 +956,69 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
+        public void AddCRAToProject(int cra_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_CRA (Project_ID, CRA_ID) VALUES (@project_id, @cra_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@cra_id", MySqlDbType.VarChar).Value = cra_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddDoctorToProject(int doctor_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_Doctor (Project_ID, Doctor_ID) VALUES (@project_id, @doctor_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@doctor_id", MySqlDbType.VarChar).Value = doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddHospitalToProject(int hospital_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_Hospital (Project_ID, Hospital_ID) VALUES (@project_id, @hospital_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void AddProjectManagerToProject(int projectmanager_id_p, int project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Project_has_ProjectManager (ProjectManager_ID, Project_ID) VALUES (@projectmanager_id, @project_id);", conn);
+
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@projectmanager_id", MySqlDbType.VarChar).Value = projectmanager_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
-        
+
+
         #region Update
         public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
         {
@@ -999,6 +1225,7 @@ namespace Domain.Persistence
         //--------------------------------------------------
         #endregion
 
+
         #region Delete
         public void DeleteClient(int id_p)
         {
@@ -1111,6 +1338,8 @@ namespace Domain.Persistence
         #endregion
 
         #region DeleteRelation
+
+        #region Doctor + Hospital
         public void DeleteRelationDoctorHasHospitals(int doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -1138,7 +1367,9 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+        #endregion
 
+        #region Study Coordinator + Doctor
         public void DeleteRelationStudyCoordinatorHasDoctors(int studycoordinator_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
@@ -1166,6 +1397,128 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+        #endregion
+
+        #region Project + CRA
+        public void DeleteRelationProjectHasCRAs(int Project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_CRA WHERE Project_ID = @Project_id ;", conn);
+
+            cmd.Parameters.Add("@Project_id", MySqlDbType.VarChar).Value = Project_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationCRAHasProjectss(int CRA_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_CRA WHERE CRA_ID = @CRA_id ;", conn);
+
+            cmd.Parameters.Add("@CRA_id", MySqlDbType.VarChar).Value = CRA_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
+        #region Project + Doctor
+        public void DeleteRelationProjectHasDoctors(int Project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_Doctor WHERE Project_ID = @Project_id ;", conn);
+
+            cmd.Parameters.Add("@Project_id", MySqlDbType.VarChar).Value = Project_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationDoctorHasProjectss(int Doctor_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_Doctor WHERE Doctor_ID = @Doctor_id ;", conn);
+
+            cmd.Parameters.Add("@Doctor_id", MySqlDbType.VarChar).Value = Doctor_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
+        #region Project + Hospital
+        public void DeleteRelationProjectHasHospitals(int Project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_Hospital WHERE Project_ID = @Project_id ;", conn);
+
+            cmd.Parameters.Add("@Project_id", MySqlDbType.VarChar).Value = Project_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationHospitalHasProjectss(int Hospital_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_Hospital WHERE Hospital_ID = @Hospital_id ;", conn);
+
+            cmd.Parameters.Add("@Hospital_id", MySqlDbType.VarChar).Value = Hospital_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
+        #region Project + Project Manager
+        public void DeleteRelationProjectHasProjectManagers(int Project_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_ProjectManager WHERE Project_ID = @Project_id ;", conn);
+
+            cmd.Parameters.Add("@Project_id", MySqlDbType.VarChar).Value = Project_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void DeleteRelationProjectManagerHasProjectss(int ProjectManager_id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Project_has_ProjectManager WHERE ProjectManager_ID = @ProjectManager_id ;", conn);
+
+            cmd.Parameters.Add("@ProjectManager_id", MySqlDbType.VarChar).Value = ProjectManager_id_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        #endregion
+
         #endregion
     }
 }

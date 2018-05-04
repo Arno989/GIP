@@ -260,7 +260,7 @@ tr:nth-child(even) {
 
 .listbox {
     width: 100%;
-    height: 100%;
+    height: 100px;
     padding-left: 10px;
     margin: 0;
     vertical-align: middle;
@@ -291,6 +291,18 @@ tr:nth-child(even) {
     padding: 3px;
     width: 100%;
     padding: 5% 0;
+}
+
+.cellListbox {
+    padding: 0;
+}
+
+.listboxEdit {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    margin: 0;
+    vertical-align: middle;
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/

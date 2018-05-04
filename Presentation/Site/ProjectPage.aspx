@@ -27,6 +27,26 @@
             <asp:BoundField DataField="Title" HeaderText="Title" />
             <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" />
+            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbRel2" CssClass="listbox"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbRel3" CssClass="listbox"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox">
+                <ItemTemplate>
+                    <asp:ListBox runat="server" ID="lbRel4" CssClass="listbox"></asp:ListBox>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>
