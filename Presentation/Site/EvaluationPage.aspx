@@ -24,6 +24,16 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Type" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <asp:Label ID="lbType" runat="server"></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Name" HeaderStyle-Width="50px" >
+                <ItemTemplate>
+                    <asp:Label ID="lbName" runat="server"></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="Date" HeaderText="Date" />
             <asp:BoundField DataField="Feedback" HeaderText="Feedback" />
             <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" />

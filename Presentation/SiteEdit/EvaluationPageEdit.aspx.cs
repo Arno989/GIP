@@ -12,16 +12,26 @@ namespace Presentation.SiteEdit
 	{
 		private BusinessCode _business = new BusinessCode();
 
-		private void sendData()
+        private List<List<string>> GetData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
+
+        private List<int> GetDataIDs()
+        {
+            return (List<int>)Session["DataID"];
+        }
+
+        private void SendData()
 		{
 			for (int i = 0; i <= 9; i++)
 			{
 				string[] input = new string[6];
+                var container = Master.FindControl("Body");
 
-				for (int i2 = 0; i2 <= 5; i2++)
+                for (int i2 = 0; i2 <= 5; i2++)
 				{
 					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var container = Master.FindControl("Body");
 					var txtBox = container.FindControl(tbName);
 
 					switch (i2)
@@ -58,11 +68,60 @@ namespace Presentation.SiteEdit
 							break;
 					}
 				}
-				_business.SetEvaluation(Convert.ToDateTime(input[0]),input[1],input[2],input[3],input[4],input[5]);
-track1:
+
+                List<List<string>> ListContentCRA = _business.GetCRADropDownContent();
+                List<List<string>> ListContentDoctor = _business.GetDoctorDropDownContent();
+                List<List<string>> ListContentSC = _business.GetStudyCoordinatorDropDownContent();
+                List<string> Empty = new List<string>();
+                Empty.Add(string.Empty);
+                List<List<string>> ListAll = new List<List<string>>();
+
+                ListAll.Add(Empty);
+                ListAll.Add(Empty);
+                for(int i3 = 0; i3 < ListContentCRA.Count; i3++)
+                {
+                    ListAll.Add(ListContentCRA[i3]);
+                }
+                ListAll.Add(Empty);
+                for (int i3 = 0; i3 < ListContentDoctor.Count; i3++)
+                {
+                    ListAll.Add(ListContentDoctor[i3]);
+                }
+                ListAll.Add(Empty);
+                for (int i3 = 0; i3 < ListContentSC.Count; i3++)
+                {
+                    ListAll.Add(ListContentSC[i3]);
+                }
+
+                string ddName = "ddEdit" + i.ToString() + "0";
+                var dropdownData = container.FindControl(ddName) as DropDownList;
+                int index = dropdownData.SelectedIndex;
+
+                if(index > 1 && index <= 1 + ListContentCRA.Count)
+                {
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), 0, 0);
+                }
+                else if (index > 2 + ListContentCRA.Count && index <= 1 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
+                {
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], 0, Convert.ToInt16(ListAll[index][0]), 0);
+                }
+                else if (index > 2 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
+                {
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], 0, 0, Convert.ToInt16(ListAll[index][0]));
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
+                }
+                track1:
 				continue;
 			}
 		}
+
+        public void UpdateData()
+        {
+
+        }
 
         public void SetDropdownContent()
         {
@@ -79,7 +138,7 @@ track1:
                 {
                     if (count % 2 != 0)
                     {
-                        names.Add(ListContentCRA[i2][count]);
+                        names.Add(ListContentCRA[i2][1]);
                     }
                     count = count + 2;
                 }
@@ -93,7 +152,7 @@ track1:
                 {
                     if (count % 2 != 0)
                     {
-                        names.Add(ListContentDoctor[i2][count]);
+                        names.Add(ListContentDoctor[i2][1]);
                     }
                     count = count + 2;
                 }
@@ -107,7 +166,7 @@ track1:
                 {
                     if (count % 2 != 0)
                     {
-                        names.Add(ListContentStudyCoordinator[i2][count]);
+                        names.Add(ListContentStudyCoordinator[i2][1]);
                     }
                     count = count + 2;
                 }
@@ -121,7 +180,34 @@ track1:
                 var DropDown = container.FindControl(ddEdit) as DropDownList;
                 DropDown.DataSource = names;
                 DropDown.DataBind();
+
+                int StartCRA = 2;
+                int StartDoctor = StartCRA + ListContentCRA.Count + 1;
+                int StartSC = StartDoctor + ListContentDoctor.Count + 1;
+                int total = StartSC + ListContentStudyCoordinator.Count;
+
+                int count1 = 0;
+
+                for (int i2 = 2; i2  < ListContentCRA.Count + 2; i2++)
+                {
+                    DropDown.Items[i2].Value = ListContentCRA[count1][0];
+                    count1++;
+                }
+                count1 = 0;
+                for(int i2 = StartDoctor; i2 < StartDoctor + ListContentDoctor.Count; i2++)
+                {
+                    DropDown.Items[i2].Value = ListContentDoctor[count1][0];
+                    count1++;
+                }
+                count1 = 0;
+                for(int i2 = StartSC; i2 < StartSC + ListContentStudyCoordinator.Count; i2++)
+                {
+                    DropDown.Items[i2].Value = ListContentStudyCoordinator[count1][0];
+                    count1++;
+                }
             }
+
+            
         }
 
         protected void Page_Load(object sender,EventArgs e)
@@ -136,14 +222,28 @@ track1:
 
 		protected void btnSaveAndExit_Click(object sender,EventArgs e)
 		{
-			sendData();
-			Response.Redirect("../Site/EvaluationPage.aspx");
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../Site/EvaluationPage.aspx");
 		}
 
 		protected void btnSave_Click(object sender,EventArgs e)
 		{
-			sendData();
-			Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
+            if (GetDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+            Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
 		}
 	}
 }

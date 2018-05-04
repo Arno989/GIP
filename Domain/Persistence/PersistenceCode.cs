@@ -178,8 +178,11 @@ namespace Domain.Persistence
 				string quality = Convert.ToString(dataReader["Quality"]);
 				string evalauation_txt = Convert.ToString(dataReader["Evaluation_Text"]);
 				string label = Convert.ToString(dataReader["Label"]);
+                int craID = Convert.ToInt16(dataReader["CRA_ID"]);
+                int doctorID = Convert.ToInt16(dataReader["Doctor_ID"]);
+                int scID = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
 
-				EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label);
+                EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID);
 
 				ListEvaluations.Add(c);
 			}
@@ -249,7 +252,7 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-                int id = Convert.ToInt16(dataReader["PM_ID"]);
+                int id = Convert.ToInt16(dataReader["ProjectManager_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 				string email = Convert.ToString(dataReader["Email"]);
@@ -275,7 +278,7 @@ namespace Domain.Persistence
 
 			while (dataReader.Read())
 			{
-                int id = Convert.ToInt16(dataReader["SC_ID"]);
+                int id = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 				string cv = Convert.ToString(dataReader["CV"]);
 				string email = Convert.ToString(dataReader["Email"]);
@@ -524,7 +527,7 @@ namespace Domain.Persistence
 
             while (dataReader.Read())
             {
-                int id = Convert.ToInt16(dataReader["PM_ID"]);
+                int id = Convert.ToInt16(dataReader["ProjectManager_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
                 ListCount.Add(new List<String>());
@@ -541,14 +544,14 @@ namespace Domain.Persistence
         {
             List<List<string>> ListCount = new List<List<string>>();
             MySqlConnection conn = new MySqlConnection(_connectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM StudyCoordiantor ORDER BY Name ASC", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM StudyCoordinator ORDER BY Name ASC", conn);
             conn.Open();
             MySqlDataReader dataReader = cmd.ExecuteReader();
             int count = 0;
 
             while (dataReader.Read())
             {
-                int id = Convert.ToInt16(dataReader["SC_ID"]);
+                int id = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
                 string name = Convert.ToString(dataReader["Name"]);
 
                 ListCount.Add(new List<String>());
@@ -662,13 +665,13 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p)
+		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p, int cra_p, int doctor_p, int sc_p)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID, Doctor_ID, CRA_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc, @doctor, @cra);", conn);
 
 			cmd.Parameters.Add("@date",MySqlDbType.Date).Value = date_p;
 			cmd.Parameters.Add("@feedback",MySqlDbType.VarChar).Value = feedback_p;
@@ -676,8 +679,11 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@quality",MySqlDbType.VarChar).Value = quality_p;
 			cmd.Parameters.Add("@evaluation_txt",MySqlDbType.VarChar).Value = evaluationtxt_p;
 			cmd.Parameters.Add("@label",MySqlDbType.VarChar).Value = label_p;
+            cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = cra_p;
+            cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = doctor_p;
+            cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = sc_p;
 
-			cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
@@ -955,7 +961,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE PM_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE ProjectManager_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -974,7 +980,7 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE SC_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE StudyCoordinator_ID = @id;", conn);
             
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1085,7 +1091,7 @@ namespace Domain.Persistence
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from ProjectManager where PM_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from ProjectManager where ProjectManager_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -1096,7 +1102,7 @@ namespace Domain.Persistence
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from StudyCoordinator where SC_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE from StudyCoordinator where StudyCoordinator_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();

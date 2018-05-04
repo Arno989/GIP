@@ -67,16 +67,39 @@ namespace Domain.Business
 			set { _label = value; }
 		}
 
+        private int _craID;
 
-		// All constructors
+        public int CraID
+        {
+            get { return _craID; }
+            set { _craID = value; }
+        }
 
-		public EvaluationCode()
+        private int _doctortID;
+
+        public int DoctoID
+        {
+            get { return _doctortID; }
+            set { _doctortID = value; }
+        }
+
+        private int _scID;
+
+        public int ScID
+        {
+            get { return _scID; }
+            set { _scID = value; }
+        }
+
+        // All constructors
+
+        public EvaluationCode()
 		{
 
 		}
 
 		public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
-			 string quality_p,string evaluation_txt_p,string label_p)
+			 string quality_p,string evaluation_txt_p,string label_p, int cra_id_p, int doctor_id_p, int sc_id_p)
 		{
             _evaluation_id = evaluation_id_p;
 			_date = date_p;
@@ -85,6 +108,9 @@ namespace Domain.Business
 			_quality = quality_p;
 			_evaluation_txt = evaluation_txt_p;
 			_label = label_p;
+            _craID = cra_id_p;
+            _doctortID = doctor_id_p;
+            _scID = sc_id_p;
 		}
 	}
 }

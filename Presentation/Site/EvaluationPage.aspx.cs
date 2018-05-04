@@ -20,6 +20,9 @@ namespace Presentation.Site
                 GridView.DataSource = _businesscode.GetEvaluations(sortingPar);
                 GridView.DataBind();
             }
+            FillCRA();
+            FillDoctor();
+            FillStudyCoordinator();
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -46,13 +49,21 @@ namespace Presentation.Site
                 }
             }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
+            if (DataIDs.Count != 0)
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+            }
         }
 
         protected void Delete(object sender, EventArgs e)
         {
+            bool CheckedOrNot = false;
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
                 if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
@@ -62,10 +73,79 @@ namespace Presentation.Site
                     {
                         int id = (int)GridView.DataKeys[i].Value;
                         _businesscode.DeleteEvaluation(Convert.ToInt32(id));
+                        CheckedOrNot = true;
                     }
                 }
             }
-            Response.Redirect("../Site/EvaluationPage.aspx");
+
+            if (CheckedOrNot == false)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to delete.')", true);
+            }
+            else
+            {
+                Response.Redirect("../Site/EvaluationPage.aspx");
+            }
+        }
+
+        public void FillCRA()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //CRA ID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+                int CRAID = CurrentEvaluation[0].CraID;
+
+                //CRA ID omzetten naar CRA name
+                string sortingPar2 = string.Format(" WHERE CRA_ID = {0}", CRAID);
+                List<CRACode> CRARelation = new List<CRACode>();
+                CRARelation = _businesscode.GetCRAs(sortingPar2);
+                string CRAName = CRARelation[0].Name;
+
+                GridView.Rows[i].Cells[7].Text = CRAName;
+            }
+        }
+
+        public void FillDoctor()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //Doctor ID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+                int DoctorID = CurrentEvaluation[0].CraID;
+
+                //Doctor ID omzetten naar CRA name
+                string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", DoctorID);
+                List<DoctorCode> DoctorRelation = new List<DoctorCode>();
+                DoctorRelation = _businesscode.GetDoctors(sortingPar2);
+                string DoctorName = DoctorRelation[0].Name;
+
+                GridView.Rows[i].Cells[8].Text = DoctorName;
+            }
+        }
+
+        public void FillStudyCoordinator()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                //Doctor ID krijgen van de current row in de gridvieuw
+                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+                int StudyCoordinatorID = CurrentEvaluation[0].CraID;
+
+                //Doctor ID omzetten naar CRA name
+                string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", StudyCoordinatorID);
+                List<StudyCoordinatorCode> StudyCoordinatorRelation = new List<StudyCoordinatorCode>();
+                StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
+                string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
+
+                GridView.Rows[i].Cells[9].Text = StudyCoordinatorName;
+            }
         }
 
         protected void Add(object sender, EventArgs e)
