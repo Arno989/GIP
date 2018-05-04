@@ -99,15 +99,15 @@ namespace Presentation.SiteEdit
 
                 if(index > 1 && index <= 1 + ListContentCRA.Count)
                 {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), 0, 0);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), -1, -1);
                 }
                 else if (index > 2 + ListContentCRA.Count && index <= 1 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
                 {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], 0, Convert.ToInt16(ListAll[index][0]), 0);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[index][0]), -1);
                 }
                 else if (index > 2 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
                 {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], 0, 0, Convert.ToInt16(ListAll[index][0]));
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[index][0]));
                 }
                 else
                 {

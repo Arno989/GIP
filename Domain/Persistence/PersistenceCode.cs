@@ -178,9 +178,25 @@ namespace Domain.Persistence
 				string quality = Convert.ToString(dataReader["Quality"]);
 				string evalauation_txt = Convert.ToString(dataReader["Evaluation_Text"]);
 				string label = Convert.ToString(dataReader["Label"]);
-                int craID = Convert.ToInt16(dataReader["CRA_ID"]);
-                int doctorID = Convert.ToInt16(dataReader["Doctor_ID"]);
-                int scID = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
+                int craID, doctorID, scID;
+                if (dataReader["CRA_ID"] != DBNull.Value)
+                {
+                    craID = Convert.ToInt16(dataReader["CRA_ID"]);
+                }
+                else
+                { craID = -1; }
+                if(dataReader["Doctor_ID"] != DBNull.Value)
+                {
+                    doctorID = Convert.ToInt16(dataReader["Doctor_ID"]);
+                }
+                else
+                { doctorID = -1; }
+                if (dataReader["StudyCoordinator_ID"] != DBNull.Value)
+                {
+                    scID = Convert.ToInt16(dataReader["StudyCoordinator_ID"]);
+                }
+                else
+                { scID = -1; }
 
                 EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID);
 
@@ -836,19 +852,45 @@ namespace Domain.Persistence
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID, Doctor_ID, CRA_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc, @doctor, @cra);", conn);
+            if (cra_p != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, CRA_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @cra);", conn);
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = cra_p;
 
-			cmd.Parameters.Add("@date",MySqlDbType.Date).Value = date_p;
-			cmd.Parameters.Add("@feedback",MySqlDbType.VarChar).Value = feedback_p;
-			cmd.Parameters.Add("@accuracy",MySqlDbType.VarChar).Value = accuracy_p;
-			cmd.Parameters.Add("@quality",MySqlDbType.VarChar).Value = quality_p;
-			cmd.Parameters.Add("@evaluation_txt",MySqlDbType.VarChar).Value = evaluationtxt_p;
-			cmd.Parameters.Add("@label",MySqlDbType.VarChar).Value = label_p;
-            cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = cra_p;
-            cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = doctor_p;
-            cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = sc_p;
+                cmd.ExecuteNonQuery();
+            }
+            else if (doctor_p != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, Doctor_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @doctor);", conn);
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = doctor_p;
 
-            cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            else if (sc_p != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc);", conn);
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = sc_p;
+
+                cmd.ExecuteNonQuery();
+            }
 
 			conn.Close();
 		}

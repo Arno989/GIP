@@ -20,9 +20,7 @@ namespace Presentation.Site
                 GridView.DataSource = _businesscode.GetEvaluations(sortingPar);
                 GridView.DataBind();
             }
-            FillCRA();
-            FillDoctor();
-            FillStudyCoordinator();
+            FillDropdown();
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -88,64 +86,78 @@ namespace Presentation.Site
             }
         }
 
-        public void FillCRA()
+        public void FillDropdown()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
-                //CRA ID krijgen van de current row in de gridvieuw
                 string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
                 List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
                 CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
-                int CRAID = CurrentEvaluation[0].CraID;
-
-                //CRA ID omzetten naar CRA name
-                string sortingPar2 = string.Format(" WHERE CRA_ID = {0}", CRAID);
-                List<CRACode> CRARelation = new List<CRACode>();
-                CRARelation = _businesscode.GetCRAs(sortingPar2);
-                string CRAName = CRARelation[0].Name;
-
-                GridView.Rows[i].Cells[7].Text = CRAName;
+                if(CurrentEvaluation[0].CraID != -1)
+                {
+                    FillCRA(i);
+                }
+                else if (CurrentEvaluation[0].DoctoID != -1)
+                {
+                    FillDoctor(i);
+                }
+                else if (CurrentEvaluation[0].ScID != -1)
+                {
+                    FillStudyCoordinator(i);
+                }
             }
         }
 
-        public void FillDoctor()
+        public void FillCRA(int i)
         {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                //Doctor ID krijgen van de current row in de gridvieuw
-                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
-                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
-                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
-                int DoctorID = CurrentEvaluation[0].CraID;
+            //CRA ID krijgen van de current row in de gridvieuw
+            string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+            List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+            CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+            int CRAID = CurrentEvaluation[0].CraID;
 
-                //Doctor ID omzetten naar CRA name
-                string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", DoctorID);
-                List<DoctorCode> DoctorRelation = new List<DoctorCode>();
-                DoctorRelation = _businesscode.GetDoctors(sortingPar2);
-                string DoctorName = DoctorRelation[0].Name;
+            //CRA ID omzetten naar CRA name
+            string sortingPar2 = string.Format(" WHERE CRA_ID = {0}", CRAID);
+            List<CRACode> CRARelation = new List<CRACode>();
+            CRARelation = _businesscode.GetCRAs(sortingPar2);
+            string CRAName = CRARelation[0].Name;
 
-                GridView.Rows[i].Cells[8].Text = DoctorName;
-            }
+            GridView.Rows[i].Cells[1].Text = "CRA";
+            GridView.Rows[i].Cells[2].Text = CRAName;
         }
-
-        public void FillStudyCoordinator()
+        public void FillDoctor(int i)
         {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                //Doctor ID krijgen van de current row in de gridvieuw
-                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
-                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
-                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
-                int StudyCoordinatorID = CurrentEvaluation[0].CraID;
+            //Doctor ID krijgen van de current row in de gridvieuw
+            string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+            List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+            CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+            int DoctorID = CurrentEvaluation[0].DoctoID;
 
-                //Doctor ID omzetten naar CRA name
-                string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", StudyCoordinatorID);
-                List<StudyCoordinatorCode> StudyCoordinatorRelation = new List<StudyCoordinatorCode>();
-                StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
-                string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
+            //Doctor ID omzetten naar CRA name
+            string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", DoctorID);
+            List<DoctorCode> DoctorRelation = new List<DoctorCode>();
+            DoctorRelation = _businesscode.GetDoctors(sortingPar2);
+            string DoctorName = DoctorRelation[0].Name;
 
-                GridView.Rows[i].Cells[9].Text = StudyCoordinatorName;
-            }
+            GridView.Rows[i].Cells[1].Text = "Doctor";
+            GridView.Rows[i].Cells[2].Text = DoctorName;
+        }
+        public void FillStudyCoordinator(int i)
+        {
+            //Doctor ID krijgen van de current row in de gridvieuw
+            string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+            List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+            CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+            int StudyCoordinatorID = CurrentEvaluation[0].ScID;
+
+            //Doctor ID omzetten naar CRA name
+            string sortingPar2 = string.Format(" WHERE StudyCoordinator_ID = {0}", StudyCoordinatorID);
+            List<StudyCoordinatorCode> StudyCoordinatorRelation = new List<StudyCoordinatorCode>();
+            StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
+            string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
+
+            GridView.Rows[i].Cells[1].Text = "StudyCoordinator";
+            GridView.Rows[i].Cells[2].Text = StudyCoordinatorName;
         }
 
         protected void Add(object sender, EventArgs e)
