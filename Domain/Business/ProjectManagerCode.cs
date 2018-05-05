@@ -10,12 +10,12 @@ namespace Domain.Business
 	{
 
         // All private and public properties of class Project Manager
-        private int _pm_id;
+        private int _projectmanager_id;
 
-        public int PM_ID
+        public int ProjectManager_ID
         {
-            get { return _pm_id; }
-            set { _pm_id = value; }
+            get { return _projectmanager_id; }
+            set { _projectmanager_id = value; }
         }
 
         private string _name;
@@ -60,9 +60,9 @@ namespace Domain.Business
 
 		// All constructors
         
-		public ProjectManagerCode(int pm_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+		public ProjectManagerCode(int _projectmanager_id_p, string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
-            _pm_id = pm_id_p;
+            _projectmanager_id = _projectmanager_id_p;
 			_name = name_p;
 			_cv = cv_p;
 			_email = email_p;
