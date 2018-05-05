@@ -59,12 +59,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public CRACode()
-		{
-
-		}
-
+        
 		public CRACode(int cra_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
             _cra_id = cra_id_p;

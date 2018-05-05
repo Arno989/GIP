@@ -67,12 +67,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public HospitalCode()
-		{
-
-		}
-
+        
 		public HospitalCode(int hospital_id_p,string name_p,string adress_p,string postal_code_p,string city_p,
 			 string country_p,string central_number_p)
 		{

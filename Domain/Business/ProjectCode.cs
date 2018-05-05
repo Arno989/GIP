@@ -43,12 +43,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public ProjectCode()
-		{
-
-		}
-
+        
 		public ProjectCode(int project_id_p,string title_p,string start_date_p,string end_date_p)
 		{
             _project_id = project_id_p;

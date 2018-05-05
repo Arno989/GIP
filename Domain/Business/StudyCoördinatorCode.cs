@@ -67,12 +67,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public StudyCoordinatorCode()
-		{
-
-		}
-
+        
 		public StudyCoordinatorCode(int sc_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
 		{
             _sc_id = sc_id_p;

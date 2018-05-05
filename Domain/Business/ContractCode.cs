@@ -67,12 +67,7 @@ namespace Domain.Business
         }
 
         // All constructors
-
-        public ContractCode()
-		{
-
-		}
-
+        
 		public ContractCode(int _contract_id_p, string legal_country_p,string fee_p,string startdate_p,string enddate_p, int projectID_p, int clientID_p)
 		{
             _contract_id = _contract_id_p;

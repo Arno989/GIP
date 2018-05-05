@@ -59,12 +59,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public ProjectManagerCode()
-		{
-
-		}
-
+        
 		public ProjectManagerCode(int pm_id_p,string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
 		{
             _pm_id = pm_id_p;
