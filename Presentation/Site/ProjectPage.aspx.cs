@@ -115,7 +115,7 @@ namespace Presentation.Site
 
                     for (int i2 = 0; i2 < Relations.Count; i2++)
                     {
-                        sortingPar = string.Format("WHERE PM_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        sortingPar = string.Format("WHERE ProjectManager_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
                         RelRaw = _businesscode.GetProjectManagers(sortingPar); //--Var
                         listbox.Items.Add(RelRaw[0].Name);
                     }
