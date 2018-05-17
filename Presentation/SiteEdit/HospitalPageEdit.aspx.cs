@@ -11,93 +11,279 @@ namespace Presentation.SiteEdit
 	public partial class HospitalPageEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
+        string sortingPar = "";
 
-		private void sendData()
-		{
-			for (int i = 0; i <= 9; i++)
-			{
-				string[] input = new string[6];
+        private List<List<string>> GetSessionData()
+        {
+            return (List<List<string>>)Session["ListDataSession"];
+        }
 
-				for (int i2 = 0; i2 <= 5; i2++)
-				{
-					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var container = Master.FindControl("Body");
-					var txtBox = container.FindControl(tbName);
+        private List<int> GetSessionDataIDs()
+        {
+            return (List<int>)Session["DataID"];
+        }
 
-					switch (i2)
-					{
-						case 0:
-							if (((TextBox) txtBox).Text != "")
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							else
-							{
-								goto track1;
-							}
-							break;
 
-						case 1:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListData = GetSessionData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
 
-						case 2:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                Session["ListDataSession"] = null;
+            }
+        }
+        
 
-						case 3:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+        private void InsertData()
+        {
+            List<List<string>> ListDataSession = GetSessionData();
+            var container = Master.FindControl("Body");
 
-						case 4:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+            for (int i = 0; i < ListDataSession.Count; i++)
+            {
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
 
-						case 5:
-							if (((TextBox) txtBox).Text == "")
-							{
-								if (_business.IsValidPhone(((TextBox) txtBox).Text.ToString()))
-								{
-									input[i2] = (((TextBox) txtBox).Text.ToString());
-								}
-								else
-								{
-									//error---------------------------------------
-								}
-							}
-							else
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							break;
-					}
-				}
-				_business.SetHospital(input[0],input[1],input[2],input[3],input[4],input[5]);
-track1:
-				continue;
-			}
-		}
+                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
 
-		protected void Page_Load(object sender,EventArgs e)
-		{
+                }
+            }
+        }
 
-		}
+        private void SendData()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var container = Master.FindControl("Body");
+                string[] input = new string[6]; //--Var
 
-		protected void btnExit_Click(object sender,EventArgs e)
-		{
-			Response.Redirect("../Site/HospitalPage.aspx");
-		}
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
 
-		protected void btnSaveAndExit_Click(object sender,EventArgs e)
-		{
-			sendData();
-			Response.Redirect("../Site/HospitalPage.aspx");
-		}
+                    switch (i2)
+                    {
+                        case 0:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                goto track1;
+                            }
+                            else
+                            {
 
-		protected void btnSave_Click(object sender,EventArgs e)
-		{
-			sendData();
-			Response.Redirect("../SiteEdit/HospitalPageEdit.aspx");
-		}
-	}
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 1:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+
+                            break;
+
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 3:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 4:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 5:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
+                            }
+                            break;
+                    }
+                }
+                _business.SetHospital(input[0], input[1], input[2], input[3], input[4], input[5]); //--Var
+                track1:
+                continue;
+            }
+        }
+
+        private void UpdateData()
+        {
+            List<int> ListDataIDs = GetSessionDataIDs();
+
+            for (int i = 0; i < ListDataIDs.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string[] input = new string[6]; //--Var
+
+                for (int i2 = 0; i2 <= 5; i2++) //--Var
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                goto track1;
+                            }
+                            else
+                            {
+
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 1:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+
+                            break;
+
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 3:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 4:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 5:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = "";
+                            }
+                            else
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                    input[i2] = "error invalid phone";
+                                }
+                            }
+                            break;
+                    }
+                }
+                _business.UpdateHospital(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5]); //--Var
+                track1:
+                continue;
+            }
+        }
+
+
+        protected void BtnExit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Site/HospitalPage.aspx"); //--Var
+        }
+
+        protected void BtnSaveAndExit_Click(object sender, EventArgs e)
+        {
+            if (GetSessionDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+            }
+
+            Response.Redirect("../Site/HospitalPage.aspx"); //--Var
+        }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (GetSessionDataIDs() != null)
+            {
+                UpdateData();
+            }
+            else
+            {
+                SendData();
+                Response.Redirect("../SiteEdit/HospitalPageEdit.aspx"); //--Var
+            }
+        }
+    }
 }

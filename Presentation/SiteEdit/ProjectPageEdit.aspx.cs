@@ -511,8 +511,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");  //--Var
             }
-            Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");  //--Var
         }
     }
 }

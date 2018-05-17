@@ -481,9 +481,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/DoctorPageEdit.aspx"); //--Var
             }
-
-            Response.Redirect("../SiteEdit/DoctorPageEdit.aspx"); //--Var
         }
     }
 }

@@ -393,9 +393,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
             }
-
-            Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
         }
     }
 }

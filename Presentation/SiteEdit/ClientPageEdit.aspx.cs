@@ -210,12 +210,12 @@ namespace Presentation.SiteEdit
         }
 
 
-        protected void btnExit_Click(object sender,EventArgs e)
+        protected void BtnExit_Click(object sender,EventArgs e)
 		{
 			Response.Redirect("../Site/ClientPage.aspx");
 		}
 
-		protected void btnSaveAndExit_Click(object sender,EventArgs e)
+		protected void BtnSaveAndExit_Click(object sender,EventArgs e)
 		{
             if(GetDataIDs() != null)
             {
@@ -228,7 +228,7 @@ namespace Presentation.SiteEdit
 			Response.Redirect("../Site/ClientPage.aspx");
 		}
 
-		protected void btnSave_Click(object sender,EventArgs e)
+		protected void BtnSave_Click(object sender,EventArgs e)
 		{
             if (GetDataIDs() != null)
             {
@@ -237,8 +237,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
             }
-            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
 		}
 	}
 }
