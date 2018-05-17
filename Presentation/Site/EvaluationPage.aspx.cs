@@ -28,6 +28,8 @@ namespace Presentation.Site
             List<string> List1 = new List<string>();
             List<List<string>> ListData = new List<List<string>>();
             List<int> DataIDs = new List<int>();
+            List<string> ListTypes = new List<string>();
+            List<string> ListNames = new List<string>();
 
             for (int i = 0; i < GridView.Rows.Count; i++)
             {
@@ -38,10 +40,12 @@ namespace Presentation.Site
                     {
                         DataIDs.Add((int)GridView.DataKeys[i].Value);
 
-                        for (int i2 = 1; i2 < GridView.Columns.Count; i2++)
+                        for (int i2 = 3; i2 < GridView.Columns.Count; i2++)
                         {
                             List1.Add(GridView.Rows[i].Cells[i2].Text);
                         }
+                        ListTypes.Add(GridView.Rows[i].Cells[1].Text);
+                        ListNames.Add(GridView.Rows[i].Cells[2].Text);
                         ListData.Add(List1);
                     }
                 }
@@ -49,6 +53,8 @@ namespace Presentation.Site
 
             if (DataIDs.Count != 0)
             {
+                Session["ListTypes"] = ListTypes;
+                Session["ListNames"] = ListNames;
                 Session["DataID"] = DataIDs;
                 Session["ListDataSession"] = ListData;
                 Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");

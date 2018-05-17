@@ -11,10 +11,21 @@ namespace Presentation.SiteEdit
 	public partial class EvaluationPageEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
+        string sortingPar = "";
 
         private List<List<string>> GetData()
         {
             return (List<List<string>>)Session["ListDataSession"];
+        }
+
+        private List<string> GetTypes()
+        {
+            return (List<string>)Session["ListTypes"];
+        }
+
+        private List<string> GetNames()
+        {
+            return (List<string>)Session["ListNames"];
         }
 
         private List<int> GetDataIDs()
@@ -93,26 +104,38 @@ namespace Presentation.SiteEdit
                     ListAll.Add(ListContentSC[i3]);
                 }
 
-                string ddName = "ddEdit" + i.ToString() + "0";
-                var dropdownData = container.FindControl(ddName) as DropDownList;
-                int index = dropdownData.SelectedIndex;
+                //if(IsPostBack)
+                //{
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "DoPostBack", "__doPostBack(sender, e)", true);
+                    string ddName = "ddEdit" + i.ToString() + "0";
+                    var dropdownData = container.FindControl(ddName) as DropDownList;
+                    int index = dropdownData.SelectedIndex;
+                    string value = dropdownData.SelectedValue;
 
-                if(index > 1 && index <= 1 + ListContentCRA.Count)
-                {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), -1, -1);
-                }
-                else if (index > 2 + ListContentCRA.Count && index <= 1 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
-                {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[index][0]), -1);
-                }
-                else if (index > 2 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
-                {
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[index][0]));
-                }
-                else
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
-                }
+
+                    if (index > 1 && index <= 1 + ListContentCRA.Count)
+                    {
+                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), -1, -1);
+                    }
+                    else if (index > 2 + ListContentCRA.Count && index <= 1 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
+                    {
+                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[index][0]), -1);
+                    }
+                    else if (index > 2 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
+                    {
+                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[index][0]));
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
+                    }
+                //}
+
+                ListContentCRA.Clear();
+                ListContentDoctor.Clear();
+                ListContentSC.Clear();
+                ListAll.Clear();
+
                 track1:
 				continue;
 			}
@@ -121,6 +144,113 @@ namespace Presentation.SiteEdit
         public void UpdateData()
         {
 
+        }
+
+        private void InsertData()
+        {
+            List<List<string>> ListData = GetData();
+            List<string> ListTypes = GetTypes();
+            List<string> ListNames = GetNames();
+            var container = Master.FindControl("Body");
+            int Count = 0;
+            for (int i = 0; i < ListData.Count; i++)
+            {
+                for (int i2 = 0; i2 <= 6; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 2:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+                        case 3:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+                        case 4:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+                        case 5:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+                        //case 6:
+                        //    ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                        //    break;
+                    }
+                    
+                    if(i2 > 0)
+                    {
+                        Count++;
+                    }
+                    //track1:
+                    //continue;
+                }
+                string ddName = "ddEdit" + i.ToString() + 0.ToString();
+                var dd = container.FindControl(ddName) as DropDownList;
+
+                if (i < ListTypes.Count)
+                {
+                    if (ListTypes[i] == "CRA")
+                    {
+                        //CRA ID krijgen van de current row in de gridvieuw
+                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                        List<EvaluationCode> CurrentCRA = new List<EvaluationCode>();
+                        CurrentCRA = _business.GetEvaluations(sortingPar);
+                        int CRAID = CurrentCRA[0].CraID;
+
+                        //de CRA selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue(CRAID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+
+                    if (ListTypes[i] == "Doctor")
+                    {
+                        //Doctor ID krijgen van de current row in de gridvieuw
+                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                        List<EvaluationCode> CurrentDoctor = new List<EvaluationCode>();
+                        CurrentDoctor = _business.GetEvaluations(sortingPar);
+                        int DoctorID = CurrentDoctor[0].DoctoID;
+
+                        //de Doctor selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue(DoctorID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+
+                    if (ListTypes[i] == "StudyCoordinator")
+                    {
+                        //SC ID krijgen van de current row in de gridvieuw
+                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                        List<EvaluationCode> CurrentSC = new List<EvaluationCode>();
+                        CurrentSC = _business.GetEvaluations(sortingPar);
+                        int SCID = CurrentSC[0].ScID;
+
+                        //de SC selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue(SCID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+                }
+            }
         }
 
         public void SetDropdownContent()
@@ -213,7 +343,17 @@ namespace Presentation.SiteEdit
         protected void Page_Load(object sender,EventArgs e)
 		{
             SetDropdownContent();
-		}
+            if (!IsPostBack)
+            {
+                List<List<string>> ListData = GetData();
+                if (ListData != null)
+                {
+                    InsertData();
+                }
+
+                Session["ListDataSession"] = null;
+            }
+        }
 
 		protected void btnExit_Click(object sender,EventArgs e)
 		{
