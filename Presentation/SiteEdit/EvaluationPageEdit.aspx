@@ -7,9 +7,9 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headEditLeft"><p class="uppercase">Edit Evaluations</p></div>
 	<div class="headEditRight">
-			<asp:Button ID="btnSave" runat="server" autopostback="true" Text="Save" CssClass="editButton" OnClick="btnSave_Click" />
-			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" CssClass="editButton" OnClick="btnSaveAndExit_Click" />
-			<asp:Button ID="btnExit" runat="server" autopostback="true" Text="Exit" CssClass="editButton" OnClick="btnExit_Click" />
+			<asp:Button ID="btnSave" runat="server" autopostback="true" Text="Save" CssClass="editButton" OnClick="BtnSave_Click" />
+			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" CssClass="editButton" OnClick="BtnSaveAndExit_Click" />
+			<asp:Button ID="btnExit" runat="server" autopostback="true" Text="Exit" CssClass="editButton" OnClick="BtnExit_Click" />
 		</div>
 </asp:Content>
 

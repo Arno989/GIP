@@ -35,50 +35,50 @@ namespace Presentation.SiteEdit
 
         private void SendData()
 		{
-			for (int i = 0; i <= 9; i++)
-			{
-				string[] input = new string[6];
+            for (int i = 0; i <= 9; i++)
+            {
+                string[] input = new string[6];
                 var container = Master.FindControl("Body");
 
                 for (int i2 = 0; i2 <= 5; i2++)
-				{
-					string tbName = "tbEdit" + i.ToString() + i2.ToString();
-					var txtBox = container.FindControl(tbName);
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
 
-					switch (i2)
-					{
-						case 0:
-							if (((TextBox) txtBox).Text != "")
-							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
-							}
-							else
-							{
-								goto track1;
-							}
-							break;
+                    switch (i2)
+                    {
+                        case 0:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
 
-						case 1:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                        case 1:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
 
-						case 2:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                        case 2:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
 
-						case 3:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                        case 3:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
 
-						case 4:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                        case 4:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
 
-						case 5:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-					}
-				}
+                        case 5:
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            break;
+                    }
+                }
 
                 List<List<string>> ListContentCRA = _business.GetCRADropDownContent();
                 List<List<string>> ListContentDoctor = _business.GetDoctorDropDownContent();
@@ -89,7 +89,7 @@ namespace Presentation.SiteEdit
 
                 ListAll.Add(Empty);
                 ListAll.Add(Empty);
-                for(int i3 = 0; i3 < ListContentCRA.Count; i3++)
+                for (int i3 = 0; i3 < ListContentCRA.Count; i3++)
                 {
                     ListAll.Add(ListContentCRA[i3]);
                 }
@@ -104,32 +104,31 @@ namespace Presentation.SiteEdit
                     ListAll.Add(ListContentSC[i3]);
                 }
 
-                //if(IsPostBack)
-                //{
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "DoPostBack", "__doPostBack(sender, e)", true);
-                    string ddName = "ddEdit" + i.ToString() + "0";
-                    var dropdownData = container.FindControl(ddName) as DropDownList;
-                    int index = dropdownData.SelectedIndex;
-                    string value = dropdownData.SelectedValue;
+                string ddName = "ddEdit" + i.ToString() + "0";
+                var dropdownData = container.FindControl(ddName) as DropDownList;
+                string value = dropdownData.SelectedValue;
+                string name = dropdownData.SelectedItem.Text;
 
-
-                    if (index > 1 && index <= 1 + ListContentCRA.Count)
-                    {
-                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[index][0]), -1, -1);
-                    }
-                    else if (index > 2 + ListContentCRA.Count && index <= 1 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
-                    {
-                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[index][0]), -1);
-                    }
-                    else if (index > 2 + ListContentCRA.Count + 1 + ListContentDoctor.Count)
-                    {
-                        _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[index][0]));
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
-                    }
-                //}
+                if (value.Contains("CR") == true)
+                {
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    //string 
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[valueInt][0]), -1, -1);
+                }
+                else if (value.Contains("DR") == true)
+                {
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[valueInt][0]), -1);
+                }
+                else if (value.Contains("SC") == true)
+                {
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[valueInt][0]));
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
+                }
 
                 ListContentCRA.Clear();
                 ListContentDoctor.Clear();
@@ -137,8 +136,8 @@ namespace Presentation.SiteEdit
                 ListAll.Clear();
 
                 track1:
-				continue;
-			}
+                continue;
+            }
 		}
 
         public void UpdateData()
@@ -320,21 +319,25 @@ namespace Presentation.SiteEdit
 
                 for (int i2 = 2; i2  < ListContentCRA.Count + 2; i2++)
                 {
-                    DropDown.Items[i2].Value = ListContentCRA[count1][0];
+                    DropDown.Items[i2].Value = "CR" + ListContentCRA[count1][0];
                     count1++;
                 }
                 count1 = 0;
                 for(int i2 = StartDoctor; i2 < StartDoctor + ListContentDoctor.Count; i2++)
                 {
-                    DropDown.Items[i2].Value = ListContentDoctor[count1][0];
+                    DropDown.Items[i2].Value = "DR" + ListContentDoctor[count1][0];
                     count1++;
                 }
                 count1 = 0;
                 for(int i2 = StartSC; i2 < StartSC + ListContentStudyCoordinator.Count; i2++)
                 {
-                    DropDown.Items[i2].Value = ListContentStudyCoordinator[count1][0];
+                    DropDown.Items[i2].Value = "SC" + ListContentStudyCoordinator[count1][0];
+                    //DropDown.Items[i2].Attributes.Add("disabled", "disables");
                     count1++;
                 }
+                DropDown.Items[1].Attributes.Add("disabled", "disables");
+                DropDown.Items[1+ ListContentCRA.Count+1].Attributes.Add("disabled", "disables");
+                DropDown.Items[1+ListContentCRA.Count+1+ListContentDoctor.Count+1].Attributes.Add("disabled", "disables");
             }
 
             
@@ -355,12 +358,12 @@ namespace Presentation.SiteEdit
             }
         }
 
-		protected void btnExit_Click(object sender,EventArgs e)
+		protected void BtnExit_Click(object sender,EventArgs e)
 		{
 			Response.Redirect("../Site/EvaluationPage.aspx");
 		}
 
-		protected void btnSaveAndExit_Click(object sender,EventArgs e)
+		protected void BtnSaveAndExit_Click(object sender,EventArgs e)
 		{
             if (GetDataIDs() != null)
             {
@@ -373,7 +376,7 @@ namespace Presentation.SiteEdit
             Response.Redirect("../Site/EvaluationPage.aspx");
 		}
 
-		protected void btnSave_Click(object sender,EventArgs e)
+		protected void BtnSave_Click(object sender,EventArgs e)
 		{
             if (GetDataIDs() != null)
             {
@@ -382,8 +385,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
             }
-            Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
 		}
 	}
 }
