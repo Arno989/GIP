@@ -92,12 +92,7 @@ namespace Domain.Business
         }
 
         // All constructors
-
-        public EvaluationCode()
-		{
-
-		}
-
+        
 		public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
 			 string quality_p,string evaluation_txt_p,string label_p, int cra_id_p, int doctor_id_p, int sc_id_p)
 		{

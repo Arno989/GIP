@@ -291,8 +291,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/CRAPageEdit.aspx");  //--Var
             }
-            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");  //--Var
         }
 	}
 }

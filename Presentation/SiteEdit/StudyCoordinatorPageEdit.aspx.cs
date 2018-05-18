@@ -224,7 +224,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             StudyCoordinatorCode StudyCoordinator = _business.GetStudyCoordinators(sortingPar).Last(); //--Var
-                            _business.AddDoctorToStudyCoordinator(Convert.ToInt32(l.Value.ToString()), StudyCoordinator.SC_ID); //--Var
+                            _business.AddDoctorToStudyCoordinator(Convert.ToInt32(l.Value.ToString()), StudyCoordinator.StudyCoordinator_ID); //--Var
                         }
                     }
                 }
@@ -393,9 +393,8 @@ namespace Presentation.SiteEdit
             else
             {
                 SendData();
+                Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
             }
-
-            Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
         }
     }
 }

@@ -99,12 +99,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public DoctorCode()
-		{
-
-		}
-
+        
 		public DoctorCode(int doctor_id_p,string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,
 			 string postal_code_p,string city_p,string country_p,string specialisation_p,string cv_p)
 		{

@@ -84,12 +84,7 @@ namespace Domain.Business
 		}
 
 		// All constructors
-
-		public ClientCode()
-		{
-
-		}
-
+        
         public ClientCode(int ID_p, string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
 		{
             _client_id = ID_p;
