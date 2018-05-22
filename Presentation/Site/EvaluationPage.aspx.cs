@@ -46,7 +46,8 @@ namespace Presentation.Site
                         }
                         ListTypes.Add(GridView.Rows[i].Cells[1].Text);
                         ListNames.Add(GridView.Rows[i].Cells[2].Text);
-                        ListData.Add(List1);
+                        ListData.Add(new List<string>(List1));
+                        List1.Clear();
                     }
                 }
             }

@@ -112,18 +112,18 @@ namespace Presentation.SiteEdit
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    //string 
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], Convert.ToInt16(ListAll[valueInt][0]), -1, -1);
+                    //string name = 
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1);
                 }
                 else if (value.Contains("DR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, Convert.ToInt16(ListAll[valueInt][0]), -1);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1);
                 }
                 else if (value.Contains("SC") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, Convert.ToInt16(ListAll[valueInt][0]));
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt);
                 }
                 else
                 {
@@ -142,7 +142,82 @@ namespace Presentation.SiteEdit
 
         public void UpdateData()
         {
+            List<int> ListDataIDs = GetDataIDs();
+            for (int i = 0; i <= 9; i++)
+            {
+                string[] input = new string[6];
+                var container = Master.FindControl("Body");
 
+                for (int i2 = 0; i2 <= 2; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+
+                        case 1:
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+
+                        case 2:
+                            if (((TextBox)txtBox).Text == "")
+                            {
+                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
+                                {
+                                    input[i2] = (((TextBox)txtBox).Text.ToString());
+                                }
+                                else
+                                {
+                                    //error---------------------------------------
+                                }
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+                    }
+                }
+
+
+                string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
+                List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
+                CurrentDepartment = _business.GetDepartments(sortingPar1);
+
+                //hospitalID krijgen van de current row in de gridvieuw
+                int hospitalID = CurrentDepartment[0].HospitalID;
+                string ddName = "ddEdit" + i.ToString() + 0.ToString();
+                var dd = container.FindControl(ddName) as DropDownList;
+
+                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
+                track1:
+                continue;
+            }
         }
 
         private void InsertData()
@@ -162,34 +237,31 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
                         case 4:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
                         case 5:
-                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
-                        //case 6:
-                        //    ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
-                        //    break;
                     }
                     
-                    if(i2 > 0)
-                    {
+                    //if(i2 > 0)
+                    //{
                         Count++;
-                    }
+                    //}
                     //track1:
                     //continue;
                 }
@@ -207,7 +279,7 @@ namespace Presentation.SiteEdit
                         int CRAID = CurrentCRA[0].CraID;
 
                         //de CRA selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue(CRAID.ToString());
+                        ListItem li = dd.Items.FindByValue("CR" + CRAID.ToString());
                         if (li.Text == ListNames[i])
                         {
                             dd.ClearSelection();
@@ -224,7 +296,7 @@ namespace Presentation.SiteEdit
                         int DoctorID = CurrentDoctor[0].DoctoID;
 
                         //de Doctor selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue(DoctorID.ToString());
+                        ListItem li = dd.Items.FindByValue("DR" + DoctorID.ToString());
                         if (li.Text == ListNames[i])
                         {
                             dd.ClearSelection();
@@ -241,7 +313,7 @@ namespace Presentation.SiteEdit
                         int SCID = CurrentSC[0].ScID;
 
                         //de SC selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue(SCID.ToString());
+                        ListItem li = dd.Items.FindByValue("SC" + SCID.ToString());
                         if (li.Text == ListNames[i])
                         {
                             dd.ClearSelection();
