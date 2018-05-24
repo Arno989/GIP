@@ -148,73 +148,100 @@ namespace Presentation.SiteEdit
                 string[] input = new string[6];
                 var container = Master.FindControl("Body");
 
-                for (int i2 = 0; i2 <= 2; i2++)
+                for (int i2 = 1; i2 <= 6; i2++)
                 {
-                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    string tbName = "tbEdit" + i.ToString() + (i2 - 1).ToString();
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
                     {
-                        case 0:
+                        case 1:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
                                 goto track1;
                             }
                             break;
-
-                        case 1:
-                            if (((TextBox)txtBox).Text == "")
+                        case 2:
+                            if (((TextBox)txtBox).Text != "")
                             {
-                                if (_business.IsValidEmail(((TextBox)txtBox).Text.ToString()))
-                                {
-                                    input[i2] = (((TextBox)txtBox).Text.ToString());
-                                }
-                                else
-                                {
-                                    //error---------------------------------------
-                                }
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             break;
-
-                        case 2:
-                            if (((TextBox)txtBox).Text == "")
+                        case 3:
+                            if (((TextBox)txtBox).Text != "")
                             {
-                                if (_business.IsValidPhone(((TextBox)txtBox).Text.ToString()))
-                                {
-                                    input[i2] = (((TextBox)txtBox).Text.ToString());
-                                }
-                                else
-                                {
-                                    //error---------------------------------------
-                                }
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
+                            }
+                            break;
+                        case 4:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+                        case 5:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+                        case 6:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
                             }
                             break;
                     }
                 }
 
 
-                string sortingPar1 = string.Format(" WHERE Department_ID = {0}", GetDataIDs()[i]);
-                List<DepartmentCode> CurrentDepartment = new List<DepartmentCode>();
-                CurrentDepartment = _business.GetDepartments(sortingPar1);
+                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _business.GetEvaluations(sortingPar1);
 
-                //hospitalID krijgen van de current row in de gridvieuw
-                int hospitalID = CurrentDepartment[0].HospitalID;
+                //ID krijgen van de current row in de gridvieuw
+                //int hospitalID = CurrentEvaluation[0].CraID;
                 string ddName = "ddEdit" + i.ToString() + 0.ToString();
                 var dd = container.FindControl(ddName) as DropDownList;
 
-                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
+                if(CurrentEvaluation[0].CraID != -1)
+                {
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), CurrentEvaluation[0].CraID.ToString());
+                }
+                if (CurrentEvaluation[0].ScID != -1)
+                {
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], CurrentEvaluation[0].ScID.ToString(), (-1).ToString(), (-1).ToString());
+                }
+                if (CurrentEvaluation[0].DoctoID != -1)
+                {
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), CurrentEvaluation[0].CraID.ToString(), (-1).ToString());
+                }
+
+                //_business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
                 track1:
                 continue;
             }

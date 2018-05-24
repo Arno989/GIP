@@ -1165,13 +1165,13 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p)
+        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p, string scID_p, string drID_p, string crID_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @ evaluation_txt, Label = @label WHERE Evaluation_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID, Doctor_ID = @drID, CRA_ID = @crID WHERE Evaluation_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
@@ -1180,6 +1180,9 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
             cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
             cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+            cmd.Parameters.Add("@scID", MySqlDbType.VarChar).Value = scID_p;
+            cmd.Parameters.Add("@drID", MySqlDbType.VarChar).Value = drID_p;
+            cmd.Parameters.Add("@crID", MySqlDbType.VarChar).Value = crID_p;
 
             cmd.ExecuteNonQuery();
 
