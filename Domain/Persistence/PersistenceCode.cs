@@ -1171,20 +1171,51 @@ namespace Domain.Persistence
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID, Doctor_ID = @drID, CRA_ID = @crID WHERE Evaluation_ID = @id;", conn);
+            if (Convert.ToInt16(scID_p) != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID WHERE Evaluation_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-            cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-            cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-            cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-            cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-            cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-            cmd.Parameters.Add("@scID", MySqlDbType.VarChar).Value = scID_p;
-            cmd.Parameters.Add("@drID", MySqlDbType.VarChar).Value = drID_p;
-            cmd.Parameters.Add("@crID", MySqlDbType.VarChar).Value = crID_p;
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@scID", MySqlDbType.VarChar).Value = scID_p;
 
-            cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            else if (Convert.ToInt16(drID_p) != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, Doctor_ID = @drID WHERE Evaluation_ID = @id;", conn);
+
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@drID", MySqlDbType.VarChar).Value = drID_p;
+
+                cmd.ExecuteNonQuery();
+            }
+            if (Convert.ToInt16(crID_p) != -1)
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label,  CRA_ID = @crID WHERE Evaluation_ID = @id;", conn);
+
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
+                cmd.Parameters.Add("@crID", MySqlDbType.VarChar).Value = crID_p;
+
+                cmd.ExecuteNonQuery();
+            }
 
             conn.Close();
         }

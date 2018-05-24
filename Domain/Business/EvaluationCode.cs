@@ -77,7 +77,7 @@ namespace Domain.Business
 
         private int _doctortID;
 
-        public int DoctoID
+        public int DoctorID
         {
             get { return _doctortID; }
             set { _doctortID = value; }
