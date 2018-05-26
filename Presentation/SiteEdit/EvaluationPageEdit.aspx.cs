@@ -158,7 +158,7 @@ namespace Presentation.SiteEdit
                         case 1:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -168,7 +168,7 @@ namespace Presentation.SiteEdit
                         case 2:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -178,7 +178,7 @@ namespace Presentation.SiteEdit
                         case 3:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -188,7 +188,7 @@ namespace Presentation.SiteEdit
                         case 4:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -198,7 +198,7 @@ namespace Presentation.SiteEdit
                         case 5:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -208,7 +208,7 @@ namespace Presentation.SiteEdit
                         case 6:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2 -1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
                             }
                             else
                             {
@@ -223,24 +223,29 @@ namespace Presentation.SiteEdit
                 List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
                 CurrentEvaluation = _business.GetEvaluations(sortingPar1);
 
-                //ID krijgen van de current row in de gridvieuw
-                //int hospitalID = CurrentEvaluation[0].CraID;
-                string ddName = "ddEdit" + i.ToString() + 0.ToString();
-                var dd = container.FindControl(ddName) as DropDownList;
+                string ddName = "ddEdit" + i.ToString() + "0";
+                var dropdownData = container.FindControl(ddName) as DropDownList;
+                string value = dropdownData.SelectedValue;
 
-                if(CurrentEvaluation[0].CraID != -1)
+                if (value.Contains("CR") == true)
                 {
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), CurrentEvaluation[0].CraID.ToString());
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), valueInt.ToString());
                 }
-                if (CurrentEvaluation[0].ScID != -1)
+                else if (value.Contains("DR") == true)
                 {
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], CurrentEvaluation[0].ScID.ToString(), (-1).ToString(), (-1).ToString());
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), valueInt.ToString(), (-1).ToString());
                 }
-                if (CurrentEvaluation[0].DoctoID != -1)
+                else if (value.Contains("SC") == true)
                 {
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), CurrentEvaluation[0].CraID.ToString(), (-1).ToString());
+                    int valueInt = Convert.ToInt16(value.Remove(0, 2));
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt.ToString(), (-1).ToString(), (-1).ToString());
                 }
-
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
+                }
                 //_business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
                 track1:
                 continue;
@@ -284,13 +289,7 @@ namespace Presentation.SiteEdit
                             ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
                     }
-                    
-                    //if(i2 > 0)
-                    //{
                         Count++;
-                    //}
-                    //track1:
-                    //continue;
                 }
                 string ddName = "ddEdit" + i.ToString() + 0.ToString();
                 var dd = container.FindControl(ddName) as DropDownList;
@@ -320,7 +319,7 @@ namespace Presentation.SiteEdit
                         sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
                         List<EvaluationCode> CurrentDoctor = new List<EvaluationCode>();
                         CurrentDoctor = _business.GetEvaluations(sortingPar);
-                        int DoctorID = CurrentDoctor[0].DoctoID;
+                        int DoctorID = CurrentDoctor[0].DoctorID;
 
                         //de Doctor selecteren in de dropdown
                         ListItem li = dd.Items.FindByValue("DR" + DoctorID.ToString());

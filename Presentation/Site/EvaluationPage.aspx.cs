@@ -104,7 +104,7 @@ namespace Presentation.Site
                 {
                     FillCRA(i);
                 }
-                else if (CurrentEvaluation[0].DoctoID != -1)
+                else if (CurrentEvaluation[0].DoctorID != -1)
                 {
                     FillDoctor(i);
                 }
@@ -138,7 +138,7 @@ namespace Presentation.Site
             string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
             List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
             CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
-            int DoctorID = CurrentEvaluation[0].DoctoID;
+            int DoctorID = CurrentEvaluation[0].DoctorID;
 
             //Doctor ID omzetten naar CRA name
             string sortingPar2 = string.Format(" WHERE Doctor_ID = {0}", DoctorID);
