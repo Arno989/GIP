@@ -67,7 +67,8 @@
             <asp:TableCell CssClass="homeCell"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Table ID="resultTable" runat="server" CssClass="homeTable">
+    <asp:Table ID="resultTable" runat="server" CssClass="homeTable" Visible="false">
+
         <asp:TableRow ID="rowCRAText" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
                 <asp:Label runat="server">CRA's</asp:Label>
@@ -75,24 +76,39 @@
         </asp:TableRow>
         <asp:TableRow ID="rowCRAgrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvCRA">
+                <asp:GridView runat="server" ID="gvCRA" AutoGenerateColumns="false">
                     <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
-                <ItemTemplate>
-                    <label class="container">
-                        <asp:CheckBox ID="CheckBox" runat="server" />
-                        <span class="checkmark"></span>
-                    </label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="CV" HeaderText="CV" />
-            <asp:BoundField DataField="Email" HeaderText="E-mail" />
-            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
-        </Columns>
+                        <asp:BoundField DataField="Name" HeaderText="Name" />
+                        <asp:BoundField DataField="CV" HeaderText="CV" />
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" />
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
+                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
+                    </Columns>
                 </asp:GridView>
             </asp:TableCell>
         </asp:TableRow>
+
+        <asp:TableRow ID="rowClientText" CssClass="homeRow">
+            <asp:TableCell CssClass="homeCell">
+                <asp:Label runat="server">Clients</asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow ID="rowClientgrid" CssClass="homeRow">
+            <asp:TableCell CssClass="homeCell">
+                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:BoundField DataField="Name" HeaderText="Name" />
+                        <asp:BoundField DataField="Adress" HeaderText="Adress" />
+                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
+                        <asp:BoundField DataField="City" HeaderText="City" />
+                        <asp:BoundField DataField="Country" HeaderText="Country" />
+                        <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" />
+                        <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" />
+                        <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" />
+                    </Columns>
+                </asp:GridView>
+            </asp:TableCell>
+        </asp:TableRow>
+
     </asp:Table>
 </asp:Content>

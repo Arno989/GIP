@@ -422,6 +422,18 @@ namespace Domain.Business
         #endregion
 
 
+        #region Search
+        public List<CRACode> SearchCRAs(string sortingPar)
+        {
+            return _persistence.SearchCRAs(sortingPar);
+        }
+        public List<ClientCode> SearchClients(string sortingPar)
+        {
+            return _persistence.SearchClients(sortingPar);
+        }
+        #endregion
+
+
         #region Control
 
         private string DomainMapper(Match match)

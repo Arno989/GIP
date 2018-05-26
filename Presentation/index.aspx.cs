@@ -73,7 +73,8 @@ namespace Presentation.Site
             rowCRAgrid.Visible = false;
             rowCRAText.Visible = false;
 
-
+            rowClientgrid.Visible = false;
+            rowClientText.Visible = false;
 
 
             if (TbSearch.Text.Trim() != "")
@@ -90,18 +91,42 @@ namespace Presentation.Site
             switch (ddTable.SelectedItem.Text.ToString())
             {
                 case "All":
+                    sortingPar = TbSearch.Text;
+
+                    gvCRA.DataSource = _businesscode.SearchCRAs(sortingPar);
+                    gvCRA.DataBind();
+
+                    rowCRAgrid.Visible = true;
+                    rowCRAText.Visible = true;
+
+                    sortingPar = TbSearch.Text;
+
+                    gvClient.DataSource = _businesscode.SearchClients(sortingPar);
+                    gvClient.DataBind();
+
+                    rowClientgrid.Visible = true;
+                    rowClientText.Visible = true;
 
                     break;
 
                 case "CRA":
+                    sortingPar = TbSearch.Text;
+
+                    gvCRA.DataSource = _businesscode.SearchCRAs(sortingPar);
+                    gvCRA.DataBind();
+
                     rowCRAgrid.Visible = true;
                     rowCRAText.Visible = true;
-                    gvCRA.DataSource = _businesscode.GetCRAs(sortingPar);
-                    gvCRA.DataBind();
                     break;
 
                 case "Client":
+                    sortingPar = TbSearch.Text;
 
+                    gvClient.DataSource = _businesscode.SearchClients(sortingPar);
+                    gvClient.DataBind();
+
+                    rowClientgrid.Visible = true;
+                    rowClientText.Visible = true;
                     break;
 
                 case "Client Contract":

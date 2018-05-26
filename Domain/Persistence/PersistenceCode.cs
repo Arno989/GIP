@@ -1596,5 +1596,125 @@ namespace Domain.Persistence
         #endregion
 
         #endregion
+
+
+        #region Search
+        public List<CRACode> SearchCRAs(string sortingPar)
+        {
+            List<CRACode> ListCRAs = new List<CRACode>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand();
+            List<int> listids = new List<int>();
+            
+            for (int i = 0; i < 4; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                            cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Name LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 1:
+                            cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE CV LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 2:
+                            cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Email LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 3:
+                            cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Phone1 LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 4:
+                            cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Phone2 LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    default:
+                            cmd = new MySqlCommand("SELECT * FROM cliniresearchdb.CRA", conn);
+                        break;
+                }
+                conn.Open();
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    int id = Convert.ToInt16(dataReader["CRA_ID"]);
+                    string name = Convert.ToString(dataReader["Name"]);
+                    string cv = Convert.ToString(dataReader["CV"]);
+                    string email = Convert.ToString(dataReader["Email"]);
+                    string phone1 = Convert.ToString(dataReader["Phone1"]);
+                    string phone2 = Convert.ToString(dataReader["Phone2"]);
+
+                    CRACode c = new CRACode(id, name, cv, email, phone1, phone2);
+
+                    if (!listids.Contains(id))
+                    {
+                        listids.Add(id);
+                        ListCRAs.Add(c);
+                    }
+                    
+                }
+                conn.Close();
+            }
+            return ListCRAs;
+        }
+
+        public List<ClientCode> SearchClients(string sortingPar)
+        {
+            List<ClientCode> ListClients = new List<ClientCode>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand();
+            List<int> listids = new List<int>();
+
+            for (int i = 0; i < 4; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.Client WHERE Name LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 1:
+                        cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE CV LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 2:
+                        cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Email LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 3:
+                        cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Phone1 LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    case 4:
+                        cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.CRA WHERE Phone2 LIKE '%{0}%';", sortingPar), conn);
+                        break;
+                    default:
+                        cmd = new MySqlCommand("SELECT * FROM cliniresearchdb.CRA", conn);
+                        break;
+                }
+                conn.Open();
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    int id = Convert.ToInt16(dataReader["Client_ID"]);
+                    string name = Convert.ToString(dataReader["Name"]);
+                    string adress = Convert.ToString(dataReader["Adress"]);
+                    string postal_code = Convert.ToString(dataReader["Postal_Code"]);
+                    string city = Convert.ToString(dataReader["City"]);
+                    string country = Convert.ToString(dataReader["Country"]);
+                    string contact_person = Convert.ToString(dataReader["Contact_Person"]);
+                    string invoice_info = Convert.ToString(dataReader["Invoice_Info"]);
+                    string kind_of_client = Convert.ToString(dataReader["Kind_of_Client"]);
+
+
+                    ClientCode c = new ClientCode(id, name, adress, postal_code, city, country, contact_person, invoice_info, kind_of_client);
+
+                    if (!listids.Contains(id))
+                    {
+                        listids.Add(id);
+                        ListClients.Add(c);
+                    }
+
+                }
+                conn.Close();
+            }
+            return ListClients;
+        }
+        #endregion
+
     }
 }
