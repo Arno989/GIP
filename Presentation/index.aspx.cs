@@ -4,12 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Domain.Business;
 
 namespace Presentation.Site
 {
 	public partial class HomeSite: System.Web.UI.Page
 	{
-		protected void Page_Load(object sender,EventArgs e)
+        BusinessCode _businesscode = new BusinessCode();
+        string sortingPar = " ORDER BY Name ASC";
+
+        protected void Page_Load(object sender,EventArgs e)
 		{
             
 		}
@@ -62,6 +66,76 @@ namespace Presentation.Site
         protected void ButtonStudyCoordinator_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Site/StudyCoordinatorPage.aspx");
+        }
+
+        protected void TbSearch_TextChanged(object sender, EventArgs e)
+        {
+            rowCRAgrid.Visible = false;
+            rowCRAText.Visible = false;
+
+
+
+
+            if (TbSearch.Text.Trim() != "")
+            {
+                buttonTable.Visible = false;
+                resultTable.Visible = true;
+            }
+            else
+            {
+                buttonTable.Visible = true;
+                resultTable.Visible = false;
+            }
+
+            switch (ddTable.SelectedItem.Text.ToString())
+            {
+                case "All":
+
+                    break;
+
+                case "CRA":
+                    rowCRAgrid.Visible = true;
+                    rowCRAText.Visible = true;
+                    gvCRA.DataSource = _businesscode.GetCRAs(sortingPar);
+                    gvCRA.DataBind();
+                    break;
+
+                case "Client":
+
+                    break;
+
+                case "Client Contract":
+
+                    break;
+
+                case "Department":
+
+                    break;
+
+                case "Doctor":
+
+                    break;
+
+                case "Evaluation":
+
+                    break;
+
+                case "Hospital":
+
+                    break;
+
+                case "Project Manager":
+
+                    break;
+
+                case "Project":
+
+                    break;
+
+                case "Study Coordinator":
+
+                    break;
+            }
         }
 
     }
