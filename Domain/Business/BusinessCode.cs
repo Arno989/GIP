@@ -423,13 +423,45 @@ namespace Domain.Business
 
 
         #region Search
+        public List<ClientCode> SearchClients(string sortingPar)
+        {
+            return _persistence.SearchClients(sortingPar);
+        }
+        public List<ContractCode> SearchContracts(string sortingPar)
+        {
+            return _persistence.SearchContracts(sortingPar);
+        }
         public List<CRACode> SearchCRAs(string sortingPar)
         {
             return _persistence.SearchCRAs(sortingPar);
         }
-        public List<ClientCode> SearchClients(string sortingPar)
+        public List<DepartmentCode> SearchDepartments(string sortingPar)
         {
-            return _persistence.SearchClients(sortingPar);
+            return _persistence.SearchDepartments(sortingPar);
+        }
+        public List<DoctorCode> SearchDoctors(string sortingPar)
+        {
+            return _persistence.SearchDoctors(sortingPar);
+        }
+        public List<EvaluationCode> SearchEvaluations(string sortingPar)
+        {
+            return _persistence.SearchEvaluations(sortingPar);
+        }
+        public List<HospitalCode> SearchHospitals(string sortingPar)
+        {
+            return _persistence.SearchHospitals(sortingPar);
+        }
+        public List<ProjectManagerCode> SearchProjectManagers(string sortingPar)
+        {
+            return _persistence.SearchProjectManagers(sortingPar);
+        }
+        public List<ProjectCode> SearchProjects(string sortingPar)
+        {
+            return _persistence.SearchProjects(sortingPar);
+        }
+        public List<StudyCoordinatorCode> SearchStudyCoordinators(string sortingPar)
+        {
+            return _persistence.SearchStudyCoordinators(sortingPar);
         }
         #endregion
 

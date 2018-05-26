@@ -20,9 +20,9 @@ namespace Presentation.Site
             {
                 GridView.DataSource = _businesscode.GetContracts(sortingPar);
                 GridView.DataBind();
+                FillProject();
+                FillClient();
             }
-            FillProject();
-            FillClient();
         }
 
         protected void Edit(object sender, EventArgs e)

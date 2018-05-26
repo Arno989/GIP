@@ -58,13 +58,13 @@ namespace Presentation.Site {
         protected global::System.Web.UI.WebControls.TableRow rowCRAText;
         
         /// <summary>
-        /// rowCRAgrid control.
+        /// rowCRAGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowCRAgrid;
+        protected global::System.Web.UI.WebControls.TableRow rowCRAGrid;
         
         /// <summary>
         /// gvCRA control.
@@ -85,13 +85,13 @@ namespace Presentation.Site {
         protected global::System.Web.UI.WebControls.TableRow rowClientText;
         
         /// <summary>
-        /// rowClientgrid control.
+        /// rowClientGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow rowClientgrid;
+        protected global::System.Web.UI.WebControls.TableRow rowClientGrid;
         
         /// <summary>
         /// gvClient control.
@@ -101,5 +101,221 @@ namespace Presentation.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvClient;
+        
+        /// <summary>
+        /// rowContractText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowContractText;
+        
+        /// <summary>
+        /// rowContractGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowContractGrid;
+        
+        /// <summary>
+        /// gvContract control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvContract;
+        
+        /// <summary>
+        /// rowDepartmentText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowDepartmentText;
+        
+        /// <summary>
+        /// rowDepartmentGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowDepartmentGrid;
+        
+        /// <summary>
+        /// gvDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDepartment;
+        
+        /// <summary>
+        /// rowDoctorText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowDoctorText;
+        
+        /// <summary>
+        /// rowDoctorGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowDoctorGrid;
+        
+        /// <summary>
+        /// gvDoctor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDoctor;
+        
+        /// <summary>
+        /// rowEvaluationText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowEvaluationText;
+        
+        /// <summary>
+        /// rowEvaluationGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowEvaluationGrid;
+        
+        /// <summary>
+        /// gvEvaluation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvEvaluation;
+        
+        /// <summary>
+        /// rowHospitalText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowHospitalText;
+        
+        /// <summary>
+        /// rowHospitalGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowHospitalGrid;
+        
+        /// <summary>
+        /// gvHospital control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvHospital;
+        
+        /// <summary>
+        /// rowProjectManagerText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowProjectManagerText;
+        
+        /// <summary>
+        /// rowProjectManagerGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowProjectManagerGrid;
+        
+        /// <summary>
+        /// gvProjectManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProjectManager;
+        
+        /// <summary>
+        /// rowProjectText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowProjectText;
+        
+        /// <summary>
+        /// rowProjectGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowProjectGrid;
+        
+        /// <summary>
+        /// gvProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProject;
+        
+        /// <summary>
+        /// rowStudyCoordinatorText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowStudyCoordinatorText;
+        
+        /// <summary>
+        /// rowStudyCoordinatorGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow rowStudyCoordinatorGrid;
+        
+        /// <summary>
+        /// gvStudyCoordinator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvStudyCoordinator;
     }
 }

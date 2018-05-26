@@ -25,7 +25,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Email" HeaderText="E_mail" />
+            <asp:BoundField DataField="Email" HeaderText="E-mail" />
             <asp:BoundField DataField="Phone1" HeaderText="Phone" />
             <asp:TemplateField HeaderText="Hospital" HeaderStyle-Width="50px" >
                 <ItemTemplate>
