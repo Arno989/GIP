@@ -151,7 +151,7 @@ namespace Presentation.Site
                         rowContractGrid.Visible = true;
                         rowContractText.Visible = true;
 
-                        for (int i = 0; i > gvContract.Rows.Count; i++)
+                        for (int i = 0; i < gvContract.Rows.Count; i++)
                         {
                             //projectID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", gvContract.DataKeys[i].Value);
@@ -165,10 +165,10 @@ namespace Presentation.Site
                             ProjectRelation = _businesscode.GetProjects(sortingPar2);
                             string ProjectTitle = ProjectRelation[0].Title;
 
-                            gvContract.Rows[i].Cells[5].Text = ProjectTitle;
+                            gvContract.Rows[i].Cells[4].Text = ProjectTitle;
                         }
 
-                        for (int i = 0; i > gvContract.Rows.Count; i++)
+                        for (int i = 0; i < gvContract.Rows.Count; i++)
                         {
                             //projectID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", gvContract.DataKeys[i].Value);
@@ -182,7 +182,7 @@ namespace Presentation.Site
                             ClientRelation = _businesscode.GetClients(sortingPar2);
                             string ClientName = ClientRelation[0].Name;
 
-                            gvContract.Rows[i].Cells[6].Text = ClientName;
+                            gvContract.Rows[i].Cells[5].Text = ClientName;
                         }
                     }
 
@@ -193,7 +193,7 @@ namespace Presentation.Site
                         rowDepartmentGrid.Visible = true;
                         rowDepartmentText.Visible = true;
 
-                        for (int i = 0; i > gvDepartment.Rows.Count; i++)
+                        for (int i = 0; i < gvDepartment.Rows.Count; i++)
                         {
                             //hospitalID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Department_ID = {0}", gvDepartment.DataKeys[i].Value);
@@ -207,7 +207,7 @@ namespace Presentation.Site
                             HospitalRelation = _businesscode.GetHospitals(sortingPar2);
                             string hospitalName = HospitalRelation[0].Name;
 
-                            gvDepartment.Rows[i].Cells[4].Text = hospitalName;
+                            gvDepartment.Rows[i].Cells[3].Text = hospitalName;
                         }
                     }
 
@@ -218,11 +218,11 @@ namespace Presentation.Site
                         rowDoctorGrid.Visible = true;
                         rowDoctorText.Visible = true;
 
-                        for (int i = 0; i > gvDoctor.Rows.Count; i++)
+                        for (int i = 0; i < gvDoctor.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvDoctor.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvDoctor.Rows[i].Cells[10].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationDoctorHasHospitals(Convert.ToInt32(gvDoctor.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -247,7 +247,7 @@ namespace Presentation.Site
                         rowEvaluationGrid.Visible = true;
                         rowEvaluationText.Visible = true;
 
-                        for (int i = 0; i > gvEvaluation.Rows.Count; i++)
+                        for (int i = 0; i < gvEvaluation.Rows.Count; i++)
                         {
                             string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", gvEvaluation.DataKeys[i].Value);
                             List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
@@ -262,8 +262,8 @@ namespace Presentation.Site
                                 CRARelation = _businesscode.GetCRAs(sortingPar2);
                                 string CRAName = CRARelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "CRA";
-                                gvEvaluation.Rows[i].Cells[2].Text = CRAName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "CRA";
+                                gvEvaluation.Rows[i].Cells[1].Text = CRAName;
                             }
                             else if (CurrentEvaluation[0].DoctorID != -1)
                             {
@@ -275,8 +275,8 @@ namespace Presentation.Site
                                 DoctorRelation = _businesscode.GetDoctors(sortingPar2);
                                 string DoctorName = DoctorRelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "Doctor";
-                                gvEvaluation.Rows[i].Cells[2].Text = DoctorName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "Doctor";
+                                gvEvaluation.Rows[i].Cells[1].Text = DoctorName;
                             }
                             else if (CurrentEvaluation[0].ScID != -1)
                             {
@@ -288,8 +288,8 @@ namespace Presentation.Site
                                 StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
                                 string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "StudyCoordinator";
-                                gvEvaluation.Rows[i].Cells[2].Text = StudyCoordinatorName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "StudyCoordinator";
+                                gvEvaluation.Rows[i].Cells[1].Text = StudyCoordinatorName;
                             }
                         }
                     }
@@ -317,11 +317,11 @@ namespace Presentation.Site
                         rowProjectGrid.Visible = true;
                         rowProjectText.Visible = true;
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvProject.Rows[i].Cells[4].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[3].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -338,11 +338,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel2";
-                            ListBox listbox = gvProject.Rows[i].Cells[5].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[4].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -359,11 +359,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel3";
-                            ListBox listbox = gvProject.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[5].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -380,11 +380,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel4";
-                            ListBox listbox = gvProject.Rows[i].Cells[7].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[6].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -409,11 +409,11 @@ namespace Presentation.Site
                         rowStudyCoordinatorGrid.Visible = true;
                         rowStudyCoordinatorText.Visible = true;
 
-                        for (int i = 0; i > gvStudyCoordinator.Rows.Count; i++)
+                        for (int i = 0; i < gvStudyCoordinator.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvStudyCoordinator.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvStudyCoordinator.Rows[i].Cells[5].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(gvStudyCoordinator.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -460,7 +460,7 @@ namespace Presentation.Site
                         rowContractGrid.Visible = true;
                         rowContractText.Visible = true;
 
-                        for (int i = 0; i > gvContract.Rows.Count; i++)
+                        for (int i = 0; i < gvContract.Rows.Count; i++)
                         {
                             //projectID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", gvContract.DataKeys[i].Value);
@@ -474,10 +474,10 @@ namespace Presentation.Site
                             ProjectRelation = _businesscode.GetProjects(sortingPar2);
                             string ProjectTitle = ProjectRelation[0].Title;
 
-                            gvContract.Rows[i].Cells[5].Text = ProjectTitle;
+                            gvContract.Rows[i].Cells[4].Text = ProjectTitle;
                         }
 
-                        for (int i = 0; i > gvContract.Rows.Count; i++)
+                        for (int i = 0; i < gvContract.Rows.Count; i++)
                         {
                             //projectID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Contract_ID = {0}", gvContract.DataKeys[i].Value);
@@ -491,7 +491,7 @@ namespace Presentation.Site
                             ClientRelation = _businesscode.GetClients(sortingPar2);
                             string ClientName = ClientRelation[0].Name;
 
-                            gvContract.Rows[i].Cells[6].Text = ClientName;
+                            gvContract.Rows[i].Cells[5].Text = ClientName;
                         }
                     }
                     break;
@@ -504,7 +504,7 @@ namespace Presentation.Site
                         rowDepartmentGrid.Visible = true;
                         rowDepartmentText.Visible = true;
 
-                        for (int i = 0; i > gvDepartment.Rows.Count; i++)
+                        for (int i = 0; i < gvDepartment.Rows.Count; i++)
                         {
                             //hospitalID krijgen van de current row in de gridvieuw
                             string sortingPar1 = string.Format(" WHERE Department_ID = {0}", gvDepartment.DataKeys[i].Value);
@@ -518,7 +518,7 @@ namespace Presentation.Site
                             HospitalRelation = _businesscode.GetHospitals(sortingPar2);
                             string hospitalName = HospitalRelation[0].Name;
 
-                            gvDepartment.Rows[i].Cells[4].Text = hospitalName;
+                            gvDepartment.Rows[i].Cells[3].Text = hospitalName;
                         }
                     }
                     break;
@@ -531,11 +531,11 @@ namespace Presentation.Site
                         rowDoctorGrid.Visible = true;
                         rowDoctorText.Visible = true;
 
-                        for (int i = 0; i > gvDoctor.Rows.Count; i++)
+                        for (int i = 0; i < gvDoctor.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvDoctor.Rows[i].Cells[11].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvDoctor.Rows[i].Cells[10].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationDoctorHasHospitals(Convert.ToInt32(gvDoctor.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -562,7 +562,7 @@ namespace Presentation.Site
                         rowEvaluationGrid.Visible = true;
                         rowEvaluationText.Visible = true;
 
-                        for (int i = 0; i > gvEvaluation.Rows.Count; i++)
+                        for (int i = 0; i < gvEvaluation.Rows.Count; i++)
                         {
                             string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", gvEvaluation.DataKeys[i].Value);
                             List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
@@ -577,8 +577,8 @@ namespace Presentation.Site
                                 CRARelation = _businesscode.GetCRAs(sortingPar2);
                                 string CRAName = CRARelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "CRA";
-                                gvEvaluation.Rows[i].Cells[2].Text = CRAName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "CRA";
+                                gvEvaluation.Rows[i].Cells[1].Text = CRAName;
                             }
                             else if (CurrentEvaluation[0].DoctorID != -1)
                             {
@@ -590,8 +590,8 @@ namespace Presentation.Site
                                 DoctorRelation = _businesscode.GetDoctors(sortingPar2);
                                 string DoctorName = DoctorRelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "Doctor";
-                                gvEvaluation.Rows[i].Cells[2].Text = DoctorName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "Doctor";
+                                gvEvaluation.Rows[i].Cells[1].Text = DoctorName;
                             }
                             else if (CurrentEvaluation[0].ScID != -1)
                             {
@@ -603,8 +603,8 @@ namespace Presentation.Site
                                 StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
                                 string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
 
-                                gvEvaluation.Rows[i].Cells[1].Text = "StudyCoordinator";
-                                gvEvaluation.Rows[i].Cells[2].Text = StudyCoordinatorName;
+                                gvEvaluation.Rows[i].Cells[0].Text = "StudyCoordinator";
+                                gvEvaluation.Rows[i].Cells[1].Text = StudyCoordinatorName;
                             }
                         }
                     }
@@ -638,11 +638,11 @@ namespace Presentation.Site
                         rowProjectGrid.Visible = true;
                         rowProjectText.Visible = true;
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvProject.Rows[i].Cells[4].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[3].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -659,11 +659,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel2";
-                            ListBox listbox = gvProject.Rows[i].Cells[5].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[4].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -680,11 +680,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel3";
-                            ListBox listbox = gvProject.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[5].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -701,11 +701,11 @@ namespace Presentation.Site
                             listbox.DataBind();
                         }
 
-                        for (int i = 0; i > gvProject.Rows.Count; i++)
+                        for (int i = 0; i < gvProject.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel4";
-                            ListBox listbox = gvProject.Rows[i].Cells[7].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvProject.Rows[i].Cells[6].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(gvProject.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)
@@ -732,11 +732,11 @@ namespace Presentation.Site
                         rowStudyCoordinatorGrid.Visible = true;
                         rowStudyCoordinatorText.Visible = true;
 
-                        for (int i = 0; i > gvStudyCoordinator.Rows.Count; i++)
+                        for (int i = 0; i < gvStudyCoordinator.Rows.Count; i++)
                         {
                             var container = Master.FindControl("Body");
                             string lbName = "lbRel1";
-                            ListBox listbox = gvStudyCoordinator.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                            ListBox listbox = gvStudyCoordinator.Rows[i].Cells[5].FindControl(lbName) as ListBox;
                             List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(gvStudyCoordinator.DataKeys[i].Value)); //--Var
 
                             if (Relations.Count != 0)

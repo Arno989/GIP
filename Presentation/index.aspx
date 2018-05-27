@@ -18,7 +18,7 @@
             <asp:ListItem>Hospital</asp:ListItem> 
             <asp:ListItem>Project Manager</asp:ListItem> 
             <asp:ListItem>Project</asp:ListItem> 
-            <asp:ListItem>Study Coordinators</asp:ListItem> 
+            <asp:ListItem>Study Coordinator</asp:ListItem> 
         </asp:DropDownList>
         <asp:TextBox id="TbSearch" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)" OnTextChanged="TbSearch_TextChanged" AutoPostBack="true" BackColor="White"></asp:TextBox>
 	</div>
@@ -76,7 +76,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowCRAGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvCRA" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvCRA" AutoGenerateColumns="false" DataKeyNames="CRA_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="CV" HeaderText="CV" />
@@ -95,7 +95,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowClientGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false" DataKeyNames="Client_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="Adress" HeaderText="Adress" />
@@ -117,7 +117,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowContractGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvContract" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvContract" AutoGenerateColumns="false" DataKeyNames="Contract_ID">
                     <Columns>
                         <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" />
                         <asp:BoundField DataField="Fee" HeaderText="Fee" />
@@ -145,7 +145,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowDepartmentGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvDepartment" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvDepartment" AutoGenerateColumns="false" DataKeyNames="Department_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="Email" HeaderText="E_mail" />
@@ -167,7 +167,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowDoctorGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvDoctor" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvDoctor" AutoGenerateColumns="false" DataKeyNames="Doctor_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name"/>
                         <asp:BoundField DataField="Email" HeaderText="E-mail"/>
@@ -196,7 +196,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowEvaluationGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvEvaluation" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvEvaluation" AutoGenerateColumns="false" DataKeyNames="Evaluation_ID">
                     <Columns>
                         <asp:TemplateField HeaderText="Type" HeaderStyle-Width="50px" >
                             <ItemTemplate>
@@ -226,7 +226,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowHospitalGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvHospital" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvHospital" AutoGenerateColumns="false" DataKeyNames="Hospital_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="Adress" HeaderText="Adress" />
@@ -246,7 +246,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowProjectManagerGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvProjectManager" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvProjectManager" AutoGenerateColumns="false" DataKeyNames="ProjectManager_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="CV" HeaderText="CV" />
@@ -265,7 +265,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowProjectGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvProject" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvProject" AutoGenerateColumns="false" DataKeyNames="Project_ID">
                     <Columns>
                         <asp:BoundField DataField="Title" HeaderText="Title" />
                         <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
@@ -302,7 +302,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowStudyCoordinatorGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvStudyCoordinator" AutoGenerateColumns="false">
+                <asp:GridView runat="server" ID="gvStudyCoordinator" AutoGenerateColumns="false" DataKeyNames="StudyCoordinator_ID">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="CV" HeaderText="CV" />
