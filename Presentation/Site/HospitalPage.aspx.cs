@@ -66,6 +66,10 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationHospitalHasDoctors(RecordID); //--Var
                         }
+                        if (_businesscode.GetRelationHospitalHasProjects(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationHospitalHasProjects(RecordID); //--Var
+                        }
                         _businesscode.DeleteHospital(Convert.ToInt32(RecordID));
                     }
                 }
