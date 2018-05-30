@@ -163,7 +163,7 @@ namespace Presentation.Site
             StudyCoordinatorRelation = _businesscode.GetStudyCoordinators(sortingPar2);
             string StudyCoordinatorName = StudyCoordinatorRelation[0].Name;
 
-            GridView.Rows[i].Cells[1].Text = "StudyCoordinator";
+            GridView.Rows[i].Cells[1].Text = "Study Coordinator";
             GridView.Rows[i].Cells[2].Text = StudyCoordinatorName;
         }
 
