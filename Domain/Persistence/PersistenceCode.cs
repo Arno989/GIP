@@ -1514,7 +1514,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationCRAHasProjectss(int CRA_id_p)
+        public void DeleteRelationCRAHasProjects(int CRA_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1544,7 +1544,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationDoctorHasProjectss(int Doctor_id_p)
+        public void DeleteRelationDoctorHasProjects(int Doctor_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1574,7 +1574,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationHospitalHasProjectss(int Hospital_id_p)
+        public void DeleteRelationHospitalHasProjects(int Hospital_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1604,7 +1604,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void DeleteRelationProjectManagerHasProjectss(int ProjectManager_id_p)
+        public void DeleteRelationProjectManagerHasProjects(int ProjectManager_id_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 

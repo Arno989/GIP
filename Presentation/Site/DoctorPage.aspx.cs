@@ -105,6 +105,10 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationDoctorHasStudyCoordinators(RecordID); //--Var
                         }
+                        if (_businesscode.GetRelationDoctorHasProjects(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationDoctorHasProjects(RecordID); //--Var
+                        }
                         _businesscode.DeleteDoctor(RecordID); //--Var
                     }
                 }

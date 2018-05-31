@@ -381,45 +381,45 @@ namespace Domain.Business
             _persistence.DeleteRelationProjectHasCRAs(studycoordinator_id_p2);
         }
 
-        public void DeleteRelationCRAHasProjectss(int studycoordinator_id_p2)
+        public void DeleteRelationCRAHasProjects(int studycoordinator_id_p2)
         {
-            _persistence.DeleteRelationCRAHasProjectss(studycoordinator_id_p2);
+            _persistence.DeleteRelationCRAHasProjects(studycoordinator_id_p2);
         }
         #endregion
 
-        #region Project + CRA
+        #region Project + Doctor
         public void DeleteRelationProjectHasDoctors(int studycoordinator_id_p2)
         {
             _persistence.DeleteRelationProjectHasDoctors(studycoordinator_id_p2);
         }
 
-        public void DeleteRelationDoctorHasProjectss(int studycoordinator_id_p2)
+        public void DeleteRelationDoctorHasProjects(int studycoordinator_id_p2)
         {
-            _persistence.DeleteRelationDoctorHasProjectss(studycoordinator_id_p2);
+            _persistence.DeleteRelationDoctorHasProjects(studycoordinator_id_p2);
         }
         #endregion
 
-        #region Project + CRA
+        #region Project + Hospital
         public void DeleteRelationProjectHasHospitals(int studycoordinator_id_p2)
         {
             _persistence.DeleteRelationProjectHasHospitals(studycoordinator_id_p2);
         }
 
-        public void DeleteRelationHospitalHasProjectss(int studycoordinator_id_p2)
+        public void DeleteRelationHospitalHasProjects(int studycoordinator_id_p2)
         {
-            _persistence.DeleteRelationHospitalHasProjectss(studycoordinator_id_p2);
+            _persistence.DeleteRelationHospitalHasProjects(studycoordinator_id_p2);
         }
         #endregion
 
-        #region Project + CRA
+        #region Project + Project Manager
         public void DeleteRelationProjectHasProjectManagers(int studycoordinator_id_p2)
         {
             _persistence.DeleteRelationProjectHasProjectManagers(studycoordinator_id_p2);
         }
 
-        public void DeleteRelationProjectManagerHasProjectss(int studycoordinator_id_p2)
+        public void DeleteRelationProjectManagerHasProjects(int studycoordinator_id_p2)
         {
-            _persistence.DeleteRelationProjectManagerHasProjectss(studycoordinator_id_p2);
+            _persistence.DeleteRelationProjectManagerHasProjects(studycoordinator_id_p2);
         }
         #endregion
 
