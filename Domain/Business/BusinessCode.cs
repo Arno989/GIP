@@ -153,6 +153,10 @@ namespace Domain.Business
         {
             return _persistence.GetCRADropDown();
         }
+        public List<List<string>> GetContractDropDown()
+        {
+            return _persistence.GetContractDropDown();
+        }
         public List<List<string>> GetDoctorDropDownContent()
         {
             return _persistence.GetDoctorDropDown();

@@ -85,6 +85,15 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit02;
         
         /// <summary>
+        /// lbEdit04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit04;
+        
+        /// <summary>
         /// lbEdit00 control.
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace Presentation.SiteEdit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEdit12;
+        
+        /// <summary>
+        /// lbEdit14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit14;
         
         /// <summary>
         /// lbEdit10 control.
@@ -211,6 +229,15 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit22;
         
         /// <summary>
+        /// lbEdit24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit24;
+        
+        /// <summary>
         /// lbEdit20 control.
         /// </summary>
         /// <remarks>
@@ -272,6 +299,15 @@ namespace Presentation.SiteEdit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEdit32;
+        
+        /// <summary>
+        /// lbEdit34 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit34;
         
         /// <summary>
         /// lbEdit30 control.
@@ -337,6 +373,15 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit42;
         
         /// <summary>
+        /// lbEdit44 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit44;
+        
+        /// <summary>
         /// lbEdit40 control.
         /// </summary>
         /// <remarks>
@@ -398,6 +443,15 @@ namespace Presentation.SiteEdit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEdit52;
+        
+        /// <summary>
+        /// lbEdit54 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit54;
         
         /// <summary>
         /// lbEdit50 control.
@@ -463,6 +517,15 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit62;
         
         /// <summary>
+        /// lbEdit64 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit64;
+        
+        /// <summary>
         /// lbEdit60 control.
         /// </summary>
         /// <remarks>
@@ -524,6 +587,15 @@ namespace Presentation.SiteEdit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEdit72;
+        
+        /// <summary>
+        /// lbEdit74 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit74;
         
         /// <summary>
         /// lbEdit70 control.
@@ -589,6 +661,15 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit82;
         
         /// <summary>
+        /// lbEdit84 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit84;
+        
+        /// <summary>
         /// lbEdit80 control.
         /// </summary>
         /// <remarks>
@@ -650,6 +731,15 @@ namespace Presentation.SiteEdit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEdit92;
+        
+        /// <summary>
+        /// lbEdit94 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEdit94;
         
         /// <summary>
         /// lbEdit90 control.

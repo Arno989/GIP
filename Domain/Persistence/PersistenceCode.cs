@@ -625,6 +625,30 @@ namespace Domain.Persistence
             return ListCount;
         }
 
+        public List<List<string>> GetContractDropDown()
+        {
+            List<List<string>> ListCount = new List<List<string>>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Contract ORDER BY Legal_Country ASC", conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            int count = 0;
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["Contract_ID"]);
+                string name = Convert.ToString(dataReader["Legal_Country"]);
+
+                ListCount.Add(new List<String>());
+                ListCount[count].Add(Convert.ToString(id));
+                ListCount[count].Add(name);
+                count++;
+            }
+
+            conn.Close();
+            return ListCount;
+        }
+
         public List<List<string>> GetDoctorDropDown()
         {
             List<List<string>> ListCount = new List<List<string>>();

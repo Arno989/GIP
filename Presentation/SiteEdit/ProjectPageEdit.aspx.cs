@@ -32,6 +32,7 @@ namespace Presentation.SiteEdit
                 SetListBox2Content();
                 SetListBox3Content();
                 SetListBox4Content();
+                SetListBox5Content();
 
                 List<List<string>> ListData = GetSessionData();
                 if (ListData != null)
@@ -150,6 +151,37 @@ namespace Presentation.SiteEdit
                     for (int i2 = 0; i2 < ListDropdownContent.Count; i2++)
                     {
                         DropDownData.Items[i2].Value = ListDropdownContent[i2][0];
+                    }
+                }
+            }
+        }
+
+        public void SetListBox5Content()
+        {
+            if (!IsPostBack)
+            {
+                List<List<string>> ListContentContract = _business.GetContractDropDown();
+                List<string> names = new List<string>();
+
+                for (int i = 0; i <= 9; i++)
+                {
+                    string lbEdit = "lbEdit" + i.ToString() + "4";
+                    var container = Master.FindControl("Body");
+                    var DropDownData = container.FindControl(lbEdit) as ListBox;
+
+                    if (i == 0)
+                    {
+                        for (int i2 = 0; i2 < ListContentContract.Count; i2++)
+                        {
+                            names.Add(ListContentContract[i2][1]);
+                        }
+                    }
+
+                    DropDownData.DataSource = names;
+                    DropDownData.DataBind();
+                    for (int i2 = 0; i2 < ListContentContract.Count; i2++)
+                    {
+                        DropDownData.Items[i2].Value = ListContentContract[i2][0];
                     }
                 }
             }
