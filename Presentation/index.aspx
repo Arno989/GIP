@@ -7,6 +7,7 @@
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
 	<div class="headLeft"><p class="uppercase">Home</p></div>
 	<div class="headRight">
+        <asp:TextBox id="TbSearch" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)" OnTextChanged="TbSearch_TextChanged" placeholder="Search..." AutoPostBack="true" BackColor="White" CssClass="sortTextbox"></asp:TextBox>
         <asp:DropDownList id="ddTable" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" OnSelectedIndexChanged="DdTable_SelectedIndexChanged" AutoPostBack="true" BackColor="White">
             <asp:ListItem Selected="True">All</asp:ListItem> 
             <asp:ListItem>CRA</asp:ListItem> 
@@ -20,7 +21,6 @@
             <asp:ListItem>Project</asp:ListItem> 
             <asp:ListItem>Study Coordinator</asp:ListItem> 
         </asp:DropDownList>
-        <asp:TextBox id="TbSearch" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)" OnTextChanged="TbSearch_TextChanged" AutoPostBack="true" BackColor="White"></asp:TextBox>
 	</div>
 </asp:Content>
 

@@ -27,11 +27,6 @@
             <asp:BoundField DataField="Title" HeaderText="Title" />
             <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
             <asp:BoundField DataField="End_Date" HeaderText="End Date" />
-            <asp:TemplateField HeaderText="Client Contract" ItemStyle-CssClass="cellListbox">
-                <ItemTemplate>
-                    <asp:ListBox runat="server" ID="lbRel5" CssClass="listbox"></asp:ListBox>
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>

@@ -20,7 +20,6 @@
                 <asp:TableHeaderCell>Title</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Client contracts</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CRA's</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Doctors</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Hospitals</asp:TableHeaderCell>
@@ -35,10 +34,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit02"></asp:TextBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit04" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit00" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
@@ -68,10 +63,6 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit12"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit14" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit10" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
                     </asp:ListBox>
                 </asp:TableCell>
@@ -97,10 +88,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit22"></asp:TextBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit24" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit20" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
@@ -130,10 +117,6 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit32"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit34" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit30" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
                     </asp:ListBox>
                 </asp:TableCell>
@@ -159,10 +142,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit42"></asp:TextBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit44" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit40" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
@@ -192,10 +171,6 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit52"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit54" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit50" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
                     </asp:ListBox>
                 </asp:TableCell>
@@ -221,10 +196,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit62"></asp:TextBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit64" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit60" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
@@ -254,10 +225,6 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit72"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit74" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit70" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
                     </asp:ListBox>
                 </asp:TableCell>
@@ -285,10 +252,6 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit82"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit84" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit80" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
                     </asp:ListBox>
                 </asp:TableCell>
@@ -314,10 +277,6 @@
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit92"></asp:TextBox>
-                </asp:TableCell>
-                <asp:TableCell CssClass="cellEdit">
-                    <asp:ListBox runat="server" SelectionMode="Single" ID="lbEdit94" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">
-                    </asp:ListBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:ListBox runat="server" SelectionMode="Multiple" ID="lbEdit90" AppendDataBoundItems="true" CssClass="listboxEdit" AutoPostBack="true">

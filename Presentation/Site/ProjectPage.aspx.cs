@@ -8,8 +8,8 @@ using Domain.Business;
 
 namespace Presentation.Site
 {
-	public partial class ProjectPage: System.Web.UI.Page
-	{
+    public partial class ProjectPage : System.Web.UI.Page
+    {
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = "ORDER BY Title ASC";
 
@@ -25,10 +25,9 @@ namespace Presentation.Site
                 ListBoxRel2();
                 ListBoxRel3();
                 ListBoxRel4();
-                ListBoxRel5();
             }
         }
-
+        
         protected void ListBoxRel1()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
@@ -124,27 +123,6 @@ namespace Presentation.Site
                 listbox.DataBind();
             }
         }
-
-        protected void ListBoxRel5()
-        {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                //ContractID krijgen van de current row in de gridvieuw
-                string sortingPar1 = string.Format(" WHERE Project_ID = {0}", GridView.DataKeys[i].Value);
-                List<ContractCode> CurrentContract = new List<ContractCode>();
-                CurrentContract = _businesscode.GetContracts(sortingPar1);
-                int ContractID = CurrentContract[0].Contract_ID;
-
-                // ContractID omzetten naar Contract Legal country
-                string sortingPar2 = string.Format(" WHERE Contract_ID = {0}", ContractID);
-                List<ContractCode> ContractRelation = new List<ContractCode>();
-                ContractRelation = _businesscode.GetContracts(sortingPar2);
-                string ContractName = ContractRelation[0].Legal_country;
-
-                GridView.Rows[i].Cells[4].Text = ContractName;
-            }
-        }
-
 
         protected void Edit(object sender, EventArgs e)
         {
