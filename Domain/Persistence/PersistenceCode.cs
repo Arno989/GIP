@@ -1338,11 +1338,11 @@ namespace Domain.Persistence
 
         }
 
-        public void DeleteContract(int id_p)
+        public void DeleteContract(int id_p, string sortingPar)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from Contract where Contract_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("DELETE from Contract where Contract_ID = @id {0}", sortingPar), conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -1360,11 +1360,11 @@ namespace Domain.Persistence
 
         }
 
-        public void DeleteDepartment(int id_p)
+        public void DeleteDepartment(int id_p, string sortingPar)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from Department where Department_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("DELETE from Department where Department_ID = @id {0}", sortingPar), conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -1381,11 +1381,11 @@ namespace Domain.Persistence
 
         }
 
-        public void DeleteEvaluation(int id_p)
+        public void DeleteEvaluation(int id_p, string sortingPar)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE from Evaluation where Evaluation_ID = @id", conn);
+            MySqlCommand cmd = new MySqlCommand(string.Format("DELETE from Evaluation where Evaluation_ID = @id {0}", sortingPar), conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();

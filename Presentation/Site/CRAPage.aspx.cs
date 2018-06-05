@@ -66,6 +66,7 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationCRAHasProjects(RecordID); //--Var
                         }
+                        _businesscode.DeleteEvaluation(-1, string.Format("OR CRA_ID = {0}", RecordID));
                         _businesscode.DeleteCRA(RecordID);
                     }
                 }

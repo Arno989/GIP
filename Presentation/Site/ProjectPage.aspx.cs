@@ -210,6 +210,7 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationProjectHasProjectManagers(RecordID); //--Var
                         }
+                        _businesscode.DeleteContract(-1, string.Format("OR Project_ID = {0}", RecordID));
                         _businesscode.DeleteProject(RecordID); //--Var
                     }
                 }

@@ -77,7 +77,7 @@ namespace Presentation.Site
                     if (chk.Checked)
                     {
                         int id = (int)GridView.DataKeys[i].Value;
-                        _businesscode.DeleteEvaluation(Convert.ToInt32(id));
+                        _businesscode.DeleteEvaluation(Convert.ToInt32(id), "");
                         CheckedOrNot = true;
                     }
                 }

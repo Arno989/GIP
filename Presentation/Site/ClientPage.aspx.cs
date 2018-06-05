@@ -61,6 +61,7 @@ namespace Presentation.Site
                         if (chk.Checked)
                         {
                             int id = (int)GridView.DataKeys[i].Value;
+                            _businesscode.DeleteContract(-1, string.Format("OR Client_ID = {0}", id));
                             _businesscode.DeleteClient(Convert.ToInt32(id));
                         }
                     }

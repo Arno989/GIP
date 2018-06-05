@@ -101,6 +101,7 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationStudyCoordinatorHasDoctors(RecordID); //--Var
                         }
+                        _businesscode.DeleteEvaluation(-1, string.Format("OR StudyCoordinator_ID = {0}", RecordID));
                         _businesscode.DeleteStudyCoordinator(RecordID); //--Var
                     }
                 }

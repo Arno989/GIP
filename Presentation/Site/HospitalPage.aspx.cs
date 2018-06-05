@@ -70,6 +70,7 @@ namespace Presentation.Site
                         {
                             _businesscode.DeleteRelationHospitalHasProjects(RecordID); //--Var
                         }
+                        _businesscode.DeleteDepartment(-1, string.Format("OR Hospital_ID = {0}", RecordID));
                         _businesscode.DeleteHospital(Convert.ToInt32(RecordID));
                     }
                 }

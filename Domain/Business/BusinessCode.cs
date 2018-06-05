@@ -311,25 +311,25 @@ namespace Domain.Business
         {
             _persistence.DeleteClient(id_p2);
         }
-        public void DeleteContract(int id_p2)
+        public void DeleteContract(int id_p2, string sortingPar_p2)
         {
-            _persistence.DeleteContract(id_p2);
+            _persistence.DeleteContract(id_p2, sortingPar_p2);
         }
         public void DeleteCRA(int id_p2)
         {
             _persistence.DeleteCRA(id_p2);
         }
-        public void DeleteDepartment(int id_p2)
+        public void DeleteDepartment(int id_p2, string sortingPar_p2)
         {
-            _persistence.DeleteDepartment(id_p2);
+            _persistence.DeleteDepartment(id_p2, sortingPar_p2);
         }
         public void DeleteDoctor(int id_p2)
         {
             _persistence.DeleteDoctor(id_p2);
         }
-        public void DeleteEvaluation(int id_p2)
+        public void DeleteEvaluation(int id_p2, string sortingPar_p2)
         {
-            _persistence.DeleteEvaluation(id_p2);
+            _persistence.DeleteEvaluation(id_p2, sortingPar_p2);
         }
         public void DeleteHospital(int id_p2)
         {
