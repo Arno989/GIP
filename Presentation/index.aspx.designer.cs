@@ -13,15 +13,6 @@ namespace Presentation.Site {
     public partial class HomeSite {
         
         /// <summary>
-        /// ddTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddTable;
-        
-        /// <summary>
         /// TbSearch control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace Presentation.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbSearch;
+        
+        /// <summary>
+        /// ddTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddTable;
         
         /// <summary>
         /// buttonTable control.
