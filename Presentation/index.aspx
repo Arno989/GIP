@@ -29,51 +29,51 @@
         <asp:TableRow CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                    <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="CRA" OnClick="ButtonCRA_Click"/>
+                    <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="CRA's" OnClick="ButtonCRA_Click"/>
                 </div>
             </asp:TableCell>
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Client" OnClick="ButtonClient_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Clients" OnClick="ButtonClient_Click"/>
                     </div>
             </asp:TableCell>
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Client Contract" OnClick="ButtonContract_Click"/>
-                    </div>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow CssClass="homeRow">
-            <asp:TableCell CssClass="homeCell">
-                <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Department" OnClick="ButtonDepartment_Click"/>
-                    </div>
-            </asp:TableCell>
-            <asp:TableCell CssClass="homeCell">
-                <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Doctor" OnClick="ButtonDoctor_Click"/>
-                    </div>
-            </asp:TableCell>
-            <asp:TableCell CssClass="homeCell">
-                <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Evaluation" OnClick="ButtonEvaluation_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Client Contracts" OnClick="ButtonContract_Click"/>
                     </div>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Hospital" OnClick="ButtonHospital_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Departments" OnClick="ButtonDepartment_Click"/>
                     </div>
             </asp:TableCell>
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Project Manager" OnClick="ButtonProjectManager_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Doctors" OnClick="ButtonDoctor_Click"/>
                     </div>
             </asp:TableCell>
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Project" OnClick="ButtonProject_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Evaluations" OnClick="ButtonEvaluation_Click"/>
+                    </div>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow CssClass="homeRow">
+            <asp:TableCell CssClass="homeCell">
+                <div class="homeDiv">
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Hospitals" OnClick="ButtonHospital_Click"/>
+                    </div>
+            </asp:TableCell>
+            <asp:TableCell CssClass="homeCell">
+                <div class="homeDiv">
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Project Managers" OnClick="ButtonProjectManager_Click"/>
+                    </div>
+            </asp:TableCell>
+            <asp:TableCell CssClass="homeCell">
+                <div class="homeDiv">
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Projects" OnClick="ButtonProject_Click"/>
                     </div>
             </asp:TableCell>
         </asp:TableRow>
@@ -81,7 +81,7 @@
             <asp:TableCell CssClass="homeCell"></asp:TableCell>
             <asp:TableCell CssClass="homeCell">
                 <div class="homeDiv">
-                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Study Coordinator" OnClick="ButtonStudyCoordinator_Click"/>
+                <asp:Button runat="server" autopostback="true" CssClass="homeButton" Text="Study Coordinators" OnClick="ButtonStudyCoordinator_Click"/>
                     </div>
             </asp:TableCell>
             <asp:TableCell CssClass="homeCell"></asp:TableCell>
