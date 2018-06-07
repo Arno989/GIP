@@ -33,6 +33,7 @@
     border-collapse:collapse;
     border-color:white;
     border:hidden;
+    
 }
 
 .homeRow {
@@ -40,20 +41,27 @@
 }
 
 .homeCell {
-    width:auto;
+    width: auto;
+    border-right:hidden !important;
 }
 
-.homeImageButton {
+.homeButton {
     height:100px;
     width:100%;
     font-size:2em;
 }
 
-    .homeImageButton:hover {
+.homeDiv {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px #CED5D9;
+    padding: 20px 24px 20px 24px;
+}
+
+    .homeDiv:hover {
         background-color: #EE6726;
         color: black;
     }
-
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*#region checkbox*/
