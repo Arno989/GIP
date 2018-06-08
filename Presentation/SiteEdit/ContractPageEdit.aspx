@@ -24,7 +24,7 @@
                 <asp:TableHeaderCell>Project</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Client</asp:TableHeaderCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit00"></asp:TextBox>
                 </asp:TableCell>
@@ -48,7 +48,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow runat="server">
+            <asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit10"></asp:TextBox>
                 </asp:TableCell>
@@ -72,7 +72,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit20"></asp:TextBox>
                 </asp:TableCell>
@@ -96,7 +96,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit30"></asp:TextBox>
                 </asp:TableCell>
@@ -120,7 +120,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
 			</asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit40"></asp:TextBox>
                 </asp:TableCell>
@@ -144,7 +144,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit50"></asp:TextBox>
                 </asp:TableCell>
@@ -168,7 +168,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit60"></asp:TextBox>
                 </asp:TableCell>
@@ -192,7 +192,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit70"></asp:TextBox>
                 </asp:TableCell>
@@ -216,7 +216,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit80"></asp:TextBox>
                 </asp:TableCell>
@@ -240,7 +240,7 @@
                     </asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-			<asp:TableRow runat="server">
+			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit90"></asp:TextBox>
                 </asp:TableCell>

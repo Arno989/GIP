@@ -87,7 +87,8 @@
             <asp:TableCell CssClass="homeCell"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Table ID="resultTable" runat="server" CssClass="homeTable" Visible="false">
+
+    <asp:Table ID="resultTable" runat="server" Visible="false" CssClass="homeTable">
 
         <asp:TableRow ID="rowCRAText" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">

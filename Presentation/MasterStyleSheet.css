@@ -29,7 +29,6 @@
 
 .body {
     background-color: #F5F5F5;
-    min-height:
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -42,7 +41,6 @@
 }
 
 .homeRow {
-    
 }
 
     .homeRow:nth-child(even) {
@@ -53,15 +51,19 @@
         background-color: #F5F5F5;
     }
 
+    .homeRow:hover td {
+        background-color: #F5F5F5;
+    }
+
 .homeCell {
     width: auto;
-    border-right:hidden !important;
+    border-right: hidden !important;
 }
 
 .homeButton {
-    height:100px;
-    width:100%;
-    font-size:2em;
+    height: 100px;
+    width: 100%;
+    font-size: 2em;
 }
 
 .homeDiv {
@@ -96,12 +98,12 @@
     padding-bottom: 30px;
 }
 
-/* Hide the browser's default checkbox */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
 
 /* Create a custom checkbox */
 .checkmark {
@@ -177,8 +179,8 @@
     text-align: right;
 }
 
-.sortTextbox{
-    padding:1px 10px 1px 10px;
+.sortTextbox {
+    padding: 1px 10px 1px 10px;
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -193,7 +195,7 @@
     background-color: rgb(249, 249, 249);
     text-align: center;
     border-collapse: collapse;
-    line-height:1;
+    line-height: 1;
 }
 
     .editButton:hover {
@@ -223,6 +225,10 @@
     text-align: right;
 }
 
+.rowEdit:hover td {
+    background-color: transparent;
+}
+
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .material-icons {
@@ -237,7 +243,7 @@
 
 .uppercase {
     text-transform: uppercase;
-    color:white;
+    color: white;
 }
 
 /*.uppercase:hover {
@@ -309,12 +315,11 @@ td {
     border-right: 1px solid #b4b4b4;
 }
 
-tr{
-
+tr {
 }
 
     tr:hover td {
-        background-color: rgba(238, 103, 38, 0.66);
+        background-color: rgba(238, 103, 38, 0.75);
     }
 
     tr:nth-child(even) {
@@ -401,6 +406,7 @@ a {
 ul, li {
     list-style-type: none;
 }
+
 html {
     background-color: #F5F5F5;
 }
