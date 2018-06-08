@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,12 +14,12 @@ namespace Presentation.SiteEdit
         private BusinessCode _business = new BusinessCode();
         string sortingPar = "";
 
-        private List<List<string>> GetSessionData()
+        private List<List<string>> GetData()
         {
             return (List<List<string>>)Session["ListDataSession"];
         }
 
-        private List<int> GetSessionDataIDs()
+        private List<int> GetDataIDs()
         {
             return (List<int>)Session["DataID"];
         }
@@ -33,7 +34,7 @@ namespace Presentation.SiteEdit
                 SetListBox3Content();
                 SetListBox4Content();
 
-                List<List<string>> ListData = GetSessionData();
+                List<List<string>> ListData = GetData();
                 if (ListData != null)
                 {
                     InsertData();
@@ -157,22 +158,43 @@ namespace Presentation.SiteEdit
         
         private void InsertData()
         {
-            List<List<string>> ListDataSession = GetSessionData();
-            var container = Master.FindControl("Body");
+            List<List<string>> ListData = GetData();
+            int count = 0;
 
-            for (int i = 0; i < ListDataSession.Count; i++)
+            for (int i = 0; i < ListData.Count; i++)
             {
-                List<int> IdSubject = GetSessionDataIDs();
+                List<int> IdSubject = GetDataIDs();
                 string lbName;
                 var listboxData = new ListBox();
                 List<int> IdRel = new List<int>();
+                var container = Master.FindControl("Body");
 
                 for (int i2 = 0; i2 <= 2; i2++) //--Var
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
+                    DateTime dateTime = DateTime.Today;
 
-                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
+                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
+                    List<ContractCode> CurrentContract = new List<ContractCode>();
+                    CurrentContract = _business.GetContracts(sortingPar);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
+                            break;
+
+                        case 1:
+                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
+                            break;
+
+                        case 2:
+                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
+                            break;
+                    }
                 }
                                 
                 lbName = "lbEdit" + i.ToString() + "0";
@@ -272,7 +294,7 @@ namespace Presentation.SiteEdit
                         case 1:
                             if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = "";
+                                input[i2] = DateTime.Today.ToString();
                             }
                             else
                             {
@@ -283,7 +305,7 @@ namespace Presentation.SiteEdit
                         case 2:
                             if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = "";
+                                input[i2] = DateTime.Today.ToString();
                             }
                             else
                             {
@@ -364,7 +386,7 @@ namespace Presentation.SiteEdit
             string lbName;
             var listboxData = new ListBox();
 
-            List<int> ListDataIDs = GetSessionDataIDs();
+            List<int> ListDataIDs = GetDataIDs();
 
             for (int i = 0; i < ListDataIDs.Count; i++)
             {
@@ -392,7 +414,7 @@ namespace Presentation.SiteEdit
                         case 1:
                             if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = "";
+                                input[i2] = DateTime.Today.ToString();
                             }
                             else
                             {
@@ -403,7 +425,7 @@ namespace Presentation.SiteEdit
                         case 2:
                             if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = "";
+                                input[i2] = DateTime.Today.ToString();
                             }
                             else
                             {
@@ -490,7 +512,7 @@ namespace Presentation.SiteEdit
 
         protected void BtnSaveAndExit_Click(object sender, EventArgs e)
         {
-            if (GetSessionDataIDs() != null)
+            if (GetDataIDs() != null)
             {
                 UpdateData();
             }
@@ -503,7 +525,7 @@ namespace Presentation.SiteEdit
 
         protected void BtnSave_Click(object sender, EventArgs e)
         {
-            if (GetSessionDataIDs() != null)
+            if (GetDataIDs() != null)
             {
                 UpdateData();
             }

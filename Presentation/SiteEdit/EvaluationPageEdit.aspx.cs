@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -59,7 +60,14 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = DateTime.Today.ToString();
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 2:
@@ -112,7 +120,6 @@ namespace Presentation.SiteEdit
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    //string name = 
                     _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1);
                 }
                 else if (value.Contains("DR") == true)
@@ -148,72 +155,49 @@ namespace Presentation.SiteEdit
                 string[] input = new string[6];
                 var container = Master.FindControl("Body");
 
-                for (int i2 = 1; i2 <= 6; i2++)
+                for (int i2 = 0; i2 <= 5; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + (i2 - 1).ToString();
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
                     {
+                        case 0:
+                            if (((TextBox)txtBox).Text != "")
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            else
+                            {
+                                goto track1;
+                            }
+                            break;
+
                         case 1:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
+                                input[i2] = DateTime.Today.ToString();
                             }
                             else
                             {
-                                goto track1;
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
+
                         case 2:
-                            if (((TextBox)txtBox).Text != "")
-                            {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            else
-                            {
-                                goto track1;
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
                             break;
+
                         case 3:
-                            if (((TextBox)txtBox).Text != "")
-                            {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            else
-                            {
-                                goto track1;
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
                             break;
+
                         case 4:
-                            if (((TextBox)txtBox).Text != "")
-                            {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            else
-                            {
-                                goto track1;
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
                             break;
+
                         case 5:
-                            if (((TextBox)txtBox).Text != "")
-                            {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            else
-                            {
-                                goto track1;
-                            }
-                            break;
-                        case 6:
-                            if (((TextBox)txtBox).Text != "")
-                            {
-                                input[i2 - 1] = (((TextBox)txtBox).Text.ToString());
-                            }
-                            else
-                            {
-                                goto track1;
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
                             break;
                     }
                 }
@@ -246,7 +230,6 @@ namespace Presentation.SiteEdit
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a valid relation.')", true);
                 }
-                //_business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
                 track1:
                 continue;
             }
@@ -259,8 +242,15 @@ namespace Presentation.SiteEdit
             List<string> ListNames = GetNames();
             var container = Master.FindControl("Body");
             int Count = 0;
+            DateTime dateTime = DateTime.Today;
+
             for (int i = 0; i < ListData.Count; i++)
             {
+
+                sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _business.GetEvaluations(sortingPar);
+
                 for (int i2 = 0; i2 <= 6; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
@@ -273,7 +263,8 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            dateTime = DateTime.ParseExact(CurrentEvaluation[0].Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
                         case 2:
@@ -299,10 +290,7 @@ namespace Presentation.SiteEdit
                     if (ListTypes[i] == "CRA")
                     {
                         //CRA ID krijgen van de current row in de gridvieuw
-                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
-                        List<EvaluationCode> CurrentCRA = new List<EvaluationCode>();
-                        CurrentCRA = _business.GetEvaluations(sortingPar);
-                        int CRAID = CurrentCRA[0].CraID;
+                        int CRAID = CurrentEvaluation[0].CraID;
 
                         //de CRA selecteren in de dropdown
                         ListItem li = dd.Items.FindByValue("CR" + CRAID.ToString());
@@ -316,10 +304,7 @@ namespace Presentation.SiteEdit
                     if (ListTypes[i] == "Doctor")
                     {
                         //Doctor ID krijgen van de current row in de gridvieuw
-                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
-                        List<EvaluationCode> CurrentDoctor = new List<EvaluationCode>();
-                        CurrentDoctor = _business.GetEvaluations(sortingPar);
-                        int DoctorID = CurrentDoctor[0].DoctorID;
+                        int DoctorID = CurrentEvaluation[0].DoctorID;
 
                         //de Doctor selecteren in de dropdown
                         ListItem li = dd.Items.FindByValue("DR" + DoctorID.ToString());
@@ -333,10 +318,7 @@ namespace Presentation.SiteEdit
                     if (ListTypes[i] == "StudyCoordinator")
                     {
                         //SC ID krijgen van de current row in de gridvieuw
-                        sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
-                        List<EvaluationCode> CurrentSC = new List<EvaluationCode>();
-                        CurrentSC = _business.GetEvaluations(sortingPar);
-                        int SCID = CurrentSC[0].ScID;
+                        int SCID = CurrentEvaluation[0].ScID;
 
                         //de SC selecteren in de dropdown
                         ListItem li = dd.Items.FindByValue("SC" + SCID.ToString());

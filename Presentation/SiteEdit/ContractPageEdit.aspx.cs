@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using Domain.Business;
+using System.Globalization;
 
 namespace Presentation.SiteEdit
 {
@@ -51,6 +53,11 @@ namespace Presentation.SiteEdit
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
+                    DateTime dateTime = DateTime.Today;
+
+                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
+                    List<ContractCode> CurrentContract = new List<ContractCode>();
+                    CurrentContract = _business.GetContracts(sortingPar);
 
                     switch (i2)
                     {
@@ -63,11 +70,13 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 2:
-                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
+                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
                         case 3:
-                            ((TextBox)txtBox).Text = ListData[i][count].Replace("&nbsp;", "");
+                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
                     }
 
@@ -78,13 +87,9 @@ namespace Presentation.SiteEdit
                     var ddClient = container.FindControl(ddNameClient) as DropDownList;
 
                     //ProjectID krijgen van de current row in de gridvieuw
-                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
-                    List<ContractCode> CurrentContract = new List<ContractCode>();
-                    CurrentContract = _business.GetContracts(sortingPar);
                     int ProjectID = CurrentContract[0].ProjectID;
 
                     //ClientID krijgen van de current row in de gridvieuw
-                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
                     int ClientID = CurrentContract[0].ClientID;
 
                     //de Project selecteren in de dropdown
@@ -131,17 +136,39 @@ namespace Presentation.SiteEdit
 							break;
 
 						case 1:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = 0.ToString();
+                                ;
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
 
-						case 2:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
+                        case 2:
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = DateTime.Today.ToString();
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
 
 						case 3:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
-							break;
-					}
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = DateTime.Today.ToString();
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
+                            break;
+                    }
 				}
 
                 string ddNameProject = "ddEdit" + i.ToString() + "0";
@@ -173,7 +200,7 @@ namespace Presentation.SiteEdit
                 string[] input = new string[5];
                 var container = Master.FindControl("Body");
 
-                for (int i2 = 0; i2 <= 4; i2++)
+                for (int i2 = 0; i2 <= 3; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
                     var txtBox = container.FindControl(tbName);
@@ -192,15 +219,37 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = 0.ToString();
+                                ;
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 2:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = DateTime.Today.ToString();
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
+                            {
+                                input[i2] = DateTime.Today.ToString();
+                            }
+                            else
+                            {
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                            }
                             break;
                     }
                 }
@@ -219,8 +268,14 @@ namespace Presentation.SiteEdit
                 int ClientID = CurrentContract[0].ClientID;
                 string ddNameClient = "ddEdit" + i.ToString() + 1.ToString();
                 var ddClient = container.FindControl(ddNameClient) as DropDownList;
-
-                _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue));
+                if (ddProject.SelectedValue.Count() < 1 || ddClient.SelectedValue.Count() < 1)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a relation.')", true);
+                }
+                else
+                {
+                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue));
+                }
                 track1:
                 continue;
             }

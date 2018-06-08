@@ -32,10 +32,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit01"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <input type="date" name="tbEdit02" data-data-inline-picker="true"/>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit02" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <input class="datepicker" type="date" name="tbEdit03" data-data-inline-picker="true"/>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit00" AppendDataBoundItems = "true">
@@ -56,10 +56,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit11"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit12"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit12" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit13"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit13" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit10" AppendDataBoundItems = "true">
@@ -80,10 +80,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit21"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit22"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit22" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit23"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit23" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit20" AppendDataBoundItems = "true">
@@ -104,10 +104,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit31"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit32"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit32" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit33"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit33" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit30" AppendDataBoundItems = "true">
@@ -128,10 +128,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit41"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit42"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit42" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit43"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit43" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit40" AppendDataBoundItems = "true">
@@ -152,10 +152,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit51"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit52"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit52" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit53"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit53" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit50" AppendDataBoundItems = "true">
@@ -176,10 +176,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit61"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit62"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit62" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit63"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit63" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit60" AppendDataBoundItems = "true">
@@ -200,10 +200,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit71"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit72"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit72" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit73"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit73" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit70" AppendDataBoundItems = "true">
@@ -224,10 +224,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit81"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit82"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit82" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit83"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit83" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit80" AppendDataBoundItems = "true">
@@ -248,10 +248,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit91"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit92"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit92" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit93"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit93" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit90" AppendDataBoundItems = "true">

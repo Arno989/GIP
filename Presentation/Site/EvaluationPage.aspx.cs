@@ -132,6 +132,7 @@ namespace Presentation.Site
             GridView.Rows[i].Cells[1].Text = "CRA";
             GridView.Rows[i].Cells[2].Text = CRAName;
         }
+
         public void FillDoctor(int i)
         {
             //Doctor ID krijgen van de current row in de gridvieuw
@@ -149,6 +150,7 @@ namespace Presentation.Site
             GridView.Rows[i].Cells[1].Text = "Doctor";
             GridView.Rows[i].Cells[2].Text = DoctorName;
         }
+
         public void FillStudyCoordinator(int i)
         {
             //Doctor ID krijgen van de current row in de gridvieuw
