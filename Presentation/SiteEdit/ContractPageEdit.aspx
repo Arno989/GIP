@@ -32,10 +32,10 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit01"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit02"></asp:TextBox>
+                    <input type="date" name="tbEdit02" data-data-inline-picker="true"/>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit03"></asp:TextBox>
+                    <input class="datepicker" type="date" name="tbEdit03" data-data-inline-picker="true"/>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:DropDownList runat="server" CssClass="dropdownEdit" ID="ddEdit00" AppendDataBoundItems = "true">

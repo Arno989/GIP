@@ -76,24 +76,6 @@ namespace Presentation.SiteEdit {
         protected global::System.Web.UI.WebControls.TextBox tbEdit01;
         
         /// <summary>
-        /// tbEdit02 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEdit02;
-        
-        /// <summary>
-        /// tbEdit03 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEdit03;
-        
-        /// <summary>
         /// ddEdit00 control.
         /// </summary>
         /// <remarks>
