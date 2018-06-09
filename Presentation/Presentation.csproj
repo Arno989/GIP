@@ -80,8 +80,6 @@
     <Content Include="jquery\images\ui-icons_777777_256x240.png" />
     <Content Include="jquery\images\ui-icons_cc0000_256x240.png" />
     <Content Include="jquery\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="jquery\jquery-ui.multidatespicker.css" />
-    <Content Include="jquery\jquery-ui.multidatespicker.js" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">

@@ -8,8 +8,8 @@ using Domain.Business;
 
 namespace Presentation.Site
 {
-	public partial class ProjectManagerPage: System.Web.UI.Page
-	{
+    public partial class ProjectManagerPage : System.Web.UI.Page
+    {
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
 
@@ -46,9 +46,16 @@ namespace Presentation.Site
                 }
             }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/ProjectManagerPageEdit.aspx");
+            if (DataIDs.Count != 0)
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/ProjectManagerPageEdit.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+            }
         }
 
         protected void Delete(object sender, EventArgs e)

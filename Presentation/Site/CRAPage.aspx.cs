@@ -46,9 +46,16 @@ namespace Presentation.Site
                 }
             }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
+            if (DataIDs.Count != 0)
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+            }
         }
 
         protected void Delete(object sender, EventArgs e)
