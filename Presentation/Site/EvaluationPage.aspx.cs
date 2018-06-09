@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,6 +22,7 @@ namespace Presentation.Site
                 GridView.DataBind();
             }
             FillDropdown();
+            FillLabel();
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -167,6 +169,20 @@ namespace Presentation.Site
 
             GridView.Rows[i].Cells[1].Text = "Study Coordinator";
             GridView.Rows[i].Cells[2].Text = StudyCoordinatorName;
+        }
+
+        public void FillLabel()
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
+                
+                GridView.Rows[i].Cells[8].BackColor = Color.FromName(CurrentEvaluation[0].Label);
+                GridView.Rows[i].Cells[8].ForeColor = Color.FromName(CurrentEvaluation[0].Label);
+                GridView.Rows[i].Cells[8].Text = CurrentEvaluation[0].Label;
+            }
         }
 
         protected void Add(object sender, EventArgs e)

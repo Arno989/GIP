@@ -34,6 +34,7 @@ namespace Presentation.SiteEdit
             return (List<int>)Session["DataID"];
         }
 
+
         private void SendData()
 		{
             for (int i = 0; i <= 9; i++)
@@ -167,23 +168,23 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");
                             break;
 
                         case 2:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
+                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
+                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
                             break;
 
                         case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
+                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
                             break;
 
                         case 5:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());                            
+                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
                             break;
                     }
                 }
@@ -317,6 +318,7 @@ namespace Presentation.SiteEdit
             }
         }
 
+
         public void SetDropdownContent()
         {
             List<List<string>> ListContentCRA = _business.GetCRADropDownContent();
@@ -408,6 +410,7 @@ namespace Presentation.SiteEdit
             
         }
 
+
         protected void Page_Load(object sender,EventArgs e)
 		{
             SetDropdownContent();
@@ -418,10 +421,10 @@ namespace Presentation.SiteEdit
                 {
                     InsertData();
                 }
-
                 Session["ListDataSession"] = null;
             }
         }
+
 
 		protected void BtnExit_Click(object sender,EventArgs e)
 		{
