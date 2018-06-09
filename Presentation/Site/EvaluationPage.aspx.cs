@@ -14,6 +14,7 @@ namespace Presentation.Site
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Date ASC";
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,6 +24,13 @@ namespace Presentation.Site
             }
             FillDropdown();
             FillLabel();
+        }
+
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -54,17 +62,22 @@ namespace Presentation.Site
                 }
             }
 
-            if (DataIDs.Count != 0)
+            if (DataIDs.Count <= 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
+            }
+            else
             {
                 Session["ListTypes"] = ListTypes;
                 Session["ListNames"] = ListNames;
                 Session["DataID"] = DataIDs;
                 Session["ListDataSession"] = ListData;
                 Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
             }
         }
 
@@ -94,6 +107,7 @@ namespace Presentation.Site
                 Response.Redirect("../Site/EvaluationPage.aspx");
             }
         }
+
 
         public void FillDropdown()
         {
@@ -183,12 +197,6 @@ namespace Presentation.Site
                 GridView.Rows[i].Cells[8].ForeColor = Color.FromName(CurrentEvaluation[0].Label);
                 GridView.Rows[i].Cells[8].Text = CurrentEvaluation[0].Label;
             }
-        }
-
-        protected void Add(object sender, EventArgs e)
-        {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/EvaluationPageEdit.aspx");
         }
     }
 }

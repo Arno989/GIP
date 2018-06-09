@@ -46,15 +46,20 @@ namespace Presentation.Site
                 }
             }
 
-            if (DataIDs.Count != 0)
+            if (DataIDs.Count <= 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+                
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
+            }
+            else
             {
                 Session["DataID"] = DataIDs;
                 Session["ListDataSession"] = ListData;
                 Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
             }
         }
         

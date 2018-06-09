@@ -27,7 +27,92 @@ namespace Presentation.Site
                 ListBoxRel4();
             }
         }
-        
+
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");
+        }
+
+        protected void Edit(object sender, EventArgs e)
+        {
+            List<int> DataIDs = new List<int>();
+            List<List<string>> ListDataSession = new List<List<string>>();
+
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+
+                    if (chk.Checked)
+                    {
+                        List<string> Record = new List<string>();
+                        DataIDs.Add((int)GridView.DataKeys[i].Value);
+
+                        for (int i2 = 1; i2 < GridView.Columns.Count - 1; i2++)
+                        {
+                            Record.Add(GridView.Rows[i].Cells[i2].Text);
+                        }
+                        ListDataSession.Add(Record);
+                    }
+                }
+            }
+
+            if (DataIDs.Count <= 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
+            }
+            else
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListDataSession;
+                Response.Redirect("../SiteEdit/ProjectPageEdit.aspx"); //--Var
+            }
+        }
+
+        protected void Delete(object sender, EventArgs e)
+        {
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+                    if (chk.Checked)
+                    {
+                        int RecordID = (int)GridView.DataKeys[i].Value;
+
+                        if (_businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasCRAs(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasDoctors(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasHospitals(RecordID); //--Var
+                        }
+                        if (_businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
+                        {
+                            _businesscode.DeleteRelationProjectHasProjectManagers(RecordID); //--Var
+                        }
+                        _businesscode.DeleteContract(-1, string.Format("OR Project_ID = {0}", RecordID));
+                        _businesscode.DeleteProject(RecordID); //--Var
+                    }
+                }
+            }
+            Response.Redirect("../Site/ProjectPage.aspx");
+        }
+
+
         protected void ListBoxRel1()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
@@ -122,89 +207,6 @@ namespace Presentation.Site
                 }
                 listbox.DataBind();
             }
-        }
-
-        protected void Edit(object sender, EventArgs e)
-        {
-            List<int> DataSessionIDs = new List<int>();
-            List<List<string>> ListDataSession = new List<List<string>>();
-
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
-                {
-                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-
-                    if (chk.Checked)
-                    {
-                        List<string> Record = new List<string>();
-                        DataSessionIDs.Add((int)GridView.DataKeys[i].Value);
-
-                        for (int i2 = 1; i2 < GridView.Columns.Count - 1; i2++)
-                        {
-                            Record.Add(GridView.Rows[i].Cells[i2].Text);
-                        }
-                        ListDataSession.Add(Record);
-                    }
-                }
-            }
-
-            if (DataSessionIDs.Count != 0)
-            {
-                Session["DataID"] = DataSessionIDs;
-                Session["ListDataSession"] = ListDataSession;
-                Response.Redirect("../SiteEdit/ProjectPageEdit.aspx"); //--Var
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
-            }
-        }
-
-        protected void Delete(object sender, EventArgs e)
-        {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
-                {
-                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                    if (chk.Checked)
-                    {
-                        int RecordID = (int)GridView.DataKeys[i].Value;
-
-                        if (_businesscode.GetRelationProjectHasCRAs(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
-                        {
-                            _businesscode.DeleteRelationProjectHasCRAs(RecordID); //--Var
-                        }
-                        if (_businesscode.GetRelationProjectHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
-                        {
-                            _businesscode.DeleteRelationProjectHasDoctors(RecordID); //--Var
-                        }
-                        if (_businesscode.GetRelationProjectHasHospitals(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
-                        {
-                            _businesscode.DeleteRelationProjectHasHospitals(RecordID); //--Var
-                        }
-                        if (_businesscode.GetRelationProjectHasProjectManagers(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
-                        {
-                            _businesscode.DeleteRelationProjectHasProjectManagers(RecordID); //--Var
-                        }
-                        _businesscode.DeleteContract(-1, string.Format("OR Project_ID = {0}", RecordID));
-                        _businesscode.DeleteProject(RecordID); //--Var
-                    }
-                }
-            }
-            Response.Redirect("../Site/ProjectPage.aspx");
-        }
-
-        protected void Add(object sender, EventArgs e)
-        {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");
-        }
-
-        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

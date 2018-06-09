@@ -13,6 +13,7 @@ namespace Presentation.Site
 		BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
 
+
         protected void Page_Load(object sender,EventArgs e)
 		{
             if (!IsPostBack)
@@ -21,6 +22,13 @@ namespace Presentation.Site
                 GridView.DataBind();
             }
             FillHospital();
+        }
+
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -46,17 +54,23 @@ namespace Presentation.Site
                     }
                 }
             }
-            
-            if (DataIDs.Count != 0)
+
+            if (DataIDs.Count <= 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
+            }
+            else
             {
                 Session["DataID"] = DataIDs;
                 Session["ListDataSession"] = ListData;
                 Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
             }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
-            }
+            
         }
 
         protected void Delete(object sender, EventArgs e)
@@ -87,11 +101,6 @@ namespace Presentation.Site
             }
         }
 
-        protected void Add(object sender, EventArgs e)
-        {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/DepartmentPageEdit.aspx");
-        }
 
         public void FillHospital()
         {
