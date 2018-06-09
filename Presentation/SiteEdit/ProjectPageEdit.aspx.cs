@@ -175,9 +175,9 @@ namespace Presentation.SiteEdit
                     var txtBox = container.FindControl(tbName);
                     DateTime dateTime = DateTime.Today;
 
-                    sortingPar = string.Format(" WHERE Contract_ID = {0}", GetDataIDs()[i]);
-                    List<ContractCode> CurrentContract = new List<ContractCode>();
-                    CurrentContract = _business.GetContracts(sortingPar);
+                    sortingPar = string.Format(" WHERE Project_ID = {0}", GetDataIDs()[i]);
+                    List<ProjectCode> CurrentProject = new List<ProjectCode>();
+                    CurrentProject = _business.GetProjects(sortingPar);
 
                     switch (i2)
                     {
@@ -186,12 +186,12 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(CurrentProject[0].Start_date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
                         case 2:
-                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(CurrentProject[0].End_date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
                     }

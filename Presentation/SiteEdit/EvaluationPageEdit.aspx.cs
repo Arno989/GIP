@@ -49,25 +49,18 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             else
                             {
-                                goto track1;
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 1:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = DateTime.Today.ToString();
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
                             break;
 
                         case 2:
@@ -157,31 +150,24 @@ namespace Presentation.SiteEdit
 
                 for (int i2 = 0; i2 <= 5; i2++)
                 {
-                    string tbName = "tbEdit" + i.ToString() + (i2 - 1).ToString();
+                    string tbName = "tbEdit" + i.ToString() + (i2).ToString();
                     var txtBox = container.FindControl(tbName);
 
                     switch (i2)
                     {
                         case 0:
-                            if (((TextBox)txtBox).Text != "")
+                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                goto track1;
                             }
                             else
                             {
-                                goto track1;
+                                input[i2] = (((TextBox)txtBox).Text.ToString());
                             }
                             break;
 
                         case 1:
-                            if (String.IsNullOrWhiteSpace(((TextBox)txtBox).Text.ToString()))
-                            {
-                                input[i2] = DateTime.Today.ToString();
-                            }
-                            else
-                            {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
-                            }
+                            input[i2] = (((TextBox)txtBox).Text.ToString());
                             break;
 
                         case 2:
@@ -259,14 +245,13 @@ namespace Presentation.SiteEdit
                     switch (i2)
                     {
                         case 0:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-
-                        case 1:
                             dateTime = DateTime.ParseExact(CurrentEvaluation[0].Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
                         case 2:
                             ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
                             break;
