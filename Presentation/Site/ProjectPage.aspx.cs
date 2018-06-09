@@ -13,7 +13,6 @@ namespace Presentation.Site
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = "ORDER BY Title ASC";
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,6 +25,17 @@ namespace Presentation.Site
                 ListBoxRel3();
                 ListBoxRel4();
             }
+        }
+
+        protected void Load_content()
+        {
+                GridView.DataSource = _businesscode.GetProjects(sortingPar);
+                GridView.DataBind();
+
+                ListBoxRel1();
+                ListBoxRel2();
+                ListBoxRel3();
+                ListBoxRel4();
         }
         
         protected void ListBoxRel1()
@@ -200,6 +210,101 @@ namespace Presentation.Site
         {
             Session["DataID"] = null;
             Response.Redirect("../SiteEdit/ProjectPageEdit.aspx");
+        }
+
+        protected void Sort(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortDirection.ToString() == "Ascending")
+            {
+                string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
+                sortingPar = sort;
+
+                Load_content();
+            }
+            //int sortColumnIndex = GetSortColumnIndex();
+
+            //if (sortColumnIndex != -1)
+            //{
+            //    //AddSortImage(sortColumnIndex, b.Row);
+            //}
+        }
+
+        protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            string imgAsc = @" <img src='..\Images\Sort_up.png' title='Ascending' />";
+            string imgDes = @" <img src='..\Images\Sort_down.png' title='Descendng' />";
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                //foreach (TableCell cell in e.Row.Cells)
+                //{
+                //    if (cell.Text != "&nbsp;")
+                //    {
+                //        LinkButton lbSort = (LinkButton)cell.Controls[0];
+                //        if (lbSort.Text == GridView.SortExpression)
+                //        {
+                //            if (GridView.SortDirection == SortDirection.Ascending)
+                //                lbSort.Text += imgAsc;
+                //            else
+                //                lbSort.Text += imgDes;
+                //        }
+                //    }
+                //}
+                for(int i = 1; i<4; i++)
+                {
+                    LinkButton lbSort = (LinkButton)e.Row.Cells[i].Controls[0];
+                    //if (lbSort.Text == GridView.SortExpression)
+                    //{
+                        if (GridView.SortDirection == SortDirection.Ascending)
+                            lbSort.Text += imgAsc;
+                        else
+                            lbSort.Text += imgDes;
+                    //}
+                }
+            }
+        }
+
+        //int GetSortColumnIndex()
+        //{
+        //    foreach (DataControlField field in GridView.Columns)
+        //    {
+        //        if (field.SortExpression == GridView.SortExpression)
+        //        {
+        //            return GridView.Columns.IndexOf(field);
+        //        }
+        //    }
+
+        //    return -1;
+        //}
+
+        private string GetSortDirection(string column)
+        {
+
+            // By default, set the sort direction to ascending.
+            string sortDirection = "ASC";
+
+            // Retrieve the last column that was sorted.
+            string sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                // Check if the same column is being sorted.
+                // Otherwise, the default value can be returned.
+                if (sortExpression == column)
+                {
+                    string lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }
+
+            // Save new values in ViewState.
+            ViewState["SortDirection"] = sortDirection;
+            ViewState["SortExpression"] = column;
+
+            return sortDirection;
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)

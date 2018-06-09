@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Project_ID" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Project_ID" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,9 +24,36 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Title" HeaderText="Title" />
-            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
-            <asp:BoundField DataField="End_Date" HeaderText="End Date" />
+            <asp:TemplateField HeaderText="Title" SortExpression="Title">
+                <EditItemTemplate>
+                    <asp:Button ID="btnTitle" Visible="false" runat="server"
+                        Text='<%# Bind("Title") %>'></asp:Button>
+                </EditItemTemplate>
+                <ItemTemplate>
+                     <asp:Label ID="LabelTitle" runat="server"
+                         Text='<%# Bind("Title") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Start Date" SortExpression="Start_date">
+                <EditItemTemplate>
+                    <asp:Button ID="btnStartDate" Visible="false" runat="server"
+                        Text='<%# Bind("Start_date") %>'></asp:Button>
+                </EditItemTemplate>
+                <ItemTemplate>
+                     <asp:Label ID="LabelStartDate" runat="server"
+                         Text='<%# Bind("Start_date") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="End Date" SortExpression="End_date">
+                <EditItemTemplate>
+                    <asp:Button ID="btnEndDate" Visible="false" runat="server"
+                        Text='<%# Bind("End_date") %>'></asp:Button>
+                </EditItemTemplate>
+                <ItemTemplate>
+                     <asp:Label ID="LabelEndDate" runat="server"
+                         Text='<%# Bind("End_date") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
