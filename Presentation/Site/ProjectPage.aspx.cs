@@ -219,6 +219,32 @@ namespace Presentation.Site
                 string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
                 sortingPar = sort;
 
+                int sortColumnIndex = 0;
+                if (e.SortExpression == "Title")
+                {
+                    sortColumnIndex = 1;
+                    ViewState.Add("Sorting", "Title");
+                }
+                else if(e.SortExpression == "Start_date")
+                {
+                    sortColumnIndex = 2;
+                    ViewState.Add("Sorting", "Start Date");
+                }
+                else
+                {
+                    sortColumnIndex = 3;
+                    ViewState.Add("Sorting", "End Date");
+                }
+
+                if (sortColumnIndex != -1)
+                {
+                    // Call the AddSortImage helper method to add
+                    // a sort direction image to the appropriate
+                    // column header. 
+
+                    //AddSortImage(sortColumnIndex, row);
+                }
+
                 Load_content();
             }
             //int sortColumnIndex = GetSortColumnIndex();
@@ -231,51 +257,59 @@ namespace Presentation.Site
 
         protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            string imgAsc = @" <img src='..\Images\Sort_up.png' title='Ascending' />";
-            string imgDes = @" <img src='..\Images\Sort_down.png' title='Descendng' />";
-
-            if (e.Row.RowType == DataControlRowType.Header)
+            if (IsPostBack)
             {
-                //foreach (TableCell cell in e.Row.Cells)
-                //{
-                //    if (cell.Text != "&nbsp;")
-                //    {
-                //        LinkButton lbSort = (LinkButton)cell.Controls[0];
-                //        if (lbSort.Text == GridView.SortExpression)
-                //        {
-                //            if (GridView.SortDirection == SortDirection.Ascending)
-                //                lbSort.Text += imgAsc;
-                //            else
-                //                lbSort.Text += imgDes;
-                //        }
-                //    }
-                //}
-                for(int i = 1; i<4; i++)
+                string imgAsc = @" <img src='..\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
+                string imgDes = @" <img src='..\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
+
+                if (e.Row.RowType == DataControlRowType.Header)
                 {
-                    LinkButton lbSort = (LinkButton)e.Row.Cells[i].Controls[0];
-                    //if (lbSort.Text == GridView.SortExpression)
-                    //{
-                        if (GridView.SortDirection == SortDirection.Ascending)
-                            lbSort.Text += imgAsc;
-                        else
-                            lbSort.Text += imgDes;
-                    //}
+                    foreach (TableCell cell in e.Row.Cells)
+                    {
+                        LinkButton lnkbtn = (LinkButton)e.Row.Cells[1].Controls[0];
+                        try
+                        {
+                            lnkbtn = (LinkButton)cell.Controls[0];
+                        }
+                        catch
+                        {
+                            goto track1;
+                        }
+                        track1:
+                        if (lnkbtn.Text == ViewState["Sorting"].ToString())
+                        {
+                            if (ViewState["SortDirection"] as string == "ASC")
+                            {
+                                lnkbtn.Text += imgAsc;
+                            }
+                            else
+                                lnkbtn.Text += imgDes;
+                        }
+                    }
                 }
             }
+
+            // Use the RowType property to determine whether the 
+            // row being created is the header row. 
+            //if (e.Row.RowType == DataControlRowType.Header)
+            //{
+            //    // Call the GetSortColumnIndex helper method to determine
+            //    // the index of the column being sorted.
+            //    if(e.ToString() == "title")
+            //    {
+
+            //    }
+            //    int sortColumnIndex = 0;
+
+            //    if (sortColumnIndex != -1)
+            //    {
+            //        // Call the AddSortImage helper method to add
+            //        // a sort direction image to the appropriate
+            //        // column header. 
+            //        AddSortImage(sortColumnIndex, e.Row);
+            //    }
+            //}
         }
-
-        //int GetSortColumnIndex()
-        //{
-        //    foreach (DataControlField field in GridView.Columns)
-        //    {
-        //        if (field.SortExpression == GridView.SortExpression)
-        //        {
-        //            return GridView.Columns.IndexOf(field);
-        //        }
-        //    }
-
-        //    return -1;
-        //}
 
         private string GetSortDirection(string column)
         {
@@ -307,6 +341,27 @@ namespace Presentation.Site
             return sortDirection;
         }
 
+        void AddSortImage(int columnIndex, GridViewRow headerRow)
+        {
+
+            // Create the sorting image based on the sort direction.
+            Image sortImage = new Image();
+            if (GridView.SortDirection == SortDirection.Ascending)
+            {
+                sortImage.ImageUrl = "~/Images/Sort_down.png";
+                sortImage.AlternateText = "Ascending Order";
+            }
+            else
+            {
+                sortImage.ImageUrl = "~/Images/Sort_down.png";
+                sortImage.AlternateText = "Descending Order";
+            }
+
+            // Add the image to the appropriate header cell.
+            headerRow.Cells[columnIndex].Controls.Add(sortImage);
+
+        }
+        
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
 

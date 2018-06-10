@@ -24,52 +24,25 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Title" SortExpression="Title">
-                <EditItemTemplate>
-                    <asp:Button ID="btnTitle" Visible="false" runat="server"
-                        Text='<%# Bind("Title") %>'></asp:Button>
-                </EditItemTemplate>
-                <ItemTemplate>
-                     <asp:Label ID="LabelTitle" runat="server"
-                         Text='<%# Bind("Title") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Start Date" SortExpression="Start_date">
-                <EditItemTemplate>
-                    <asp:Button ID="btnStartDate" Visible="false" runat="server"
-                        Text='<%# Bind("Start_date") %>'></asp:Button>
-                </EditItemTemplate>
-                <ItemTemplate>
-                     <asp:Label ID="LabelStartDate" runat="server"
-                         Text='<%# Bind("Start_date") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="End Date" SortExpression="End_date">
-                <EditItemTemplate>
-                    <asp:Button ID="btnEndDate" Visible="false" runat="server"
-                        Text='<%# Bind("End_date") %>'></asp:Button>
-                </EditItemTemplate>
-                <ItemTemplate>
-                     <asp:Label ID="LabelEndDate" runat="server"
-                         Text='<%# Bind("End_date") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox">
+            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Start_date" HeaderText="Start Date" SortExpression="Start_date" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="End_date" HeaderText="End Date" SortExpression="End_date" HeaderStyle-ForeColor="Black"/>            
+            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox">
+            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel2" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel3" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox">
+            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel4" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
