@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-	<asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="CRA_ID">
+	<asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="CRA_ID">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,11 +24,11 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="CV" HeaderText="CV" />
-            <asp:BoundField DataField="Email" HeaderText="E-mail" />
-            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="CV" HeaderText="CV" SortExpression="CV" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" SortExpression="Phone1" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" SortExpression="Phone2" HeaderStyle-ForeColor="Black"/>
         </Columns>
     </asp:GridView>
 </asp:Content>
