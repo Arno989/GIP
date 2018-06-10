@@ -13,8 +13,7 @@ namespace Presentation.Site
 	{
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Date ASC";
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

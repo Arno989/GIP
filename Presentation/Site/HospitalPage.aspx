@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Hospital_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Hospital_ID">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,12 +24,12 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Adress" HeaderText="Adress" />
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
-            <asp:BoundField DataField="City" HeaderText="City" />
-            <asp:BoundField DataField="Country" HeaderText="Country" />
-            <asp:BoundField DataField="Central_number" HeaderText="Central Number" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Central_number" HeaderText="Central Number" SortExpression="Central_Number" HeaderStyle-ForeColor="Black"/>
         </Columns>
     </asp:GridView>
 </asp:Content>
