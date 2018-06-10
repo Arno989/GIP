@@ -24,10 +24,10 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Phone1" HeaderText="Phone" SortExpression="Phone1" HeaderStyle-ForeColor="Black"/>
-            <asp:TemplateField HeaderText="Hospital" HeaderStyle-Width="50px" SortExpression="Hospital_ID" HeaderStyle-ForeColor="Black">
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Phone1" HeaderText="Phone" SortExpression="Phone1" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:TemplateField HeaderText="Hospital" SortExpression="Hospital_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:Label ID="lbHospital" runat="server"></asp:Label>
                 </ItemTemplate>

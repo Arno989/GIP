@@ -24,16 +24,16 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" SortExpression="Legal_country" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Fee" HeaderText="Fee" SortExpression="Fee" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" SortExpression="Start_Date" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="End_Date" HeaderText="End Date" SortExpression="End_Date" HeaderStyle-ForeColor="Black"/>
-            <asp:TemplateField HeaderText="Project" HeaderStyle-Width="50px" SortExpression="Project_ID" HeaderStyle-ForeColor="Black">
+            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" SortExpression="Legal_country" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Fee" HeaderText="Fee" SortExpression="Fee" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" SortExpression="Start_Date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="End_Date" HeaderText="End Date" SortExpression="End_Date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:TemplateField HeaderText="Project" SortExpression="Project_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:Label ID="lbProject" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client" HeaderStyle-Width="50px" SortExpression="Client_ID" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Client" SortExpression="Client_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:Label ID="lbClient" runat="server"></asp:Label>
                 </ItemTemplate>

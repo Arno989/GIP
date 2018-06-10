@@ -24,14 +24,14 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
             <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" SortExpression="Contact_Person" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" SortExpression="Invoice_Info" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" SortExpression="Kind_of_Client" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" SortExpression="Contact_Person" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" SortExpression="Invoice_Info" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" SortExpression="Kind_of_Client" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
         </Columns>
     </asp:GridView>
 </asp:Content>

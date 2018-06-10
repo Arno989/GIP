@@ -24,25 +24,25 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Start_date" HeaderText="Start Date" SortExpression="Start_date" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="End_date" HeaderText="End Date" SortExpression="End_date" HeaderStyle-ForeColor="Black"/>            
-            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
+            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Start_date" HeaderText="Start Date" SortExpression="Start_date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="End_date" HeaderText="End Date" SortExpression="End_date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>            
+            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel2" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel3" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel4" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
