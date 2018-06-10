@@ -19,13 +19,17 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetEvaluations(sortingPar);
-                GridView.DataBind();
+                Load_content();
             }
+        }
+
+        protected void Load_content()
+        {
+            GridView.DataSource = _businesscode.GetEvaluations(sortingPar);
+            GridView.DataBind();
             FillDropdown();
             FillLabel();
         }
-
 
         protected void Add(object sender, EventArgs e)
         {
@@ -107,8 +111,7 @@ namespace Presentation.Site
                 Response.Redirect("../Site/EvaluationPage.aspx");
             }
         }
-
-
+        
         public void FillDropdown()
         {
             for (int i = 0; i < GridView.Rows.Count; i++)
@@ -198,5 +201,101 @@ namespace Presentation.Site
                 GridView.Rows[i].Cells[8].Text = CurrentEvaluation[0].Label;
             }
         }
+
+        protected void Sort(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortDirection.ToString() == "Ascending")
+            {
+                string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
+                sortingPar = sort;
+                
+                if (e.SortExpression == "Date")
+                {
+                    ViewState.Add("Sorting", "Date");
+                }
+                else if (e.SortExpression == "Feedback")
+                {
+                    ViewState.Add("Sorting", "Feedback");
+                }
+                else if (e.SortExpression == "Accuracy")
+                {
+                    ViewState.Add("Sorting", "Accuracy");
+                }
+                else if (e.SortExpression == "Quality")
+                {
+                    ViewState.Add("Sorting", "Quality");
+                }
+                else if (e.SortExpression == "Evaluation_Text")
+                {
+                    ViewState.Add("Sorting", "Evaluation");
+                }
+                else if (e.SortExpression == "Label")
+                {
+                    ViewState.Add("Sorting", "Label");
+                }
+
+                Load_content();
+            }
+        }
+
+        protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (IsPostBack)
+            {
+                string imgAsc = @" <img src='..\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
+                string imgDes = @" <img src='..\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
+
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
+                    foreach (TableCell cell in e.Row.Cells)
+                    {
+                        LinkButton lnkbtn = (LinkButton)e.Row.Cells[3].Controls[0];
+                        try
+                        {
+                            lnkbtn = (LinkButton)cell.Controls[0];
+                        }
+                        catch
+                        {
+                            goto track1;
+                        }
+                        track1:
+                        if (lnkbtn.Text == ViewState["Sorting"].ToString())
+                        {
+                            if (ViewState["SortDirection"] as string == "ASC")
+                            {
+                                lnkbtn.Text += imgAsc;
+                            }
+                            else
+                                lnkbtn.Text += imgDes;
+                        }
+                    }
+                }
+            }
+        }
+
+        private string GetSortDirection(string column)
+        {
+            string sortDirection = "ASC";
+
+            string sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                if (sortExpression == column)
+                {
+                    string lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }
+
+            ViewState["SortDirection"] = sortDirection;
+            ViewState["SortExpression"] = column;
+
+            return sortDirection;
+        }
+
     }
 }

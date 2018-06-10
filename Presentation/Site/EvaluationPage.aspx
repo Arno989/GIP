@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Evaluation_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Evaluation_ID">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,22 +24,22 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Type" HeaderStyle-Width="50px" >
+            <asp:TemplateField HeaderText="Type" HeaderStyle-Width="50px" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:Label ID="lbType" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Name" HeaderStyle-Width="50px" >
+            <asp:TemplateField HeaderText="Name" HeaderStyle-Width="50px" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:Label ID="lbName" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Date" HeaderText="Date" />
-            <asp:BoundField DataField="Feedback" HeaderText="Feedback" />
-            <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" />
-            <asp:BoundField DataField="Quality" HeaderText="Quality" />
-            <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" />
-            <asp:BoundField DataField="Label" HeaderText="Label"/>
+            <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Feedback" HeaderText="Feedback" SortExpression="Feedback" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" SortExpression="Accuracy" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Quality" HeaderText="Quality" SortExpression="Quality" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" SortExpression="Evaluation_Text" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Label" HeaderText="Label" SortExpression="Label" HeaderStyle-ForeColor="Black"/>
         </Columns>
     </asp:GridView>
 </asp:Content>
