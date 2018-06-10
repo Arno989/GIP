@@ -121,7 +121,7 @@ namespace Presentation.Site
                 }
                 else if (e.SortExpression == "Phone2")
                 {
-                    ViewState.Add("Sorting", "Phone 1");
+                    ViewState.Add("Sorting", "Phone 2");
                 }
 
                 Load_content();
