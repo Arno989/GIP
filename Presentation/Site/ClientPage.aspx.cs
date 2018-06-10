@@ -13,6 +13,7 @@ namespace Presentation.Site
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,6 +21,13 @@ namespace Presentation.Site
                 GridView.DataSource = _businesscode.GetClients(sortingPar);
                 GridView.DataBind();
             }
+        }
+
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
 
         protected void Edit(object sender, EventArgs e)
@@ -79,12 +87,6 @@ namespace Presentation.Site
                     }
                 }
             Response.Redirect("../Site/ClientPage.aspx");
-        }
-
-        protected void Add(object sender, EventArgs e)
-        {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
         }
     }
 }

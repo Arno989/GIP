@@ -35,6 +35,102 @@ namespace Presentation.SiteEdit
         }
 
 
+        private void InsertData()
+        {
+            List<List<string>> ListData = GetData();
+            List<string> ListTypes = GetTypes();
+            List<string> ListNames = GetNames();
+            var container = Master.FindControl("Body");
+            int Count = 0;
+            DateTime dateTime = DateTime.Today;
+
+            for (int i = 0; i < ListData.Count; i++)
+            {
+
+                sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
+                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
+                CurrentEvaluation = _business.GetEvaluations(sortingPar);
+
+                for (int i2 = 0; i2 <= 6; i2++)
+                {
+                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var txtBox = container.FindControl(tbName);
+
+                    switch (i2)
+                    {
+                        case 0:
+                            dateTime = DateTime.ParseExact(CurrentEvaluation[0].Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
+                            break;
+
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
+                        case 2:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
+                        case 3:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
+                        case 4:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
+                        case 5:
+                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
+                            break;
+                    }
+                    Count++;
+                }
+                string ddName = "ddEdit" + i.ToString() + 0.ToString();
+                var dd = container.FindControl(ddName) as DropDownList;
+
+                if (i < ListTypes.Count)
+                {
+                    if (ListTypes[i] == "CRA")
+                    {
+                        //CRA ID krijgen van de current row in de gridvieuw
+                        int CRAID = CurrentEvaluation[0].CraID;
+
+                        //de CRA selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue("CR" + CRAID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+
+                    if (ListTypes[i] == "Doctor")
+                    {
+                        //Doctor ID krijgen van de current row in de gridvieuw
+                        int DoctorID = CurrentEvaluation[0].DoctorID;
+
+                        //de Doctor selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue("DR" + DoctorID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+
+                    if (ListTypes[i] == "StudyCoordinator")
+                    {
+                        //SC ID krijgen van de current row in de gridvieuw
+                        int SCID = CurrentEvaluation[0].ScID;
+
+                        //de SC selecteren in de dropdown
+                        ListItem li = dd.Items.FindByValue("SC" + SCID.ToString());
+                        if (li.Text == ListNames[i])
+                        {
+                            dd.ClearSelection();
+                            li.Selected = true;
+                        }
+                    }
+                }
+            }
+        }
+
         private void SendData()
 		{
             for (int i = 0; i <= 9; i++)
@@ -219,102 +315,6 @@ namespace Presentation.SiteEdit
                 }
                 track1:
                 continue;
-            }
-        }
-
-        private void InsertData()
-        {
-            List<List<string>> ListData = GetData();
-            List<string> ListTypes = GetTypes();
-            List<string> ListNames = GetNames();
-            var container = Master.FindControl("Body");
-            int Count = 0;
-            DateTime dateTime = DateTime.Today;
-
-            for (int i = 0; i < ListData.Count; i++)
-            {
-
-                sortingPar = string.Format(" WHERE Evaluation_ID = {0}", GetDataIDs()[i]);
-                List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
-                CurrentEvaluation = _business.GetEvaluations(sortingPar);
-
-                for (int i2 = 0; i2 <= 6; i2++)
-                {
-                    string tbName = "tbEdit" + i.ToString() + i2.ToString();
-                    var txtBox = container.FindControl(tbName);
-
-                    switch (i2)
-                    {
-                        case 0:
-                            dateTime = DateTime.ParseExact(CurrentEvaluation[0].Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
-                            ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
-                            break;
-
-                        case 1:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                        case 2:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                        case 3:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                        case 4:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                        case 5:
-                            ((TextBox)txtBox).Text = ListData[i][i2].Replace("&nbsp;", "");
-                            break;
-                    }
-                        Count++;
-                }
-                string ddName = "ddEdit" + i.ToString() + 0.ToString();
-                var dd = container.FindControl(ddName) as DropDownList;
-
-                if (i < ListTypes.Count)
-                {
-                    if (ListTypes[i] == "CRA")
-                    {
-                        //CRA ID krijgen van de current row in de gridvieuw
-                        int CRAID = CurrentEvaluation[0].CraID;
-
-                        //de CRA selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue("CR" + CRAID.ToString());
-                        if (li.Text == ListNames[i])
-                        {
-                            dd.ClearSelection();
-                            li.Selected = true;
-                        }
-                    }
-
-                    if (ListTypes[i] == "Doctor")
-                    {
-                        //Doctor ID krijgen van de current row in de gridvieuw
-                        int DoctorID = CurrentEvaluation[0].DoctorID;
-
-                        //de Doctor selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue("DR" + DoctorID.ToString());
-                        if (li.Text == ListNames[i])
-                        {
-                            dd.ClearSelection();
-                            li.Selected = true;
-                        }
-                    }
-
-                    if (ListTypes[i] == "StudyCoordinator")
-                    {
-                        //SC ID krijgen van de current row in de gridvieuw
-                        int SCID = CurrentEvaluation[0].ScID;
-
-                        //de SC selecteren in de dropdown
-                        ListItem li = dd.Items.FindByValue("SC" + SCID.ToString());
-                        if (li.Text == ListNames[i])
-                        {
-                            dd.ClearSelection();
-                            li.Selected = true;
-                        }
-                    }
-                }
             }
         }
 
