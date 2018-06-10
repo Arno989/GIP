@@ -17,10 +17,10 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit">
             <asp:TableRow runat="server" ID="row0">
-                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Name *</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Email</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Phone</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Hospital</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Hospital *</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">

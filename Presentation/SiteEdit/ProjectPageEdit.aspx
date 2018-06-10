@@ -17,7 +17,7 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit">
             <asp:TableRow runat="server" ID="row0">
-                <asp:TableHeaderCell>Title</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Title *</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Start Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>End Date</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CRA's</asp:TableHeaderCell>

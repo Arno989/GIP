@@ -17,7 +17,7 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit">
             <asp:TableRow runat="server" ID="row0">
-                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Name *</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Adress</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Postal Code</asp:TableHeaderCell>
                 <asp:TableHeaderCell>City</asp:TableHeaderCell>
