@@ -17,13 +17,7 @@ namespace Presentation.Site
         {
             if (!IsPostBack)
             {
-                GridView.DataSource = _businesscode.GetProjects(sortingPar);
-                GridView.DataBind();
-
-                ListBoxRel1();
-                ListBoxRel2();
-                ListBoxRel3();
-                ListBoxRel4();
+                Load_content();
             }
         }
 
@@ -288,42 +282,16 @@ namespace Presentation.Site
                     }
                 }
             }
-
-            // Use the RowType property to determine whether the 
-            // row being created is the header row. 
-            //if (e.Row.RowType == DataControlRowType.Header)
-            //{
-            //    // Call the GetSortColumnIndex helper method to determine
-            //    // the index of the column being sorted.
-            //    if(e.ToString() == "title")
-            //    {
-
-            //    }
-            //    int sortColumnIndex = 0;
-
-            //    if (sortColumnIndex != -1)
-            //    {
-            //        // Call the AddSortImage helper method to add
-            //        // a sort direction image to the appropriate
-            //        // column header. 
-            //        AddSortImage(sortColumnIndex, e.Row);
-            //    }
-            //}
         }
 
         private string GetSortDirection(string column)
         {
-
-            // By default, set the sort direction to ascending.
             string sortDirection = "ASC";
-
-            // Retrieve the last column that was sorted.
+            
             string sortExpression = ViewState["SortExpression"] as string;
 
             if (sortExpression != null)
             {
-                // Check if the same column is being sorted.
-                // Otherwise, the default value can be returned.
                 if (sortExpression == column)
                 {
                     string lastDirection = ViewState["SortDirection"] as string;
@@ -333,33 +301,11 @@ namespace Presentation.Site
                     }
                 }
             }
-
-            // Save new values in ViewState.
+            
             ViewState["SortDirection"] = sortDirection;
             ViewState["SortExpression"] = column;
 
             return sortDirection;
-        }
-
-        void AddSortImage(int columnIndex, GridViewRow headerRow)
-        {
-
-            // Create the sorting image based on the sort direction.
-            Image sortImage = new Image();
-            if (GridView.SortDirection == SortDirection.Ascending)
-            {
-                sortImage.ImageUrl = "~/Images/Sort_down.png";
-                sortImage.AlternateText = "Ascending Order";
-            }
-            else
-            {
-                sortImage.ImageUrl = "~/Images/Sort_down.png";
-                sortImage.AlternateText = "Descending Order";
-            }
-
-            // Add the image to the appropriate header cell.
-            headerRow.Cells[columnIndex].Controls.Add(sortImage);
-
         }
         
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
