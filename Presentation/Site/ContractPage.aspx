@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Contract_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Contract_ID">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,16 +24,16 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" />
-            <asp:BoundField DataField="Fee" HeaderText="Fee" />
-            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
-            <asp:BoundField DataField="End_Date" HeaderText="End Date" />
-            <asp:TemplateField HeaderText="Project" HeaderStyle-Width="50px" >
+            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" SortExpression="Legal_country" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Fee" HeaderText="Fee" SortExpression="Fee" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" SortExpression="Start_Date" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="End_Date" HeaderText="End Date" SortExpression="End_Date" HeaderStyle-ForeColor="Black"/>
+            <asp:TemplateField HeaderText="Project" HeaderStyle-Width="50px" SortExpression="Project_ID" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:Label ID="lbProject" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client" HeaderStyle-Width="50px" >
+            <asp:TemplateField HeaderText="Client" HeaderStyle-Width="50px" SortExpression="Client_ID" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:Label ID="lbClient" runat="server"></asp:Label>
                 </ItemTemplate>
