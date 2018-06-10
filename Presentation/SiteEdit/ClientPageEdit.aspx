@@ -17,7 +17,7 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit" autopostback="true">
             <asp:TableRow runat="server" ID="row0">
-                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Name *</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Adress</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Postal Code</asp:TableHeaderCell>
                 <asp:TableHeaderCell>City</asp:TableHeaderCell>
@@ -288,13 +288,4 @@
             </asp:TableRow>
         </asp:Table>
     </div>
-
-    <script>
-    function exitFunction() {
-        if (confirm("Are you sure you want to leave without saving?")) {
-            <%#BtnExit_Click()%> ;
-        } 
-    }
-    </script>
-
 </asp:Content>

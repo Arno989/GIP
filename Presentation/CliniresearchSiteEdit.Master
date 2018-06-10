@@ -4,29 +4,19 @@
 
 <html>
 	<head runat="server">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-
-        <script src="jquery/external/jquery/jquery.js"></script>
         
-        <link rel="stylesheet" href="~/jquery/jquery-ui.css" runat="server">
-        <script src="jquery/jquery-ui.js"></script>
-        <link rel="stylesheet" href="~/jquery/jquery-ui.min.css" runat="server">
-        <script src="jquery/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="~/jquery/jquery-ui.structure.css" runat="server">
-        <link rel="stylesheet" href="~/jquery/jquery-ui.structure.min.css" runat="server">
-        <link rel="stylesheet" href="~/jquery/jquery-ui.theme.css" runat="server">
-        <link rel="stylesheet" href="~/jquery/jquery-ui.theme.min.css" runat="server">
-
-
-        <link rel="stylesheet" href="~/jquery/sumoselect.css" runat="server">
-        <script src="jquery/jquery.sumoselect.min.js"></script>
-
 		<meta charset="UTF-8"/>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" href="~/MasterStyleSheet.css" runat="server"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
+
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="jquery/jquery.sumoselect.min.js"></script>
+        <link rel="stylesheet" href="~/jquery/sumoselect.css" runat="server">
+
 
 		<asp:ContentPlaceHolder ID="Head" runat="server">
 
@@ -52,8 +42,5 @@
 
 				</div>
 			</form>
-        <asp:ContentPlaceHolder ID="Scripts" runat="server">
-
-		</asp:ContentPlaceHolder>
 	</body>
 </html>

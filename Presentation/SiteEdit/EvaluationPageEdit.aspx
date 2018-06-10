@@ -17,8 +17,8 @@
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit">
             <asp:TableRow runat="server" ID="row0">
-                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Date</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Name *</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Date *</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Feedback</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Accuracy</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Quality</asp:TableHeaderCell>
