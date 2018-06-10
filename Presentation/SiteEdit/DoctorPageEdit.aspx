@@ -2,6 +2,13 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
 	<title>Edit Doctors</title>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $(<%=lbEdit00.ClientID%>).SumoSelect();
+    });
+    </script>
+
 </asp:Content>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
