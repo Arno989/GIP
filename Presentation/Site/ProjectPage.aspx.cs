@@ -213,40 +213,21 @@ namespace Presentation.Site
                 string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
                 sortingPar = sort;
 
-                int sortColumnIndex = 0;
                 if (e.SortExpression == "Title")
                 {
-                    sortColumnIndex = 1;
                     ViewState.Add("Sorting", "Title");
                 }
                 else if(e.SortExpression == "Start_date")
                 {
-                    sortColumnIndex = 2;
                     ViewState.Add("Sorting", "Start Date");
                 }
                 else
                 {
-                    sortColumnIndex = 3;
                     ViewState.Add("Sorting", "End Date");
-                }
-
-                if (sortColumnIndex != -1)
-                {
-                    // Call the AddSortImage helper method to add
-                    // a sort direction image to the appropriate
-                    // column header. 
-
-                    //AddSortImage(sortColumnIndex, row);
                 }
 
                 Load_content();
             }
-            //int sortColumnIndex = GetSortColumnIndex();
-
-            //if (sortColumnIndex != -1)
-            //{
-            //    //AddSortImage(sortColumnIndex, b.Row);
-            //}
         }
 
         protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)

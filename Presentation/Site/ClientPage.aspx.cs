@@ -17,12 +17,16 @@ namespace Presentation.Site
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {  
-                GridView.DataSource = _businesscode.GetClients(sortingPar);
-                GridView.DataBind();
+            {
+                Load_content();
             }
         }
 
+        protected void Load_content()
+        {
+            GridView.DataSource = _businesscode.GetClients(sortingPar);
+            GridView.DataBind();
+        }
 
         protected void Add(object sender, EventArgs e)
         {
@@ -87,6 +91,109 @@ namespace Presentation.Site
                     }
                 }
             Response.Redirect("../Site/ClientPage.aspx");
+        }
+
+        protected void Sort(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortDirection.ToString() == "Ascending")
+            {
+                string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
+                sortingPar = sort;
+
+                if (e.SortExpression == "Name")
+                {
+                    ViewState.Add("Sorting", "Name");
+                }
+                else if (e.SortExpression == "Adress")
+                {
+                    ViewState.Add("Sorting", "Adress");
+                }
+                else if (e.SortExpression == "Postal_Code")
+                {
+                    ViewState.Add("Sorting", "Postal Code");
+                }
+                else if (e.SortExpression == "City")
+                {
+                    ViewState.Add("Sorting", "City");
+                }
+                else if (e.SortExpression == "Country")
+                {
+                    ViewState.Add("Sorting", "Country");
+                }
+                else if (e.SortExpression == "Contact_Person")
+                {
+                    ViewState.Add("Sorting", "Contact Person");
+                }
+                else if (e.SortExpression == "Invoice_Info")
+                {
+                    ViewState.Add("Sorting", "Invoice Info");
+                }
+                else if (e.SortExpression == "Kind_of_Client")
+                {
+                    ViewState.Add("Sorting", "Kind of Client");
+                }
+                
+                Load_content();
+            }
+        }
+
+        protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (IsPostBack)
+            {
+                string imgAsc = @" <img src='..\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
+                string imgDes = @" <img src='..\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
+
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
+                    foreach (TableCell cell in e.Row.Cells)
+                    {
+                        LinkButton lnkbtn = (LinkButton)e.Row.Cells[1].Controls[0];
+                        try
+                        {
+                            lnkbtn = (LinkButton)cell.Controls[0];
+                        }
+                        catch
+                        {
+                            goto track1;
+                        }
+                        track1:
+                        if (lnkbtn.Text == ViewState["Sorting"].ToString())
+                        {
+                            if (ViewState["SortDirection"] as string == "ASC")
+                            {
+                                lnkbtn.Text += imgAsc;
+                            }
+                            else
+                                lnkbtn.Text += imgDes;
+                        }
+                    }
+                }
+            }
+        }
+
+        private string GetSortDirection(string column)
+        {
+            string sortDirection = "ASC";
+
+            string sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                if (sortExpression == column)
+                {
+                    string lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }
+
+            ViewState["SortDirection"] = sortDirection;
+            ViewState["SortExpression"] = column;
+
+            return sortDirection;
         }
     }
 }
