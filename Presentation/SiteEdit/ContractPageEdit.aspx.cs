@@ -41,6 +41,7 @@ namespace Presentation.SiteEdit
                 Session["ListDataSession"] = null;
             }
         }
+
         
         private void InsertData()
         {

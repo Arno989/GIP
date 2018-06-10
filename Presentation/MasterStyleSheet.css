@@ -350,7 +350,7 @@ tr {
 .cellEdit {
     padding: 0;
     margin: 0;
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 .textboxEdit {
@@ -377,9 +377,17 @@ tr {
     vertical-align: middle;
 }
 
-.datepicker {
+.dateEdit {
     width: 90%;
     padding: 5%;
+}
+
+.colorEdit {
+    width: 100%;
+    height: 58px;
+    padding:0;
+    margin:0;
+
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/

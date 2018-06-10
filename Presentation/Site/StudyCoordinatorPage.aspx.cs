@@ -24,34 +24,16 @@ namespace Presentation.Site
             }
         }
 
-        protected void ListBoxRel1()
+        
+        protected void Add(object sender, EventArgs e)
         {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                var container = Master.FindControl("Body");
-                string lbName = "lbRel1";
-                ListBox listbox = GridView.Rows[i].Cells[6].FindControl(lbName) as ListBox;
-                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
-
-                if (Relations.Count != 0)
-                {
-                    List<DoctorCode> RelRaw = new List<DoctorCode>(); //--Var
-
-                    for (int i2 = 0; i2 < Relations.Count; i2++)
-                    {
-                        sortingPar = string.Format("WHERE Doctor_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
-                        RelRaw = _businesscode.GetDoctors(sortingPar); //--Var
-                        listbox.Items.Add(RelRaw[0].Name);
-                    }
-                }
-                listbox.DataBind();
-            }
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
         }
-
 
         protected void Edit(object sender, EventArgs e)
         {
-            List<int> DataSessionIDs = new List<int>();
+            List<int> DataIDs = new List<int>();
             List<List<string>> ListDataSession = new List<List<string>>();
 
             for (int i = 0; i < GridView.Rows.Count; i++)
@@ -63,7 +45,7 @@ namespace Presentation.Site
                     if (chk.Checked)
                     {
                         List<string> Record = new List<string>();
-                        DataSessionIDs.Add((int)GridView.DataKeys[i].Value);
+                        DataIDs.Add((int)GridView.DataKeys[i].Value);
 
                         for (int i2 = 1; i2 < GridView.Columns.Count - 1; i2++)
                         {
@@ -74,15 +56,20 @@ namespace Presentation.Site
                 }
             }
 
-            if (DataSessionIDs.Count != 0)
+            if (DataIDs.Count <= 0)
             {
-                Session["DataID"] = DataSessionIDs;
-                Session["ListDataSession"] = ListDataSession;
-                Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListDataSession;
+                Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
             }
         }
 
@@ -109,10 +96,29 @@ namespace Presentation.Site
             Response.Redirect("../Site/StudyCoordinatorPage.aspx"); //--Var
         }
 
-        protected void Add(object sender, EventArgs e)
+
+        protected void ListBoxRel1()
         {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/StudyCoordinatorPageEdit.aspx"); //--Var
+            for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                var container = Master.FindControl("Body");
+                string lbName = "lbRel1";
+                ListBox listbox = GridView.Rows[i].Cells[6].FindControl(lbName) as ListBox;
+                List<int> Relations = _businesscode.GetRelationStudyCoordinatorHasDoctors(Convert.ToInt32(GridView.DataKeys[i].Value)); //--Var
+
+                if (Relations.Count != 0)
+                {
+                    List<DoctorCode> RelRaw = new List<DoctorCode>(); //--Var
+
+                    for (int i2 = 0; i2 < Relations.Count; i2++)
+                    {
+                        sortingPar = string.Format("WHERE Doctor_ID = {0} ORDER BY Name ASC", Relations[i2]); //--Var
+                        RelRaw = _businesscode.GetDoctors(sortingPar); //--Var
+                        listbox.Items.Add(RelRaw[0].Name);
+                    }
+                }
+                listbox.DataBind();
+            }
         }
     }
 }

@@ -39,7 +39,7 @@
             <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" />
             <asp:BoundField DataField="Quality" HeaderText="Quality" />
             <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" />
-            <asp:BoundField DataField="Label" HeaderText="Label" />
+            <asp:BoundField DataField="Label" HeaderText="Label"/>
         </Columns>
     </asp:GridView>
 </asp:Content>

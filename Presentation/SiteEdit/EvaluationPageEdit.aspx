@@ -32,7 +32,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit00" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit00" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit01"></asp:TextBox>
@@ -47,7 +47,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit04"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit05"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit05" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow CssClass="rowEdit" runat="server">
@@ -57,7 +57,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit10" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit10" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit11"></asp:TextBox>
@@ -72,7 +72,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit14"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit15"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit15" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -82,7 +82,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit20" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit20" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit21"></asp:TextBox>
@@ -97,7 +97,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit24"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit25"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit25" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -107,7 +107,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit30" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit30" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit31"></asp:TextBox>
@@ -122,7 +122,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit34"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit35"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit35" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
 			</asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -132,7 +132,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit40" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit40" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit41"></asp:TextBox>
@@ -147,7 +147,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit44"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit45"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit45" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -157,7 +157,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit50" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit50" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit51"></asp:TextBox>
@@ -172,7 +172,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit54"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit55"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit55" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -182,7 +182,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit60" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit60" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit61"></asp:TextBox>
@@ -197,7 +197,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit64"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit65"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit65" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -207,7 +207,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit70" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit70" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit71"></asp:TextBox>
@@ -222,7 +222,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit74"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit75"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit75" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -232,7 +232,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit80" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit80" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit81"></asp:TextBox>
@@ -247,7 +247,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit84"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit85"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit85" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
@@ -257,7 +257,7 @@
                 </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit90" TextMode="Date"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="dateEdit" ID="tbEdit90" TextMode="Date"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit91"></asp:TextBox>
@@ -272,7 +272,7 @@
                     <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit94"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell CssClass="cellEdit">
-                    <asp:TextBox runat="server" CssClass="textboxEdit" ID="tbEdit95"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="colorEdit" ID="tbEdit95" TextMode="Color"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

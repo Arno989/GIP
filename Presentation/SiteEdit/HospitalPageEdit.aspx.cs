@@ -37,22 +37,47 @@ namespace Presentation.SiteEdit
                 Session["ListDataSession"] = null;
             }
         }
-        
+
 
         private void InsertData()
         {
-            List<List<string>> ListDataSession = GetSessionData();
-            var container = Master.FindControl("Body");
-
-            for (int i = 0; i < ListDataSession.Count; i++)
+            List<List<string>> ListData = GetSessionData();
+            int Count = 0;
+            for (int i = 0; i < ListData.Count; i++)
             {
-                for (int i2 = 0; i2 <= 5; i2++) //--Var
+                for (int i2 = 0; i2 <= 5; i2++)
                 {
                     string tbName = "tbEdit" + i.ToString() + i2.ToString();
+                    var container = Master.FindControl("Body");
                     var txtBox = container.FindControl(tbName);
 
-                    ((TextBox)txtBox).Text = ListDataSession[i][i2].Replace("&nbsp;", "");
+                    switch (i2)
+                    {
+                        case 0:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
 
+                        case 1:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 2:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 3:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 4:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+
+                        case 5:
+                            ((TextBox)txtBox).Text = ListData[i][Count].Replace("&nbsp;", "");
+                            break;
+                    }
+                    Count++;
                 }
             }
         }

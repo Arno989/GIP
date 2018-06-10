@@ -288,4 +288,13 @@
             </asp:TableRow>
         </asp:Table>
     </div>
+
+    <script>
+    function exitFunction() {
+        if (confirm("Are you sure you want to leave without saving?")) {
+            <%#BtnExit_Click()%> ;
+        } 
+    }
+    </script>
+
 </asp:Content>

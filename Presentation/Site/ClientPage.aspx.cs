@@ -13,6 +13,7 @@ namespace Presentation.Site
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,6 +23,13 @@ namespace Presentation.Site
             }
         }
 
+
+        protected void Add(object sender, EventArgs e)
+        {
+            Session["DataID"] = null;
+            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
+        }
+
         protected void Edit(object sender, EventArgs e)
         {
             List<string> List1 = new List<string>();
@@ -29,26 +37,38 @@ namespace Presentation.Site
             List<int> DataIDs = new List<int>();
 
             for (int i = 0; i < GridView.Rows.Count; i++)
+            {
+                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
                 {
-                    if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
+                    if (chk.Checked)
                     {
-                        CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                        if (chk.Checked)
+                        DataIDs.Add((int)GridView.DataKeys[i].Value);
+
+                        for (int i2 = 1; i2 < GridView.Columns.Count; i2++)
                         {
-                            DataIDs.Add((int)GridView.DataKeys[i].Value);
-                            
-                            for(int i2 = 1; i2 < GridView.Columns.Count; i2++)
-                            {
-                                List1.Add(GridView.Rows[i].Cells[i2].Text);
-                            }
-                            ListData.Add(List1);
+                            List1.Add(GridView.Rows[i].Cells[i2].Text);
                         }
+                        ListData.Add(List1);
                     }
                 }
+            }
 
-            Session["DataID"] = DataIDs;
-            Session["ListDataSession"] = ListData;
-            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
+            if (DataIDs.Count <= 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
+                
+            }
+            else if (DataIDs.Count > 10)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
+            }
+            else
+            {
+                Session["DataID"] = DataIDs;
+                Session["ListDataSession"] = ListData;
+                Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
+            }
         }
         
         protected void Delete(object sender, EventArgs e)
@@ -68,59 +88,5 @@ namespace Presentation.Site
                 }
             Response.Redirect("../Site/ClientPage.aspx");
         }
-
-        protected void Add(object sender, EventArgs e)
-        {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
-        }
-
-
-        /*
-        #region Sort
-        private const string ASCENDING = " ASC";
-        private const string DESCENDING = " DESC";
-
-        public SortDirection GridViewSortDirection
-        {
-            get {
-                if (ViewState["sortDirection"] == null)
-                    ViewState["sortDirection"] = SortDirection.Ascending;
-
-                return (SortDirection)ViewState["sortDirection"];
-            }
-            set { ViewState["sortDirection"] = value; }
-        }
-
-        protected void GridView_Sorting(object sender, DataGridSortCommandEventArgs e)
-        {
-            string sortExpression = e.SortExpression;
-
-            if (GridViewSortDirection == SortDirection.Ascending)
-            {
-                GridViewSortDirection = SortDirection.Descending;
-                SortGridView(sortExpression, DESCENDING);
-            }
-            else
-            {
-                GridViewSortDirection = SortDirection.Ascending;
-                SortGridView(sortExpression, ASCENDING);
-            }
-        }
-
-        private void SortGridView(string sortExpression, string direction)
-        {
-            //  You can cache the DataTable for improving performance
-            DataTable dt = GetData().Tables[0];
-
-            DataView dv = new DataView(dt);
-            dv.Sort = sortExpression + direction;
-
-            GridView.DataSource = dv;
-            GridView.DataBind();
-        }
-        #endregion
-        */
-
     }
 }
