@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Doctor_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Doctor_ID">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
                 <ItemTemplate>
@@ -24,17 +24,17 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name"/>
-            <asp:BoundField DataField="Email" HeaderText="E-mail"/>
-            <asp:BoundField DataField="Phone1" HeaderText="Phone 1"/>
-            <asp:BoundField DataField="Phone2" HeaderText="Phone 2"/>
-            <asp:BoundField DataField="Adress" HeaderText="Adress"/>
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code"/>
-            <asp:BoundField DataField="City" HeaderText="City"/>
-            <asp:BoundField DataField="Country" HeaderText="Country"/>
-            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation"/>
-            <asp:BoundField DataField="CV" HeaderText="CV"/>
-            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Phone1" HeaderText="Phone 1" SortExpression="Phone1" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Phone2" HeaderText="Phone 2" SortExpression="Phone2" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" SortExpression="Specialisation" HeaderStyle-ForeColor="Black"/>
+            <asp:BoundField DataField="CV" HeaderText="CV" SortExpression="CV" HeaderStyle-ForeColor="Black"/>
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black">
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
