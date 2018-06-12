@@ -14,9 +14,9 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Contract_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Contract_ID" RowStyle-CssClass="gvtr">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px"  ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -24,16 +24,16 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" SortExpression="Legal_country" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Fee" HeaderText="Fee" SortExpression="Fee" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" SortExpression="Start_Date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="End_Date" HeaderText="End Date" SortExpression="End_Date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:TemplateField HeaderText="Project" SortExpression="Project_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" SortExpression="Legal_country" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Fee" HeaderText="Fee" SortExpression="Fee" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Start_Date" HeaderText="Start Date" SortExpression="Start_Date" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="End_Date" HeaderText="End Date" SortExpression="End_Date" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:TemplateField HeaderText="Project" SortExpression="Project_ID" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <asp:Label ID="lbProject" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Client" SortExpression="Client_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:TemplateField HeaderText="Client" SortExpression="Client_ID" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <asp:Label ID="lbClient" runat="server"></asp:Label>
                 </ItemTemplate>

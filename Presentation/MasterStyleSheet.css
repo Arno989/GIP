@@ -18,6 +18,7 @@
     padding-right: 15px;
     padding-top: 102.5px;
     padding-bottom: 150px;
+    background-color: #F5F5F5;
 }
 
 .bodyEdit {
@@ -25,6 +26,7 @@
     padding-right: 15px;
     padding-top: 102.5px;
     padding-bottom: 150px;
+    background-color: #F5F5F5;
 }
 
 .body {
@@ -45,17 +47,10 @@
 }
 
 .homeRow {
+    background-color: #F5F5F5 !important;
 }
 
-    .homeRow:nth-child(even) {
-        background-color: #F5F5F5;
-    }
-
-    .homeRow:nth-child(odd) {
-        background-color: #F5F5F5;
-    }
-
-    .homeRow:hover td {
+    .homeRow:hover .homeCell {
         background-color: #F5F5F5;
     }
 
@@ -229,13 +224,17 @@
     text-align: right;
 }
 
-.rowEdit:hover td {
-    background-color: transparent;
+.rowEdit:nth-child(even) {
+    background-color: #eaeaea !important;
 }
 
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.rowEdit:nth-child(odd) {
+    background-color: #ffffff !important;
+}
 
-.material-icons {
+ 
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    .material-icons {
     font-size: 25px !important;
     color: white;
     padding-left: 25px;
@@ -313,6 +312,7 @@ th, td {
 
 th {
     border: 1px solid #b4b4b4;
+    background-color:white;
 }
 
 td {
@@ -320,19 +320,32 @@ td {
     border-right: 1px solid #b4b4b4;
 }
 
-tr {
+.gvth{
+    background-color: white;
 }
 
-    tr:hover td {
+.gvtdlb{
+    padding:0;
+}
+
+.gvtr {
+
+}
+
+    .gvtr:hover .gvtd {
         background-color: rgba(238, 103, 38, 0.75);
     }
 
-    tr:nth-child(even) {
-        background-color: #eaeaea;
+    .gvtr:hover .gvtdlb {
+        background-color: rgba(238, 103, 38, 0.75);
     }
 
-    tr:nth-child(odd) {
-        background-color: #ffffff;
+    .gvtr:nth-child(even) {
+        background-color: #eaeaea !important;
+    }
+
+    .gvtr:nth-child(odd) {
+        background-color: #ffffff !important;
     }
 
 .listbox {

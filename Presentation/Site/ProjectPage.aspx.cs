@@ -288,10 +288,5 @@ namespace Presentation.Site
 
             return sortDirection;
         }
-        
-        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

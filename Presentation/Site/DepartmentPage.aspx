@@ -14,9 +14,9 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Department_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Department_ID" RowStyle-CssClass="gvtr">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px"  ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -24,10 +24,10 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Phone1" HeaderText="Phone" SortExpression="Phone1" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:TemplateField HeaderText="Hospital" SortExpression="Hospital_ID" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Email" HeaderText="E-mail" SortExpression="Email" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Phone1" HeaderText="Phone" SortExpression="Phone1" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:TemplateField HeaderText="Hospital" SortExpression="Hospital_ID" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <asp:Label ID="lbHospital" runat="server"></asp:Label>
                 </ItemTemplate>

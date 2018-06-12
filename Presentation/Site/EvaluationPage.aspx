@@ -14,9 +14,9 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Evaluation_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Evaluation_ID" RowStyle-CssClass="gvtr">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px"  ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -24,22 +24,22 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Type" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Type" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <asp:Label ID="lbType" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Name" HeaderStyle-ForeColor="Black">
+            <asp:TemplateField HeaderText="Name" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <asp:Label ID="lbName" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Feedback" HeaderText="Feedback" SortExpression="Feedback" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" SortExpression="Accuracy" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Quality" HeaderText="Quality" SortExpression="Quality" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" SortExpression="Evaluation_Text" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Label" HeaderText="Label" SortExpression="Label" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Feedback" HeaderText="Feedback" SortExpression="Feedback" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" SortExpression="Accuracy" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Quality" HeaderText="Quality" SortExpression="Quality" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" SortExpression="Evaluation_Text" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Label" HeaderText="Label" SortExpression="Label" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
         </Columns>
     </asp:GridView>
 </asp:Content>

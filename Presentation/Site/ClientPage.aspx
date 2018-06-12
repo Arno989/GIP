@@ -14,9 +14,9 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Client_ID">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Client_ID"  RowStyle-CssClass="gvtr">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -24,14 +24,14 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" HeaderStyle-ForeColor="Black"/>
-            <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" SortExpression="Contact_Person" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" SortExpression="Invoice_Info" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" SortExpression="Kind_of_Client" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Adress" HeaderText="Adress" SortExpression="Adress" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" SortExpression="Postal_Code" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" SortExpression="Contact_Person" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" SortExpression="Invoice_Info" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" SortExpression="Kind_of_Client" HeaderStyle-ForeColor="Black" ItemStyle-CssClass="gvtd"/>
         </Columns>
     </asp:GridView>
 </asp:Content>

@@ -97,13 +97,13 @@
         </asp:TableRow>
         <asp:TableRow ID="rowCRAGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvCRA" AutoGenerateColumns="false" DataKeyNames="CRA_ID">
+                <asp:GridView runat="server" ID="gvCRA" AutoGenerateColumns="false" DataKeyNames="CRA_ID" RowStyle-CssClass="gvtr">
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="CV" HeaderText="CV" />
-                        <asp:BoundField DataField="Email" HeaderText="E-mail" />
-                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd" />
+                        <asp:BoundField DataField="CV" HeaderText="CV" ItemStyle-CssClass="gvtd" />
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" ItemStyle-CssClass="gvtd" />
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" ItemStyle-CssClass="gvtd" />
+                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" ItemStyle-CssClass="gvtd" />
                     </Columns>
                 </asp:GridView>
             </asp:TableCell>
@@ -116,16 +116,16 @@
         </asp:TableRow>
         <asp:TableRow ID="rowClientGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false" DataKeyNames="Client_ID">
+                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false" DataKeyNames="Client_ID" RowStyle-CssClass="gvtr">
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="Adress" HeaderText="Adress" />
-                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
-                        <asp:BoundField DataField="City" HeaderText="City" />
-                        <asp:BoundField DataField="Country" HeaderText="Country" />
-                        <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" />
-                        <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" />
-                        <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Adress" HeaderText="Adress" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="City" HeaderText="City" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Contact_Person" HeaderText="Contact Person" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Invoice_Info" HeaderText="Invoice Info" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Kind_of_Client" HeaderText="Kind of Client" ItemStyle-CssClass="gvtd"/>
                     </Columns>
                 </asp:GridView>
             </asp:TableCell>
@@ -138,18 +138,18 @@
         </asp:TableRow>
         <asp:TableRow ID="rowContractGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvContract" AutoGenerateColumns="false" DataKeyNames="Contract_ID">
+                <asp:GridView runat="server" ID="gvContract" AutoGenerateColumns="false" DataKeyNames="Contract_ID" RowStyle-CssClass="gvtr">
                     <Columns>
-                        <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" />
-                        <asp:BoundField DataField="Fee" HeaderText="Fee" />
-                        <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
-                        <asp:BoundField DataField="End_Date" HeaderText="End Date" />
-                        <asp:TemplateField HeaderText="Project" HeaderStyle-Width="50px" >
+                        <asp:BoundField DataField="Legal_country" HeaderText="Legal Country" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Fee" HeaderText="Fee" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Start_Date" HeaderText="Start Date" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="End_Date" HeaderText="End Date" ItemStyle-CssClass="gvtd"/>
+                        <asp:TemplateField HeaderText="Project" ItemStyle-CssClass="gvtd">
                             <ItemTemplate>
                                 <asp:Label ID="lbProject" runat="server"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Client" HeaderStyle-Width="50px" >
+                        <asp:TemplateField HeaderText="Client" ItemStyle-CssClass="gvtd">
                             <ItemTemplate>
                                 <asp:Label ID="lbClient" runat="server"></asp:Label>
                             </ItemTemplate>
@@ -166,12 +166,12 @@
         </asp:TableRow>
         <asp:TableRow ID="rowDepartmentGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvDepartment" AutoGenerateColumns="false" DataKeyNames="Department_ID">
+                <asp:GridView runat="server" ID="gvDepartment" AutoGenerateColumns="false" DataKeyNames="Department_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="Email" HeaderText="E_mail" />
-                        <asp:BoundField DataField="Phone1" HeaderText="Phone" />
-                        <asp:TemplateField HeaderText="Hospital" HeaderStyle-Width="50px" >
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Email" HeaderText="E_mail" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone" ItemStyle-CssClass="gvtd"/>
+                        <asp:TemplateField HeaderText="Hospital" ItemStyle-CssClass="gvtd">
                             <ItemTemplate>
                                 <asp:Label ID="lbHospital" runat="server"></asp:Label>
                             </ItemTemplate>
@@ -188,19 +188,19 @@
         </asp:TableRow>
         <asp:TableRow ID="rowDoctorGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvDoctor" AutoGenerateColumns="false" DataKeyNames="Doctor_ID">
+                <asp:GridView runat="server" ID="gvDoctor" AutoGenerateColumns="false" DataKeyNames="Doctor_ID" RowStyle-CssClass="gvtr">
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name"/>
-                        <asp:BoundField DataField="Email" HeaderText="E-mail"/>
-                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1"/>
-                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2"/>
-                        <asp:BoundField DataField="Adress" HeaderText="Adress"/>
-                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code"/>
-                        <asp:BoundField DataField="City" HeaderText="City"/>
-                        <asp:BoundField DataField="Country" HeaderText="Country"/>
-                        <asp:BoundField DataField="Specialisation" HeaderText="Specialisation"/>
-                        <asp:BoundField DataField="CV" HeaderText="CV"/>
-                        <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Adress" HeaderText="Adress" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="City" HeaderText="City" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="CV" HeaderText="CV" ItemStyle-CssClass="gvtd"/>
+                        <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>
@@ -217,24 +217,24 @@
         </asp:TableRow>
         <asp:TableRow ID="rowEvaluationGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvEvaluation" AutoGenerateColumns="false" DataKeyNames="Evaluation_ID">
+                <asp:GridView runat="server" ID="gvEvaluation" AutoGenerateColumns="false" DataKeyNames="Evaluation_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:TemplateField HeaderText="Type" HeaderStyle-Width="50px" >
+                        <asp:TemplateField HeaderText="Type" ItemStyle-CssClass="gvtd">
                             <ItemTemplate>
                                 <asp:Label ID="lbType" runat="server"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Name" HeaderStyle-Width="50px" >
+                        <asp:TemplateField HeaderText="Name" ItemStyle-CssClass="gvtd">
                             <ItemTemplate>
                                 <asp:Label ID="lbName" runat="server"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Date" HeaderText="Date" />
-                        <asp:BoundField DataField="Feedback" HeaderText="Feedback" />
-                        <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" />
-                        <asp:BoundField DataField="Quality" HeaderText="Quality" />
-                        <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" />
-                        <asp:BoundField DataField="Label" HeaderText="Label" />
+                        <asp:BoundField DataField="Date" HeaderText="Date" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Feedback" HeaderText="Feedback" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Accuracy" HeaderText="Accuracy" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Quality" HeaderText="Quality" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Evaluation_txt" HeaderText="Evaluation" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Label" HeaderText="Label" ItemStyle-CssClass="gvtd"/>
                     </Columns>
                 </asp:GridView>
             </asp:TableCell>
@@ -247,14 +247,14 @@
         </asp:TableRow>
         <asp:TableRow ID="rowHospitalGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvHospital" AutoGenerateColumns="false" DataKeyNames="Hospital_ID">
+                <asp:GridView runat="server" ID="gvHospital" AutoGenerateColumns="false" DataKeyNames="Hospital_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="Adress" HeaderText="Adress" />
-                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" />
-                        <asp:BoundField DataField="City" HeaderText="City" />
-                        <asp:BoundField DataField="Country" HeaderText="Country" />
-                        <asp:BoundField DataField="Central_number" HeaderText="Central Number" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Adress" HeaderText="Adress" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Postal_Code" HeaderText="Postal Code" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="City" HeaderText="City" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Central_number" HeaderText="Central Number" ItemStyle-CssClass="gvtd"/>
                     </Columns>
                 </asp:GridView>
             </asp:TableCell>
@@ -267,13 +267,13 @@
         </asp:TableRow>
         <asp:TableRow ID="rowProjectManagerGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvProjectManager" AutoGenerateColumns="false" DataKeyNames="ProjectManager_ID">
+                <asp:GridView runat="server" ID="gvProjectManager" AutoGenerateColumns="false" DataKeyNames="ProjectManager_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="CV" HeaderText="CV" />
-                        <asp:BoundField DataField="Email" HeaderText="E-mail" />
-                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="CV" HeaderText="CV" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" ItemStyle-CssClass="gvtd"/>
                     </Columns>
                 </asp:GridView>
             </asp:TableCell>
@@ -286,27 +286,27 @@
         </asp:TableRow>
         <asp:TableRow ID="rowProjectGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvProject" AutoGenerateColumns="false" DataKeyNames="Project_ID">
+                <asp:GridView runat="server" ID="gvProject" AutoGenerateColumns="false" DataKeyNames="Project_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:BoundField DataField="Title" HeaderText="Title" />
-                        <asp:BoundField DataField="Start_Date" HeaderText="Start Date" />
-                        <asp:BoundField DataField="End_Date" HeaderText="End Date" />
-                        <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox">
+                        <asp:BoundField DataField="Title" HeaderText="Title" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Start_Date" HeaderText="Start Date" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="End_Date" HeaderText="End Date" ItemStyle-CssClass="gvtd"/>
+                        <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox">
+                        <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel2" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox">
+                        <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel3" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox">
+                        <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel4" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>
@@ -323,15 +323,15 @@
         </asp:TableRow>
         <asp:TableRow ID="rowStudyCoordinatorGrid" CssClass="homeRow">
             <asp:TableCell CssClass="homeCell">
-                <asp:GridView runat="server" ID="gvStudyCoordinator" AutoGenerateColumns="false" DataKeyNames="StudyCoordinator_ID">
+                <asp:GridView runat="server" ID="gvStudyCoordinator" AutoGenerateColumns="false" DataKeyNames="StudyCoordinator_ID" RowStyle-CssClass="gvtr"  >
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" />
-                        <asp:BoundField DataField="CV" HeaderText="CV" />
-                        <asp:BoundField DataField="Email" HeaderText="E-mail" />
-                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" />
-                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" />
-                        <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" />
-                        <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox">
+                        <asp:BoundField DataField="Name" HeaderText="Name" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="CV" HeaderText="CV" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone1" HeaderText="Phone 1" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Phone2" HeaderText="Phone 2" ItemStyle-CssClass="gvtd"/>
+                        <asp:BoundField DataField="Specialisation" HeaderText="Specialisation" ItemStyle-CssClass="gvtd"/>
+                        <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="gvtdlb">
                             <ItemTemplate>
                                 <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                             </ItemTemplate>

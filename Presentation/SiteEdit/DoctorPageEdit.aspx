@@ -34,7 +34,7 @@
                 <asp:TableHeaderCell>Country</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Specialisation</asp:TableHeaderCell>
                 <asp:TableHeaderCell>CV</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Hospital *</asp:TableHeaderCell>
+                <asp:TableHeaderCell>Hospital</asp:TableHeaderCell>
             </asp:TableRow>
 			<asp:TableRow CssClass="rowEdit" runat="server">
                 <asp:TableCell CssClass="cellEdit">

@@ -14,9 +14,9 @@
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Project_ID" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+    <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Project_ID" RowStyle-CssClass="gvtr">
         <Columns>
-            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" >
+            <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px"  ItemStyle-CssClass="gvtd">
                 <ItemTemplate>
                     <label class="container">
                         <asp:CheckBox ID="CheckBox" runat="server" />
@@ -24,25 +24,25 @@
                     </label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="Start_date" HeaderText="Start Date" SortExpression="Start_date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>
-            <asp:BoundField DataField="End_date" HeaderText="End Date" SortExpression="End_date" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader"/>            
-            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="Start_date" HeaderText="Start Date" SortExpression="Start_date" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>
+            <asp:BoundField DataField="End_date" HeaderText="End Date" SortExpression="End_date" HeaderStyle-ForeColor="Black"  ItemStyle-CssClass="gvtd"/>            
+            <asp:TemplateField HeaderText="CRA's" ItemStyle-CssClass="gvtdlb" HeaderStyle-ForeColor="Black" >
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel1" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:TemplateField HeaderText="Doctors" ItemStyle-CssClass="gvtdlb" HeaderStyle-ForeColor="Black" >
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel2" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:TemplateField HeaderText="Hospitals" ItemStyle-CssClass="gvtdlb" HeaderStyle-ForeColor="Black" >
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel3" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="cellListbox" HeaderStyle-ForeColor="Black" HeaderStyle-CssClass="viewHeader">
+            <asp:TemplateField HeaderText="Project Managers" ItemStyle-CssClass="gvtdlb" HeaderStyle-ForeColor="Black" >
                 <ItemTemplate>
                     <asp:ListBox runat="server" ID="lbRel4" CssClass="listbox"></asp:ListBox>
                 </ItemTemplate>
