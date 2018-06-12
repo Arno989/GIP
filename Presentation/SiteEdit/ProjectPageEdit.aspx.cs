@@ -287,7 +287,7 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             }
                             break;
 
@@ -407,7 +407,7 @@ namespace Presentation.SiteEdit
                             }
                             else
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             }
                             break;
 

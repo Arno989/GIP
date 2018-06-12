@@ -157,19 +157,19 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 2:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 5:
@@ -264,19 +264,19 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", ""));
                             break;
 
                         case 2:
-                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", ""));
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", ""));
                             break;
 
                         case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", "");                            
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()).Replace("&nbsp;", ""));                            
                             break;
 
                         case 5:

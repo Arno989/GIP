@@ -106,7 +106,7 @@ namespace Presentation.SiteEdit
 						case 0:
 							if (((TextBox) txtBox).Text != "")
 							{
-								input[i2] = (((TextBox) txtBox).Text.ToString());
+								input[i2] = _business.BeginUpperCase((((TextBox) txtBox).Text.ToString()));
 							}
                             else
                             {
@@ -115,7 +115,7 @@ namespace Presentation.SiteEdit
 							break;
 
 						case 1:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
+							input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
 							break;
 
 						case 2:
@@ -123,15 +123,15 @@ namespace Presentation.SiteEdit
 							break;
 
 						case 3:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
+							input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
 							break;
 
 						case 4:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
+							input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
 							break;
 
 						case 5:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
+							input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
 							break;
 
 						case 6:
@@ -139,10 +139,11 @@ namespace Presentation.SiteEdit
 							break;
 
 						case 7:
-							input[i2] = (((TextBox) txtBox).Text.ToString());
+							input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
 							break;
 					}
 				}
+
 				_business.SetClient(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7]);
                 track1:
                 continue;
@@ -167,7 +168,7 @@ namespace Presentation.SiteEdit
                         case 0:
                             if (((TextBox)txtBox).Text != "")
                             {
-                                input[i2] = (((TextBox)txtBox).Text.ToString());
+                                input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             }
                             else
                             {
@@ -176,7 +177,7 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 2:
@@ -184,15 +185,15 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 3:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 4:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 5:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
 
                         case 6:
@@ -200,7 +201,7 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 7:
-                            input[i2] = (((TextBox)txtBox).Text.ToString());
+                            input[i2] = _business.BeginUpperCase((((TextBox)txtBox).Text.ToString()));
                             break;
                     }
                 }

@@ -178,8 +178,7 @@ namespace Domain.Business
             return _persistence.GetStudyCoordinatorDropDown();
         }
         #endregion
-
-
+        
         #region Set
         public void SetClient(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {
@@ -256,8 +255,7 @@ namespace Domain.Business
 
 
         #endregion
-
-
+        
         #region Update
         public void UpdateClient(int id_p2, string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string contactperson_p2, string invoiceinfo_p2, string kindofclinet_p2)
         {
@@ -305,7 +303,6 @@ namespace Domain.Business
         //-------------------------------------------------------------------------
         #endregion
         
-
         #region Delete
         public void DeleteClient(int id_p2)
         {
@@ -424,8 +421,7 @@ namespace Domain.Business
         #endregion
 
         #endregion
-
-
+        
         #region Search
         public List<ClientCode> SearchClients(string sortingPar)
         {
@@ -468,8 +464,7 @@ namespace Domain.Business
             return _persistence.SearchStudyCoordinators(sortingPar);
         }
         #endregion
-
-
+        
         #region Control
 
         private string DomainMapper(Match match)
@@ -527,6 +522,19 @@ namespace Domain.Business
         {
             string number = PhoneNumberUtil.NormalizeDigitsOnly(parNumber);
             return PhoneNumberUtil.IsViablePhoneNumber(number);
+        }
+
+        public string BeginUpperCase(string word)
+        {
+            if(word != "")
+            {
+                word = word.First().ToString().ToUpper() + word.Substring(1);
+            }
+            else
+            {
+                word = "";
+            }
+            return word;
         }
         #endregion
 
