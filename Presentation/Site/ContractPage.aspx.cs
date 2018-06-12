@@ -128,11 +128,11 @@ namespace Presentation.Site
                 }
                 else if (e.SortExpression == "Project_ID")
                 {
-                    ViewState.Add("Sorting", "ProjectID");
+                    ViewState.Add("Sorting", "Project");
                 }
                 else if (e.SortExpression == "Client_ID")
                 {
-                    ViewState.Add("Sorting", "ClientID");
+                    ViewState.Add("Sorting", "Client");
                 }
 
                 Load_content();
