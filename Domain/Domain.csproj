@@ -67,10 +67,12 @@
     <Compile Include="Business\DepartmentCode.cs" />
     <Compile Include="Business\DoctorCode.cs" />
     <Compile Include="Business\EvaluationCode.cs" />
+    <Compile Include="Business\HashCode.cs" />
     <Compile Include="Business\HospitalCode.cs" />
     <Compile Include="Business\ProjectCode.cs" />
     <Compile Include="Business\ProjectManagerCode.cs" />
     <Compile Include="Business\StudyCoordinatorCode.cs" />
+    <Compile Include="Business\UserCode.cs" />
     <Compile Include="Persistence\PersistenceCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

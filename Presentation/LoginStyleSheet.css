@@ -63,6 +63,13 @@
         display: block;
     }
 
+    .form .error {
+        margin: 15px 0 0;
+        font-size: 12px;
+        color: #DE6023;
+        text-decoration: none;
+    }
+
 .container {
     position: relative;
     z-index: 1;

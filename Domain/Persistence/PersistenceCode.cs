@@ -310,6 +310,31 @@ namespace Domain.Persistence
             conn.Close();
 			return ListStudyCoordinators;
 		}
+
+        public List<UserCode> GetUsers(string sortingPar)
+        {
+            List<UserCode> ListUsers = new List<UserCode>();
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM cliniresearchdb.User {0};",sortingPar),conn);
+            conn.Open();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                int id = Convert.ToInt16(dataReader["User_ID"]);
+                string username = Convert.ToString(dataReader["Username"]);
+                string email = Convert.ToString(dataReader["Email"]);
+                string password = Convert.ToString(dataReader["Password"]);
+
+
+                UserCode c = new UserCode(id,username,email,password);
+
+                ListUsers.Add(c);
+            }
+
+            conn.Close();
+            return ListUsers;
+        }
         #endregion
 
         #region GetRelation
@@ -990,6 +1015,22 @@ namespace Domain.Persistence
 
 			conn.Close();
 		}
+
+        public void AddUser(string username_p,string email_p,string password_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Username, Email, Password) VALUES (@username, @email, @password);",conn);
+
+            cmd.Parameters.Add("@username",MySqlDbType.VarChar).Value = username_p;
+            cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@password",MySqlDbType.VarChar).Value = password_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
 
         #region SetRelation
