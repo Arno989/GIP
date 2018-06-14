@@ -14,7 +14,11 @@ namespace Presentation
 
         protected void Page_Load(object sender,EventArgs e)
         {
-
+            UserCode user = (UserCode) Session["authenticatedUser"];
+            if (user != null)
+            {
+                Response.Redirect("/HomePage.aspx");
+            }
         }
 
         protected void BtnRegister_Click(object sender,EventArgs e)
