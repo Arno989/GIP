@@ -27,8 +27,16 @@ namespace Presentation
 
             if (userList.Count == 0)
             {
-                _businesscode.SetUser(username,email,password);
-                Response.Redirect("/Login.aspx");
+                try
+                {
+                    _businesscode.SetUser(username,email,password);
+                    Response.Redirect("/index.aspx");
+                }
+                catch
+                {
+                    lbError.Text = "Something went wrong";
+                    lbError.Visible = true;
+                }
             }
             else
             {

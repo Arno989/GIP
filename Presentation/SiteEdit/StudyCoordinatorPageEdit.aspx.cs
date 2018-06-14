@@ -26,6 +26,11 @@ namespace Presentation.SiteEdit
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserCode user = (UserCode) Session["authenticatedUser"];
+            if (user == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
             SetListBoxContent();
 
             if (!IsPostBack)

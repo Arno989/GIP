@@ -22,7 +22,7 @@
 				<nav class="sidebar" id="sidebar">
 					<div class="">
 						<h3>
-							<a href="../index.aspx">
+							<a href="../HomePage.aspx">
 								<img class="middle-logo" src="../Images/LogoWhite100dpi.png"alt="logo" 
                                     onmouseover="this.src='../Images/Logo100dpi.png'"
                                     onmouseout="this.src='../Images/LogoWhite100dpi.png'"/>

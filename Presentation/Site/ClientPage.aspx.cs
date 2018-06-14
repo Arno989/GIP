@@ -16,6 +16,11 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserCode user = (UserCode)Session["authenticatedUser"];
+            if (user == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
             if (!IsPostBack)
             {
                 Load_content();
