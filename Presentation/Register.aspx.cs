@@ -14,10 +14,13 @@ namespace Presentation
 
         protected void Page_Load(object sender,EventArgs e)
         {
-            UserCode user = (UserCode) Session["authenticatedUser"];
-            if (user != null)
+            if (IsPostBack || !IsPostBack)
             {
-                Response.Redirect("/HomePage.aspx");
+                UserCode user = (UserCode) Session["authenticatedUser"];
+                if (user != null)
+                {
+                    Response.Redirect("/Site/HomePage.aspx");
+                }
             }
         }
 

@@ -296,6 +296,30 @@
             padding-left: 5px;
         }
 
+.bottomLogout {
+    position: absolute;
+    padding: 20px 7.5%;
+    bottom:0;
+    width:85%;
+    z-index: 5;
+}
+
+    .bottomLogout .lbl {
+        min-width: 48.437%;
+        float: left;
+        text-align: left;
+        font-size:1.5em;
+        color:white;
+    }
+
+    .bottomLogout .btn {
+        min-width: 48.437%;
+        float: right;
+        text-align: right;
+    }
+
+
+
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 table {

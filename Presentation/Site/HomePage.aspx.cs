@@ -15,62 +15,65 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserCode user = (UserCode) Session["authenticatedUser"];
-            if (user == null)
+            if (IsPostBack || !IsPostBack)
             {
-                Response.Redirect("../index.aspx");
+                UserCode user = (UserCode) Session["authenticatedUser"];
+                if (user == null)
+                {
+                    Response.Redirect("../index.aspx");
+                }
             }
         }
 
         #region Buttons
         protected void ButtonCRA_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/CRAPage.aspx");
+            Response.Redirect("CRAPage.aspx");
         }
 
         protected void ButtonClient_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/ClientPage.aspx");
+            Response.Redirect("ClientPage.aspx");
         }
 
         protected void ButtonContract_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/ContractPage.aspx");
+            Response.Redirect("ContractPage.aspx");
         }
 
         protected void ButtonDepartment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/DepartmentPage.aspx");
+            Response.Redirect("DepartmentPage.aspx");
         }
 
         protected void ButtonDoctor_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/DoctorPage.aspx");
+            Response.Redirect("DoctorPage.aspx");
         }
 
         protected void ButtonEvaluation_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/EvaluationPage.aspx");
+            Response.Redirect("EvaluationPage.aspx");
         }
 
         protected void ButtonHospital_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/HospitalPage.aspx");
+            Response.Redirect("HospitalPage.aspx");
         }
 
         protected void ButtonProjectManager_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/ProjectManagerPage.aspx");
+            Response.Redirect("ProjectManagerPage.aspx");
         }
 
         protected void ButtonProject_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/ProjectPage.aspx");
+            Response.Redirect("ProjectPage.aspx");
         }
 
         protected void ButtonStudyCoordinator_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Site/StudyCoordinatorPage.aspx");
+            Response.Redirect("StudyCoordinatorPage.aspx");
         }
         #endregion
         

@@ -14,10 +14,13 @@ namespace Presentation
 
         protected void Page_Load(object sender,EventArgs e)
         {
-            UserCode user = (UserCode) Session["authenticatedUser"];
-            if (user != null)
+            if (IsPostBack || !IsPostBack)
             {
-                Response.Redirect("../HomePage.aspx");
+                UserCode user = (UserCode) Session["authenticatedUser"];
+                if (user != null)
+                {
+                    Response.Redirect("/Site/HomePage.aspx");
+                }
             }
         }
 
@@ -33,7 +36,7 @@ namespace Presentation
                 if (HashCode.Verify(tbPassword.Text,password))
                 {
                     Session["authenticatedUser"] = userList[0];
-                    Response.Redirect("/HomePage.aspx");
+                    Response.Redirect("/Site/HomePage.aspx");
                 }
                 else
                 {

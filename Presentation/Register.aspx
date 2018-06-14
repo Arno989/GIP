@@ -19,7 +19,7 @@
       <asp:TextBox runat="server" ID="tbEmail" placeholder="email adress" CssClass="input"></asp:TextBox>
       <asp:TextBox runat="server" ID="tbPassword" placeholder="password" TextMode="Password" CssClass="input"></asp:TextBox>
       <asp:Button runat="server" ID="btnRegister" Text="Register" OnClick="BtnRegister_Click" CssClass="button"/>
-      <p class="message">Already registered? <a href="/Login.aspx">Sign In</a></p>
+      <p class="message">Already registered? <a href="/index.aspx">Sign In</a></p>
     </div>
   </form>
 </div>

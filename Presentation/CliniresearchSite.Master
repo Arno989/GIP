@@ -20,9 +20,9 @@
 			<form id="form" runat="server" autocomplete="off">
 
 				<nav class="sidebar" id="sidebar">
-					<div class="">
+					<div>
 						<h3>
-							<a href="../HomePage.aspx">
+							<a href="../Site/HomePage.aspx">
 								<img class="middle-logo" src="../Images/LogoWhite100dpi.png"alt="logo" 
                                     onmouseover="this.src='../Images/Logo100dpi.png'"
                                     onmouseout="this.src='../Images/LogoWhite100dpi.png'"/>
@@ -43,6 +43,14 @@
 							<li class="sidebar-item"><a href="../Site/StudyCoordinatorPage.aspx">Study Coordinators</a></li>
 						</ul>
 					</div>
+                    <div class="bottomLogout">
+                        <div class="lbl">
+                            <asp:Label runat="server" ID="lbUser"></asp:Label>
+                        </div>
+                        <div class="btn">
+                            <asp:Button ID="btnLogout" runat="server" autopostback="true" Text="Sign out" CssClass="editButton" OnClick="BtnLogout_Click"/>
+                        </div>
+                    </div>
 				</nav>
 
 				<div>

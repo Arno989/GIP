@@ -28,7 +28,7 @@ namespace Presentation.SiteEdit
             UserCode user = (UserCode) Session["authenticatedUser"];
             if (user == null)
             {
-                Response.Redirect("../index.aspx");
+                Response.Redirect("~/index.aspx");
             }
             if (!IsPostBack)
             {
