@@ -306,12 +306,16 @@ namespace Domain.Business
         {
             _persistence.UpdateStudyCoordinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
+        public void UpdateUser(int id_p2, string username_p2, string email_p2, string passwordstring_p2)
+        {
+            _persistence.UpdateUser(id_p2, username_p2, email_p2, passwordstring_p2);
+        }
         #endregion
 
         #region UpdateRelation
         //-------------------------------------------------------------------------
         #endregion
-        
+
         #region Delete
         public void DeleteClient(int id_p2)
         {
@@ -352,6 +356,10 @@ namespace Domain.Business
         public void DeleteStudyCoordinator(int id_p2)
         {
             _persistence.DeleteStudyCoordinator(id_p2);
+        }
+        public void DeleteUser(int id_p2)
+        {
+            _persistence.DeleteUser(id_p2);
         }
         #endregion
 

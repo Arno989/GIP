@@ -23,5 +23,10 @@ namespace Presentation
             Session["authenticatedUser"] = null;
             Response.Redirect("../index.aspx");
         }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Site/Profile.aspx");
+        }
     }
 }

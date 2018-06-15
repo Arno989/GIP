@@ -325,9 +325,9 @@ namespace Domain.Persistence
                 string username = Convert.ToString(dataReader["Username"]);
                 string email = Convert.ToString(dataReader["Email"]);
                 string password = Convert.ToString(dataReader["Password"]);
+                string type = Convert.ToString(dataReader["Type"]);
 
-
-                UserCode c = new UserCode(id,username,email,password);
+                UserCode c = new UserCode(id,username,email,password, type);
 
                 ListUsers.Add(c);
             }
@@ -1360,6 +1360,23 @@ namespace Domain.Persistence
 
             conn.Close();
         }
+
+        public void UpdateUser(int id_p, string username_p, string email_p, string passwordstring_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("UPDATE user SET Username = @name, Email = @email, Password = @passwordstring WHERE User_ID = @id;", conn);
+
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = username_p;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
+            cmd.Parameters.Add("@passwordstring", MySqlDbType.VarChar).Value = passwordstring_p;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
 
         #region UpdateRelation
@@ -1471,6 +1488,17 @@ namespace Domain.Persistence
             MySqlConnection conn = new MySqlConnection(_connectionString);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("DELETE from StudyCoordinator where StudyCoordinator_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_p);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+        }
+
+        public void DeleteUser(int id_p)
+        {
+            MySqlConnection conn = new MySqlConnection(_connectionString);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE from user where User_ID = @id", conn);
             cmd.Parameters.AddWithValue("@id", id_p);
             cmd.ExecuteNonQuery();
             conn.Close();

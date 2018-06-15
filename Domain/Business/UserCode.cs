@@ -42,14 +42,28 @@ namespace Domain.Business
             set { _password = value; }
         }
 
+        private string _type;
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+        
         // All constructors
 
-        public UserCode(int ID_p,string Userame_p,string Email_p,string Password_p)
+        public UserCode(int ID_p,string Userame_p,string Email_p,string Password_p, string Type_p)
         {
             _user_id = ID_p;
             _username = Userame_p;
             _email = Email_p;
             _password = Password_p;
+            _type = Type_p;
+        }
+
+        public UserCode()
+        {
+
         }
     }
 }

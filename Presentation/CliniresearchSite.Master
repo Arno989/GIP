@@ -50,6 +50,9 @@
                         <div class="btn">
                             <asp:Button ID="btnLogout" runat="server" autopostback="true" Text="Sign out" CssClass="editButton" OnClick="BtnLogout_Click"/>
                         </div>
+                        <div class="btn">
+                            <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="editButton" OnClick="btnProfile_Click"/>
+                        </div>
                     </div>
 				</nav>
 
