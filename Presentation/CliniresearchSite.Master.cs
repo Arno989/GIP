@@ -26,7 +26,7 @@ namespace Presentation
 
         protected void btnProfile_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Site/Profile.aspx");
+            Response.Redirect("../Site/ProfilePage.aspx");
         }
     }
 }
