@@ -14,8 +14,24 @@ namespace Presentation
 
         protected void Page_Load(object sender,EventArgs e)
 		{
-            UserCode user = (UserCode) Session["authenticatedUser"];
+            UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+            UserCode user = GetCurrentUser(LoginUser.User_ID);
             lbUser.Text = user.Username;
+        }
+
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            try
+            {
+                user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            }
+            catch
+            {
+                Session["authenticatedUser"] = null;
+                Response.Redirect("../index.aspx");
+            }
+            return user;
         }
 
         protected void BtnLogout_Click(object sender,EventArgs e)

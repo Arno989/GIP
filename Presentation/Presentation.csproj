@@ -113,7 +113,6 @@
     <Content Include="Site\EvaluationPage.aspx" />
     <Content Include="Site\HomePage.aspx" />
     <Content Include="Site\HospitalPage.aspx" />
-    <Content Include="Site\Profile.aspx" />
     <Content Include="Site\ProfilePage.aspx" />
     <Content Include="Site\ProjectManagerPage.aspx" />
     <Content Include="Site\ProjectPage.aspx" />
@@ -276,13 +275,6 @@
     <Compile Include="Site\HospitalPage.aspx.designer.cs">
       <DependentUpon>HospitalPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site\Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site\ProfilePage.aspx.cs">
       <DependentUpon>ProfilePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -336,7 +328,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62239</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62237/</IISUrl>
+          <IISUrl>http://localhost:62238/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

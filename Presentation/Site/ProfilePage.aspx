@@ -11,30 +11,33 @@
     
 </head>
 <body>
-    <div class="login-page">
-        <div class="edit">
-            <form runat="server" class="form">
-                <div class="edit-form">
-                    <h1>Account details</h1>
-                    <asp:TextBox runat="server" ID="tbUsername" placeholder="username" CssClass="input"></asp:TextBox>
-                    <asp:Label runat="server" ID="lbError" Visible="false" CssClass="error"></asp:Label>
-                    <asp:TextBox runat="server" ID="tbEmail" placeholder="email adress" CssClass="input"></asp:TextBox>
-                    <asp:TextBox runat="server" ID="tbPasswordOld" placeholder="old password" TextMode="Password" CssClass="input"></asp:TextBox>
-                    <asp:TextBox runat="server" ID="tbPasswordNew1" placeholder="new password" TextMode="Password" CssClass="input"></asp:TextBox>
-                    <asp:TextBox runat="server" ID="tbPasswordNew2" placeholder="new password" TextMode="Password" CssClass="input"></asp:TextBox>
-                    <div class="checkBoxes" id="Admin">
-                        <asp:CheckBoxList runat="server">
-                            <asp:ListItem Text="Administrator rights"></asp:ListItem>
-                            <asp:ListItem Text="Edit rights"></asp:ListItem>
-                            <asp:ListItem Text="View rights"></asp:ListItem>
-                        </asp:CheckBoxList>
-                    </div>
-                    <asp:Button runat="server" ID="btnSave" Text="Save" OnClick="BtnSave_Click" CssClass="buttonLeft"/>
-                    <asp:Button runat="server" ID="btnExit" Text="Exit" OnClick="BtnExit_Click" CssClass="buttonRight"/>
-                    <asp:LinkButton runat="server" ID="lnkDelete" Text="Delete account" OnClick="LnkDelete_Click" CssClass="linkButton"></asp:LinkButton>
-                </div>
-            </form>
-        </div>
+<div class="login-page">
+    <div class="edit">
+  <form runat="server" class="form">
+    <div class="edit-form">
+        <h1>Account details</h1>
+      <asp:TextBox runat="server" ID="tbUsername" placeholder="username" CssClass="input"></asp:TextBox>
+        <asp:Label runat="server" ID="lbErrorUsername" Visible="true" CssClass="error"></asp:Label>
+      <asp:TextBox runat="server" ID="tbEmail" placeholder="email adress" CssClass="input"></asp:TextBox>
+        <asp:Table runat="server" ID="tbType" CssClass="input">
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:DropDownList runat="server" CssClass="input" ID="ddType" AppendDataBoundItems = "true">
+                        <asp:ListItem Selected="True" Text="Select a account type" Value=""></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+      <asp:TextBox runat="server" ID="tbPasswordOld" AutoCompleteType="None" placeholder="old password (optional)" TextMode="Password" CssClass="input"></asp:TextBox>
+      <asp:TextBox runat="server" ID="tbPasswordNew1" placeholder="new password (optional)" TextMode="Password" CssClass="input"></asp:TextBox>
+        <asp:Label runat="server" ID="lbErrorPassword" Visible="false" CssClass="error"></asp:Label>
+      <asp:TextBox runat="server" ID="tbPasswordNew2" placeholder="new password (optional)" TextMode="Password" CssClass="input"></asp:TextBox>        
+      <asp:Button runat="server" ID="btnSave" Text="Save" CssClass="buttonLeft" OnClick="btnSave_Click"/>
+      <asp:Button runat="server" ID="btnExit" Text="Exit" CssClass="buttonRight" OnClick="btnExit_Click"/>
+      <asp:LinkButton runat="server" ID="lnkDelete" Text="Delete account" CssClass="linkButton" OnClick="lnkDelete_Click"></asp:LinkButton>
     </div>
+  </form>
+        </div>
+</div>
 </body>
 </html>
