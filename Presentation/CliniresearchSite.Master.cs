@@ -17,6 +17,11 @@ namespace Presentation
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
             UserCode user = GetCurrentUser(LoginUser.User_ID);
             lbUser.Text = user.Username;
+
+            if(user.Type == "Admin")
+            {
+                divAdmin.Attributes["style"] = "display: block;";
+            }
         }
 
         private UserCode GetCurrentUser(int ID)
