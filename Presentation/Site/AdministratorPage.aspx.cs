@@ -20,14 +20,18 @@ namespace Presentation.Site
             {
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
                 UserCode user = GetCurrentUser(LoginUser.User_ID);
-                if (user == null || user.Type != "Admin")
+                if(user.Type == "Admin" || user.Type == "Developer")
+                {
+
+                    if (!IsPostBack)
+                    {
+                        Load_content();
+                    }
+                }
+                else
                 {
                     Response.Redirect("../index.aspx");
                 }
-            }
-            if (!IsPostBack)
-            {
-                Load_content();
             }
         }
 
