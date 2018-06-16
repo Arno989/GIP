@@ -52,7 +52,7 @@ namespace Presentation
 
         protected void BtnAdmin_Click(object sender,EventArgs e)
         {
-            
+            Response.Redirect("../Site/AdministratorPage.aspx");
         }
     }
 }

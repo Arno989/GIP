@@ -105,6 +105,7 @@
     <Content Include="SiteEdit\ProjectManagerPageEdit.aspx" />
     <Content Include="SiteEdit\ProjectPageEdit.aspx" />
     <Content Include="SiteEdit\StudyCoordinatorPageEdit.aspx" />
+    <Content Include="Site\AdministratorPage.aspx" />
     <Content Include="Site\ClientPage.aspx" />
     <Content Include="Site\ContractPage.aspx" />
     <Content Include="Site\CRAPage.aspx" />
@@ -218,6 +219,13 @@
     </Compile>
     <Compile Include="SiteEdit\StudyCoordinatorPageEdit.aspx.designer.cs">
       <DependentUpon>StudyCoordinatorPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\AdministratorPage.aspx.cs">
+      <DependentUpon>AdministratorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\AdministratorPage.aspx.designer.cs">
+      <DependentUpon>AdministratorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site\ClientPage.aspx.cs">
       <DependentUpon>ClientPage.aspx</DependentUpon>
