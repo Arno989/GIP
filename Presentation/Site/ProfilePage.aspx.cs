@@ -35,17 +35,13 @@ namespace Presentation.Site
             tbUsername.Text = user.Username.ToString();
             tbEmail.Text = user.Email.ToString();
 
-            if (user.Type == "Admin")
-            {
-                ddType.Items.Add("Account type: " + user.Type.ToString());
-                ddType.SelectedIndex = 1;
-            }
-            else
-            {
-                ddType.Items.Add("Account type: " + user.Type.ToString());
-                ddType.SelectedIndex = 1;
-                ddType.Enabled = false;
-            }
+            tbAccountType.Text = "Account type: " + user.Type;
+        }
+
+        protected void tb_TextChanged(object sender, EventArgs e)
+        {
+            lbErrorUsername.Text = string.Empty;
+            lbErrorPassword.Text = string.Empty;
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -98,7 +94,7 @@ namespace Presentation.Site
                         lbErrorPassword.ForeColor = System.Drawing.Color.Green;
                         lbErrorPassword.Visible = true;
 
-                        if (LoginUser.Username != tbUsername.Text && LoginUser.Email != tbEmail.Text)
+                        if (LoginUser.Username != tbUsername.Text || LoginUser.Email != tbEmail.Text)
                         {
                             lbErrorUsername.Text = "User successfully updated";
                             lbErrorUsername.Visible = true;
