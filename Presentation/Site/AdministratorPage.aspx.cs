@@ -20,7 +20,7 @@ namespace Presentation.Site
             {
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
                 UserCode user = GetCurrentUser(LoginUser.User_ID);
-                if (user == null || user.Type != "Admin" || user.Type !="Developer")
+                if (user == null || user.Type != "Admin")
                 {
                     Response.Redirect("../index.aspx");
                 }
