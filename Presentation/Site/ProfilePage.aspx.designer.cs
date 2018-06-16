@@ -22,13 +22,13 @@ namespace Presentation.Site {
         protected global::System.Web.UI.WebControls.TextBox tbUsername;
         
         /// <summary>
-        /// lbError control.
+        /// lbErrorUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbError;
+        protected global::System.Web.UI.WebControls.Label lbErrorUsername;
         
         /// <summary>
         /// tbEmail control.
@@ -38,6 +38,24 @@ namespace Presentation.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        
+        /// <summary>
+        /// tbType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tbType;
+        
+        /// <summary>
+        /// ddType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddType;
         
         /// <summary>
         /// tbPasswordOld control.
@@ -56,6 +74,15 @@ namespace Presentation.Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPasswordNew1;
+        
+        /// <summary>
+        /// lbErrorPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbErrorPassword;
         
         /// <summary>
         /// tbPasswordNew2 control.
