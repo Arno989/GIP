@@ -82,7 +82,15 @@ namespace Presentation.Site
 
                     if (HashCode.Verify(tbPasswordOld.Text, password))
                     {
-                        _business.UpdateUser(user.User_ID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew2.Text));
+                        try
+                        {
+                            _business.UpdateUser(user.User_ID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew2.Text));
+                        }
+                        catch
+                        {
+                            lbErrorUsername.Text = "Username already exists, choose another name";
+                            lbErrorUsername.Visible = true;
+                        }
 
                         Session["authenticatedUser"] = GetCurrentUser(LoginUser.User_ID);
 
@@ -104,7 +112,6 @@ namespace Presentation.Site
                         lbErrorPassword.Text = "Old password incorrect";
                         lbErrorPassword.Visible = true;
                     }
-
                 }
                 else if (tbPasswordNew1.Text == string.Empty && tbPasswordNew2.Text == string.Empty)
                 {
