@@ -112,6 +112,12 @@
         margin-bottom:20px;
     }
 
+    .edit .form .checkBoxes {
+        margin-bottom: 15px;
+        align-items:flex-start;
+        text-align:left;
+    }
+
 .linkButton {
     margin: 15px 0 0;
     color: #b3b3b3;
