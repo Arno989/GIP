@@ -29,5 +29,20 @@ namespace Presentation.Site
             user = _business.GetUsers("WHERE User_ID = " + ID)[0];
             return user;
         }
+
+        protected void BtnSave_Click(object sender,EventArgs e)
+        {
+
+        }
+
+        protected void BtnExit_Click(object sender,EventArgs e)
+        {
+
+        }
+
+        protected void LnkDelete_Click(object sender,EventArgs e)
+        {
+
+        }
     }
 }
