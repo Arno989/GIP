@@ -40,9 +40,14 @@ namespace Presentation
             Response.Redirect("../index.aspx");
         }
 
-        protected void btnProfile_Click(object sender, EventArgs e)
+        protected void BtnProfile_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Site/ProfilePage.aspx");
+        }
+
+        protected void BtnAdmin_Click(object sender,EventArgs e)
+        {
+            
         }
     }
 }

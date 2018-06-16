@@ -296,6 +296,19 @@
             padding-left: 5px;
         }
 
+.accountButton {
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    color: #434343;
+    font-size: 20px;
+    padding: 9px 26px;
+    background-color: rgb(249, 249, 249);
+    text-align: center;
+    border-collapse: collapse;
+    line-height: 1;
+}
+
 .bottomLogout {
     position: absolute;
     padding: 20px 7.5%;
@@ -305,18 +318,37 @@
 }
 
     .bottomLogout .lbl {
-        min-width: 48.437%;
-        float: left;
-        text-align: left;
+        min-width: 100%;
+        text-align: center;
         font-size:1.5em;
         color:white;
+        margin: 2.5px 0;
     }
 
-    .bottomLogout .btn {
-        min-width: 48.437%;
-        float: right;
-        text-align: right;
+    .bottomLogout .btnAccount {
+        min-width: 45%;
+        margin: 0 2.5%;
+        float: left;
+        text-align: left;
     }
+
+        .bottomLogout .btnAccount .editButton {
+            min-width: 100%;
+            margin: 5px 2.5px;
+        }
+
+    .bottomLogout .btnAdmin {
+        min-width: 95%;
+        margin: 0 2.5%;
+        float: left;
+        text-align: left;
+        display:none;
+    }
+
+        .bottomLogout .btnAdmin .editButton {
+            min-width: 100%;
+            margin: 5px 2.5px;
+        }
 
 
 

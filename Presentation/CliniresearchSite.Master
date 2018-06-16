@@ -47,11 +47,14 @@
                         <div class="lbl">
                             <asp:Label runat="server" ID="lbUser"></asp:Label>
                         </div>
-                        <div class="btn">
+                        <div class="btnAccount">
                             <asp:Button ID="btnLogout" runat="server" autopostback="true" Text="Sign out" CssClass="editButton" OnClick="BtnLogout_Click"/>
                         </div>
-                        <div class="btn">
-                            <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="editButton" OnClick="btnProfile_Click"/>
+                        <div class="btnAccount">
+                            <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="editButton" OnClick="BtnProfile_Click"/>
+                        </div>
+                        <div class="btnAdmin">
+                            <asp:Button ID="btnAdmin" runat="server" autopostback="true" Text="Administrator page" CssClass="editButton" OnClick="BtnAdmin_Click"/>
                         </div>
                     </div>
 				</nav>
