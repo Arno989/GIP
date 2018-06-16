@@ -265,7 +265,7 @@
 .sidebar {
     height: 100%;
     width: 15.625%;
-    min-width:210px;
+    min-width: 345px;
     background-color: #2F2F2F;
     position: fixed !important;
     overflow: auto;
