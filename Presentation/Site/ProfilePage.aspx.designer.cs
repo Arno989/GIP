@@ -40,22 +40,13 @@ namespace Presentation.Site {
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
         
         /// <summary>
-        /// tbType control.
+        /// tbAccountType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tbType;
-        
-        /// <summary>
-        /// ddType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddType;
+        protected global::System.Web.UI.WebControls.TextBox tbAccountType;
         
         /// <summary>
         /// tbPasswordOld control.
