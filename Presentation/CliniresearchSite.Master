@@ -54,7 +54,7 @@
                             <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="editButton" OnClick="BtnProfile_Click"/>
                         </div>
                         <div class="btnAdmin" id="divAdmin" runat="server">
-                            <asp:Button ID="btnAdmin" runat="server" autopostback="true" Text="Administrator page" CssClass="editButton" OnClick="BtnAdmin_Click"/>
+                            <asp:Button ID="btnAdmin" runat="server" Visible="false" autopostback="true" Text="Administrator page" CssClass="editButton" OnClick="BtnAdmin_Click"/>
                         </div>
                     </div>
 				</nav>

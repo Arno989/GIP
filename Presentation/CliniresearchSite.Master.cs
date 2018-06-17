@@ -18,9 +18,10 @@ namespace Presentation
             UserCode user = GetCurrentUser(LoginUser.User_ID);
             lbUser.Text = user.Username;
 
-            if(user.Type == "Admin")
+            if(user.Type == "Admin" || user.Type == "Developer")
             {
                 divAdmin.Attributes["style"] = "display: block;";
+                btnAdmin.Visible = true;
             }
         }
 

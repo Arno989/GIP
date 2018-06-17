@@ -1016,17 +1016,18 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-        public void AddUser(string username_p,string email_p,string password_p)
+        public void AddUser(string username_p,string email_p,string password_p, string type_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Username, Email, Password) VALUES (@username, @email, @password);",conn);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Username, Email, Password, Type) VALUES (@username, @email, @password, @type);",conn);
 
             cmd.Parameters.Add("@username",MySqlDbType.VarChar).Value = username_p;
             cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
             cmd.Parameters.Add("@password",MySqlDbType.VarChar).Value = password_p;
+            cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = type_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();

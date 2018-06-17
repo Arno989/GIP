@@ -225,9 +225,9 @@ namespace Domain.Business
         {
             _persistence.AddStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2);
         }
-        public void SetUser(string username_p2,string email_p2,string password_p2)
+        public void SetUser(string username_p2,string email_p2,string password_p2, string type_p2)
         {
-            _persistence.AddUser(username_p2,email_p2,password_p2);
+            _persistence.AddUser(username_p2,email_p2,password_p2, type_p2);
         }
         #endregion
 

@@ -36,7 +36,7 @@ namespace Presentation
             {
                 try
                 {
-                    _businesscode.SetUser(username,email,password);
+                    _businesscode.SetUser(username,email,password, "Guest");
                     Response.Redirect("/index.aspx");
                 }
                 catch
