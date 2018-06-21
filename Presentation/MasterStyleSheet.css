@@ -13,7 +13,7 @@
 /* --------------------CSS Document----------------------------- */
 
 .body {
-    margin-left: 15.625%;
+    margin-left: 345px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 102.5px;
@@ -264,8 +264,7 @@
 
 .sidebar {
     height: 100%;
-    width: 15.625%;
-    min-width: 345px;
+    width: 345px;
     background-color: #2F2F2F;
     position: fixed !important;
     overflow: auto;
