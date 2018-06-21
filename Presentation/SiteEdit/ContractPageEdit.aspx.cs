@@ -185,18 +185,31 @@ namespace Presentation.SiteEdit
                 var dropdownDataClient = container.FindControl(ddNameClient) as DropDownList;
                 int indexClient = dropdownDataClient.SelectedIndex;
 
-                if(indexClient < 1 || indexProject < 1)
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                if (indexClient < 1 || indexProject < 1)
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Make sure you have selected a relation.')", true);
                 }
                 else
                 {
-                    _business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]));
+                    _business.SetContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.User_ID.ToString(), dateNow, dateNow);
                 }
                 track1:
 				continue;
 			}
 		}
+
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
 
         private void UpdateData()
         {
@@ -265,6 +278,12 @@ namespace Presentation.SiteEdit
                 List<ContractCode> CurrentContract = new List<ContractCode>();
                 CurrentContract = _business.GetContracts(sortingPar);
 
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
                 //projectID krijgen van de current row in de gridvieuw
                 int ProjectID = CurrentContract[0].ProjectID;
                 string ddNameProject = "ddEdit" + i.ToString() + 0.ToString();
@@ -280,7 +299,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue));
+                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue), user.User_ID.ToString(), dateNow);
                 }
                 track1:
                 continue;

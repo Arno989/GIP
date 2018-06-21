@@ -91,10 +91,34 @@ namespace Domain.Business
             set { _scID = value; }
         }
 
+        private int _user_id;
+
+        public int User_ID
+        {
+            get { return _user_id; }
+            set { _user_id = value; }
+        }
+
+        private DateTime _date_added;
+
+        public DateTime Date_Added
+        {
+            get { return _date_added; }
+            set { _date_added = value; }
+        }
+
+        private DateTime _date_last_edited;
+
+        public DateTime Date_Last_Edited
+        {
+            get { return _date_last_edited; }
+            set { _date_last_edited = value; }
+        }
+
         // All constructors
-        
-		public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
-			 string quality_p,string evaluation_txt_p,string label_p, int cra_id_p, int doctor_id_p, int sc_id_p)
+
+        public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
+			 string quality_p,string evaluation_txt_p,string label_p, int cra_id_p, int doctor_id_p, int sc_id_p, int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
             _evaluation_id = evaluation_id_p;
 			_date = date_p;
@@ -106,6 +130,9 @@ namespace Domain.Business
             _craID = cra_id_p;
             _doctortID = doctor_id_p;
             _scID = sc_id_p;
-		}
+            _user_id = User_ID_p;
+            _date_added = Date_Added_p;
+            _date_last_edited = Date_Last_Edited_p;
+        }
 	}
 }

@@ -42,7 +42,13 @@ namespace Presentation.SiteEdit
             }
         }
 
-        
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
+
         private void InsertData()
         {
             List<List<string>> ListData = GetSessionData();
@@ -178,7 +184,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.SetProjectManager(input[0], input[1], input[2], input[3], input[4]); //--Var
+
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.SetProjectManager(input[0], input[1], input[2], input[3], input[4], user.User_ID.ToString(), dateNow, dateNow); //--Var
                 track1:
                 continue;
             }
@@ -282,7 +295,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.UpdateProjectManager(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4]); //--Var
+
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.UpdateProjectManager(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], user.User_ID.ToString(), dateNow); //--Var
                 track1:
                 continue;
             }

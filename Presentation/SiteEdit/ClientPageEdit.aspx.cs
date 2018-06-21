@@ -42,6 +42,12 @@ namespace Presentation.SiteEdit
             }
         }
 
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
 
         private void InsertData()
         {
@@ -149,7 +155,13 @@ namespace Presentation.SiteEdit
 					}
 				}
 
-				_business.SetClient(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7]);
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.SetClient(input[0],input[1],input[2],input[3],input[4],input[5],input[6],input[7], user.User_ID.ToString(), dateNow, dateNow);
                 track1:
                 continue;
 			}
@@ -210,7 +222,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.UpdateClient(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7]);
+
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.UpdateClient(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], user.User_ID.ToString(), dateNow);
                 track1:
                 continue;
             }

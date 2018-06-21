@@ -39,9 +39,11 @@ namespace Domain.Persistence
 				string contact_person = Convert.ToString(dataReader["Contact_Person"]);
 				string invoice_info = Convert.ToString(dataReader["Invoice_Info"]);
 				string kind_of_client = Convert.ToString(dataReader["Kind_of_Client"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-
-                ClientCode c = new ClientCode(id, name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client);
+                ClientCode c = new ClientCode(id, name,adress,postal_code,city,country,contact_person,invoice_info,kind_of_client, user_id, date_added, date_last_edited);
 
 				ListClients.Add(c);
 			}
@@ -67,10 +69,13 @@ namespace Domain.Persistence
                 DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
                 int Project_ID = Convert.ToInt16(dataReader["Project_ID"]);
                 int Client_ID = Convert.ToInt16(dataReader["Client_ID"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID);
+                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID, user_id, date_added, date_last_edited);
 
                 ListContracts.Add(c);
             }
@@ -95,8 +100,11 @@ namespace Domain.Persistence
 				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				CRACode c = new CRACode(id,name,cv,email,phone1,phone2);
+                CRACode c = new CRACode(id,name,cv,email,phone1,phone2, user_id, date_added, date_last_edited);
 
 				ListCRAs.Add(c);
 			}
@@ -120,8 +128,11 @@ namespace Domain.Persistence
 				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
                 int hospitalID = Convert.ToInt16(dataReader["Hospital_ID"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                DepartmentCode c = new DepartmentCode(id,name,email,phone1, hospitalID);
+                DepartmentCode c = new DepartmentCode(id,name,email,phone1, hospitalID, user_id, date_added, date_last_edited);
 
 				ListDepartments.Add(c);
 			}
@@ -151,8 +162,11 @@ namespace Domain.Persistence
 				string country = Convert.ToString(dataReader["Country"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
 				string cv = Convert.ToString(dataReader["CV"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				DoctorCode c = new DoctorCode(id,name,email,phone1,phone2,adress,postal_code,city,country,specialisation,cv);
+                DoctorCode c = new DoctorCode(id,name,email,phone1,phone2,adress,postal_code,city,country,specialisation,cv, user_id, date_added, date_last_edited);
 
 				ListDoctors.Add(c);
 			}
@@ -178,6 +192,10 @@ namespace Domain.Persistence
 				string quality = Convert.ToString(dataReader["Quality"]);
 				string evalauation_txt = Convert.ToString(dataReader["Evaluation_Text"]);
 				string label = Convert.ToString(dataReader["Label"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
+
                 int craID, doctorID, scID;
                 if (dataReader["CRA_ID"] != DBNull.Value)
                 {
@@ -198,7 +216,7 @@ namespace Domain.Persistence
                 else
                 { scID = -1; }
 
-                EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID);
+                EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID, user_id, date_added, date_last_edited);
 
 				ListEvaluations.Add(c);
 			}
@@ -224,8 +242,11 @@ namespace Domain.Persistence
 				string city = Convert.ToString(dataReader["City"]);
 				string country = Convert.ToString(dataReader["Country"]);
 				string central_number = Convert.ToString(dataReader["Central_Number"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				HospitalCode c = new HospitalCode(id,name,adress,postal_code,city,country,central_number);
+                HospitalCode c = new HospitalCode(id,name,adress,postal_code,city,country,central_number, user_id, date_added, date_last_edited);
 
 				ListHospitals.Add(c);
 			}
@@ -248,8 +269,11 @@ namespace Domain.Persistence
                 string title = Convert.ToString(dataReader["Title"]);
 				DateTime start_date = Convert.ToDateTime(dataReader["Start_Date"]).Date;
 				DateTime end_date = Convert.ToDateTime(dataReader["End_Date"]).Date;
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				ProjectCode c = new ProjectCode(id,title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"));
+                ProjectCode c = new ProjectCode(id,title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"), user_id, date_added, date_last_edited);
 
 				ListProjects.Add(c);
 			}
@@ -274,8 +298,11 @@ namespace Domain.Persistence
 				string email = Convert.ToString(dataReader["Email"]);
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				ProjectManagerCode c = new ProjectManagerCode(id,name,cv,email,phone1,phone2);
+                ProjectManagerCode c = new ProjectManagerCode(id,name,cv,email,phone1,phone2, user_id, date_added, date_last_edited);
 
 				ListProjectManagers.Add(c);
 			}
@@ -301,8 +328,11 @@ namespace Domain.Persistence
 				string phone1 = Convert.ToString(dataReader["Phone1"]);
 				string phone2 = Convert.ToString(dataReader["Phone2"]);
 				string specialisation = Convert.ToString(dataReader["Specialisation"]);
+                int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-				StudyCoordinatorCode c = new StudyCoordinatorCode(id,name,cv,email,phone1,phone2,specialisation);
+                StudyCoordinatorCode c = new StudyCoordinatorCode(id,name,cv,email,phone1,phone2,specialisation, user_id, date_added, date_last_edited);
 
 				ListStudyCoordinators.Add(c);
 			}
@@ -797,13 +827,13 @@ namespace Domain.Persistence
 
 
         #region Set
-        public void AddClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p)
+        public void AddClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Client (Name, Adress, Postal_Code, City, Country, Contact_Person, Invoice_Info, Kind_of_Client) VALUES (@name, @adress, @postal_code, @city, @country, @contact_person, @invoice_info, @kind_of_client);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Client (Name, Adress, Postal_Code, City, Country, Contact_Person, Invoice_Info, Kind_of_Client, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @adress, @postal_code, @city, @country, @contact_person, @invoice_info, @kind_of_client, @user_id, @date_added, @date_last_edited);",conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
@@ -813,18 +843,21 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@contact_person",MySqlDbType.VarChar).Value = contactperson_p;
 			cmd.Parameters.Add("@invoice_info",MySqlDbType.VarChar).Value = invoiceinfo_p;
 			cmd.Parameters.Add("@kind_of_client",MySqlDbType.VarChar).Value = kindofclinet_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p, int client_id_p, int project_id_p)
+		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p, int client_id_p, int project_id_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date, Client_ID, Project_ID) VALUES (@legal_country, @fee, @start_date, @end_date, @client_id, @project_id);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date, Client_ID, Project_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@legal_country, @fee, @start_date, @end_date, @client_id, @project_id, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
 			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
@@ -832,53 +865,62 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@end_date",MySqlDbType.DateTime).Value = enddate_p.Date;
             cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
             cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddCRA(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+		public void AddCRA(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, Email, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, Email, Phone1, Phone2, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-			cmd.ExecuteNonQuery();
-
-			conn.Close();
-		}
-
-		public void AddDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p)
-		{
-			MySqlConnection conn = new MySqlConnection(_connectionString);
-
-			conn.Open();
-
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, Email, Phone1, Hospital_ID) VALUES (@name, @email, @phone1, @hospital_id);", conn);
-
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddDoctor(string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,string postalcode_p,string city_p,string country_p,string specialisation_p,string cv_p)
+		public void AddDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, Email, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv);", conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, Email, Phone1, Hospital_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @email, @phone1, @hospital_id, @user_id, @date_added, @date_last_edited);", conn);
+
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
+
+			conn.Close();
+		}
+
+		public void AddDoctor(string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,string postalcode_p,string city_p,string country_p,string specialisation_p,string cv_p, string user_id_p, string date_added, string date_last_edited)
+		{
+			MySqlConnection conn = new MySqlConnection(_connectionString);
+
+			conn.Open();
+
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, Email, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
@@ -890,12 +932,15 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
 			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = specialisation_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p, int cra_p, int doctor_p, int sc_p)
+		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p, int cra_p, int doctor_p, int sc_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -903,7 +948,7 @@ namespace Domain.Persistence
 
             if (cra_p != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, CRA_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @cra);", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, CRA_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @cra, @user_id, @date_added, @date_last_edited);", conn);
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
                 cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
                 cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
@@ -911,12 +956,15 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = cra_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
 
                 cmd.ExecuteNonQuery();
             }
             else if (doctor_p != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, Doctor_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @doctor);", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, Doctor_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @doctor, @user_id, @date_added, @date_last_edited);", conn);
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
                 cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
                 cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
@@ -924,12 +972,15 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = doctor_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
 
                 cmd.ExecuteNonQuery();
             }
             else if (sc_p != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc);", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc, @user_id, @date_added, @date_last_edited);", conn);
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
                 cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
                 cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
@@ -937,6 +988,9 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = sc_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
 
                 cmd.ExecuteNonQuery();
             }
@@ -944,13 +998,13 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-		public void AddHospital(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string centralnumber_p)
+		public void AddHospital(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string centralnumber_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Hospital (Name, Adress, Postal_Code, City, Country, Central_Number) VALUES (@name, @adress, @postal_code, @city, @country, @central_number);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Hospital (Name, Adress, Postal_Code, City, Country, Central_Number, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @adress, @postal_code, @city, @country, @central_number, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
@@ -958,52 +1012,61 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = city_p;
 			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
 			cmd.Parameters.Add("@central_number",MySqlDbType.VarChar).Value = centralnumber_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddProject(string title_p,DateTime startdate_p, DateTime enddate_p)
+		public void AddProject(string title_p,DateTime startdate_p, DateTime enddate_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO Project (Title, Start_Date, End_Date) VALUES (@title, @start_date, @end_date);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO Project (Title, Start_Date, End_Date, User_ID, Date_Added, Date_Last_Edited) VALUES (@title, @start_date, @end_date, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@title",MySqlDbType.VarChar).Value = title_p;
 			cmd.Parameters.Add("@start_date",MySqlDbType.Date).Value = startdate_p.Date;
 			cmd.Parameters.Add("@end_date",MySqlDbType.Date).Value = enddate_p.Date;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddProjectManager(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p)
+		public void AddProjectManager(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, Email, Phone1, Phone2) VALUES (@name, @cv, @email, @phone1, @phone2);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, Email, Phone1, Phone2, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
 			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddStudyCoordinator(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p)
+		public void AddStudyCoordinator(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p, string user_id_p, string date_added, string date_last_edited)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, Email, Phone1, Phone2, Specialisation) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation);",conn);
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, Email, Phone1, Phone2, Specialisation, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation, @user_id, @date_added, @date_last_edited);", conn);
 
 			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
@@ -1011,7 +1074,10 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
 			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = specialisation_p;
-			cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+            cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
@@ -1128,13 +1194,13 @@ namespace Domain.Persistence
 
 
         #region Update
-        public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p)
+        public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Client SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Contact_Person = @contact_person, Invoice_Info = @invoice_info, Kind_of_Client = @kind_of_client WHERE Client_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Client SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Contact_Person = @contact_person, Invoice_Info = @invoice_info, Kind_of_Client = @kind_of_client, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Client_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1145,18 +1211,20 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = contactperson_p;
             cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = invoiceinfo_p;
             cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = kindofclinet_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p, int project_id_p, int client_id_p)
+        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p, int project_id_p, int client_id_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Start_Date = @start_date, End_Date = @end_date, Client_ID = @client_id, Project_ID = @project_id WHERE Contract_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Start_Date = @start_date, End_Date = @end_date, Client_ID = @client_id, Project_ID = @project_id, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Contract_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = legalcountry_p;
@@ -1165,18 +1233,20 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@end_date", MySqlDbType.DateTime).Value = enddate_p.Date;
             cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
             cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateCRA(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
+        public void UpdateCRA(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE CRA_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE CRA_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1184,36 +1254,40 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
             cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
             cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p, int hospitalID_p)
+        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p, int hospitalID_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, Hospital_ID = @hospital_id WHERE Department_ID = @department_id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, Hospital_ID = @hospital_id, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Department_ID = @department_id;", conn);
 
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
             cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
             cmd.Parameters.Add("@Hospital_id", MySqlDbType.VarChar).Value = hospitalID_p;
             cmd.Parameters.Add("@department_id", MySqlDbType.VarChar).Value = id_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateDoctor(int id_p, string name_p, string email_p, string phone1_p, string phone2_p, string adress_p, string postalcode_p, string city_p, string country_p, string specialisation_p, string cv_p)
+        public void UpdateDoctor(int id_p, string name_p, string email_p, string phone1_p, string phone2_p, string adress_p, string postalcode_p, string city_p, string country_p, string specialisation_p, string cv_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv WHERE Doctor_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Doctor_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1226,12 +1300,14 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
             cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
             cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p, string scID_p, string drID_p, string crID_p)
+        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p, string scID_p, string drID_p, string crID_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1239,7 +1315,7 @@ namespace Domain.Persistence
 
             if (Convert.ToInt16(scID_p) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
                 cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
@@ -1249,12 +1325,14 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@scID", MySqlDbType.VarChar).Value = scID_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
 
                 cmd.ExecuteNonQuery();
             }
             else if (Convert.ToInt16(drID_p) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, Doctor_ID = @drID WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, Doctor_ID = @drID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
                 cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
@@ -1264,12 +1342,14 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@drID", MySqlDbType.VarChar).Value = drID_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
 
                 cmd.ExecuteNonQuery();
             }
             if (Convert.ToInt16(crID_p) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label,  CRA_ID = @crID WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label,  CRA_ID = @crID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
                 cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
@@ -1279,6 +1359,8 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
                 cmd.Parameters.Add("@crID", MySqlDbType.VarChar).Value = crID_p;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
 
                 cmd.ExecuteNonQuery();
             }
@@ -1286,13 +1368,13 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateHospital(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string centralnumber_p)
+        public void UpdateHospital(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string centralnumber_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Hospital SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Central_Number = @central_number WHERE Hospital_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Hospital SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Central_Number = @central_number, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Hospital_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1301,35 +1383,39 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
             cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
             cmd.Parameters.Add("@central_number", MySqlDbType.VarChar).Value = centralnumber_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateProject(int id_p, string title_p, DateTime startdate_p, DateTime enddate_p)
+        public void UpdateProject(int id_p, string title_p, DateTime startdate_p, DateTime enddate_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Project SET Title = @title, Start_Date = @start_date, End_Date = @end_date WHERE Project_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Project SET Title = @title, Start_Date = @start_date, End_Date = @end_date, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Project_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title_p;
             cmd.Parameters.Add("@start_date", MySqlDbType.Date).Value = startdate_p.Date;
             cmd.Parameters.Add("@end_date", MySqlDbType.Date).Value = enddate_p.Date;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateProjectManager(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p)
+        public void UpdateProjectManager(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2 WHERE ProjectManager_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE ProjectManager_ID = @id;", conn);
 
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1337,18 +1423,20 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
             cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
             cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateStudyCoordinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p)
+        public void UpdateStudyCoordinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p, string user_id_p, string date_last_edited_p)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation WHERE StudyCoordinator_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE StudyCoordinator_ID = @id;", conn);
             
             cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
@@ -1357,6 +1445,8 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
             cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
             cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
             cmd.ExecuteNonQuery();
 
             conn.Close();
@@ -1746,9 +1836,11 @@ namespace Domain.Persistence
                     string contact_person = Convert.ToString(dataReader["Contact_Person"]);
                     string invoice_info = Convert.ToString(dataReader["Invoice_Info"]);
                     string kind_of_client = Convert.ToString(dataReader["Kind_of_Client"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-
-                    ClientCode c = new ClientCode(id, name, adress, postal_code, city, country, contact_person, invoice_info, kind_of_client);
+                    ClientCode c = new ClientCode(id, name, adress, postal_code, city, country, contact_person, invoice_info, kind_of_client, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -1807,10 +1899,12 @@ namespace Domain.Persistence
                     DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
                     int Project_ID = Convert.ToInt16(dataReader["Project_ID"]);
                     int Client_ID = Convert.ToInt16(dataReader["Client_ID"]);
-
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
                     CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                    ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID);
+                    ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -1865,8 +1959,11 @@ namespace Domain.Persistence
                     string email = Convert.ToString(dataReader["Email"]);
                     string phone1 = Convert.ToString(dataReader["Phone1"]);
                     string phone2 = Convert.ToString(dataReader["Phone2"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    CRACode c = new CRACode(id, name, cv, email, phone1, phone2);
+                    CRACode c = new CRACode(id, name, cv, email, phone1, phone2, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -1917,8 +2014,11 @@ namespace Domain.Persistence
                     string email = Convert.ToString(dataReader["Email"]);
                     string phone1 = Convert.ToString(dataReader["Phone1"]);
                     int hospitalID = Convert.ToInt16(dataReader["Hospital_ID"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    DepartmentCode c = new DepartmentCode(id, name, email, phone1, hospitalID);
+                    DepartmentCode c = new DepartmentCode(id, name, email, phone1, hospitalID, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -1993,8 +2093,11 @@ namespace Domain.Persistence
                     string country = Convert.ToString(dataReader["Country"]);
                     string specialisation = Convert.ToString(dataReader["Specialisation"]);
                     string cv = Convert.ToString(dataReader["CV"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    DoctorCode c = new DoctorCode(id, name, email, phone1, phone2, adress, postal_code, city, country, specialisation, cv);
+                    DoctorCode c = new DoctorCode(id, name, email, phone1, phone2, adress, postal_code, city, country, specialisation, cv, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2053,6 +2156,10 @@ namespace Domain.Persistence
                     string quality = Convert.ToString(dataReader["Quality"]);
                     string evalauation_txt = Convert.ToString(dataReader["Evaluation_Text"]);
                     string label = Convert.ToString(dataReader["Label"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
+
                     int craID, doctorID, scID;
                     if (dataReader["CRA_ID"] != DBNull.Value)
                     {
@@ -2079,7 +2186,7 @@ namespace Domain.Persistence
                         scID = -1;
                     }
 
-                    EvaluationCode c = new EvaluationCode(id, date.ToString("dd-MMM-yyyy"), feedback, accuracy, quality, evalauation_txt, label, craID, doctorID, scID);
+                    EvaluationCode c = new EvaluationCode(id, date.ToString("dd-MMM-yyyy"), feedback, accuracy, quality, evalauation_txt, label, craID, doctorID, scID, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2138,8 +2245,11 @@ namespace Domain.Persistence
                     string city = Convert.ToString(dataReader["City"]);
                     string country = Convert.ToString(dataReader["Country"]);
                     string central_number = Convert.ToString(dataReader["Central_Number"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    HospitalCode c = new HospitalCode(id, name, adress, postal_code, city, country, central_number);
+                    HospitalCode c = new HospitalCode(id, name, adress, postal_code, city, country, central_number, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2194,8 +2304,11 @@ namespace Domain.Persistence
                     string email = Convert.ToString(dataReader["Email"]);
                     string phone1 = Convert.ToString(dataReader["Phone1"]);
                     string phone2 = Convert.ToString(dataReader["Phone2"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    ProjectManagerCode c = new ProjectManagerCode(id, name, cv, email, phone1, phone2);
+                    ProjectManagerCode c = new ProjectManagerCode(id, name, cv, email, phone1, phone2, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2242,8 +2355,11 @@ namespace Domain.Persistence
                     string title = Convert.ToString(dataReader["Title"]);
                     DateTime Start_date = Convert.ToDateTime(dataReader["Start_Date"]);
                     DateTime End_date = Convert.ToDateTime(dataReader["End_Date"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    ProjectCode c = new ProjectCode(id, title, Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"));
+                    ProjectCode c = new ProjectCode(id, title, Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2302,8 +2418,11 @@ namespace Domain.Persistence
                     string phone1 = Convert.ToString(dataReader["Phone1"]);
                     string phone2 = Convert.ToString(dataReader["Phone2"]);
                     string specialisation = Convert.ToString(dataReader["Specialisation"]);
+                    int user_id = Convert.ToInt16(dataReader["User_ID"]);
+                    DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
+                    DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    StudyCoordinatorCode c = new StudyCoordinatorCode(id, name, cv, email, phone1, phone2, specialisation);
+                    StudyCoordinatorCode c = new StudyCoordinatorCode(id, name, cv, email, phone1, phone2, specialisation, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {

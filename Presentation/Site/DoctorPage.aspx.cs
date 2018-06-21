@@ -29,6 +29,13 @@ namespace Presentation.Site
             }
         }
 
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _businesscode.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
+
         protected void Load_content()
         {
             GridView.DataSource = _businesscode.GetDoctors(sortingPar); 
@@ -221,6 +228,26 @@ namespace Presentation.Site
                             else
                                 lnkbtn.Text += imgDes;
                         }
+                    }
+                }
+            }
+            UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+            UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                List<DoctorCode> _doctor = new List<DoctorCode>();
+                _doctor = _businesscode.GetDoctors("where Doctor_ID = " + GridView.DataKeys[e.Row.RowIndex].Value);
+
+                for (int i = 1; i < GridView.Columns.Count; i++)
+                {
+                    if (user.Type == "Admin")
+                    {
+                        e.Row.ToolTip = "First added on " + _doctor[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + Convert.ToDateTime(_doctor[0].Date_Last_Edited) + " bye " + _doctor[0].User_ID;
+                    }
+                    else
+                    {
+                        e.Row.ToolTip = "First added on " + _doctor[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _doctor[0].Date_Last_Edited.ToString("dd-MMM-yyyy");
                     }
                 }
             }

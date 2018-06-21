@@ -98,10 +98,34 @@ namespace Domain.Business
 			set { _cv = value; }
 		}
 
-		// All constructors
-        
-		public DoctorCode(int doctor_id_p,string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,
-			 string postal_code_p,string city_p,string country_p,string specialisation_p,string cv_p)
+        private int _user_id;
+
+        public int User_ID
+        {
+            get { return _user_id; }
+            set { _user_id = value; }
+        }
+
+        private DateTime _date_added;
+
+        public DateTime Date_Added
+        {
+            get { return _date_added; }
+            set { _date_added = value; }
+        }
+
+        private DateTime _date_last_edited;
+
+        public DateTime Date_Last_Edited
+        {
+            get { return _date_last_edited; }
+            set { _date_last_edited = value; }
+        }
+
+        // All constructors
+
+        public DoctorCode(int doctor_id_p,string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,
+			 string postal_code_p,string city_p,string country_p,string specialisation_p,string cv_p, int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
             _doctor_id = doctor_id_p;
 			_name = name_p;
@@ -114,7 +138,10 @@ namespace Domain.Business
 			_country = country_p;
 			_specialisation = specialisation_p;
 			_cv = cv_p;
-		}
+            _user_id = User_ID_p;
+            _date_added = Date_Added_p;
+            _date_last_edited = Date_Last_Edited_p;
+        }
 	}
 }
 

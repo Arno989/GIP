@@ -83,20 +83,60 @@ namespace Domain.Business
 			set { _kind_of_client = value; }
 		}
 
-		// All constructors
-        
-        public ClientCode(int ID_p, string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
-		{
-            _client_id = ID_p;
-			_name = Name_p;
-			_adress = Adress_p;
-			_postal_code = Postal_code_p;
-			_city = City_p;
-			_country = Country_p;
-			_contact_person = Contact_person_p;
-			_invoice_info = Invoice_info_p;
-			_kind_of_client = Kind_of_client_p;
-		}
+        private int _user_id;
 
-	}
+        public int User_ID
+        {
+            get { return _user_id; }
+            set { _user_id = value; }
+        }
+
+        private DateTime _date_added;
+
+        public DateTime Date_Added
+        {
+            get { return _date_added; }
+            set { _date_added = value; }
+        }
+
+        private DateTime _date_last_edited;
+
+        public DateTime Date_Last_Edited
+        {
+            get { return _date_last_edited; }
+            set { _date_last_edited = value; }
+        }
+        
+        // All constructors
+  //     public ClientCode(int ID_p, string Name_p,string Adress_p,string Postal_code_p,string City_p,string Country_p,string Contact_person_p,string Invoice_info_p,string Kind_of_client_p)
+		//{
+  //          _client_id = ID_p;
+		//	_name = Name_p;
+		//	_adress = Adress_p;
+		//	_postal_code = Postal_code_p;
+		//	_city = City_p;
+		//	_country = Country_p;
+		//	_contact_person = Contact_person_p;
+		//	_invoice_info = Invoice_info_p;
+		//	_kind_of_client = Kind_of_client_p;
+		//}
+
+        public ClientCode(int ID_p, string Name_p, string Adress_p, string Postal_code_p, string City_p, string Country_p, string Contact_person_p, string Invoice_info_p, string Kind_of_client_p, 
+            int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
+        {
+            _client_id = ID_p;
+            _name = Name_p;
+            _adress = Adress_p;
+            _postal_code = Postal_code_p;
+            _city = City_p;
+            _country = Country_p;
+            _contact_person = Contact_person_p;
+            _invoice_info = Invoice_info_p;
+            _kind_of_client = Kind_of_client_p;
+            _user_id = User_ID_p;
+            _date_added = Date_Added_p;
+            _date_last_edited = Date_Last_Edited_p;
+        }
+
+    }
 }

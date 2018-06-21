@@ -44,6 +44,12 @@ namespace Presentation.SiteEdit
             }
         }
 
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
 
         private void InsertData()
         {
@@ -162,7 +168,13 @@ namespace Presentation.SiteEdit
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 int index = dropdownData.SelectedIndex;
 
-                _business.SetDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]));
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.SetDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]), user.User_ID.ToString(), dateNow, dateNow);
                 track1:
                 continue;
             }
@@ -242,7 +254,13 @@ namespace Presentation.SiteEdit
                 string ddName = "ddEdit" + i.ToString() + 0.ToString();
                 var dd = container.FindControl(ddName) as DropDownList;
 
-                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue));
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue), user.User_ID.ToString(), dateNow);
                 track1:
                 continue;
             }

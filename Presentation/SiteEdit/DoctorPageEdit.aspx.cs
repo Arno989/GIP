@@ -23,6 +23,12 @@ namespace Presentation.SiteEdit
             return (List<int>)Session["DataID"];
         }
 
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -261,7 +267,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]); //--Var
+
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.SetDoctor(input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], user.User_ID.ToString(), dateNow, dateNow); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;
@@ -435,7 +448,14 @@ namespace Presentation.SiteEdit
                             break;
                     }
                 }
-                _business.UpdateDoctor(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9]); //--Var
+
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
+                _business.UpdateDoctor(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], user.User_ID.ToString(), dateNow); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;

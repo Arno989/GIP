@@ -34,6 +34,12 @@ namespace Presentation.SiteEdit
             return (List<int>)Session["DataID"];
         }
 
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _business.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
+        }
 
         private void InsertData()
         {
@@ -202,6 +208,12 @@ namespace Presentation.SiteEdit
                     ListAll.Add(ListContentSC[i3]);
                 }
 
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
                 string ddName = "ddEdit" + i.ToString() + "0";
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 string value = dropdownData.SelectedValue;
@@ -210,17 +222,17 @@ namespace Presentation.SiteEdit
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else if (value.Contains("DR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else if (value.Contains("SC") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt);
+                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else
                 {
@@ -294,20 +306,26 @@ namespace Presentation.SiteEdit
                 var dropdownData = container.FindControl(ddName) as DropDownList;
                 string value = dropdownData.SelectedValue;
 
+                UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+                DateTime dt = DateTime.Now;
+                string dateNow = dt.ToString("yyyy-MM-dd");
+
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), valueInt.ToString());
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), valueInt.ToString(), user.User_ID.ToString(), dateNow);
                 }
                 else if (value.Contains("DR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), valueInt.ToString(), (-1).ToString());
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), valueInt.ToString(), (-1).ToString(), user.User_ID.ToString(), dateNow);
                 }
                 else if (value.Contains("SC") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt.ToString(), (-1).ToString(), (-1).ToString());
+                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt.ToString(), (-1).ToString(), (-1).ToString(), user.User_ID.ToString(), dateNow);
                 }
                 else
                 {

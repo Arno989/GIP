@@ -13,7 +13,6 @@ namespace Presentation.Site
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Name ASC";
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack || !IsPostBack)
@@ -28,6 +27,13 @@ namespace Presentation.Site
             {
                 Load_content();
             }
+        }
+
+        private UserCode GetCurrentUser(int ID)
+        {
+            UserCode user = new UserCode();
+            user = _businesscode.GetUsers("WHERE User_ID = " + ID)[0];
+            return user;
         }
 
         protected void Load_content()
@@ -175,6 +181,26 @@ namespace Presentation.Site
                             else
                                 lnkbtn.Text += imgDes;
                         }
+                    }
+                }
+            }
+            UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+            UserCode user = GetCurrentUser(LoginUser.User_ID);
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                List<ClientCode> _clients = new List<ClientCode>();
+                _clients = _businesscode.GetClients("where Client_ID = " + GridView.DataKeys[e.Row.RowIndex].Value);
+
+                for (int i = 1; i < GridView.Columns.Count; i++)
+                {
+                    if (user.Type == "Admin")
+                    {
+                        e.Row.ToolTip = "First added on " +  _clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + Convert.ToDateTime(_clients[0].Date_Last_Edited) + " bye " + _clients[0].User_ID;
+                    }
+                    else
+                    {
+                        e.Row.ToolTip = "First added on " + _clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _clients[0].Date_Last_Edited.ToString("dd-MMM-yyyy");
                     }
                 }
             }
