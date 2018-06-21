@@ -290,7 +290,7 @@ namespace Presentation.Site
                 {
                     if (user.Type == "Admin")
                     {
-                        e.Row.ToolTip = "First added on " + _project[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _project[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " bye " + _project[0].User_ID;
+                        e.Row.ToolTip = "First added on " + _project[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _project[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _project[0].User_ID;
                     }
                     else
                     {

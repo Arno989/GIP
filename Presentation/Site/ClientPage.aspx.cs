@@ -196,7 +196,7 @@ namespace Presentation.Site
                 {
                     if (user.Type == "Admin")
                     {
-                        e.Row.ToolTip = "First added on " +  _clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _clients[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " bye " + _clients[0].User_ID;
+                        e.Row.ToolTip = "First added on " +  _clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _clients[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _clients[0].User_ID;
                     }
                     else
                     {
