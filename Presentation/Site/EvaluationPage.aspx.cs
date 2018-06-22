@@ -297,7 +297,8 @@ namespace Presentation.Site
                 {
                     if (user.Type == "Admin")
                     {
-                        e.Row.ToolTip = "First added on " + _evaluation[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _evaluation[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _evaluation[0].User_ID;
+                        UserCode _user = _businesscode.GetUsers("where User_ID = " + _evaluation[0].User_ID)[0];
+                        e.Row.ToolTip = "First added on " + _evaluation[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _evaluation[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
                     }
                     else
                     {

@@ -14,7 +14,7 @@
     <div class="admin">
     <form runat="server" class="form">
         <div class="gridview">
-            <asp:GridView ID="Gridview" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="User_ID" CssClass="gv">
+            <asp:GridView ID="Gridview" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="User_ID" CssClass="gv" OnSelectedIndexChanged="Gridview_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="40">
                         <ItemTemplate>
