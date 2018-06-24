@@ -11,6 +11,9 @@
     
 </head>
 <body>
+    <div class="sidebar">
+
+    </div>
     <div class="admin">
     <form runat="server" class="form">
         <div class="gridview">
