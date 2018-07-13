@@ -7,13 +7,12 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 400px;
     height: 100%;
+    position: fixed;
+    float: left;
     background-color: white;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    position:fixed;
-    margin:0;
-    padding:0;
 }
 
 .form {
@@ -114,9 +113,18 @@
         text-decoration: none;
     }
 
+.admin {
+    position:relative;
+    float: left;
+    width:90%;
+}
+
 .admin .form {
     max-width:none;
     width:75%;
+    margin:10px;
+    position:fixed;
+    
 }
 
     .admin .form .gridview {
@@ -252,4 +260,5 @@ body {
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin:0;
 }
