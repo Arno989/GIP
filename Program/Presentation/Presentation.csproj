@@ -80,6 +80,7 @@
     <Content Include="CliniresearchSite.Master" />
     <Content Include="CliniresearchSiteEdit.Master" />
     <Content Include="OneLessThingToWorryAbout.less" />
+    <Content Include="Master Page 2.0.Master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
@@ -119,6 +120,7 @@
     <Content Include="Site\ProjectManagerPage.aspx" />
     <Content Include="Site\ProjectPage.aspx" />
     <Content Include="Site\StudyCoordinatorPage.aspx" />
+    <Content Include="Testpage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +144,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master Page 2.0.Master.cs">
+      <DependentUpon>Master Page 2.0.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master Page 2.0.Master.designer.cs">
+      <DependentUpon>Master Page 2.0.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -311,6 +320,13 @@
     </Compile>
     <Compile Include="Site\StudyCoordinatorPage.aspx.designer.cs">
       <DependentUpon>StudyCoordinatorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Testpage.aspx.cs">
+      <DependentUpon>Testpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Testpage.aspx.designer.cs">
+      <DependentUpon>Testpage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

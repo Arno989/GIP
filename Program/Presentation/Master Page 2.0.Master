@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master Page 2.0.master.cs" Inherits="Presentation.Master_Page_2__0" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="~/OneLessThingToWorryAbout.less" runat="server"/>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+
+        <nav class="sidebar">
+			<div class="logo">
+				<a href="../Site/HomePage.aspx">
+					<img src="../Images/Logo100dpi.png" alt="logo" height="100"/>
+				</a>
+			</div>
+
+			<div class="list">
+                <button class="collapsible" type="button">collapsible test</button>
+                <div class="content">
+                    <p><a href="../Site/CraPage.aspx">CRA's</a></p>
+                    <p><a href="../Site/ClientPage.aspx">Clients</a></p>
+                    <p><a href="../Site/ContractPage.aspx">Client Contracts</a></p>
+                    <p><a href="../Site/DepartmentPage.aspx">Departments</a></p>
+                    <p><a href="../Site/DoctorPage.aspx">Doctors</a></p>
+                    <p><a href="../Site/EvaluationPage.aspx">Evaluations</a></p>
+                    <p><a href="../Site/HospitalPage.aspx">Hospitals</a></p>
+                    <p><a href="../Site/ProjectManagerPage.aspx">Project Managers</a></p>
+                    <p><a href="../Site/ProjectPage.aspx">Projects</a></p>
+                    <p><a href="../Site/StudyCoordinatorPage.aspx">Study Coordinators</a></p>
+                </div>
+			</div>
+
+            <div class="bottom">
+                <div>
+                    <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="button"/>
+                </div>
+                <div>
+                    <asp:Button ID="btnAdmin" runat="server" autopostback="true" Text="Administrator page" CssClass="button"/>
+                </div>
+                <div>
+                    <asp:Button ID="btnLogout" runat="server" autopostback="true" Text="Sign out" CssClass="button"/>
+                </div>
+            </div>
+		</nav>
+
+        <div>
+            <asp:ContentPlaceHolder ID="Form" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+    <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+    </script>
+
+</body>
+</html>
