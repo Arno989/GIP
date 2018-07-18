@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="list">
-                <button class="collapsible" type="button">collapsible test</button>
+                <button class="collapsible" type="button">Main Tables</button>
                 <div class="content">
                     <p><a href="../Site/CraPage.aspx">CRA's</a></p>
                     <p><a href="../Site/ClientPage.aspx">Clients</a></p>
@@ -40,11 +40,7 @@
             <div class="bottom">
                 <div>
                     <asp:LinkButton id="btnProfile" runat="server" autopostback="true" ToolTip="Edit your profile" ><i class="material-icons">account_circle</i></asp:LinkButton>
-                </div>
-                <div>
                     <asp:LinkButton id="btnAdmin" runat="server" autopostback="true" ToolTip="Manage accounts" ><i class="material-icons">settings</i></asp:LinkButton>
-                </div>
-                <div>
                     <asp:LinkButton id="btnLogout" runat="server" autopostback="true" ToolTip="Loug out" ><i class="material-icons">exit_to_app</i></asp:LinkButton>
                 </div>
             </div>

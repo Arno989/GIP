@@ -24,6 +24,10 @@ html, body {
     width: 300px;
     background-color: #F6F6F6;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align:left;
+}
+
+.sidebar::content {
     padding-left: 20px;
 }
 
@@ -36,6 +40,7 @@ html, body {
 
 .sidebar .list{
     padding-top:20px;
+    padding-left:20px;
 }
 
 .sidebar .list .collapsible {
@@ -43,6 +48,12 @@ html, body {
     border: none;
     display: inline-block;
     height: 40px;
+    width:280px;
+    text-align:left;
+    font-family:inherit;
+    font-size:15px;
+    line-height:1.5;
+    padding:0;
 }
 
 .sidebar .list .active {
@@ -50,6 +61,9 @@ html, body {
 }
 
 .sidebar .list .active, .collapsible:hover {
+    padding-left: 20px;
+    background-color: #D6D6D6;
+    color: #EE6726;
 }
 
 .sidebar .list .content {
@@ -57,15 +71,48 @@ html, body {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #EEEEEE;
+    padding-left: 20px;
 }
 
-.sidebar .list .content p {
+.sidebar .list .content p{
+    height:40px;
+    margin:0;
+}
+
+.sidebar .list .content p:hover {
+    text-indent: 20px;
+    background-color: #D6D6D6;
+}
+
+.sidebar .list .content p:hover a{
+    color: #EE6726;
+}
+
+.sidebar .list .content p a {
     color: black;
-    height: 40px;
+    text-decoration: none;
+    vertical-align: central;
 }
 
-.bottom i{
-    color:black;
+.bottom{
+    align-content:space-between;
+    
+}
+
+.bottom {
+    padding-left: 20px;
+    position:absolute;
+    bottom:20px;
+    align-content:space-between;
+}
+
+.bottom i {
+    color: black;
+    float: left;
+}
+
+.bottom i:hover {
+    color: #EE6726;
 }
     // Content
     // Footer
