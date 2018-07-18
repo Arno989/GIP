@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="~/OneLessThingToWorryAbout.less" runat="server"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <asp:ContentPlaceHolder ID="Head" runat="server">
 
     </asp:ContentPlaceHolder>
@@ -16,7 +17,7 @@
         <nav class="sidebar">
 			<div class="logo">
 				<a href="../Site/HomePage.aspx">
-					<img src="../Images/Logo100dpi.png" alt="logo" height="100"/>
+					<img class="image" src="../Images/Logo100dpi.png" alt="logo" />
 				</a>
 			</div>
 
@@ -38,13 +39,13 @@
 
             <div class="bottom">
                 <div>
-                    <asp:Button ID="btnProfile" runat="server" autopostback="true" Text="Profile" CssClass="button"/>
+                    <asp:LinkButton id="btnProfile" runat="server" autopostback="true" ToolTip="Edit your profile" ><i class="material-icons">account_circle</i></asp:LinkButton>
                 </div>
                 <div>
-                    <asp:Button ID="btnAdmin" runat="server" autopostback="true" Text="Administrator page" CssClass="button"/>
+                    <asp:LinkButton id="btnAdmin" runat="server" autopostback="true" ToolTip="Manage accounts" ><i class="material-icons">settings</i></asp:LinkButton>
                 </div>
                 <div>
-                    <asp:Button ID="btnLogout" runat="server" autopostback="true" Text="Sign out" CssClass="button"/>
+                    <asp:LinkButton id="btnLogout" runat="server" autopostback="true" ToolTip="Loug out" ><i class="material-icons">exit_to_app</i></asp:LinkButton>
                 </div>
             </div>
 		</nav>

@@ -1,39 +1,71 @@
-﻿// Reset
-
+﻿// Variables
+// Reset
 // Basic elements
-
 // Generic classes
-
 // Basic Layout
-
 // Header
-
 // Sidebar
-
-.collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
+.random{
+    color:aliceblue;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter UI', sans-serif;
+    color: black;
     font-size: 15px;
+    line-height: 1.5;
 }
 
-.active, .collapsible:hover {
-    background-color: #555;
+.sidebar {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 300px;
+    background-color: #F6F6F6;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-left: 20px;
 }
 
-.content {
-    padding: 0 18px;
+
+.sidebar .logo .image {
+    height: 260px;
+    width: 260px;
+    padding: 20px;
+}
+
+.sidebar .list{
+    padding-top:20px;
+}
+
+.sidebar .list .collapsible {
+    background-color: none;
+    border: none;
+    display: inline-block;
+    height: 40px;
+}
+
+.sidebar .list .active {
+    background-color: #EEEEEE;
+}
+
+.sidebar .list .active, .collapsible:hover {
+}
+
+.sidebar .list .content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+    background-color: #EEEEEE;
 }
 
-// Content
+.sidebar .list .content p {
+    color: black;
+    height: 40px;
+}
 
-// Footer
+.bottom i{
+    color:black;
+}
+    // Content
+    // Footer
