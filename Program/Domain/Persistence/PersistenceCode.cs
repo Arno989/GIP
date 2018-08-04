@@ -827,7 +827,7 @@ namespace Domain.Persistence
 
 
         #region Set
-        public void AddClient(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string contactperson_p,string invoiceinfo_p,string kindofclinet_p, string user_id_p, string date_added, string date_last_edited)
+        public void AddClient(ClientCode client)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -835,17 +835,17 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Client (Name, Adress, Postal_Code, City, Country, Contact_Person, Invoice_Info, Kind_of_Client, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @adress, @postal_code, @city, @country, @contact_person, @invoice_info, @kind_of_client, @user_id, @date_added, @date_last_edited);",conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
-			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = postalcode_p;
-			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = city_p;
-			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
-			cmd.Parameters.Add("@contact_person",MySqlDbType.VarChar).Value = contactperson_p;
-			cmd.Parameters.Add("@invoice_info",MySqlDbType.VarChar).Value = invoiceinfo_p;
-			cmd.Parameters.Add("@kind_of_client",MySqlDbType.VarChar).Value = kindofclinet_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = client.Name;
+			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = client.Adress;
+			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = client.Postal_Code;
+			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = client.City;
+			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = client.Country;
+			cmd.Parameters.Add("@contact_person",MySqlDbType.VarChar).Value = client.Contact_Person;
+			cmd.Parameters.Add("@invoice_info",MySqlDbType.VarChar).Value = client.Invoice_Info;
+			cmd.Parameters.Add("@kind_of_client",MySqlDbType.VarChar).Value = client.Kind_of_Client;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.User_ID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = client.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -1194,7 +1194,7 @@ namespace Domain.Persistence
 
 
         #region Update
-        public void UpdateClient(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string contactperson_p, string invoiceinfo_p, string kindofclinet_p, string user_id_p, string date_last_edited_p)
+        public void UpdateClient(ClientCode client)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1202,17 +1202,18 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Client SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Contact_Person = @contact_person, Invoice_Info = @invoice_info, Kind_of_Client = @kind_of_client, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Client_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
-            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
-            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
-            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
-            cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = contactperson_p;
-            cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = invoiceinfo_p;
-            cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = kindofclinet_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = client.Client_ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = client.Name;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = client.Adress;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = client.Postal_Code;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = client.City;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = client.Country;
+            cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = client.Contact_Person;
+            cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = client.Invoice_Info;
+            cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = client.Kind_of_Client;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.User_ID;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited
+            ;
             cmd.ExecuteNonQuery();
 
             conn.Close();

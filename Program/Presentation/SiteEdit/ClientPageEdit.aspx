@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSiteEdit.Master" AutoEventWireup="true" CodeBehind="ClientPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.ClientSiteEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page 2.0.Master" AutoEventWireup="true" CodeBehind="ClientPageEdit.aspx.cs" Inherits="Presentation.SiteEdit.ClientSiteEdit" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Edit Clients</title>
 </asp:Content>
 
@@ -11,9 +11,9 @@
 			<asp:Button ID="btnSaveAndExit" runat="server" autopostback="true" Text="Save & Exit" CssClass="editButton" OnClick="BtnSaveAndExit_Click" />
 			<asp:Button ID="btnExit" runat="server" autopostback="true" Text="Exit" CssClass="editButton" OnClick="BtnExit_Click" />
 		</div>
-</asp:Content>
+</asp:Content>--%>
 
-<asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
+<asp:Content ID="Body" ContentPlaceHolderID="Form" runat="server">
     <div>
         <asp:Table ID="Table" runat="server" CssClass="tableEdit" autopostback="true">
             <asp:TableRow runat="server" ID="row0">

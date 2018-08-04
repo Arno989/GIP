@@ -222,17 +222,17 @@ namespace Presentation.SiteEdit
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1, user.User_ID.ToString(), dateNow, dateNow);
+                    _business.AddEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else if (value.Contains("DR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1, user.User_ID.ToString(), dateNow, dateNow);
+                    _business.AddEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else if (value.Contains("SC") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.SetEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt, user.User_ID.ToString(), dateNow, dateNow);
+                    _business.AddEvaluation(Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt, user.User_ID.ToString(), dateNow, dateNow);
                 }
                 else
                 {

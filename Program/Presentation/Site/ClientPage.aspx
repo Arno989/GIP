@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CliniresearchSite.Master" AutoEventWireup="true" CodeBehind="ClientPage.aspx.cs" Inherits="Presentation.Site.ClientSite" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page 2.0.Master" AutoEventWireup="true" CodeBehind="ClientPage.aspx.cs" Inherits="Presentation.Site.ClientSite" %>
 
-<asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
+<%--<asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
     <title>Clients</title>
 </asp:Content>
 
@@ -11,9 +11,9 @@
         <asp:LinkButton id="btnEdit" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)"><i class="material-icons">edit</i></asp:LinkButton>
         <asp:LinkButton id="btnDelete" runat="server" OnClick="Delete" ToolTip="Delete selected row(s)"><i class="material-icons">delete</i></asp:LinkButton>
 	</div>
-</asp:Content>
+</asp:Content>--%>
 
-<asp:Content ID="Body" ContentPlaceHolderID="Body" runat="server">
+<asp:Content ID="Body" ContentPlaceHolderID="Form" runat="server">
     <asp:GridView ID="GridView" runat="server" AllowSorting="True" OnSorting="Sort" onrowdatabound="Gridview_RowDataBound" AutoGenerateColumns="False" DataKeyNames="Client_ID"  RowStyle-CssClass="gvtr">
         <Columns>
             <asp:TemplateField ShowHeader="false" HeaderStyle-Width="50px" ItemStyle-CssClass="gvtd">

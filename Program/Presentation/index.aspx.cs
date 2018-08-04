@@ -19,7 +19,7 @@ namespace Presentation
                 UserCode user = (UserCode) Session["authenticatedUser"];
                 if (user != null)
                 {
-                    Response.Redirect("/Site/HomePage.aspx");
+                    Response.Redirect("Testpage.aspx");
                 }
             }
         }
@@ -36,7 +36,7 @@ namespace Presentation
                 if (HashCode.Verify(tbPassword.Text,password))
                 {
                     Session["authenticatedUser"] = userList[0];
-                    Response.Redirect("/Site/HomePage.aspx");
+                    Response.Redirect("Testpage.aspx");
                 }
                 else
                 {

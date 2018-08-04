@@ -1,118 +1,349 @@
-﻿// Variables
+﻿// Imports
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+// Variables
+
+@offwhiteBackground: #F6F6F6;
+@listBackground: #EEEEEE;
+@hoverBackground: #D6D6D6;
+
+@MPadding: 20px;
+@SPadding:15px;
+
+@Orange: #EE6726;
+@iconGrey: #515151;
+
+@font: "Roboto", sans-serif;   
+// 'Inter UI', sans-serif;
+
 // Reset
-// Basic elements
-// Generic classes
-// Basic Layout
-// Header
-// Sidebar
-.random{
-    color:aliceblue;
-}
+
 html, body {
     padding: 0;
     margin: 0;
-    font-family: 'Inter UI', sans-serif;
+    font-family: @font; 
     color: black;
     font-size: 15px;
     line-height: 1.5;
 }
+
+// Base objects
+
+body {
+    background: #e0e0e0;
+    background-image: url("Images/LogoBlurred100dpi.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 170%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+// Sidebar
 
 .sidebar {
     position: absolute;
     bottom: 0;
     height: 100%;
     width: 300px;
-    background-color: #F6F6F6;
+    background-color: @offwhiteBackground;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align:left;
-}
+    text-align: left;
 
-.sidebar::content {
-    padding-left: 20px;
-}
+    .logo .image {
+        height: 260px;
+        width: 260px;
+        padding: 20px;
+    }
 
+    .list {
+        margin-top: @MPadding;
+        margin-left: @MPadding;
+        border-left: 3px solid @iconGrey;
 
-.sidebar .logo .image {
-    height: 260px;
-    width: 260px;
-    padding: 20px;
-}
+        &:hover {
+            border-color: @Orange;
+        }
 
-.sidebar .list{
-    padding-top:20px;
-    padding-left:20px;
-}
+        .collapsible {
+            background-color: @offwhiteBackground;
+            border: none;
+            display: inline-block;
+            height: 40px;
+            width: 277px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.5;
+            padding: 0;
+            padding-left: 3px;
+        }
 
-.sidebar .list .collapsible {
-    background-color: none;
-    border: none;
-    display: inline-block;
-    height: 40px;
-    width:280px;
-    text-align:left;
-    font-family:inherit;
-    font-size:15px;
-    line-height:1.5;
-    padding:0;
-}
+        .active {
+            background-color: @listBackground;
+        }
 
-.sidebar .list .active {
-    background-color: #EEEEEE;
-}
+        .active, .collapsible:hover {
+            padding-left: @SPadding;
+            background-color: @hoverBackground;
+            color: @Orange;
+        }
 
-.sidebar .list .active, .collapsible:hover {
-    padding-left: 20px;
-    background-color: #D6D6D6;
-    color: #EE6726;
-}
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: @listBackground;
+            padding-left: @SPadding;
 
-.sidebar .list .content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #EEEEEE;
-    padding-left: 20px;
-}
+            p {
+                height: 40px;
+                margin: 0;
+                display: flex;
+                align-items: center;
 
-.sidebar .list .content p{
-    height:40px;
-    margin:0;
-}
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
 
-.sidebar .list .content p:hover {
-    text-indent: 20px;
-    background-color: #D6D6D6;
-}
+                &:hover {
+                    text-indent: @SPadding;
+                    background-color: @hoverBackground;
 
-.sidebar .list .content p:hover a{
-    color: #EE6726;
-}
+                    a {
+                        color: @Orange;
+                    }
+                }
+            }
+        }
+    }
 
-.sidebar .list .content p a {
-    color: black;
-    text-decoration: none;
-    vertical-align: central;
-}
-
-.bottom{
-    align-content:space-between;
-    
+    &::content {
+        padding-left: 20px;
+    }
 }
 
 .bottom {
-    padding-left: 20px;
-    position:absolute;
-    bottom:20px;
-    align-content:space-between;
+    padding: @MPadding;
+    width: 260px;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+
+    i {
+        color: @iconGrey;
+        float: left;
+        font-size: 30px;
+
+        &:hover {
+            color: @Orange;
+        }
+    }
 }
 
-.bottom i {
-    color: black;
-    float: left;
+// Form
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+    .input {
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #EE6726;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+
+        &:hover, .form button:active, .form button:focus {
+            background: #C95720;
+        }
+    }
+
+    .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+
+        a {
+            color: #DE6023;
+            text-decoration: none;
+        }
+    }
+
+    .register-form {
+        display: block;
+    }
+
+    .error {
+        margin: 15px 0 0;
+        font-size: 12px;
+        color: #DE6023;
+        text-decoration: none;
+    }
 }
 
-.bottom i:hover {
-    color: #EE6726;
+// Login form
+
+.login-page {
+    font-family: "Roboto", sans-serif;
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+
+    .form {
+        max-width: 360px;
+        margin: 0 auto 100px;
+        padding: 45px;
+    }
 }
-    // Content
-    // Footer
+
+// Account form
+
+.edit {
+
+    .form {
+        padding: 30px 45px;
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            cursor: default;
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 0 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .buttonLeft {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #EE6726;
+            width: 48%;
+            float: left;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .buttonRight {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #EE6726;
+            width: 48%;
+            float: right;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .linkButton {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+            color: #DE6023;
+            text-decoration: none;
+        }
+    }
+}
+
+// View form
+
+.view-page {
+    .form {
+        max-width: 100%;
+        margin: 30px;
+        padding: 20px 10px;
+    }
+}
+
+//Edit form
+
+//GridView
+
+.gv {
+    width: 100%;
+    border: 1px solid #b4b4b4;
+
+    th {
+        background-color: white;
+        border: 1px solid #b4b4b4;
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+    }
+
+    td {
+        border: 1px solid #b4b4b4;
+        border-bottom: none;
+        border-top: none;
+
+        lb {
+            padding: 0;
+        }
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    tr {
+        &:hover td {
+            background-color: rgba(238, 103, 38, 0.75);
+        }
+
+        &:nth-child(even) {
+            background-color: #eaeaea;
+        }
+
+        &:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    }
+}
+
+// Footer

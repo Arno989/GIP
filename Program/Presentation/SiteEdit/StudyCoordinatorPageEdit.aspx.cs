@@ -230,7 +230,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.SetStudyCoordinator(input[0], input[1], input[2], input[3], input[4], input[5], user.User_ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddStudyCoordinator(input[0], input[1], input[2], input[3], input[4], input[5], user.User_ID.ToString(), dateNow, dateNow); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;

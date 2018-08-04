@@ -333,7 +333,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.SetProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.User_ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.User_ID.ToString(), dateNow, dateNow); //--Var
 
                 lbName = "lbEdit" + i.ToString() + "0";
                 listboxData = container.FindControl(lbName) as ListBox;

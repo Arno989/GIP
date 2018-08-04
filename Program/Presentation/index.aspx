@@ -5,7 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login CliniresearchDB</title>
-    <link rel="stylesheet" href="~/LoginStyleSheet.css" runat="server"/>
+    <link rel="stylesheet/less" type="text/css" href="OneLessThingToWorryAbout.less" runat="server"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
     

@@ -191,7 +191,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.SetProjectManager(input[0], input[1], input[2], input[3], input[4], user.User_ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddProjectManager(input[0], input[1], input[2], input[3], input[4], user.User_ID.ToString(), dateNow, dateNow); //--Var
                 track1:
                 continue;
             }
