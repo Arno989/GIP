@@ -77,10 +77,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CliniresearchSite.Master" />
-    <Content Include="CliniresearchSiteEdit.Master" />
     <Content Include="OneLessThingToWorryAbout.less" />
-    <Content Include="Master Page 2.0.Master" />
+    <Content Include="MasterPage2.0.Master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
@@ -93,10 +91,8 @@
   <ItemGroup>
     <Content Include="jquery\jquery.sumoselect.min.js" />
     <Content Include="jquery\sumoselect.css" />
-    <Content Include="index.aspx" />
-    <Content Include="LoginStyleSheet.css" />
-    <Content Include="MasterStyleSheet.css" />
-    <Content Include="Register.aspx" />
+    <Content Include="Site\index.aspx" />
+    <Content Include="Site\Register.aspx" />
     <Content Include="SiteEdit\ClientPageEdit.aspx" />
     <Content Include="SiteEdit\ContractPageEdit.aspx" />
     <Content Include="SiteEdit\CRAPageEdit.aspx" />
@@ -108,56 +104,41 @@
     <Content Include="SiteEdit\ProjectPageEdit.aspx" />
     <Content Include="SiteEdit\StudyCoordinatorPageEdit.aspx" />
     <Content Include="Site\AdministratorPage.aspx" />
-    <Content Include="Site\ClientPage.aspx" />
-    <Content Include="Site\ContractPage.aspx" />
-    <Content Include="Site\CRAPage.aspx" />
-    <Content Include="Site\DepartmentPage.aspx" />
-    <Content Include="Site\DoctorPage.aspx" />
-    <Content Include="Site\EvaluationPage.aspx" />
+    <Content Include="Tables\ClientPage.aspx" />
+    <Content Include="Tables\ContractPage.aspx" />
+    <Content Include="Tables\CRAPage.aspx" />
+    <Content Include="Tables\DepartmentPage.aspx" />
+    <Content Include="Tables\DoctorPage.aspx" />
+    <Content Include="Tables\EvaluationPage.aspx" />
     <Content Include="Site\HomePage.aspx" />
-    <Content Include="Site\HospitalPage.aspx" />
+    <Content Include="Tables\HospitalPage.aspx" />
     <Content Include="Site\ProfilePage.aspx" />
-    <Content Include="Site\ProjectManagerPage.aspx" />
-    <Content Include="Site\ProjectPage.aspx" />
-    <Content Include="Site\StudyCoordinatorPage.aspx" />
-    <Content Include="Testpage.aspx" />
+    <Content Include="Tables\ProjectManagerPage.aspx" />
+    <Content Include="Tables\ProjectPage.aspx" />
+    <Content Include="Tables\StudyCoordinatorPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CliniresearchSite.Master.cs">
-      <DependentUpon>CliniresearchSite.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CliniresearchSite.Master.designer.cs">
-      <DependentUpon>CliniresearchSite.Master</DependentUpon>
-    </Compile>
-    <Compile Include="CliniresearchSiteEdit.Master.cs">
-      <DependentUpon>CliniresearchSiteEdit.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CliniresearchSiteEdit.Master.designer.cs">
-      <DependentUpon>CliniresearchSiteEdit.Master</DependentUpon>
-    </Compile>
-    <Compile Include="index.aspx.cs">
+    <Compile Include="Site\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
+    <Compile Include="Site\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Master Page 2.0.Master.cs">
-      <DependentUpon>Master Page 2.0.Master</DependentUpon>
+    <Compile Include="MasterPage2.0.Master.cs">
+      <DependentUpon>MasterPage2.0.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Master Page 2.0.Master.designer.cs">
-      <DependentUpon>Master Page 2.0.Master</DependentUpon>
+    <Compile Include="MasterPage2.0.Master.designer.cs">
+      <DependentUpon>MasterPage2.0.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.aspx.cs">
+    <Compile Include="Site\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register.aspx.designer.cs">
+    <Compile Include="Site\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteEdit\ClientPageEdit.aspx.cs">
@@ -237,46 +218,46 @@
     <Compile Include="Site\AdministratorPage.aspx.designer.cs">
       <DependentUpon>AdministratorPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\ClientPage.aspx.cs">
+    <Compile Include="Tables\ClientPage.aspx.cs">
       <DependentUpon>ClientPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\ClientPage.aspx.designer.cs">
+    <Compile Include="Tables\ClientPage.aspx.designer.cs">
       <DependentUpon>ClientPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\ContractPage.aspx.cs">
+    <Compile Include="Tables\ContractPage.aspx.cs">
       <DependentUpon>ContractPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\ContractPage.aspx.designer.cs">
+    <Compile Include="Tables\ContractPage.aspx.designer.cs">
       <DependentUpon>ContractPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\CRAPage.aspx.cs">
+    <Compile Include="Tables\CRAPage.aspx.cs">
       <DependentUpon>CRAPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\CRAPage.aspx.designer.cs">
+    <Compile Include="Tables\CRAPage.aspx.designer.cs">
       <DependentUpon>CRAPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\DepartmentPage.aspx.cs">
+    <Compile Include="Tables\DepartmentPage.aspx.cs">
       <DependentUpon>DepartmentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\DepartmentPage.aspx.designer.cs">
+    <Compile Include="Tables\DepartmentPage.aspx.designer.cs">
       <DependentUpon>DepartmentPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\DoctorPage.aspx.cs">
+    <Compile Include="Tables\DoctorPage.aspx.cs">
       <DependentUpon>DoctorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\DoctorPage.aspx.designer.cs">
+    <Compile Include="Tables\DoctorPage.aspx.designer.cs">
       <DependentUpon>DoctorPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\EvaluationPage.aspx.cs">
+    <Compile Include="Tables\EvaluationPage.aspx.cs">
       <DependentUpon>EvaluationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\EvaluationPage.aspx.designer.cs">
+    <Compile Include="Tables\EvaluationPage.aspx.designer.cs">
       <DependentUpon>EvaluationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site\HomePage.aspx.cs">
@@ -286,11 +267,11 @@
     <Compile Include="Site\HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\HospitalPage.aspx.cs">
+    <Compile Include="Tables\HospitalPage.aspx.cs">
       <DependentUpon>HospitalPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\HospitalPage.aspx.designer.cs">
+    <Compile Include="Tables\HospitalPage.aspx.designer.cs">
       <DependentUpon>HospitalPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site\ProfilePage.aspx.cs">
@@ -300,33 +281,26 @@
     <Compile Include="Site\ProfilePage.aspx.designer.cs">
       <DependentUpon>ProfilePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\ProjectManagerPage.aspx.cs">
+    <Compile Include="Tables\ProjectManagerPage.aspx.cs">
       <DependentUpon>ProjectManagerPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\ProjectManagerPage.aspx.designer.cs">
+    <Compile Include="Tables\ProjectManagerPage.aspx.designer.cs">
       <DependentUpon>ProjectManagerPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\ProjectPage.aspx.cs">
+    <Compile Include="Tables\ProjectPage.aspx.cs">
       <DependentUpon>ProjectPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\ProjectPage.aspx.designer.cs">
+    <Compile Include="Tables\ProjectPage.aspx.designer.cs">
       <DependentUpon>ProjectPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\StudyCoordinatorPage.aspx.cs">
+    <Compile Include="Tables\StudyCoordinatorPage.aspx.cs">
       <DependentUpon>StudyCoordinatorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\StudyCoordinatorPage.aspx.designer.cs">
+    <Compile Include="Tables\StudyCoordinatorPage.aspx.designer.cs">
       <DependentUpon>StudyCoordinatorPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Testpage.aspx.cs">
-      <DependentUpon>Testpage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Testpage.aspx.designer.cs">
-      <DependentUpon>Testpage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

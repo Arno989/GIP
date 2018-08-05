@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage2.0.Master.cs" Inherits="Presentation.MasterPage2__0" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link rel="stylesheet/less" type="text/css" href="/OneLessThingToWorryAbout.less" runat="server"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form runat="server">
+
+        <nav class="sidebar">
+			<div class="logo">
+				<a href="/Site/HomePage.aspx">
+					<img class="image" src="/Images/Logo100dpi.png" alt="logo" />
+				</a>
+			</div>
+
+			<div class="list">
+                <button class="collapsible" type="button">Main Tables</button>
+                <div class="content">
+                    <p><a href="/Tables/CraPage.aspx">CRA's</a></p>
+                    <p><a href="/Tables/ClientPage.aspx">Clients</a></p>
+                    <p><a href="/Tables/ContractPage.aspx">Client Contracts</a></p>
+                    <p><a href="/Tables/DepartmentPage.aspx">Departments</a></p>
+                    <p><a href="/Tables/DoctorPage.aspx">Doctors</a></p>
+                    <p><a href="/Tables/EvaluationPage.aspx">Evaluations</a></p>
+                    <p><a href="/Tables/HospitalPage.aspx">Hospitals</a></p>
+                    <p><a href="/Tables/ProjectManagerPage.aspx">Project Managers</a></p>
+                    <p><a href="/Tables/ProjectPage.aspx">Projects</a></p>
+                    <p><a href="/Tables/StudyCoordinatorPage.aspx">Study Coordinators</a></p>
+                </div>
+			</div>
+
+            <div class="bottom">
+                <asp:LinkButton id="btnProfile" runat="server" autopostback="true" ToolTip="Edit your profile" OnClick="BtnProfile_Click"><i class="material-icons">account_circle</i></asp:LinkButton>
+                <asp:LinkButton id="btnAdmin" runat="server" autopostback="true" ToolTip="Manage accounts" OnClick="BtnAdmin_Click"><i class="material-icons">settings</i></asp:LinkButton>
+                <asp:LinkButton id="btnLogout" runat="server" autopostback="true" ToolTip="Log out" OnClick="BtnLogout_Click"><i class="material-icons">exit_to_app</i></asp:LinkButton>
+            </div>
+		</nav>
+
+        <div style="padding-left:300px">
+            <asp:ContentPlaceHolder ID="Form" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+    <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+    </script>
+
+</body>
+</html>

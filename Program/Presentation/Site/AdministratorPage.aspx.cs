@@ -6,33 +6,22 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
 
-namespace Presentation.Site
+namespace Presentation
 {
-    public partial class AdministratorPage: System.Web.UI.Page
+    public partial class Testpage : System.Web.UI.Page
     {
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = " ORDER BY Username ASC";
 
 
-        protected void Page_Load(object sender,EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack || !IsPostBack)
-            {
-                UserCode LoginUser = (UserCode) Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
-                if (user.Type == "Admin" || user.Type == "Developer")
-                {
-
-                    if (!IsPostBack)
-                    {
-                        Load_content();
-                    }
-                }
-                else
-                {
-                    Response.Redirect("../index.aspx");
-                }
-            }
+            UserCode user = (UserCode)Session["authenticatedUser"];
+            if (user == null)
+                Response.Redirect("/Site/index.aspx");
+            if (user.Type == "Admin" || user.Type == "Developer")
+                if (!IsPostBack)
+                    Load_content();
         }
 
         private UserCode GetCurrentUser(int ID)
@@ -48,7 +37,7 @@ namespace Presentation.Site
             Gridview.DataBind();
         }
 
-        protected void Sort(object sender,GridViewSortEventArgs e)
+        protected void Sort(object sender, GridViewSortEventArgs e)
         {
             if (e.SortDirection.ToString() == "Ascending")
             {
@@ -57,36 +46,36 @@ namespace Presentation.Site
 
                 if (e.SortExpression == "Username")
                 {
-                    ViewState.Add("Sorting","Username");
+                    ViewState.Add("Sorting", "Username");
                 }
                 else if (e.SortExpression == "Email")
                 {
-                    ViewState.Add("Sorting","E-mail");
+                    ViewState.Add("Sorting", "E-mail");
                 }
                 else if (e.SortExpression == "Type")
                 {
-                    ViewState.Add("Sorting","Account type");
+                    ViewState.Add("Sorting", "Account type");
                 }
 
                 Load_content();
             }
         }
 
-        protected void Gridview_RowDataBound(object sender,GridViewRowEventArgs e)
+        protected void Gridview_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (IsPostBack)
             {
-                string imgAsc = @" <img src='..\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
-                string imgDes = @" <img src='..\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
+                string imgAsc = @" <img src='\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
+                string imgDes = @" <img src='\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
 
                 if (e.Row.RowType == DataControlRowType.Header)
                 {
                     foreach (TableCell cell in e.Row.Cells)
                     {
-                        LinkButton lnkbtn = (LinkButton) e.Row.Cells[1].Controls[0];
+                        LinkButton lnkbtn = (LinkButton)e.Row.Cells[1].Controls[0];
                         try
                         {
-                            lnkbtn = (LinkButton) cell.Controls[0];
+                            lnkbtn = (LinkButton)cell.Controls[0];
                         }
                         catch
                         {
@@ -133,7 +122,7 @@ namespace Presentation.Site
 
         protected void Gridview_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Response.Redirect("/Site/index.aspx");
         }
     }
 }

@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Presentation {
+namespace Presentation.Site {
     
     
-    public partial class Testpage {
+    public partial class CRAPage {
         
         /// <summary>
-        /// Gridview control.
+        /// GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gridview;
+        protected global::System.Web.UI.WebControls.GridView GridView;
     }
 }

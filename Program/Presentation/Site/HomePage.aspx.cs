@@ -123,12 +123,10 @@ namespace Presentation.Site
 
             if (TbSearch.Text.Trim() != "")
             {
-                buttonTable.Visible = false;
                 resultTable.Visible = true;
             }
             else
             {
-                buttonTable.Visible = true;
                 resultTable.Visible = false;
             }
 
