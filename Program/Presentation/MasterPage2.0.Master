@@ -19,11 +19,12 @@
         <nav class="sidebar">
 			<div class="logo">
 				<a href="/Site/HomePage.aspx">
-					<img class="image" src="/Images/Logo100dpi.png" alt="logo" />
+					<img class="image" src="/Images/Logo100dpi.png" alt="logo" title="Home"/>
 				</a>
 			</div>
 
 			<div class="list">
+                <p><a href="/Site/HomePage.aspx">Home</a></p>
                 <button class="collapsible" type="button">Main Tables</button>
                 <div class="content">
                     <p><a href="/Tables/CraPage.aspx">CRA's</a></p>
@@ -41,7 +42,7 @@
 
             <div class="bottom">
                 <asp:LinkButton id="btnProfile" runat="server" autopostback="true" ToolTip="Edit your profile" OnClick="BtnProfile_Click"><i class="material-icons">account_circle</i></asp:LinkButton>
-                <asp:LinkButton id="btnAdmin" runat="server" autopostback="true" ToolTip="Manage accounts" OnClick="BtnAdmin_Click"><i class="material-icons">settings</i></asp:LinkButton>
+                <asp:LinkButton id="btnAdmin" runat="server" autopostback="true" ToolTip="Manage accounts" OnClick="BtnAdmin_Click" Visible="false"><i class="material-icons">settings</i></asp:LinkButton>
                 <asp:LinkButton id="btnLogout" runat="server" autopostback="true" ToolTip="Log out" OnClick="BtnLogout_Click"><i class="material-icons">exit_to_app</i></asp:LinkButton>
             </div>
 		</nav>

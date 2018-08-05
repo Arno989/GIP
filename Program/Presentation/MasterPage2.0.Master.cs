@@ -17,6 +17,8 @@ namespace Presentation
             UserCode user = (UserCode)Session["authenticatedUser"];
             if (user == null)
                 Response.Redirect("/Site/index.aspx");
+            if (user.Type == "Admin")
+                btnAdmin.Visible = true;
         }
 
         private UserCode GetCurrentUser(int ID)
