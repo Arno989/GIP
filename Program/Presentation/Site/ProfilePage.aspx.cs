@@ -35,7 +35,7 @@ namespace Presentation.Site
             tbUsername.Text = user.Username.ToString();
             tbEmail.Text = user.Email.ToString();
 
-            tbAccountType.Text = "Account type: " + user.Type;
+            lbAccountType.Text = "Account type: " + user.Type;
         }
 
         protected void tb_TextChanged(object sender, EventArgs e)

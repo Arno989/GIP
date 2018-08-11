@@ -4,9 +4,17 @@
 
 <html>
 <head runat="server">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
     <link rel="stylesheet/less" type="text/css" href="/OneLessThingToWorryAbout.less" runat="server"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+
 
     <asp:ContentPlaceHolder ID="Head" runat="server">
 
@@ -37,6 +45,12 @@
                     <p><a href="/Tables/ProjectManagerPage.aspx">Project Managers</a></p>
                     <p><a href="/Tables/ProjectPage.aspx">Projects</a></p>
                     <p><a href="/Tables/StudyCoordinatorPage.aspx">Study Coordinators</a></p>
+                </div>
+                <button class="collapsible" type="button">Custom Tables</button>
+                <div class="content">
+                    <p><a href="#">Undefined</a></p>
+                    <p><a href="#">Null</a></p>
+                    <p><a href="#">Empty</a></p>
                 </div>
 			</div>
 

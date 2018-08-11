@@ -76,13 +76,13 @@ namespace Presentation.Site {
         protected global::System.Web.UI.WebControls.TextBox tbPasswordNew2;
         
         /// <summary>
-        /// tbAccountType control.
+        /// lbAccountType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAccountType;
+        protected global::System.Web.UI.WebControls.Label lbAccountType;
         
         /// <summary>
         /// btnSave control.

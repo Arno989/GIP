@@ -364,45 +364,164 @@ body {
     }
 }
 
-// Edit form
-
-/* The Modal (background) */
+// Modal
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
+
+    .modal-dialog {
+        width: 360px;
+        margin-top: 150px;
+
+        .modal-content {
+            background: none;
+            border: none;
+
+            .modal-header {
+                border: none;
+            }
+
+            .modal-body {
+                border: none;
+                padding: 0;
+                height: auto;
+
+                .login-page {
+                    padding-top:0;
+
+                    .edit {
+                        display: block;
+
+                        .form {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            .modal-footer {
+                border: none;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+/*
+// Kill the scroll on the body
+.modal-open {
+    overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-overflow-scrolling: touch;
+    // Prevent Chrome on Windows from adding a focus outline. For details, see
+    // https://github.com/twbs/bootstrap/pull/10951.
+    outline: 0;
 }
 
-/* Modal Content/Box */
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+
+// Actual modal
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    position: relative;
+    background-color: gray;
+    border: 1px solid gray; //old browsers fallback (ie8 etc)
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-clip: padding-box;
+    // Remove focus outline from opened modal
+    outline: 0;
+}
+
+// Modal background
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(117, 117, 117, 0.80);
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.modal-header {
+    padding: 50px;
+    border-bottom: 1px solid gray;
+    &:extend(.clearfix all);
+}
+// Close icon
+.modal-header .close {
+    margin-top: -2px;
+}
+
+// Title text within header
+.modal-title {
+    margin: 0;
+    line-height: 15px;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+    position: relative;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+// Footer (for actions)
+.modal-footer {
+    padding: 20px;
+    text-align: right; // right align buttons
+    border-top: 1px solid gray;
+
+    // Properly space out buttons
+    .btn + .btn {
+        margin-left: 5px;
+        margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    }
+    // but override that for button groups
+    .btn-group .btn + .btn {
+        margin-left: -1px;
+    }
+    // and override it for block buttons as well
+    .btn-block + .btn-block {
+        margin-left: 0;
+    }
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-} 
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+*/
 
 // GridView
 
@@ -430,6 +549,16 @@ body {
         border: 1px solid #b4b4b4;
         border-bottom: none;
         border-top: none;
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: @iconGrey;
+
+            &:hover{
+                color:@Orange;
+            }
+        }
     }
 
     .tdlb {
@@ -450,7 +579,7 @@ body {
             background-color: rgba(238, 103, 38, 0.75);
         }
 
-        &hover .tdlb .lb{
+        &hover .tdlb .lb {
             background-color: rgba(238, 103, 38, 0.75);
         }
 
