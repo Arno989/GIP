@@ -91,7 +91,7 @@
   <ItemGroup>
     <Content Include="jquery\jquery.sumoselect.min.js" />
     <Content Include="jquery\sumoselect.css" />
-    <Content Include="Site\index.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="Site\Register.aspx" />
     <Content Include="SiteEdit\ClientPageEdit.aspx" />
     <Content Include="SiteEdit\ContractPageEdit.aspx" />
@@ -119,11 +119,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Site\index.aspx.cs">
+    <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site\index.aspx.designer.cs">
+    <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage2.0.Master.cs">

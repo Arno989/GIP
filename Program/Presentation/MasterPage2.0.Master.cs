@@ -16,7 +16,7 @@ namespace Presentation
         {
             UserCode user = (UserCode)Session["authenticatedUser"];
             if (user == null)
-                Response.Redirect("/Site/index.aspx");
+                Response.Redirect("/index.aspx");
             if (user.Type == "Admin")
                 btnAdmin.Visible = true;
         }
@@ -31,7 +31,7 @@ namespace Presentation
             catch
             {
                 Session["authenticatedUser"] = null;
-                Response.Redirect("/Site/index.aspx");
+                Response.Redirect("/index.aspx");
             }
             return user;
         }
@@ -39,7 +39,7 @@ namespace Presentation
         protected void BtnLogout_Click(object sender, EventArgs e)
         {
             Session["authenticatedUser"] = null;
-            Response.Redirect("/Site/index.aspx");
+            Response.Redirect("/index.aspx");
         }
 
         protected void BtnProfile_Click(object sender, EventArgs e)

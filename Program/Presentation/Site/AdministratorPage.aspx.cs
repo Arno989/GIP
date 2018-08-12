@@ -32,11 +32,11 @@ namespace Presentation
         {
             UserCode user = (UserCode)Session["authenticatedUser"];
             if (user == null)
-                Response.Redirect("/Site/index.aspx");
+                Response.Redirect("/index.aspx");
             if (user.Type == "Admin")
                 Load_content();
             else
-                Response.Redirect("/Site/index.aspx");
+                Response.Redirect("/index.aspx");
         }
         
         protected void Load_content()

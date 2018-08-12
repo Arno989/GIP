@@ -37,7 +37,7 @@ namespace Presentation
                 try
                 {
                     _businesscode.AddUser(username,email,password, "Guest");
-                    Response.Redirect("/Site/index.aspx");
+                    Response.Redirect("/index.aspx");
                 }
                 catch
                 {

@@ -22,7 +22,7 @@ namespace Presentation.Site
         {
             UserCode user = (UserCode)Session["authenticatedUser"];
             if (user == null)
-                Response.Redirect("/Site/index.aspx");
+                Response.Redirect("/index.aspx");
 
             if (!IsPostBack)
                 Load_content();
