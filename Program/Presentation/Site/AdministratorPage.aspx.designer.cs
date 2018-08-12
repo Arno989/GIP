@@ -10,7 +10,7 @@
 namespace Presentation {
     
     
-    public partial class Testpage {
+    public partial class AdministratorPage {
         
         /// <summary>
         /// ScriptManager control.
@@ -22,13 +22,22 @@ namespace Presentation {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
-        /// UpdatePanel control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+        
+        /// <summary>
+        /// gvUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel gvUpdatePanel;
         
         /// <summary>
         /// Gridview control.
@@ -38,6 +47,15 @@ namespace Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView Gridview;
+        
+        /// <summary>
+        /// modUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel modUpdatePanel;
         
         /// <summary>
         /// tbUsername control.
@@ -94,22 +112,22 @@ namespace Presentation {
         protected global::System.Web.UI.WebControls.DropDownList ddAccountType;
         
         /// <summary>
-        /// Button1 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// Button2 control.
+        /// btnExit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnExit;
         
         /// <summary>
         /// lnkDelete control.
