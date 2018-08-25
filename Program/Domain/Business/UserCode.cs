@@ -10,12 +10,12 @@ namespace Domain.Business
     {
         // Alle private en public properties van de class Clënt
 
-        private int _user_id;
+        private int _id;
 
-        public int User_ID
+        public int ID
         {
-            get { return _user_id; }
-            set { _user_id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         private string _username;
@@ -49,21 +49,20 @@ namespace Domain.Business
             get { return _type; }
             set { _type = value; }
         }
+
         
-        // All constructors
+        public UserCode()
+        {
+
+        }
 
         public UserCode(int ID_p,string Userame_p,string Email_p,string Password_p, string Type_p)
         {
-            _user_id = ID_p;
+            _id = ID_p;
             _username = Userame_p;
             _email = Email_p;
             _password = Password_p;
             _type = Type_p;
-        }
-
-        public UserCode()
-        {
-
         }
     }
 }

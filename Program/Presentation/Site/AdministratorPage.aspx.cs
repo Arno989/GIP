@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
 
-namespace Presentation
+namespace Presentation.Site
 {
     public partial class AdministratorPage : System.Web.UI.Page
     {
@@ -52,7 +52,6 @@ namespace Presentation
                 if (r.RowType == DataControlRowType.DataRow)
                 {
                     r.Attributes["onmouseover"] = "this.style.cursor='pointer';";
-                    r.ToolTip = "Click to select row";
                     r.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.Gridview, "Select$" + r.RowIndex, true);
                 }
             }
@@ -62,6 +61,7 @@ namespace Presentation
 
 
         #region Sorting
+        /*
         protected void Sort(object sender, GridViewSortEventArgs e)
         {
             if (e.SortDirection.ToString() == "Ascending")
@@ -139,10 +139,29 @@ namespace Presentation
 
             return sortDirection;
         }
+        */
         #endregion
 
 
         #region Editing
+        protected void Gridview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<UserCode> selectedObject = _businesscode.GetUsers($"WHERE User_ID = {objectID}");
+
+            tbUsername.Text = selectedObject[0].Username;
+            tbEmail.Text = selectedObject[0].Email;
+            ddAccountType.SelectedValue = selectedObject[0].Type;
+
+            modUpdatePanel.Update();
+        }
+
+        protected void BtnEdit_Click(object sender, EventArgs e)
+        {
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('show');</script>", false);
+        }
+
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
             Gridview.SelectedIndex = -1;
@@ -155,53 +174,51 @@ namespace Presentation
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('show');</script>", false);
         }
-
-        protected void Gridview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int userID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
-            List<UserCode> selectedUser = _businesscode.GetUsers($"WHERE User_ID = {userID}");
-
-            tbUsername.Text = selectedUser[0].Username.ToString();
-            tbEmail.Text = selectedUser[0].Email.ToString();
-            ddAccountType.SelectedValue = selectedUser[0].Type;
-
-            modUpdatePanel.Update();
-        }
         
         protected void BtnSave_Click(object sender, EventArgs e)
         {
             modUpdatePanel.Update();
 
-            int userID = -1;
+            int objectID = -1;
             if (Gridview.SelectedDataKey != null)
-                userID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
-            List<UserCode> selectedUser = _businesscode.GetUsers($"WHERE User_ID = {userID}");
+                objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<UserCode> selectedObject = _businesscode.GetUsers($"WHERE User_ID = {objectID}");
 
-            if (userID == -1)
+            if (objectID == -1)
             {
                 try
                 {
-                    if (tbUsername.Text != string.Empty && tbPasswordNew.Text != string.Empty && ddAccountType.SelectedIndex != 0)
+                    if (tbUsername.Text != string.Empty && tbPasswordNew.Text != string.Empty && ddAccountType.SelectedIndex != 0 && tbEmail.Text != string.Empty)
                     {
-                        _businesscode.AddUser(tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew.Text), ddAccountType.SelectedValue);
+                        if (_businesscode.IsValidEmail(tbEmail.Text))
+                        {
 
-                        lbErrorUsername.Text = "User successfully created";
-                        lbErrorUsername.Visible = true;
-                        lbErrorUsername.ForeColor = System.Drawing.Color.Green;
-                        tbUsername.Attributes["margin"] = "0";
+                            UserCode subject = new UserCode(objectID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew.Text), ddAccountType.SelectedValue);
+                            _businesscode.AddUser(subject);
+
+                            lbErrorUsername.Text = "User successfully created";
+                            lbErrorUsername.Visible = true;
+                            lbErrorUsername.ForeColor = System.Drawing.Color.Green;
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('hide');</script>", false);
+                        }
+                        else
+                        {
+                            lbErrorEmail.Text = "Please fill in a valid email adress";
+                            lbErrorEmail.Visible = true;
+                        }
+                        
                     }
                     else
                     {
                         lbErrorPassword.Text = "Please enter a valid username, password and account type";
                         lbErrorPassword.Visible = true;
-                        tbPasswordNew.Attributes["margin"] = "0";
                     }
                 }
                 catch
                 {
                     lbErrorUsername.Text = "Username already exists, choose another name";
                     lbErrorUsername.Visible = true;
-                    tbUsername.Attributes["margin"] = "0";
                 }
                 Load_content();
                 gvUpdatePanel.Update();
@@ -212,44 +229,43 @@ namespace Presentation
                 {
                     try
                     {
-                        _businesscode.UpdateUser(selectedUser[0].User_ID, tbUsername.Text, tbEmail.Text, selectedUser[0].Password);
+
+                        UserCode subject = new UserCode(objectID, tbUsername.Text, tbEmail.Text, selectedObject[0].Password, ddAccountType.SelectedValue);
+                        _businesscode.UpdateUser(subject);
 
                         lbErrorUsername.Text = "User successfully updated";
                         lbErrorUsername.Visible = true;
                         lbErrorUsername.ForeColor = System.Drawing.Color.Green;
-                        tbUsername.Attributes["margin"] = "0";
                     }
                     catch
                     {
                         lbErrorUsername.Text = "Username already exists, choose another name";
                         lbErrorUsername.Visible = true;
-                        tbUsername.Attributes["margin"] = "0";
                     }
                 }
                 else
                 {
                     try
                     {
-                        _businesscode.UpdateUser(selectedUser[0].User_ID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew.Text));
+
+                        UserCode subject = new UserCode(objectID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew.Text), ddAccountType.SelectedValue);
+                        _businesscode.UpdateUser(subject);
 
                         lbErrorPassword.Text = "Password successfully updated";
                         lbErrorPassword.ForeColor = System.Drawing.Color.Green;
                         lbErrorPassword.Visible = true;
-                        tbPasswordNew.Attributes["margin"] = "0";
 
-                        if (selectedUser[0].Username != tbUsername.Text || selectedUser[0].Email != tbEmail.Text)
+                        if (selectedObject[0].Username != tbUsername.Text || selectedObject[0].Email != tbEmail.Text)
                         {
                             lbErrorUsername.Text = "User successfully updated";
                             lbErrorUsername.Visible = true;
                             lbErrorUsername.ForeColor = System.Drawing.Color.Green;
-                            tbUsername.Attributes["margin"] = "0";
                         }
                     }
                     catch
                     {
                         lbErrorUsername.Text = "Username already exists, choose another name";
                         lbErrorUsername.Visible = true;
-                        tbUsername.Attributes["margin"] = "0";
                     }
                 }
                 Load_content();
@@ -259,10 +275,10 @@ namespace Presentation
         
         protected void LnkDelete_Click(object sender, EventArgs e)
         {
-            int userID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
-            List<UserCode> selectedUser = _businesscode.GetUsers($"WHERE User_ID = {userID}");
+            int ObjectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<UserCode> selectedObject = _businesscode.GetUsers($"WHERE User_ID = {ObjectID}");
 
-            _businesscode.DeleteUser(selectedUser[0].User_ID);
+            _businesscode.DeleteUser(selectedObject[0].ID);
 
             Load_content();
             gvUpdatePanel.Update();
@@ -272,8 +288,8 @@ namespace Presentation
         {
             lbErrorUsername.Text = string.Empty;
             lbErrorPassword.Text = string.Empty;
-            tbUsername.Attributes["margin"] = "0 0 15px";
-            tbPasswordNew.Attributes["margin"] = "0 0 15px";
+            lbErrorEmail.Text = string.Empty;
+            modUpdatePanel.Update();
         }
         #endregion
     }

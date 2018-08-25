@@ -186,7 +186,7 @@ namespace Presentation.SiteEdit
                 int indexClient = dropdownDataClient.SelectedIndex;
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
@@ -197,7 +197,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.AddContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.User_ID.ToString(), dateNow, dateNow);
+                    _business.AddContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID.ToString(), dateNow, dateNow);
                 }
                 track1:
 				continue;
@@ -279,7 +279,7 @@ namespace Presentation.SiteEdit
                 CurrentContract = _business.GetContracts(sortingPar);
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
@@ -299,7 +299,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue), user.User_ID.ToString(), dateNow);
+                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue), user.ID.ToString(), dateNow);
                 }
                 track1:
                 continue;

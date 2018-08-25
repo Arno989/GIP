@@ -286,7 +286,7 @@ namespace Presentation.Site
                 }
             }
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.User_ID);
+            UserCode user = GetCurrentUser(LoginUser.ID);
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {

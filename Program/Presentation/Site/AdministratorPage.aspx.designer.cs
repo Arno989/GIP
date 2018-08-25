@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Presentation {
+namespace Presentation.Site {
     
     
     public partial class AdministratorPage {
@@ -83,6 +83,15 @@ namespace Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        
+        /// <summary>
+        /// lbErrorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbErrorEmail;
         
         /// <summary>
         /// tbPasswordNew control.

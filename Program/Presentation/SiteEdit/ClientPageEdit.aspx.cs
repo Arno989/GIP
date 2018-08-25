@@ -150,9 +150,9 @@ namespace Presentation.SiteEdit
 				}
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
                 
-                ClientCode client = new ClientCode(0, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], user.User_ID, DateTime.Now, DateTime.Now);
+                ClientCode client = new ClientCode(0, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], user.ID, DateTime.Now, DateTime.Now);
                 _businesscode.AddClient(client);
                 track1:
                 continue;
@@ -212,9 +212,9 @@ namespace Presentation.SiteEdit
                 }
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
-                ClientCode client = new ClientCode(0, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], user.User_ID, DateTime.Now, DateTime.Now);
+                ClientCode client = new ClientCode(0, input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], user.ID, DateTime.Now, DateTime.Now);
                 _businesscode.UpdateClient(client);
                 track1:
                 continue;

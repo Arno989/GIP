@@ -169,12 +169,12 @@ namespace Presentation.SiteEdit
                 int index = dropdownData.SelectedIndex;
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.AddDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]), user.User_ID.ToString(), dateNow, dateNow);
+                _business.AddDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]), user.ID.ToString(), dateNow, dateNow);
                 track1:
                 continue;
             }
@@ -255,12 +255,12 @@ namespace Presentation.SiteEdit
                 var dd = container.FindControl(ddName) as DropDownList;
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue), user.User_ID.ToString(), dateNow);
+                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue), user.ID.ToString(), dateNow);
                 track1:
                 continue;
             }

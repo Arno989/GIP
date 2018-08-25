@@ -31,13 +31,30 @@ namespace Presentation
             string email = tbEmail.Text;
             
             List<UserCode> userList = _businesscode.GetUsers(string.Format("WHERE Username = '{0}'",username));
+            UserCode subject = new UserCode(0, tbUsername.Text, tbEmail.Text, HashCode.Hash(password), "Guest");
 
             if (userList.Count == 0)
             {
                 try
                 {
-                    _businesscode.AddUser(username,email,password, "Guest");
-                    Response.Redirect("/index.aspx");
+                    if (username != string.Empty && password != string.Empty && email != string.Empty)
+                    {
+                        if (_businesscode.IsValidEmail(email))
+                        {
+                            _businesscode.AddUser(subject);
+                            Response.Redirect("/index.aspx");
+                        }
+                        else
+                        {
+                            lbError.Text = "Please fill in a valid email adress";
+                            lbError.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lbError.Text = "Please fill in all fields";
+                        lbError.Visible = true;
+                    }
                 }
                 catch
                 {

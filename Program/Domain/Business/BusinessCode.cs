@@ -225,9 +225,9 @@ namespace Domain.Business
         {
             _persistence.AddStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2, user_id_p2, date_added2, date_last_edited2);
         }
-        public void AddUser(string username_p2,string email_p2,string password_p2, string type_p2)
+        public void AddUser(UserCode user)
         {
-            _persistence.AddUser(username_p2,email_p2,password_p2, type_p2);
+            _persistence.AddUser(user);
         }
         #endregion
 
@@ -306,9 +306,9 @@ namespace Domain.Business
         {
             _persistence.UpdateStudyCoordinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2, user_id_p2, date_last_edited_p2);
         }
-        public void UpdateUser(int id_p2, string username_p2, string email_p2, string passwordstring_p2)
+        public void UpdateUser(UserCode user)
         {
-            _persistence.UpdateUser(id_p2, username_p2, email_p2, passwordstring_p2);
+            _persistence.UpdateUser(user);
         }
         #endregion
 
@@ -564,60 +564,6 @@ namespace Domain.Business
         //       "<script language='javascript'>alert('" + Message + "');</script>"
         //    );
         //}
-        #endregion
-        
-        
-        #region Hash
-            /*
-        public string HashPassword(string password)
-        {
-            //STEP 1 Create the salt value with a cryptographic PRNG:
-
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-
-            //STEP 2 Create the Rfc2898DeriveBytes and get the hash value:
-
-            var pbkdf2 = new Rfc2898DeriveBytes(password,salt,10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-
-            //STEP 3 Combine the salt and password bytes for later use:
-
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt,0,hashBytes,0,16);
-            Array.Copy(hash,0,hashBytes,16,20);
-
-            //STEP 4 Turn the combined salt+hash into a string for storage
-
-            return Convert.ToBase64String(hashBytes);
-        }
-
-        //STEP 5 Verify the user-entered password against a stored password
-
-        public bool UnHashPassword(string password)
-        {
-            //Extract the bytes 
-            byte[] hashBytes = Convert.FromBase64String(password);
-            // Get the salt 
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes,0,salt,0,16);
-            // Compute the hash on the password the user entered
-            var pbkdf2 = new Rfc2898DeriveBytes(password,salt,1000);
-            byte[] hash = pbkdf2.GetBytes(20);
-            //Compare the results 
-            for (int i = 0; i < 20; i++)
-            {
-                if (hashBytes[i + 16] != hash[i])
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        */
         #endregion
         
     }

@@ -1082,7 +1082,7 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-        public void AddUser(string username_p,string email_p,string password_p, string type_p)
+        public void AddUser(UserCode user)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1090,10 +1090,10 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Username, Email, Password, Type) VALUES (@username, @email, @password, @type);",conn);
 
-            cmd.Parameters.Add("@username",MySqlDbType.VarChar).Value = username_p;
-            cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@password",MySqlDbType.VarChar).Value = password_p;
-            cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = type_p;
+            cmd.Parameters.Add("@username",MySqlDbType.VarChar).Value = user.Username;
+            cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = user.Email;
+            cmd.Parameters.Add("@password",MySqlDbType.VarChar).Value = user.Password;
+            cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = user.Type;
             cmd.ExecuteNonQuery();
 
             conn.Close();
@@ -1202,7 +1202,7 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Client SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Contact_Person = @contact_person, Invoice_Info = @invoice_info, Kind_of_Client = @kind_of_client, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Client_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = client.Client_ID;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = client.ID;
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = client.Name;
             cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = client.Adress;
             cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = client.Postal_Code;
@@ -1453,18 +1453,19 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateUser(int id_p, string username_p, string email_p, string passwordstring_p)
+        public void UpdateUser(UserCode user)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE user SET Username = @name, Email = @email, Password = @passwordstring WHERE User_ID = @id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE user SET Username = @name, Email = @email, Password = @password, Type = @type WHERE User_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = username_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@passwordstring", MySqlDbType.VarChar).Value = passwordstring_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = user.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = user.Username;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = user.Email;
+            cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = user.Password;
+            cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = user.Type;
             cmd.ExecuteNonQuery();
 
             conn.Close();

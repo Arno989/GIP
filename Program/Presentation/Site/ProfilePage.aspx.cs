@@ -30,8 +30,7 @@ namespace Presentation.Site
         private void InitPage()
         {
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.User_ID);
-
+            UserCode user = GetCurrentUser(LoginUser.ID);
             tbUsername.Text = user.Username.ToString();
             tbEmail.Text = user.Email.ToString();
 
@@ -47,15 +46,16 @@ namespace Presentation.Site
         protected void btnSave_Click(object sender, EventArgs e)
         {
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.User_ID);
+            UserCode user = GetCurrentUser(LoginUser.ID);
 
-            if(tbPasswordOld.Text == string.Empty)
+            if (tbPasswordOld.Text == string.Empty)
             {
                 try
                 {
-                    _business.UpdateUser(user.User_ID, tbUsername.Text, tbEmail.Text, user.Password);
+                    UserCode subject = new UserCode(user.ID, tbUsername.Text, tbEmail.Text, user.Password, user.Type);
+                    _business.UpdateUser(subject);
 
-                    Session["authenticatedUser"] = GetCurrentUser(LoginUser.User_ID);
+                    Session["authenticatedUser"] = GetCurrentUser(LoginUser.ID);
 
                     lbErrorUsername.Text = "User successfully updated";
                     lbErrorUsername.Visible = true;
@@ -80,7 +80,8 @@ namespace Presentation.Site
                     {
                         try
                         {
-                            _business.UpdateUser(user.User_ID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew2.Text));
+                            UserCode subject = new UserCode(user.ID, tbUsername.Text, tbEmail.Text, HashCode.Hash(tbPasswordNew2.Text), user.Type);
+                            _business.UpdateUser(subject);
                         }
                         catch
                         {
@@ -88,7 +89,7 @@ namespace Presentation.Site
                             lbErrorUsername.Visible = true;
                         }
 
-                        Session["authenticatedUser"] = GetCurrentUser(LoginUser.User_ID);
+                        Session["authenticatedUser"] = GetCurrentUser(LoginUser.ID);
 
                         lbErrorPassword.Text = "Password successfully updated";
                         lbErrorPassword.ForeColor = System.Drawing.Color.Green;
@@ -111,8 +112,10 @@ namespace Presentation.Site
                 }
                 else if (tbPasswordNew1.Text == string.Empty && tbPasswordNew2.Text == string.Empty)
                 {
-                    _business.UpdateUser(user.User_ID, tbUsername.Text, tbEmail.Text, user.Password);
-                    Session["authenticatedUser"] = GetCurrentUser(LoginUser.User_ID);
+                    UserCode subject = new UserCode(user.ID, tbUsername.Text, tbEmail.Text, user.Password, user.Type);
+                    _business.UpdateUser(subject);
+
+                    Session["authenticatedUser"] = GetCurrentUser(LoginUser.ID);
 
                     if (LoginUser.Username != tbUsername.Text || LoginUser.Email != tbEmail.Text)
                     {
@@ -137,9 +140,9 @@ namespace Presentation.Site
         protected void lnkDelete_Click(object sender, EventArgs e)
         {
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.User_ID);
+            UserCode user = GetCurrentUser(LoginUser.ID);
 
-            _business.DeleteUser(user.User_ID);
+            _business.DeleteUser(user.ID);
 
             Response.Redirect("../Index.aspx");
         }

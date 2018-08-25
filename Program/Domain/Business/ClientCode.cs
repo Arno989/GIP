@@ -11,12 +11,12 @@ namespace Domain.Business
 
         // Alle private en public properties van de class Clënt
 
-        private int _client_id;
+        private int _id;
 
-        public int Client_ID
+        public int ID
         {
-            get { return _client_id; }
-            set { _client_id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         private string _name;
@@ -106,11 +106,17 @@ namespace Domain.Business
             get { return _date_last_edited; }
             set { _date_last_edited = value; }
         }
-        
+
+
+        public ClientCode()
+        {
+
+        }
+
         public ClientCode(int ID_p, string Name_p, string Adress_p, string Postal_code_p, string City_p, string Country_p, string Contact_person_p, string Invoice_info_p, string Kind_of_client_p, 
             int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
         {
-            _client_id = ID_p;
+            _id = ID_p;
             _name = Name_p;
             _adress = Adress_p;
             _postal_code = Postal_code_p;

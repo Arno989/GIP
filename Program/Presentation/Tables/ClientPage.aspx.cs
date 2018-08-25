@@ -4,13 +4,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Business;
 
-namespace Presentation.Site
+namespace Presentation
 {
-    public partial class ClientSite : System.Web.UI.Page
+    public partial class ClientPage : System.Web.UI.Page
     {
         BusinessCode _businesscode = new BusinessCode();
         string sortingPar = "ORDER BY Name ASC";
 
+
+        #region Initialise
         private UserCode GetCurrentUser(int ID)
         {
             UserCode user = new UserCode();
@@ -20,71 +22,43 @@ namespace Presentation.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                InitPage();
+            }
+        }
+
+        private void InitPage()
+        {
             UserCode user = (UserCode)Session["authenticatedUser"];
             if (user == null)
                 Response.Redirect("/index.aspx");
-
-            if (!IsPostBack)
+            else
                 Load_content();
         }
-        
+
         protected void Load_content()
         {
-            GridView.DataSource = _businesscode.GetClients(sortingPar);
-            GridView.DataBind();
+            Gridview.DataSource = _businesscode.GetClients(sortingPar);
+            Gridview.DataBind();
         }
 
-
-        protected void Add(object sender, EventArgs e)
+        protected override void Render(HtmlTextWriter writer)
         {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
-        }
-
-        protected void Edit(object sender, EventArgs e)
-        {
-            List<string> Data = new List<string>();
-            List<List<string>> ListData = new List<List<string>>();
-            List<int> DataIDs = new List<int>();
-
-            for (int i = 1; i < GridView.Rows.Count; i++)
+            foreach (GridViewRow r in Gridview.Rows)
             {
-                CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                if (chk.Checked)
+                if (r.RowType == DataControlRowType.DataRow)
                 {
-                    DataIDs.Add((int)GridView.DataKeys[i].Value);
+                    r.Attributes["onmouseover"] = "this.style.cursor='pointer';";
+                    r.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.Gridview, "Select$" + r.RowIndex, true);
                 }
             }
-
-            if (DataIDs.Count <= 0)
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
-            else if (DataIDs.Count > 10)
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
-            else
-            {
-                Session["DataID"] = DataIDs;
-                Response.Redirect("../SiteEdit/ClientPageEdit.aspx");
-            }
+            base.Render(writer);
         }
-        
-        protected void Delete(object sender, EventArgs e)
-        {
-                for (int i = 0; i < GridView.Rows.Count; i++)
-                {
-                    if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
-                    {
-                        CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                        if (chk.Checked)
-                        {
-                            int id = (int)GridView.DataKeys[i].Value;
-                            _businesscode.DeleteContract(-1, string.Format("OR Client_ID = {0}", id));
-                            _businesscode.DeleteClient(Convert.ToInt32(id));
-                        }
-                    }
-                }
-            Response.Redirect("../Site/ClientPage.aspx");
-        }
+        #endregion
 
+
+        #region Sorting
         protected void Sort(object sender, GridViewSortEventArgs e)
         {
             if (e.SortDirection.ToString() == "Ascending")
@@ -124,7 +98,7 @@ namespace Presentation.Site
                 {
                     ViewState.Add("Sorting", "Kind of Client");
                 }
-                
+
                 Load_content();
             }
         }
@@ -163,19 +137,19 @@ namespace Presentation.Site
                 }
             }
             UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.User_ID);
+            UserCode user = GetCurrentUser(LoginUser.ID);
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 List<ClientCode> clients = new List<ClientCode>();
-                clients = _businesscode.GetClients("where Client_ID = " + GridView.DataKeys[e.Row.RowIndex].Value);
+                clients = _businesscode.GetClients("where Client_ID = " + Gridview.DataKeys[e.Row.RowIndex].Value);
 
-                for (int i = 1; i < GridView.Columns.Count; i++)
+                for (int i = 1; i < Gridview.Columns.Count; i++)
                 {
                     if (user.Type == "Admin")
                     {
                         UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {clients[0].User_ID};")[0];
-                        e.Row.ToolTip = "First added on " +  clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + clients[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
+                        e.Row.ToolTip = "First added on " + clients[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + clients[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
                     }
                     else
                     {
@@ -202,11 +176,129 @@ namespace Presentation.Site
                     }
                 }
             }
-
             ViewState["SortDirection"] = sortDirection;
             ViewState["SortExpression"] = column;
 
             return sortDirection;
         }
+        #endregion
+
+
+        #region Editing
+        protected void BtnAdd_Click(object sender, EventArgs e)
+        {
+            Gridview.SelectedIndex = -1;
+
+            tbName.Text = string.Empty;
+            tbAdress.Text = string.Empty;
+            tbPostalCode.Text = string.Empty;
+            tbCity.Text = string.Empty;
+            tbCountry.Text = string.Empty;
+            tbContactPerson.Text = string.Empty;
+            tbInvoiceInfo.Text = string.Empty;
+            tbKindOfClient.Text = string.Empty;
+
+            modUpdatePanel.Update();
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('show');</script>", false);
+        }
+
+        protected void Gridview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<ClientCode> selectedObject = _businesscode.GetClients($"WHERE Client_ID = {objectID}");
+
+            tbName.Text = selectedObject[0].Name;
+            tbAdress.Text = selectedObject[0].Adress;
+            tbPostalCode.Text = selectedObject[0].Postal_Code;
+            tbCity.Text = selectedObject[0].City;
+            tbCountry.Text = selectedObject[0].Country;
+            tbContactPerson.Text = selectedObject[0].Contact_Person;
+            tbInvoiceInfo.Text = selectedObject[0].Invoice_Info;
+            tbKindOfClient.Text = selectedObject[0].Kind_of_Client;
+
+            modUpdatePanel.Update();
+        }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            modUpdatePanel.Update();
+
+            int objectID = -1;
+            if (Gridview.SelectedDataKey != null)
+                objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<ClientCode> selectedObject = _businesscode.GetClients($"WHERE Client_ID = {objectID}");
+
+            if (objectID == -1)
+            {
+                if (tbName.Text != string.Empty)
+                {
+                    UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                    UserCode user = GetCurrentUser(LoginUser.ID);
+
+                    ClientCode newObject = new ClientCode(0, tbName.Text, tbAdress.Text, tbPostalCode.Text, tbCity.Text, tbCountry.Text, tbContactPerson.Text, tbInvoiceInfo.Text, tbKindOfClient.Text, user.ID, DateTime.Now, DateTime.Now);
+                    _businesscode.AddClient(newObject);
+
+                    lbError.Text = "User successfully created";
+                    lbError.Visible = true;
+                    lbError.ForeColor = System.Drawing.Color.Green;
+
+                    Load_content();
+                    gvUpdatePanel.Update();
+                }
+                else
+                {
+                    lbError.Text = "Please fill in all required fields";
+                    lbError.Visible = true;
+                }
+            }
+            else
+            {
+                if (tbName.Text != string.Empty)
+                {
+                    UserCode LoginUser = (UserCode)Session["authenticatedUser"];
+                    UserCode user = GetCurrentUser(LoginUser.ID);
+
+                    ClientCode Object = new ClientCode(0, tbName.Text, tbAdress.Text, tbPostalCode.Text, tbCity.Text, tbCountry.Text, tbContactPerson.Text, tbInvoiceInfo.Text, tbKindOfClient.Text, user.ID, DateTime.Now, DateTime.Now);
+                    _businesscode.UpdateClient(Object);
+
+                    lbError.Text = "User successfully updated";
+                    lbError.Visible = true;
+                    lbError.ForeColor = System.Drawing.Color.Green;
+
+                    Load_content();
+                    gvUpdatePanel.Update();
+                }
+                else
+                {
+                    lbError.Text = "Please fill in all required fields";
+                    lbError.Visible = true;
+                }
+            }
+        }
+
+        protected void LnkDelete_Click(object sender, EventArgs e)
+        {
+            int ObjectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<ClientCode> selectedObject = _businesscode.GetClients($"WHERE Client_ID = {ObjectID}");
+
+            _businesscode.DeleteClient(selectedObject[0].ID);
+
+            Load_content();
+            gvUpdatePanel.Update();
+        }
+
+        protected void Tb_TextChanged(object sender, EventArgs e)
+        {
+            tbName.Text = string.Empty;
+            tbAdress.Text = string.Empty;
+            tbPostalCode.Text = string.Empty;
+            tbCity.Text = string.Empty;
+            tbCountry.Text = string.Empty;
+            tbContactPerson.Text = string.Empty;
+            tbInvoiceInfo.Text = string.Empty;
+            tbKindOfClient.Text = string.Empty;
+        }
+        #endregion
     }
 }

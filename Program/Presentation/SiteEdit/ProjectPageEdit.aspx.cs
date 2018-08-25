@@ -328,12 +328,12 @@ namespace Presentation.SiteEdit
                 }
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.AddProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.User_ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID.ToString(), dateNow, dateNow); //--Var
 
                 lbName = "lbEdit" + i.ToString() + "0";
                 listboxData = container.FindControl(lbName) as ListBox;
@@ -455,12 +455,12 @@ namespace Presentation.SiteEdit
                 }
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateProject(ListDataIDs[i], input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.User_ID.ToString(), dateNow); //--Var
+                _business.UpdateProject(ListDataIDs[i], input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID.ToString(), dateNow); //--Var
 
                 lbName = "lbEdit" + i.ToString() + "0";
                 listboxData = container.FindControl(lbName) as ListBox;

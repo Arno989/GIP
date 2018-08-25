@@ -186,12 +186,12 @@ namespace Presentation.SiteEdit
                 }
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.AddHospital(input[0], input[1], input[2], input[3], input[4], input[5], user.User_ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddHospital(input[0], input[1], input[2], input[3], input[4], input[5], user.ID.ToString(), dateNow, dateNow); //--Var
                 track1:
                 continue;
             }
@@ -292,12 +292,12 @@ namespace Presentation.SiteEdit
                 }
 
                 UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-                UserCode user = GetCurrentUser(LoginUser.User_ID);
+                UserCode user = GetCurrentUser(LoginUser.ID);
 
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateHospital(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], user.User_ID.ToString(), dateNow); //--Var
+                _business.UpdateHospital(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], user.ID.ToString(), dateNow); //--Var
                 track1:
                 continue;
             }
