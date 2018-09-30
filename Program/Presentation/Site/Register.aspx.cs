@@ -42,7 +42,9 @@ namespace Presentation
                         if (_businesscode.IsValidEmail(email))
                         {
                             _businesscode.AddUser(subject);
-                            Response.Redirect("/index.aspx");
+
+                            Session["authenticatedUser"] = subject;
+                            Response.Redirect("/Site/HomePage.aspx");
                         }
                         else
                         {

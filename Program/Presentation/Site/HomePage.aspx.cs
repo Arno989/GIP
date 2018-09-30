@@ -77,12 +77,7 @@ namespace Presentation.Site
         }
         #endregion
         
-        protected void TbSearch_TextChanged(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-        protected void DdTable_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
         }

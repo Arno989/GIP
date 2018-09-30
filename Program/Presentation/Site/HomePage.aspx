@@ -7,20 +7,23 @@
 <asp:Content ID="Form" ContentPlaceHolderID="Form" runat="server">
     <div class="home-page">
     <div class="form">
-        <asp:TextBox id="TbSearch" runat="server" OnClick="Edit" Tooltip="Edit selected row(s)" OnTextChanged="TbSearch_TextChanged" placeholder="Search..." AutoPostBack="true" BackColor="White" CssClass="sortTextbox"></asp:TextBox>
-        <asp:DropDownList id="ddTable" runat="server" OnClick="Add" ToolTip="Add one or more client(s)" OnSelectedIndexChanged="DdTable_SelectedIndexChanged" AutoPostBack="true" BackColor="White">
-            <asp:ListItem Selected="True">All</asp:ListItem> 
-            <asp:ListItem>CRA</asp:ListItem> 
-            <asp:ListItem>Client</asp:ListItem> 
-            <asp:ListItem>Client Contract</asp:ListItem> 
-            <asp:ListItem>Department</asp:ListItem> 
-            <asp:ListItem>Doctor</asp:ListItem> 
-            <asp:ListItem>Evaluation</asp:ListItem> 
-            <asp:ListItem>Hospital</asp:ListItem> 
-            <asp:ListItem>Project Manager</asp:ListItem> 
-            <asp:ListItem>Project</asp:ListItem> 
-            <asp:ListItem>Study Coordinator</asp:ListItem> 
-        </asp:DropDownList>
+        <div class="searchbar">
+            <asp:TextBox id="TbSearch" runat="server" OnClick="Edit" placeholder="Search..." CssClass="Htextbox"></asp:TextBox>
+            <asp:Button id="btnSearch" runat="server" OnClick="btnSearch_Click" ToolTip="Search tha database" Text="Search" CssClass="Hbutton"/>
+            <asp:DropDownList id="ddTable" runat="server" OnClick="Add" CssClass="Hdropdown">
+                <asp:ListItem Selected="True">All</asp:ListItem> 
+                <asp:ListItem>CRA</asp:ListItem> 
+                <asp:ListItem>Client</asp:ListItem> 
+                <asp:ListItem>Client Contract</asp:ListItem> 
+                <asp:ListItem>Department</asp:ListItem> 
+                <asp:ListItem>Doctor</asp:ListItem> 
+                <asp:ListItem>Evaluation</asp:ListItem> 
+                <asp:ListItem>Hospital</asp:ListItem> 
+                <asp:ListItem>Project Manager</asp:ListItem> 
+                <asp:ListItem>Project</asp:ListItem> 
+                <asp:ListItem>Study Coordinator</asp:ListItem> 
+            </asp:DropDownList>
+        </div>
 
         <hr />
 
@@ -52,7 +55,7 @@
         </asp:TableRow>
         <asp:TableRow ID="rowClientGrid" CssClass="gvRow">
             <asp:TableCell>
-                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false" DataKeyNames="Client_ID" CssClass="gv">
+                <asp:GridView runat="server" ID="gvClient" AutoGenerateColumns="false" DataKeyNames="ID" CssClass="gv">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name"/>
                         <asp:BoundField DataField="Adress" HeaderText="Adress"/>

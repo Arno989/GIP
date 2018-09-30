@@ -11,7 +11,6 @@ namespace Presentation.SiteEdit
 	public partial class HospitalPageEdit: System.Web.UI.Page
 	{
 		private BusinessCode _business = new BusinessCode();
-        string sortingPar = "";
 
         private List<List<string>> GetSessionData()
         {
