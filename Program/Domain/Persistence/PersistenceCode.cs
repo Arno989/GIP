@@ -843,7 +843,7 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@contact_person",MySqlDbType.VarChar).Value = client.Contact_Person;
 			cmd.Parameters.Add("@invoice_info",MySqlDbType.VarChar).Value = client.Invoice_Info;
 			cmd.Parameters.Add("@kind_of_client",MySqlDbType.VarChar).Value = client.Kind_of_Client;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.User_ID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.UserID;
             cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = client.Date_Added;
             cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited;
             cmd.ExecuteNonQuery();
@@ -851,7 +851,7 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-		public void AddContract(string legalcountry_p,double fee_p,DateTime startdate_p,DateTime enddate_p, int client_id_p, int project_id_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddContract(ContractCode contract)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -859,21 +859,21 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Contract (Legal_Country, Fee, Start_Date, End_Date, Client_ID, Project_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@legal_country, @fee, @start_date, @end_date, @client_id, @project_id, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = legalcountry_p;
-			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = fee_p;
-			cmd.Parameters.Add("@start_date",MySqlDbType.DateTime).Value = startdate_p.Date;
-			cmd.Parameters.Add("@end_date",MySqlDbType.DateTime).Value = enddate_p.Date;
-            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
-            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@legal_country",MySqlDbType.VarChar).Value = contract.Legal_Country;
+			cmd.Parameters.Add("@fee",MySqlDbType.Double).Value = contract.Fee;
+			cmd.Parameters.Add("@start_date",MySqlDbType.DateTime).Value = contract.Start_Date;
+			cmd.Parameters.Add("@end_date",MySqlDbType.DateTime).Value = contract.End_Date;
+            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = contract.ClientID;
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = contract.ProjectID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = contract.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = contract.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = contract.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddCRA(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddCRA(CRACode cra)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -881,20 +881,20 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO CRA (Name, CV, Email, Phone1, Phone2, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = cra.Name;
+			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cra.CV;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = cra.Email;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = cra.Phone1;
+			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = cra.Phone2;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = cra.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = cra.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = cra.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddDepartment(string name_p,string email_p,string phone1_p, int hospital_id_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddDepartment(DepartmentCode department)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -902,19 +902,19 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Department (Name, Email, Phone1, Hospital_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @email, @phone1, @hospital_id, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = hospital_id_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = department.Name;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = department.Email;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = department.Phone;
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = department.HospitalID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = department.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = department.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = department.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddDoctor(string name_p,string email_p,string phone1_p,string phone2_p,string adress_p,string postalcode_p,string city_p,string country_p,string specialisation_p,string cv_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddDoctor(DoctorCode doctor)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -922,75 +922,75 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Doctor (Name, Email, Phone1, Phone2, Adress, Postal_Code, City, Country, Specialisation, CV, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @email, @phone1, @phone2, @adress, @postal_code, @city, @country, @specialisation, @cv, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
-			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = postalcode_p;
-			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = city_p;
-			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
-			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = specialisation_p;
-			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = doctor.Name;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = doctor.Email;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = doctor.Phone1;
+			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = doctor.Phone2;
+			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = doctor.Adress;
+			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = doctor.Postal_Code;
+			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = doctor.City;
+			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = doctor.Country;
+			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = doctor.Specialisation;
+			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = doctor.CV;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = doctor.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = doctor.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = doctor.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddEvaluation(DateTime date_p,string feedback_p,string accuracy_p,string quality_p,string evaluationtxt_p,string label_p, int cra_p, int doctor_p, int sc_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddEvaluation(EvaluationCode evaluation)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
 			conn.Open();
 
-            if (cra_p != -1)
+            if (evaluation.CraID != -1)
             {
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, CRA_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @cra, @user_id, @date_added, @date_last_edited);", conn);
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = cra_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = evaluation.CraID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
-            else if (doctor_p != -1)
+            else if (evaluation.DoctorID != -1)
             {
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, Doctor_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @doctor, @user_id, @date_added, @date_last_edited);", conn);
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = doctor_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = evaluation.DoctorID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
-            else if (sc_p != -1)
+            else if (evaluation.StudyCoordinatorID != -1)
             {
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO Evaluation (Date, Feedback, Accuracy, Quality, Evaluation_Text, Label, StudyCoordinator_ID, User_ID, Date_Added, Date_Last_Edited) VALUES (@date, @feedback, @accuracy, @quality, @evaluation_txt, @label, @sc, @user_id, @date_added, @date_last_edited);", conn);
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = sc_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = evaluation.StudyCoordinatorID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
@@ -998,7 +998,7 @@ namespace Domain.Persistence
 			conn.Close();
 		}
 
-		public void AddHospital(string name_p,string adress_p,string postalcode_p,string city_p,string country_p,string centralnumber_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddHospital(HospitalCode hospital)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1006,21 +1006,21 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Hospital (Name, Adress, Postal_Code, City, Country, Central_Number, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @adress, @postal_code, @city, @country, @central_number, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = adress_p;
-			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = postalcode_p;
-			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = city_p;
-			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = country_p;
-			cmd.Parameters.Add("@central_number",MySqlDbType.VarChar).Value = centralnumber_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = hospital.Name;
+			cmd.Parameters.Add("@adress",MySqlDbType.VarChar).Value = hospital.Adress;
+			cmd.Parameters.Add("@postal_code",MySqlDbType.VarChar).Value = hospital.Postal_Code;
+			cmd.Parameters.Add("@city",MySqlDbType.VarChar).Value = hospital.City;
+			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = hospital.Country;
+			cmd.Parameters.Add("@central_number",MySqlDbType.VarChar).Value = hospital.Central_number;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = hospital.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = hospital.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = hospital.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddProject(string title_p,DateTime startdate_p, DateTime enddate_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddProject(ProjectCode project)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1028,18 +1028,18 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO Project (Title, Start_Date, End_Date, User_ID, Date_Added, Date_Last_Edited) VALUES (@title, @start_date, @end_date, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@title",MySqlDbType.VarChar).Value = title_p;
-			cmd.Parameters.Add("@start_date",MySqlDbType.Date).Value = startdate_p.Date;
-			cmd.Parameters.Add("@end_date",MySqlDbType.Date).Value = enddate_p.Date;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@title",MySqlDbType.VarChar).Value = project.Title;
+			cmd.Parameters.Add("@start_date",MySqlDbType.Date).Value = project.Start_date;
+			cmd.Parameters.Add("@end_date",MySqlDbType.Date).Value = project.End_date;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = project.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = project.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = project.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddProjectManager(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddProjectManager(ProjectManagerCode projectmanager)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1047,20 +1047,20 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO ProjectManager (Name, CV, Email, Phone1, Phone2, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = projectmanager.Name;
+			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = projectmanager.CV;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = projectmanager.Email;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = projectmanager.Phone1;
+			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = projectmanager.Phone2;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = projectmanager.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = projectmanager.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = projectmanager.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
 		}
 
-		public void AddStudyCoordinator(string name_p,string cv_p,string email_p,string phone1_p,string phone2_p,string specialisation_p, string user_id_p, string date_added, string date_last_edited)
+		public void AddStudyCoordinator(StudyCoordinatorCode studycoordinator)
 		{
 			MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1068,15 +1068,15 @@ namespace Domain.Persistence
 
 			MySqlCommand cmd = new MySqlCommand("INSERT INTO StudyCoordinator(Name, CV, Email, Phone1, Phone2, Specialisation, User_ID, Date_Added, Date_Last_Edited) VALUES (@name, @cv, @email, @phone1, @phone2, @specialisation, @user_id, @date_added, @date_last_edited);", conn);
 
-			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = name_p;
-			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = cv_p;
-			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = email_p;
-			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = phone1_p;
-			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = phone2_p;
-			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = specialisation_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = date_added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited;
+			cmd.Parameters.Add("@name",MySqlDbType.VarChar).Value = studycoordinator.Name;
+			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = studycoordinator.CV;
+			cmd.Parameters.Add("@email",MySqlDbType.VarChar).Value = studycoordinator.Email;
+			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = studycoordinator.Phone1;
+			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = studycoordinator.Phone2;
+			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = studycoordinator.Specialisation;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = studycoordinator.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = studycoordinator.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = studycoordinator.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -1211,7 +1211,7 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@contact_person", MySqlDbType.VarChar).Value = client.Contact_Person;
             cmd.Parameters.Add("@invoice_info", MySqlDbType.VarChar).Value = client.Invoice_Info;
             cmd.Parameters.Add("@kind_of_client", MySqlDbType.VarChar).Value = client.Kind_of_Client;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.User_ID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.UserID;
             cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited
             ;
             cmd.ExecuteNonQuery();
@@ -1219,7 +1219,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateContract(int id_p, string legalcountry_p, double fee_p, DateTime startdate_p, DateTime enddate_p, int project_id_p, int client_id_p, string user_id_p, string date_last_edited_p)
+        public void UpdateContract(ContractCode contract)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1227,21 +1227,22 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Contract SET Legal_Country = @legal_country, Fee = @fee, Start_Date = @start_date, End_Date = @end_date, Client_ID = @client_id, Project_ID = @project_id, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Contract_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = legalcountry_p;
-            cmd.Parameters.Add("@fee", MySqlDbType.Double).Value = fee_p;
-            cmd.Parameters.Add("@start_date", MySqlDbType.DateTime).Value = startdate_p.Date;
-            cmd.Parameters.Add("@end_date", MySqlDbType.DateTime).Value = enddate_p.Date;
-            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = client_id_p;
-            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = project_id_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = contract.ID;
+            cmd.Parameters.Add("@legal_country", MySqlDbType.VarChar).Value = contract.Legal_Country;
+            cmd.Parameters.Add("@fee", MySqlDbType.Double).Value = contract.Fee;
+            cmd.Parameters.Add("@start_date", MySqlDbType.DateTime).Value = contract.Start_Date;
+            cmd.Parameters.Add("@end_date", MySqlDbType.DateTime).Value = contract.End_Date;
+            cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = contract.ClientID;
+            cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = contract.ProjectID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = contract.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = contract.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = contract.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateCRA(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string user_id_p, string date_last_edited_p)
+        public void UpdateCRA(CRACode cra)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1249,40 +1250,42 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE CRA SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE CRA_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = cra.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = cra.Name;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cra.CV;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = cra.Email;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = cra.Phone1;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = cra.Phone2;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = cra.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = cra.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = cra.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateDepartment(int id_p, string name_p, string email_p, string phone1_p, int hospitalID_p, string user_id_p, string date_last_edited_p)
+        public void UpdateDepartment(DepartmentCode department)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, Hospital_ID = @hospital_id, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Department_ID = @department_id;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE Department SET Name = @name, Email = @email, Phone1 = @phone1, Hospital_ID = @hospital_id, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Department_ID = @id;", conn);
 
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@Hospital_id", MySqlDbType.VarChar).Value = hospitalID_p;
-            cmd.Parameters.Add("@department_id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = department.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = department.Name;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = department.Email;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = department.Phone;
+            cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = department.HospitalID;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = department.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = department.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = department.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateDoctor(int id_p, string name_p, string email_p, string phone1_p, string phone2_p, string adress_p, string postalcode_p, string city_p, string country_p, string specialisation_p, string cv_p, string user_id_p, string date_last_edited_p)
+        public void UpdateDoctor(DoctorCode doctor)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1290,78 +1293,82 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Doctor SET Name = @name, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Specialisation = @specialisation, CV = @cv, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Doctor_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
-            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
-            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
-            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
-            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
-            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = doctor.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = doctor.Name;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = doctor.Email;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = doctor.Phone1;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = doctor.Phone2;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = doctor.Adress;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = doctor.Postal_Code;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = doctor.City;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = doctor.Country;
+            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = doctor.Specialisation;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = doctor.CV;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = doctor.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = doctor.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = doctor.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateEvaluation(int id_p, DateTime date_p, string feedback_p, string accuracy_p, string quality_p, string evaluationtxt_p, string label_p, string scID_p, string drID_p, string crID_p, string user_id_p, string date_last_edited_p)
+        public void UpdateEvaluation(EvaluationCode evaluation)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
             conn.Open();
 
-            if (Convert.ToInt16(scID_p) != -1)
+            if (Convert.ToInt16(evaluation.CraID) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, StudyCoordinator_ID = @scID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, CRA_ID = @cra, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
-                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@scID", MySqlDbType.VarChar).Value = scID_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = evaluation.ID;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = evaluation.CraID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
-            else if (Convert.ToInt16(drID_p) != -1)
+            else if (Convert.ToInt16(evaluation.DoctorID) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, Doctor_ID = @drID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label, Doctor_ID = @doctor, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
-                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@drID", MySqlDbType.VarChar).Value = drID_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = evaluation.ID;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = evaluation.DoctorID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
-            if (Convert.ToInt16(crID_p) != -1)
+            if (Convert.ToInt16(evaluation.StudyCoordinatorID) != -1)
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label,  CRA_ID = @crID, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE Evaluation SET Date = @date, Feedback = @feedback, Accuracy = @accuracy, Quality = @quality, Evaluation_Text = @evaluation_txt, Label = @label,  StudyCoordinator_ID = @sc, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Evaluation_ID = @id;", conn);
 
-                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date_p;
-                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = feedback_p;
-                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = accuracy_p;
-                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = quality_p;
-                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluationtxt_p;
-                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = label_p;
-                cmd.Parameters.Add("@crID", MySqlDbType.VarChar).Value = crID_p;
-                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = evaluation.ID;
+                cmd.Parameters.Add("@date", MySqlDbType.Date).Value = evaluation.Date;
+                cmd.Parameters.Add("@feedback", MySqlDbType.VarChar).Value = evaluation.Feedback;
+                cmd.Parameters.Add("@accuracy", MySqlDbType.VarChar).Value = evaluation.Accuracy;
+                cmd.Parameters.Add("@quality", MySqlDbType.VarChar).Value = evaluation.Quality;
+                cmd.Parameters.Add("@evaluation_txt", MySqlDbType.VarChar).Value = evaluation.Evaluation_txt;
+                cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
+                cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = evaluation.StudyCoordinatorID;
+                cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
 
                 cmd.ExecuteNonQuery();
             }
@@ -1369,7 +1376,7 @@ namespace Domain.Persistence
             conn.Close();
         }
 
-        public void UpdateHospital(int id_p, string name_p, string adress_p, string postalcode_p, string city_p, string country_p, string centralnumber_p, string user_id_p, string date_last_edited_p)
+        public void UpdateHospital(HospitalCode hospital)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1377,21 +1384,22 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Hospital SET Name = @name, Adress = @adress, Postal_Code = @postal_code, City = @city, Country = @country, Central_Number = @central_number, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Hospital_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = adress_p;
-            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = postalcode_p;
-            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city_p;
-            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = country_p;
-            cmd.Parameters.Add("@central_number", MySqlDbType.VarChar).Value = centralnumber_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = hospital.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = hospital.Name;
+            cmd.Parameters.Add("@adress", MySqlDbType.VarChar).Value = hospital.Adress;
+            cmd.Parameters.Add("@postal_code", MySqlDbType.VarChar).Value = hospital.Postal_Code;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = hospital.City;
+            cmd.Parameters.Add("@country", MySqlDbType.VarChar).Value = hospital.Country;
+            cmd.Parameters.Add("@central_number", MySqlDbType.VarChar).Value = hospital.Central_number;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = hospital.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = hospital.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = hospital.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateProject(int id_p, string title_p, DateTime startdate_p, DateTime enddate_p, string user_id_p, string date_last_edited_p)
+        public void UpdateProject(ProjectCode project)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1399,18 +1407,19 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE Project SET Title = @title, Start_Date = @start_date, End_Date = @end_date, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE Project_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title_p;
-            cmd.Parameters.Add("@start_date", MySqlDbType.Date).Value = startdate_p.Date;
-            cmd.Parameters.Add("@end_date", MySqlDbType.Date).Value = enddate_p.Date;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = project.ID;
+            cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = project.Title;
+            cmd.Parameters.Add("@start_date", MySqlDbType.Date).Value = project.Start_date;
+            cmd.Parameters.Add("@end_date", MySqlDbType.Date).Value = project.End_date;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = project.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = project.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = project.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateProjectManager(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string user_id_p, string date_last_edited_p)
+        public void UpdateProjectManager(ProjectManagerCode projectmanager)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1418,20 +1427,21 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE ProjectManager SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE ProjectManager_ID = @id;", conn);
 
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = projectmanager.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = projectmanager.Name;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = projectmanager.CV;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = projectmanager.Email;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = projectmanager.Phone1;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = projectmanager.Phone2;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = projectmanager.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = projectmanager.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = projectmanager.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void UpdateStudyCoordinator(int id_p, string name_p, string cv_p, string email_p, string phone1_p, string phone2_p, string specialisation_p, string user_id_p, string date_last_edited_p)
+        public void UpdateStudyCoordinator(StudyCoordinatorCode studycoordinator)
         {
             MySqlConnection conn = new MySqlConnection(_connectionString);
 
@@ -1439,15 +1449,16 @@ namespace Domain.Persistence
 
             MySqlCommand cmd = new MySqlCommand("UPDATE StudyCoordinator SET Name = @name, CV = @cv, Email = @email, Phone1 = @phone1, Phone2 = @phone2, Specialisation = @specialisation, User_ID = @user_id, Date_Last_Edited = @date_last_edited WHERE StudyCoordinator_ID = @id;", conn);
             
-            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = id_p;
-            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name_p;
-            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = cv_p;
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_p;
-            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = phone1_p;
-            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = phone2_p;
-            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = specialisation_p;
-            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = user_id_p;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = date_last_edited_p;
+            cmd.Parameters.Add("@id", MySqlDbType.VarChar).Value = studycoordinator.ID;
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = studycoordinator.Name;
+            cmd.Parameters.Add("@cv", MySqlDbType.VarChar).Value = studycoordinator.CV;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = studycoordinator.Email;
+            cmd.Parameters.Add("@phone1", MySqlDbType.VarChar).Value = studycoordinator.Phone1;
+            cmd.Parameters.Add("@phone2", MySqlDbType.VarChar).Value = studycoordinator.Phone2;
+            cmd.Parameters.Add("@specialisation", MySqlDbType.VarChar).Value = studycoordinator.Specialisation;
+            cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = studycoordinator.UserID;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = studycoordinator.Date_Added;
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = studycoordinator.Date_Last_Edited;
             cmd.ExecuteNonQuery();
 
             conn.Close();

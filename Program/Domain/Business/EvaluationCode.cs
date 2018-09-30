@@ -1,138 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Business
 {
 	public class EvaluationCode
 	{
+        public int ID { get; set; }
 
-        // All private and public properties of class Evaluation
-        private int _evaluation_id;
+        public string Date { get; set; }
 
-        public int Evaluation_ID
+        public string Feedback { get; set; }
+
+        public string Accuracy { get; set; }
+
+        public string Quality { get; set; }
+
+        public string Evaluation_txt { get; set; }
+
+        public string Label { get; set; }
+
+        public int CraID { get; set; }
+
+        public int DoctorID { get; set; }
+
+        public int StudyCoordinatorID { get; set; }
+
+        public int UserID { get; set; }
+
+        public DateTime Date_Added { get; set; }
+
+        public DateTime Date_Last_Edited { get; set; }
+
+
+        public EvaluationCode()
         {
-            get { return _evaluation_id; }
-            set { _evaluation_id = value; }
+            
         }
 
-
-        private string _date;
-
-		public string Date
+        public EvaluationCode(int ID_p, string Date_p, string Feedback_p, string Accuracy_p,
+			 string Quality_p, string Evaluation_txt_p, string Label_p, int CraID_p, int DoctorID_p, int StudyCoordinatorID_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
-			get { return _date; }
-			set { _date = value; }
-		}
-
-		private string _feedback;
-
-		public string Feedback
-		{
-			get { return _feedback; }
-			set { _feedback = value; }
-		}
-
-		private string _accuracy;
-
-		public string Accuracy
-		{
-			get { return _accuracy; }
-			set { _accuracy = value; }
-		}
-
-		private string _quality;
-
-		public string Quality
-		{
-			get { return _quality; }
-			set { _quality = value; }
-		}
-
-		private string _evaluation_txt;
-
-		public string Evaluation_txt
-		{
-			get { return _evaluation_txt; }
-			set { _evaluation_txt = value; }
-		}
-
-		private string _label;
-
-		public string Label
-		{
-			get { return _label; }
-			set { _label = value; }
-		}
-
-        private int _craID;
-
-        public int CraID
-        {
-            get { return _craID; }
-            set { _craID = value; }
-        }
-
-        private int _doctortID;
-
-        public int DoctorID
-        {
-            get { return _doctortID; }
-            set { _doctortID = value; }
-        }
-
-        private int _scID;
-
-        public int ScID
-        {
-            get { return _scID; }
-            set { _scID = value; }
-        }
-
-        private int _user_id;
-
-        public int User_ID
-        {
-            get { return _user_id; }
-            set { _user_id = value; }
-        }
-
-        private DateTime _date_added;
-
-        public DateTime Date_Added
-        {
-            get { return _date_added; }
-            set { _date_added = value; }
-        }
-
-        private DateTime _date_last_edited;
-
-        public DateTime Date_Last_Edited
-        {
-            get { return _date_last_edited; }
-            set { _date_last_edited = value; }
-        }
-
-        // All constructors
-
-        public EvaluationCode(int evaluation_id_p,string date_p,string feedback_p,string accuracy_p,
-			 string quality_p,string evaluation_txt_p,string label_p, int cra_id_p, int doctor_id_p, int sc_id_p, int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
-		{
-            _evaluation_id = evaluation_id_p;
-			_date = date_p;
-			_feedback = feedback_p;
-			_accuracy = accuracy_p;
-			_quality = quality_p;
-			_evaluation_txt = evaluation_txt_p;
-			_label = label_p;
-            _craID = cra_id_p;
-            _doctortID = doctor_id_p;
-            _scID = sc_id_p;
-            _user_id = User_ID_p;
-            _date_added = Date_Added_p;
-            _date_last_edited = Date_Last_Edited_p;
+            ID = ID_p;
+			Date = Date_p;
+			Feedback = Feedback_p;
+			Accuracy = Accuracy_p;
+			Quality = Quality_p;
+			Evaluation_txt = Evaluation_txt_p;
+			Label = Label_p;
+            CraID = CraID_p;
+            DoctorID = DoctorID_p;
+            StudyCoordinatorID = StudyCoordinatorID_p;
+            UserID = UserID_p;
+            Date_Added = Date_Added_p;
+            Date_Last_Edited = Date_Last_Edited_p;
         }
 	}
 }

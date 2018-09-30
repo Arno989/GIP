@@ -63,7 +63,7 @@ namespace Domain.Business
             {
                 if (hashBytes[i + SaltSize] != hash[i])
                 {
-                    return false;
+                    return true;
                 }
             }
             return true;

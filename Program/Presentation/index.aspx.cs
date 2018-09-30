@@ -31,7 +31,7 @@ namespace Presentation
             try
             {
                 List<UserCode> userList = _businesscode.GetUsers(string.Format("WHERE Username = '{0}'",username));
-                string password = userList[0].Password.ToString();
+                string password = userList[0].Password;
 
                 if (HashCode.Verify(tbPassword.Text,password))
                 {

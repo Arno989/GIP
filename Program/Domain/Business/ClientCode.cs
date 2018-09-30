@@ -1,111 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Business
 {
 	public class ClientCode
 	{
+        public int ID { get; set; }
 
-        // Alle private en public properties van de class Clënt
+        public string Name { get; set; }
 
-        private int _id;
+        public string Adress { get; set; }
 
-        public int ID
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        public string Postal_Code { get; set; }
 
-        private string _name;
+        public string City { get; set; }
 
-		public string Name
-		{
-			get { return _name; }
-			set { _name = value; }
-		}
+        public string Country { get; set; }
 
-		private string _adress;
+        public string Contact_Person { get; set; }
 
-		public string Adress
-		{
-			get { return _adress; }
-			set { _adress = value; }
-		}
+        public string Invoice_Info { get; set; }
 
-		private string _postal_code;
+        public string Kind_of_Client { get; set; }
 
-		public string Postal_Code
-		{
-			get { return _postal_code; }
-			set { _postal_code = value; }
-		}
+        public int UserID { get; set; }
 
-		private string _city;
+        public DateTime Date_Added { get; set; }
 
-		public string City
-		{
-			get { return _city; }
-			set { _city = value; }
-		}
-
-		private string _country;
-
-		public string Country
-		{
-			get { return _country; }
-			set { _country = value; }
-		}
-
-		private string _contact_person;
-
-		public string Contact_Person
-		{
-			get { return _contact_person; }
-			set { _contact_person = value; }
-		}
-
-		private string _invoice_info;
-
-		public string Invoice_Info
-		{
-			get { return _invoice_info; }
-			set { _invoice_info = value; }
-		}
-
-		private string _kind_of_client;
-
-		public string Kind_of_Client
-		{
-			get { return _kind_of_client; }
-			set { _kind_of_client = value; }
-		}
-
-        private int _user_id;
-
-        public int User_ID
-        {
-            get { return _user_id; }
-            set { _user_id = value; }
-        }
-
-        private DateTime _date_added;
-
-        public DateTime Date_Added
-        {
-            get { return _date_added; }
-            set { _date_added = value; }
-        }
-
-        private DateTime _date_last_edited;
-
-        public DateTime Date_Last_Edited
-        {
-            get { return _date_last_edited; }
-            set { _date_last_edited = value; }
-        }
+        public DateTime Date_Last_Edited { get; set; }
 
 
         public ClientCode()
@@ -113,22 +34,21 @@ namespace Domain.Business
 
         }
 
-        public ClientCode(int ID_p, string Name_p, string Adress_p, string Postal_code_p, string City_p, string Country_p, string Contact_person_p, string Invoice_info_p, string Kind_of_client_p, 
-            int User_ID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
+        public ClientCode(int ID_p, string Name_p, string Adress_p, string Postal_Code_p, string City_p, string Country_p, string Contact_Person_p, string Invoice_Info_p, string Kind_of_Client_p, 
+            int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
         {
-            _id = ID_p;
-            _name = Name_p;
-            _adress = Adress_p;
-            _postal_code = Postal_code_p;
-            _city = City_p;
-            _country = Country_p;
-            _contact_person = Contact_person_p;
-            _invoice_info = Invoice_info_p;
-            _kind_of_client = Kind_of_client_p;
-            _user_id = User_ID_p;
-            _date_added = Date_Added_p;
-            _date_last_edited = Date_Last_Edited_p;
+            ID = ID_p;
+            Name = Name_p;
+            Adress = Adress_p;
+            Postal_Code = Postal_Code_p;
+            City = City_p;
+            Country = Country_p;
+            Contact_Person = Contact_Person_p;
+            Invoice_Info = Invoice_Info_p;
+            Kind_of_Client = Kind_of_Client_p;
+            UserID = UserID_p;
+            Date_Added = Date_Added_p;
+            Date_Last_Edited = Date_Last_Edited_p;
         }
-
     }
 }

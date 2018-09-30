@@ -189,41 +189,41 @@ namespace Domain.Business
         {
             _persistence.AddClient(client);
         }
-        public void AddContract(string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2, int client_id_p2, int project_id_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddContract(ContractCode contract)
         {
-            _persistence.AddContract(legalcountry_p2, fee_p2, startdate_p2, enddate_p2, client_id_p2, project_id_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddContract(contract);
         }
-        public void AddCRA(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddCRA(CRACode cra)
         {
-            _persistence.AddCRA(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddCRA(cra);
         }
-        public void AddDepartment(string name_p2, string email_p2, string phone1_p2, int hospital_id_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddDepartment(DepartmentCode department)
         {
-            _persistence.AddDepartment(name_p2, email_p2, phone1_p2, hospital_id_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddDepartment(department);
         }
-        public void AddDoctor(string name_p2, string email_p2, string phone1_p2, string phone2_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string specialisation_p2, string cv_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddDoctor(DoctorCode doctor)
         {
-            _persistence.AddDoctor(name_p2, email_p2, phone1_p2, phone2_p2, adress_p2, postalcode_p2, city_p2, country_p2, specialisation_p2, cv_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddDoctor(doctor);
         }
-        public void AddEvaluation(DateTime date_p2, string feedback_p2, string accuracy_p2, string quality_p2, string evaluationtxt_p2, string label_p2, int cra_p2, int doctor_p2, int sc_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddEvaluation(EvaluationCode evaluation)
         {
-            _persistence.AddEvaluation(date_p2, feedback_p2, accuracy_p2, quality_p2, evaluationtxt_p2, label_p2, cra_p2, doctor_p2, sc_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddEvaluation(evaluation);
         }
-        public void AddHospital(string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string centralnumber_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddHospital(HospitalCode hospital)
         {
-            _persistence.AddHospital(name_p2, adress_p2, postalcode_p2, city_p2, country_p2, centralnumber_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddHospital(hospital);
         }
-        public void AddProject(string title_p2, DateTime startdate_p2, DateTime enddate_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddProject(ProjectCode project)
         {
-            _persistence.AddProject(title_p2, startdate_p2, enddate_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddProject(project);
         }
-        public void AddProjectManager(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddProjectManager(ProjectManagerCode projectmanager)
         {
-            _persistence.AddProjectManager(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddProjectManager(projectmanager);
         }
-        public void AddStudyCoordinator(string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2, string user_id_p2, string date_added2, string date_last_edited2)
+        public void AddStudyCoordinator(StudyCoordinatorCode studycoordinator)
         {
-            _persistence.AddStudyCoordinator(name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2, user_id_p2, date_added2, date_last_edited2);
+            _persistence.AddStudyCoordinator(studycoordinator);
         }
         public void AddUser(UserCode user)
         {
@@ -236,33 +236,27 @@ namespace Domain.Business
         {
             _persistence.AddHospitalToDoctor(hospital_id_p2, doctor_id_p2);
         }
-        
         public void AddDoctorToStudyCoordinator(int doctor_id_p2, int studycoordinator_id_p2)
         {
             _persistence.AddDoctorToStudyCoordinator(doctor_id_p2, studycoordinator_id_p2);
         }
-
         public void AddCRAToProject(int cra_id_p, int project_id_p)
         {
             _persistence.AddCRAToProject(cra_id_p, project_id_p);
         }
-
         public void AddDoctorToProject(int doctor_id_p, int project_id_p)
         {
             _persistence.AddDoctorToProject(doctor_id_p, project_id_p);
         }
-
+    
         public void AddHospitalToProject(int hospital_id_p, int project_id_p)
         {
             _persistence.AddHospitalToProject(hospital_id_p, project_id_p);
         }
-
         public void AddProjectManagerToProject(int projectmanager_id_p, int project_id_p)
         {
             _persistence.AddProjectManagerToProject(projectmanager_id_p, project_id_p);
         }
-
-
         #endregion
         
         #region Update
@@ -270,41 +264,41 @@ namespace Domain.Business
         {
             _persistence.UpdateClient(client);
         }
-        public void UpdateContract(int id_p2, string legalcountry_p2, double fee_p2, DateTime startdate_p2, DateTime enddate_p2, int project_id_p2, int client_id_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateContract(ContractCode contract)
         {
-            _persistence.UpdateContract(id_p2, legalcountry_p2, fee_p2, startdate_p2, enddate_p2, project_id_p2, client_id_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateContract(contract);
         }
-        public void UpdateCRA(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateCRA(CRACode cra)
         {
-            _persistence.UpdateCRA(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateCRA(cra);
         }
-        public void UpdateDepartment(int id_p2, string name_p2, string email_p2, string phone1_p2, int hospitalID_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateDepartment(DepartmentCode department)
         {
-            _persistence.UpdateDepartment(id_p2, name_p2, email_p2, phone1_p2, hospitalID_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateDepartment(department);
         }
-        public void UpdateDoctor(int id_p2, string name_p2, string email_p2, string phone1_p2, string phone2_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string specialisation_p2, string cv_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateDoctor(DoctorCode doctor)
         {
-            _persistence.UpdateDoctor(id_p2, name_p2, email_p2, phone1_p2, phone2_p2, adress_p2, postalcode_p2, city_p2, country_p2, specialisation_p2, cv_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateDoctor(doctor);
         }
-        public void UpdateEvaluation(int id_p2, DateTime date_p2, string feedback_p2, string accuracy_p2, string quality_p2, string evaluationtxt_p2, string label_p2, string scID_p2, string drID_p2, string crID_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateEvaluation(EvaluationCode evaluation)
         {
-            _persistence.UpdateEvaluation(id_p2, date_p2, feedback_p2, accuracy_p2, quality_p2, evaluationtxt_p2, label_p2, scID_p2, drID_p2, crID_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateEvaluation(evaluation);
         }
-        public void UpdateHospital(int id_p2, string name_p2, string adress_p2, string postalcode_p2, string city_p2, string country_p2, string centralnumber_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateHospital(HospitalCode hospital)
         {
-            _persistence.UpdateHospital(id_p2, name_p2, adress_p2, postalcode_p2, city_p2, country_p2, centralnumber_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateHospital(hospital);
         }
-        public void UpdateProject(int id_p2, string title_p2, DateTime startdate_p2, DateTime enddate_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateProject(ProjectCode project)
         {
-            _persistence.UpdateProject(id_p2, title_p2, startdate_p2, enddate_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateProject(project);
         }
-        public void UpdateProjectManager(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateProjectManager(ProjectManagerCode projectmanager)
         {
-            _persistence.UpdateProjectManager(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateProjectManager(projectmanager);
         }
-        public void UpdateStudyCoordinator(int id_p2, string name_p2, string cv_p2, string email_p2, string phone1_p2, string phone2_p2, string specialisation_p2, string user_id_p2, string date_last_edited_p2)
+        public void UpdateStudyCoordinator(StudyCoordinatorCode studycoordinator)
         {
-            _persistence.UpdateStudyCoordinator(id_p2, name_p2, cv_p2, email_p2, phone1_p2, phone2_p2, specialisation_p2, user_id_p2, date_last_edited_p2);
+            _persistence.UpdateStudyCoordinator(studycoordinator);
         }
         public void UpdateUser(UserCode user)
         {
