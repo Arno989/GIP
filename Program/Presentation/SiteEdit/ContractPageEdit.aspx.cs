@@ -76,12 +76,12 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 2:
-                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(Convert.ToString(CurrentContract[0].End_Date), "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
                         case 3:
-                            dateTime = DateTime.ParseExact(CurrentContract[0].End_Date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(Convert.ToString(CurrentContract[0].End_Date), "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
                     }
@@ -197,7 +197,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.AddContract(0, new ContractCode(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID.ToString(), dateNow, dateNow));
+                    _business.AddContract(new ContractCode(0, new ContractCode(0, input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))));
                 }
                 track1:
 				continue;

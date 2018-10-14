@@ -278,9 +278,9 @@ namespace Presentation.Site
                                 gvEvaluation.Rows[i].Cells[0].Text = "Doctor";
                                 gvEvaluation.Rows[i].Cells[1].Text = DoctorName;
                             }
-                            else if (CurrentEvaluation[0].ScID != -1)
+                            else if (CurrentEvaluation[0].StudyCoordinatorID != -1)
                             {
-                                int StudyCoordinatorID = CurrentEvaluation[0].ScID;
+                                int StudyCoordinatorID = CurrentEvaluation[0].StudyCoordinatorID;
 
                                 //Doctor ID omzetten naar CRA name
                                 string sortingPar2 = string.Format(" WHERE StudyCoordinator_ID = {0}", StudyCoordinatorID);
@@ -593,9 +593,9 @@ namespace Presentation.Site
                                 gvEvaluation.Rows[i].Cells[0].Text = "Doctor";
                                 gvEvaluation.Rows[i].Cells[1].Text = DoctorName;
                             }
-                            else if (CurrentEvaluation[0].ScID != -1)
+                            else if (CurrentEvaluation[0].StudyCoordinatorID != -1)
                             {
-                                int StudyCoordinatorID = CurrentEvaluation[0].ScID;
+                                int StudyCoordinatorID = CurrentEvaluation[0].StudyCoordinatorID;
 
                                 //Doctor ID omzetten naar CRA name
                                 string sortingPar2 = string.Format(" WHERE StudyCoordinator_ID = {0}", StudyCoordinatorID);

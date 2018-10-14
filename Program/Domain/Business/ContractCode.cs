@@ -8,11 +8,11 @@ namespace Domain.Business
 
         public string Legal_Country { get; set; }
 
-        public string Fee { get; set; }
+        public double Fee { get; set; }
 
-        public string Start_Date { get; set; }
+        public DateTime Start_Date { get; set; }
 
-        public string End_Date { get; set; }
+        public DateTime End_Date { get; set; }
 
         public int ProjectID { get; set; }
 
@@ -30,7 +30,7 @@ namespace Domain.Business
 
         }
 
-        public ContractCode(int ID_p, string Legal_Country_p, string Fee_p, string Start_Date_p, string End_Date_p, int ProjectID_p, int ClientID_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
+        public ContractCode(int ID_p, string Legal_Country_p, double Fee_p, DateTime Start_Date_p, DateTime End_Date_p, int ProjectID_p, int ClientID_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
             ID = ID_p;
             Legal_Country = Legal_Country_p;

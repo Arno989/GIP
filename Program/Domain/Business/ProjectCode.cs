@@ -8,9 +8,9 @@ namespace Domain.Business
 
         public string Title { get; set; }
 
-        public string Start_date { get; set; }
+        public DateTime Start_date { get; set; }
 
-        public string End_date { get; set; }
+        public DateTime End_date { get; set; }
 
         public int UserID { get; set; }
 
@@ -24,7 +24,7 @@ namespace Domain.Business
 
         }
 
-        public ProjectCode(int ID_p, string Title_p, string Start_Date_p, string End_Date_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
+        public ProjectCode(int ID_p, string Title_p, DateTime Start_Date_p, DateTime End_Date_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
             ID = ID_p;
 			Title = Title_p;

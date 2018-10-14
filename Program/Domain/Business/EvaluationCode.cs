@@ -6,7 +6,7 @@ namespace Domain.Business
 	{
         public int ID { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string Feedback { get; set; }
 
@@ -36,7 +36,7 @@ namespace Domain.Business
             
         }
 
-        public EvaluationCode(int ID_p, string Date_p, string Feedback_p, string Accuracy_p,
+        public EvaluationCode(int ID_p, DateTime Date_p, string Feedback_p, string Accuracy_p,
 			 string Quality_p, string Evaluation_txt_p, string Label_p, int CraID_p, int DoctorID_p, int StudyCoordinatorID_p, int UserID_p, DateTime Date_Added_p, DateTime Date_Last_Edited_p)
 		{
             ID = ID_p;

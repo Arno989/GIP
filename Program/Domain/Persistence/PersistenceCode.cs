@@ -75,7 +75,7 @@ namespace Domain.Persistence
 
 
                 CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID, user_id, date_added, date_last_edited);
+                ContractCode c = new ContractCode(id, legal_country, Convert.ToDouble(fee.ToString("C", CultureInfo.CurrentCulture)), Start_date, End_date, Project_ID, Client_ID, user_id, date_added, date_last_edited);
 
                 ListContracts.Add(c);
             }
@@ -216,7 +216,7 @@ namespace Domain.Persistence
                 else
                 { scID = -1; }
 
-                EvaluationCode c = new EvaluationCode(id,date.ToString("dd-MMM-yyyy"),feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID, user_id, date_added, date_last_edited);
+                EvaluationCode c = new EvaluationCode(id,date,feedback,accuracy,quality,evalauation_txt,label, craID, doctorID, scID, user_id, date_added, date_last_edited);
 
 				ListEvaluations.Add(c);
 			}
@@ -273,7 +273,7 @@ namespace Domain.Persistence
                 DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
                 DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                ProjectCode c = new ProjectCode(id,title,start_date.ToString("dd-MMM-yyyy"), end_date.ToString("dd-MMM-yyyy"), user_id, date_added, date_last_edited);
+                ProjectCode c = new ProjectCode(id,title,start_date, end_date, user_id, date_added, date_last_edited);
 
 				ListProjects.Add(c);
 			}
@@ -1917,7 +1917,7 @@ namespace Domain.Persistence
                     DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
                     CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("nl-BE");
-                    ContractCode c = new ContractCode(id, legal_country, fee.ToString("C", CultureInfo.CurrentCulture), Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), Project_ID, Client_ID, user_id, date_added, date_last_edited);
+                    ContractCode c = new ContractCode(id, legal_country, Convert.ToDouble(fee.ToString("C", CultureInfo.CurrentCulture)), Start_date, End_date, Project_ID, Client_ID, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2199,7 +2199,7 @@ namespace Domain.Persistence
                         scID = -1;
                     }
 
-                    EvaluationCode c = new EvaluationCode(id, date.ToString("dd-MMM-yyyy"), feedback, accuracy, quality, evalauation_txt, label, craID, doctorID, scID, user_id, date_added, date_last_edited);
+                    EvaluationCode c = new EvaluationCode(id, date, feedback, accuracy, quality, evalauation_txt, label, craID, doctorID, scID, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {
@@ -2372,7 +2372,7 @@ namespace Domain.Persistence
                     DateTime date_added = Convert.ToDateTime(dataReader["Date_Added"]);
                     DateTime date_last_edited = Convert.ToDateTime(dataReader["Date_Last_Edited"]);
 
-                    ProjectCode c = new ProjectCode(id, title, Start_date.ToString("dd-MMM-yyyy"), End_date.ToString("dd-MMM-yyyy"), user_id, date_added, date_last_edited);
+                    ProjectCode c = new ProjectCode(id, title, Start_date, End_date, user_id, date_added, date_last_edited);
 
                     if (!listids.Contains(id))
                     {

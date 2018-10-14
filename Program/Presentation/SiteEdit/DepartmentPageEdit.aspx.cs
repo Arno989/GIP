@@ -174,7 +174,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.AddDepartment(input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]), user.ID.ToString(), dateNow, dateNow);
+                _business.AddDepartment(new DepartmentCode(0,input[0], input[1], input[2], Convert.ToInt16(ListContentHospital[index - 1][0]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 track1:
                 continue;
             }

@@ -198,12 +198,12 @@ namespace Presentation.SiteEdit
                             break;
 
                         case 1:
-                            dateTime = DateTime.ParseExact(CurrentProject[0].Start_date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(Convert.ToString(CurrentProject[0].Start_date), "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
 
                         case 2:
-                            dateTime = DateTime.ParseExact(CurrentProject[0].End_date, "dd-MMM-yyyy", CultureInfo.InvariantCulture);
+                            dateTime = DateTime.ParseExact(Convert.ToString(CurrentProject[0].End_date), "dd-MMM-yyyy", CultureInfo.InvariantCulture);
                             ((TextBox)txtBox).Text = dateTime.ToString("yyyy-MM-dd");
                             break;
                     }
@@ -333,7 +333,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.AddProject(input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID.ToString(), dateNow, dateNow); //--Var
+                _business.AddProject(new ProjectCode(0, input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))); //--Var
 
                 lbName = "lbEdit" + i.ToString() + "0";
                 listboxData = container.FindControl(lbName) as ListBox;
