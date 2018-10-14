@@ -123,7 +123,7 @@ namespace Presentation.SiteEdit
                     if (ListTypes[i] == "StudyCoordinator")
                     {
                         //SC ID krijgen van de current row in de gridvieuw
-                        int SCID = CurrentEvaluation[0].ScID;
+                        int SCID = CurrentEvaluation[0].ID;
 
                         //de SC selecteren in de dropdown
                         ListItem li = dd.Items.FindByValue("SC" + SCID.ToString());

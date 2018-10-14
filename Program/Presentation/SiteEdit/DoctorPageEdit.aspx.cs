@@ -286,7 +286,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             DoctorCode doctor = _business.GetDoctors(sortingPar).Last(); //--Var
-                            _business.AddHospitalToDoctor(Convert.ToInt32(l.Value.ToString()), doctor.Doctor_ID); //--Var
+                            _business.AddHospitalToDoctor(Convert.ToInt32(l.Value.ToString()), doctor.ID); //--Var
                         }
                     }
                 }

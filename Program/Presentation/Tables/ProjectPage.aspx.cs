@@ -290,7 +290,7 @@ namespace Presentation.Site
                 {
                     if (user.Type == "Admin")
                     {
-                        UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {_project[0].User_ID};")[0];
+                        UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {_project[0].UserID};")[0];
                         e.Row.ToolTip = "First added on " + _project[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _project[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
                     }
                     else

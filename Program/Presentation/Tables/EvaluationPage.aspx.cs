@@ -141,7 +141,7 @@ namespace Presentation.Site
                 {
                     FillDoctor(i);
                 }
-                else if (CurrentEvaluation[0].ScID != -1)
+                else if (CurrentEvaluation[0].ID != -1)
                 {
                     FillStudyCoordinator(i);
                 }
@@ -190,7 +190,7 @@ namespace Presentation.Site
             string sortingPar1 = string.Format(" WHERE Evaluation_ID = {0}", GridView.DataKeys[i].Value);
             List<EvaluationCode> CurrentEvaluation = new List<EvaluationCode>();
             CurrentEvaluation = _businesscode.GetEvaluations(sortingPar1);
-            int StudyCoordinatorID = CurrentEvaluation[0].ScID;
+            int StudyCoordinatorID = CurrentEvaluation[0].ID;
 
             //Doctor ID omzetten naar CRA name
             string sortingPar2 = string.Format(" WHERE StudyCoordinator_ID = {0}", StudyCoordinatorID);
@@ -297,7 +297,7 @@ namespace Presentation.Site
                 {
                     if (user.Type == "Admin")
                     {
-                        UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {_evaluation[0].User_ID};")[0];
+                        UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {_evaluation[0].UserID};")[0];
                         e.Row.ToolTip = "First added on " + _evaluation[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _evaluation[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
                     }
                     else

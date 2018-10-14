@@ -345,7 +345,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
-                            _business.AddCRAToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                            _business.AddCRAToProject(Convert.ToInt32(l.Value.ToString()), Project.ID); //--Var
                         }
                     }
                 }
@@ -360,7 +360,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
-                            _business.AddDoctorToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                            _business.AddDoctorToProject(Convert.ToInt32(l.Value.ToString()), Project.ID); //--Var
                         }
                     }
                 }
@@ -375,7 +375,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
-                            _business.AddHospitalToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                            _business.AddHospitalToProject(Convert.ToInt32(l.Value.ToString()), Project.ID); //--Var
                         }
                     }
                 }
@@ -390,7 +390,7 @@ namespace Presentation.SiteEdit
                         if (l.Selected == true)
                         {
                             ProjectCode Project = _business.GetProjects(sortingPar).Last(); //--Var
-                            _business.AddProjectManagerToProject(Convert.ToInt32(l.Value.ToString()), Project.Project_ID); //--Var
+                            _business.AddProjectManagerToProject(Convert.ToInt32(l.Value.ToString()), Project.ID); //--Var
                         }
                     }
                 }
