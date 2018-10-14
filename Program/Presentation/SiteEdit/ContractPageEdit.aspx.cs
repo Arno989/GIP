@@ -197,7 +197,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.AddContract(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID.ToString(), dateNow, dateNow);
+                    _business.AddContract(0, new ContractCode(input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID.ToString(), dateNow, dateNow));
                 }
                 track1:
 				continue;
