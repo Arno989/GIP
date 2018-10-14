@@ -315,17 +315,17 @@ namespace Presentation.SiteEdit
                 if (value.Contains("CR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), (-1).ToString(), valueInt.ToString(), user.ID.ToString(), dateNow);
+                    _business.UpdateEvaluation(new EvaluationCode(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, -1, valueInt, user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 }
                 else if (value.Contains("DR") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], (-1).ToString(), valueInt.ToString(), (-1).ToString(), user.ID.ToString(), dateNow);
+                    _business.UpdateEvaluation(new EvaluationCode(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], -1, valueInt, -1, user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 }
                 else if (value.Contains("SC") == true)
                 {
                     int valueInt = Convert.ToInt16(value.Remove(0, 2));
-                    _business.UpdateEvaluation(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt.ToString(), (-1).ToString(), (-1).ToString(), user.ID.ToString(), dateNow);
+                    _business.UpdateEvaluation(new EvaluationCode(ListDataIDs[i], Convert.ToDateTime(input[0]), input[1], input[2], input[3], input[4], input[5], valueInt, -1, -1, user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 }
                 else
                 {

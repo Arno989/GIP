@@ -455,7 +455,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateDoctor(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], user.ID.ToString(), dateNow); //--Var
+                _business.UpdateDoctor(new DoctorCode(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], input[5], input[6], input[7], input[8], input[9], user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))); //--Var
 
                 string lbName = "lbEdit" + i.ToString() + "0";
                 var listboxData = container.FindControl(lbName) as ListBox;

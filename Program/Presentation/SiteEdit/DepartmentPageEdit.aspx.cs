@@ -260,7 +260,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateDepartment(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue), user.ID.ToString(), dateNow);
+                _business.UpdateDepartment(new DepartmentCode(ListDataIDs[i], input[0], input[1], input[2], Convert.ToInt16(dd.SelectedValue), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 track1:
                 continue;
             }

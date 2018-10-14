@@ -197,7 +197,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.AddContract(new ContractCode(0, new ContractCode(0, input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))));
+                    _business.AddContract(new ContractCode(0, input[0], Convert.ToDouble(input[1]), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt16(ListContentClient[indexClient - 1][0]), Convert.ToInt16(ListContentProject[indexProject - 1][0]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 }
                 track1:
 				continue;
@@ -299,7 +299,7 @@ namespace Presentation.SiteEdit
                 }
                 else
                 {
-                    _business.UpdateContract(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue), user.ID.ToString(), dateNow);
+                    _business.UpdateContract(new ContractCode(ListDataIDs[i], input[0], Convert.ToDouble(input[1].TrimEnd('€')), Convert.ToDateTime(input[2]), Convert.ToDateTime(input[3]), Convert.ToInt32(ddProject.SelectedValue), Convert.ToInt32(ddClient.SelectedValue), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow)));
                 }
                 track1:
                 continue;

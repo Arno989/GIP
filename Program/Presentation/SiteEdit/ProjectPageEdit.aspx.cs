@@ -460,7 +460,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateProject(ListDataIDs[i], input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID.ToString(), dateNow); //--Var
+                _business.UpdateProject(new ProjectCode(ListDataIDs[i], input[0], Convert.ToDateTime(input[1]), Convert.ToDateTime(input[2]), user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))); //--Var
 
                 lbName = "lbEdit" + i.ToString() + "0";
                 listboxData = container.FindControl(lbName) as ListBox;

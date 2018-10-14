@@ -302,7 +302,7 @@ namespace Presentation.SiteEdit
                 DateTime dt = DateTime.Now;
                 string dateNow = dt.ToString("yyyy-MM-dd");
 
-                _business.UpdateProjectManager(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], user.ID.ToString(), dateNow); //--Var
+                _business.UpdateProjectManager(new ProjectManagerCode(ListDataIDs[i], input[0], input[1], input[2], input[3], input[4], user.ID, Convert.ToDateTime(dateNow), Convert.ToDateTime(dateNow))); //--Var
                 track1:
                 continue;
             }
