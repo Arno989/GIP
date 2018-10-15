@@ -16,7 +16,7 @@ namespace Domain.Persistence
 
         public PersistenceCode()
         {
-            _connectionString = "server=localhost; port = 3306; user id=root; persistsecurityinfo = true; database = CliniresearchDB; password = Ratava989";
+            _connectionString = "server=localhost; port=3306; uid=root; persistsecurityinfo=true; database=CliniresearchDB; password=Ratava989; SslMode=none";
         }
         
         #region Get
