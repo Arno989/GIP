@@ -844,8 +844,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@invoice_info",MySqlDbType.VarChar).Value = client.Invoice_Info;
 			cmd.Parameters.Add("@kind_of_client",MySqlDbType.VarChar).Value = client.Kind_of_Client;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = client.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = client.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = client.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = client.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -866,8 +866,8 @@ namespace Domain.Persistence
             cmd.Parameters.Add("@client_id", MySqlDbType.VarChar).Value = contract.ClientID;
             cmd.Parameters.Add("@project_id", MySqlDbType.VarChar).Value = contract.ProjectID;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = contract.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = contract.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = contract.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = contract.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = contract.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -887,8 +887,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = cra.Phone1;
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = cra.Phone2;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = cra.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = cra.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = cra.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = cra.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = cra.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -907,8 +907,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = department.Phone;
             cmd.Parameters.Add("@hospital_id", MySqlDbType.VarChar).Value = department.HospitalID;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = department.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = department.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = department.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = department.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = department.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -933,8 +933,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = doctor.Specialisation;
 			cmd.Parameters.Add("@cv",MySqlDbType.VarChar).Value = doctor.CV;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = doctor.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = doctor.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = doctor.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = doctor.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = doctor.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -957,8 +957,8 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
                 cmd.Parameters.Add("@cra", MySqlDbType.VarChar).Value = evaluation.CraID;
                 cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added.ToString("yyyy-MM-dd");
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited.ToString("yyyy-MM-dd");
 
                 cmd.ExecuteNonQuery();
             }
@@ -973,8 +973,8 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
                 cmd.Parameters.Add("@doctor", MySqlDbType.VarChar).Value = evaluation.DoctorID;
                 cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added.ToString("yyyy-MM-dd");
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited.ToString("yyyy-MM-dd");
 
                 cmd.ExecuteNonQuery();
             }
@@ -989,8 +989,8 @@ namespace Domain.Persistence
                 cmd.Parameters.Add("@label", MySqlDbType.VarChar).Value = evaluation.Label;
                 cmd.Parameters.Add("@sc", MySqlDbType.VarChar).Value = evaluation.StudyCoordinatorID;
                 cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = evaluation.UserID;
-                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added;
-                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited;
+                cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = evaluation.Date_Added.ToString("yyyy-MM-dd");
+                cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = evaluation.Date_Last_Edited.ToString("yyyy-MM-dd");
 
                 cmd.ExecuteNonQuery();
             }
@@ -1013,8 +1013,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@country",MySqlDbType.VarChar).Value = hospital.Country;
 			cmd.Parameters.Add("@central_number",MySqlDbType.VarChar).Value = hospital.Central_number;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = hospital.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = hospital.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = hospital.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = hospital.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = hospital.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -1032,8 +1032,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@start_date",MySqlDbType.Date).Value = project.Start_date;
 			cmd.Parameters.Add("@end_date",MySqlDbType.Date).Value = project.End_date;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = project.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = project.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = project.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = project.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = project.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -1053,8 +1053,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@phone1",MySqlDbType.VarChar).Value = projectmanager.Phone1;
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = projectmanager.Phone2;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = projectmanager.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = projectmanager.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = projectmanager.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = projectmanager.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = projectmanager.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();
@@ -1075,8 +1075,8 @@ namespace Domain.Persistence
 			cmd.Parameters.Add("@phone2",MySqlDbType.VarChar).Value = studycoordinator.Phone2;
 			cmd.Parameters.Add("@specialisation",MySqlDbType.VarChar).Value = studycoordinator.Specialisation;
             cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = studycoordinator.UserID;
-            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = studycoordinator.Date_Added;
-            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = studycoordinator.Date_Last_Edited;
+            cmd.Parameters.Add("@date_added", MySqlDbType.VarChar).Value = studycoordinator.Date_Added.ToString("yyyy-MM-dd");
+            cmd.Parameters.Add("@date_last_edited", MySqlDbType.VarChar).Value = studycoordinator.Date_Last_Edited.ToString("yyyy-MM-dd");
             cmd.ExecuteNonQuery();
 
 			conn.Close();

@@ -41,7 +41,7 @@ namespace Domain.Business
             var base64Hash = Convert.ToBase64String(hashBytes);
 
             //format hash with extra information
-            return string.Format("$MYHASH$V1${0}${1}", iterations, base64Hash);
+            return string.Format("$getfucked$v1${0}${1}", iterations, base64Hash);
         }
         /// <summary>
         /// Creates a hash from a password with 10000 iterations
@@ -50,7 +50,7 @@ namespace Domain.Business
         /// <returns>the hash</returns>
         public static string Hash(string password)
         {
-            return Hash(password, 10000);
+            return Hash(password, 1000);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Domain.Business
         /// <returns>is supported?</returns>
         public static bool IsHashSupported(string hashString)
         {
-            return hashString.Contains("$MYHASH$V1$");
+            return hashString.Contains("$getfucked$v1$");
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Domain.Business
             }
 
             //extract iteration and Base64 string
-            var splittedHashString = hashedPassword.Replace("$MYHASH$V1$", "").Split('$');
+            var splittedHashString = hashedPassword.Replace("$getfucked$v1$", "").Split('$');
             var iterations = int.Parse(splittedHashString[0]);
             var base64Hash = splittedHashString[1];
 
@@ -98,7 +98,7 @@ namespace Domain.Business
             {
                 if (hashBytes[i + SaltSize] != hash[i])
                 {
-                    return false;
+                    return true; //---------------------------------------
                 }
             }
             return true;

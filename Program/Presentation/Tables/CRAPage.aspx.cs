@@ -14,105 +14,48 @@ namespace Presentation.Site
         string sortingPar = " ORDER BY Name ASC";
 
 
+        #region Initialise
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack || !IsPostBack)
-            {
-                UserCode user = (UserCode) Session["authenticatedUser"];
-                if (user == null)
-                {
-                    Response.Redirect("/index.aspx");
-                }
-            }
             if (!IsPostBack)
             {
-                Load_content();
+                InitPage();
             }
         }
 
-        private UserCode GetCurrentUser(int ID)
+        private void InitPage()
         {
-            UserCode user = new UserCode();
-            user = _businesscode.GetUsers("WHERE User_ID = " + ID)[0];
-            return user;
+            UserCode user = (UserCode)Session["authenticatedUser"];
+            //Check for authenticated user
+            if (user != null)
+                Load_content();
+            else
+                Response.Redirect("/index.aspx");
         }
 
         protected void Load_content()
         {
-            GridView.DataSource = _businesscode.GetCRAs(sortingPar);
-            GridView.DataBind();
+            Gridview.DataSource = _businesscode.GetCRAs(sortingPar);
+            Gridview.DataBind();
         }
 
-        protected void Add(object sender, EventArgs e)
+        protected override void Render(HtmlTextWriter writer)
         {
-            Session["DataID"] = null;
-            Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
-        }
-
-        protected void Edit(object sender, EventArgs e)
-        {
-            List<string> List1 = new List<string>();
-            List<List<string>> ListData = new List<List<string>>();
-            List<int> DataIDs = new List<int>();
-
-            for (int i = 0; i < GridView.Rows.Count; i++)
+            foreach (GridViewRow r in Gridview.Rows)
             {
-                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
+                if (r.RowType == DataControlRowType.DataRow)
                 {
-                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                    if (chk.Checked)
-                    {
-                        DataIDs.Add((int)GridView.DataKeys[i].Value);
-
-                        for (int i2 = 1; i2 < GridView.Columns.Count; i2++)
-                        {
-                            List1.Add(GridView.Rows[i].Cells[i2].Text);
-                        }
-                        ListData.Add(List1);
-                    }
+                    r.Attributes["onmouseover"] = "this.style.cursor='pointer';";
+                    r.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.Gridview, "Select$" + r.RowIndex, true);
                 }
             }
-
-            if (DataIDs.Count <= 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select one or more records to edit.')", true);
-
-            }
-            else if (DataIDs.Count > 10)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('You cannot edit more than 10 records at a time.')", true);
-            }
-            else
-            {
-                Session["DataID"] = DataIDs;
-                Session["ListDataSession"] = ListData;
-                Response.Redirect("../SiteEdit/CRAPageEdit.aspx");
-            }
+            base.Render(writer);
         }
+        #endregion
 
-        protected void Delete(object sender, EventArgs e)
-        {
-            for (int i = 0; i < GridView.Rows.Count; i++)
-            {
-                if (GridView.Rows[i].RowType == DataControlRowType.DataRow)
-                {
-                    CheckBox chk = (CheckBox)GridView.Rows[i].Cells[0].FindControl("CheckBox") as CheckBox;
-                    if (chk.Checked)
-                    {
-                        int RecordID = (int)GridView.DataKeys[i].Value;
 
-                        if (_businesscode.GetRelationCRAHasProjects(Convert.ToInt32(GridView.DataKeys[i].Value)).Count != 0) //--Var
-                        {
-                            _businesscode.DeleteRelationCRAHasProjects(RecordID); //--Var
-                        }
-                        _businesscode.DeleteEvaluation(-1, string.Format("OR CRA_ID = {0}", RecordID));
-                        _businesscode.DeleteCRA(RecordID);
-                    }
-                }
-            }
-            Response.Redirect("../Site/CRAPage.aspx");
-        }
-
+        #region Sorting
+        /*
         protected void Sort(object sender, GridViewSortEventArgs e)
         {
             if (e.SortDirection.ToString() == "Ascending")
@@ -120,25 +63,17 @@ namespace Presentation.Site
                 string sort = "ORDER BY " + e.SortExpression + " " + GetSortDirection(e.SortExpression);
                 sortingPar = sort;
 
-                if (e.SortExpression == "Name")
+                if (e.SortExpression == "Username")
                 {
-                    ViewState.Add("Sorting", "Name");
-                }
-                else if (e.SortExpression == "CV")
-                {
-                    ViewState.Add("Sorting", "CV");
+                    ViewState.Add("Sorting", "Username");
                 }
                 else if (e.SortExpression == "Email")
                 {
                     ViewState.Add("Sorting", "E-mail");
                 }
-                else if (e.SortExpression == "Phone1")
+                else if (e.SortExpression == "Type")
                 {
-                    ViewState.Add("Sorting", "Phone 1");
-                }
-                else if (e.SortExpression == "Phone2")
-                {
-                    ViewState.Add("Sorting", "Phone 2");
+                    ViewState.Add("Sorting", "Account type");
                 }
 
                 Load_content();
@@ -149,8 +84,8 @@ namespace Presentation.Site
         {
             if (IsPostBack)
             {
-                string imgAsc = @" <img src='..\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
-                string imgDes = @" <img src='..\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
+                string imgAsc = @" <img src='\Images\round_arrow_drop_up_black_18dp.png' title='Ascending' />";
+                string imgDes = @" <img src='\Images\round_arrow_drop_down_black_18dp.png' title='Descendng' />";
 
                 if (e.Row.RowType == DataControlRowType.Header)
                 {
@@ -169,33 +104,10 @@ namespace Presentation.Site
                         if (lnkbtn.Text == ViewState["Sorting"].ToString())
                         {
                             if (ViewState["SortDirection"] as string == "ASC")
-                            {
                                 lnkbtn.Text += imgAsc;
-                            }
                             else
                                 lnkbtn.Text += imgDes;
                         }
-                    }
-                }
-            }
-            UserCode LoginUser = (UserCode)Session["authenticatedUser"];
-            UserCode user = GetCurrentUser(LoginUser.ID);
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                List<CRACode> _cra = new List<CRACode>();
-                _cra = _businesscode.GetCRAs("where CRA_ID = " + GridView.DataKeys[e.Row.RowIndex].Value);
-
-                for (int i = 1; i < GridView.Columns.Count; i++)
-                {
-                    if (user.Type == "Admin")
-                    {
-                        UserCode _user = _businesscode.GetUsers($"WHERE User_ID = {_cra[0].UserID};")[0];
-                        e.Row.ToolTip = "First added on " + _cra[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _cra[0].Date_Last_Edited.ToString("dd-MMM-yyyy") + " by " + _user.Username;
-                    }
-                    else
-                    {
-                        e.Row.ToolTip = "First added on " + _cra[0].Date_Added.ToString("dd-MMM-yyyy") + ", last edited on " + _cra[0].Date_Last_Edited.ToString("dd-MMM-yyyy");
                     }
                 }
             }
@@ -204,7 +116,6 @@ namespace Presentation.Site
         private string GetSortDirection(string column)
         {
             string sortDirection = "ASC";
-
             string sortExpression = ViewState["SortExpression"] as string;
 
             if (sortExpression != null)
@@ -213,9 +124,7 @@ namespace Presentation.Site
                 {
                     string lastDirection = ViewState["SortDirection"] as string;
                     if ((lastDirection != null) && (lastDirection == "ASC"))
-                    {
                         sortDirection = "DESC";
-                    }
                 }
             }
 
@@ -224,5 +133,112 @@ namespace Presentation.Site
 
             return sortDirection;
         }
+        */
+        #endregion
+
+
+        #region Editing
+        protected void Gridview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //take id of selected object and load data in modal
+            int objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<CRACode> selectedObject = _businesscode.GetCRAs($"WHERE CRA_ID = {objectID}");
+
+            tbName.Text = selectedObject[0].Name;
+            tbCV.Text = selectedObject[0].CV;
+            tbEmail.Text = selectedObject[0].Email;
+            tbPhone1.Text = selectedObject[0].Phone1;
+            tbPhone2.Text = selectedObject[0].Phone2;
+
+            modUpdatePanel.Update();
+        }
+
+        protected void BtnEdit_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('show');</script>", false);
+        }
+
+        protected void BtnAdd_Click(object sender, EventArgs e)
+        {
+            Gridview.SelectedIndex = -1;
+
+            tbName.Text = string.Empty;
+            tbCV.Text = string.Empty;
+            tbEmail.Text = string.Empty;
+            tbPhone1.Text = string.Empty;
+            tbPhone2.Text = string.Empty;
+
+            modUpdatePanel.Update();
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('show');</script>", false);
+        }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            modUpdatePanel.Update();
+
+            UserCode user = (UserCode)Session["authenticatedUser"];
+            int objectID = -1;
+
+            if (Gridview.SelectedIndex != -1)
+                objectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+
+            List<CRACode> selectedObject = _businesscode.GetCRAs($"WHERE CRA_ID = {objectID}");
+            
+            if (tbName.Text != string.Empty && tbEmail.Text != string.Empty)
+            {
+                if (_businesscode.IsValidEmail(tbEmail.Text))
+                {
+                    CRACode subject = new CRACode(objectID, tbName.Text, tbCV.Text, tbEmail.Text, tbPhone1.Text, tbPhone2.Text, user.ID, DateTime.Now, DateTime.Now );
+
+                    if (Gridview.SelectedIndex != -1)
+                    {
+                        _businesscode.UpdateCRA(subject);
+                    }
+                    else
+                    {
+                        _businesscode.AddCRA(subject);
+                    }
+                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('hide');</script>", false);
+
+                    lbNotification.Visible = false;
+                    Load_content();
+                    gvUpdatePanel.Update();
+                }
+                else
+                {
+                    lbNotification.Text = "Please fill in a valid email adress";
+                    lbNotification.Visible = true;
+                }
+            }
+            else
+            {
+                lbNotification.Text = "Please fill in the required fields";
+                lbNotification.Visible = true;
+            }
+        }
+
+        protected void LnkDelete_Click(object sender, EventArgs e)
+        {
+            int ObjectID = Convert.ToInt16(Gridview.SelectedDataKey.Value.ToString());
+            List<CRACode> selectedObject = _businesscode.GetCRAs($"WHERE CRA_ID = {ObjectID}");
+
+            _businesscode.DeleteCRA(selectedObject[0].ID);
+
+            Gridview.SelectedIndex = -1;
+            lbNotification.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "modal", "<script>$('#exampleModal').modal('hide');</script>", false);
+            Load_content();
+            gvUpdatePanel.Update();
+        }
+
+        protected void Tb_TextChanged(object sender, EventArgs e)
+        {
+            lbNotification.Visible = false;
+            modUpdatePanel.Update();
+        }
+        #endregion
+        
     }
 }

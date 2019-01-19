@@ -13,13 +13,6 @@ namespace Presentation.Site
 
 
         #region Initialise
-        private UserCode GetCurrentUser(int ID)
-        {
-            UserCode user = new UserCode();
-            user = _businesscode.GetUsers("WHERE User_ID = " + ID)[0];
-            return user;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

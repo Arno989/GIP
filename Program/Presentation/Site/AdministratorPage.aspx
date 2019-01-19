@@ -59,6 +59,7 @@
                                     <asp:ListItem>User</asp:ListItem>
                                     <asp:ListItem>Guest</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:Label runat="server" ID="lbSuccess" Visible="false" CssClass="success"></asp:Label>
                                 <asp:Button runat="server" ID="btnSave" Text="Save" CssClass="buttonLeft" OnClick="BtnSave_Click"/>
                                 <asp:Button runat="server" ID="btnExit" Text="Exit" CssClass="buttonRight" data-dismiss="modal"/>
                                 <asp:LinkButton runat="server" ID="lnkDelete" Text="Delete account" CssClass="linkButton" OnClick="LnkDelete_Click"></asp:LinkButton>
